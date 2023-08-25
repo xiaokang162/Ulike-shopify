@@ -1723,7 +1723,7 @@
   opacity: 0;
   margin-top: 15px;
 }
-.page-partition-box1 .page-partition-btn:hover {
+.page-partition-box1 .page-partition-btn:hover span,.page-partition-box1 .page-partition-btn:hover .btn-txt::before {
   color: #000;
 }
 

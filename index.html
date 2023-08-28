@@ -383,18 +383,18 @@
       };
 
       window.addEventListener("pageshow", async () => {
-        const cartContent = await (
-          await fetch(`${window.themeVariables.routes.cartUrl}.js`, {
-            cache: "reload",
-          })
-        ).json();
-        document.documentElement.dispatchEvent(
-          new CustomEvent("cart:refresh", {
-            detail: {
-              cart: cartContent,
-            },
-          })
-        );
+        // const cartContent = await (
+        //   await fetch(`${window.themeVariables.routes.cartUrl}.js`, {
+        //     cache: "reload",
+        //   })
+        // ).json();
+        // document.documentElement.dispatchEvent(
+        //   new CustomEvent("cart:refresh", {
+        //     detail: {
+        //       cart: cartContent,
+        //     },
+        //   })
+        // );
       });
 
       if ("noModule" in HTMLScriptElement.prototype) {
@@ -437,6 +437,8 @@
       Shopify.cdnHost = "ulike.com/cdn";
       Shopify.routes = Shopify.routes || {};
       Shopify.routes.root = "/";
+
+      !function(o){function n(){var o=[];function n(){o.push(Array.prototype.slice.apply(arguments))}return n.q=o,n}var t=o.Shopify=o.Shopify||{};t.loadFeatures=n(),t.autoloadFeatures=n()}(window);
     </script>
   </head>
 
@@ -1867,7 +1869,8 @@
     <div class="product-area-box">
       <div class="product-area-list">
         <div class="product-area-item slide-to-left">
-          <img class="img" src="./images/c1.png" alt=""  />
+          <img class="img pc-box" src="./images/c1.png" alt=""  />
+          <img class="img mb-box" src="./images/p1.jpg" alt=""  />
           <div class="product-area-cont">
             <div class="product-area-h3">
               <div class="text-top" style="transition-delay: 0.8s">
@@ -1897,7 +1900,8 @@
           </div>
         </div>
         <div class="product-area-item slide-to-left">
-          <img class="img" src="./images/c2.png" alt=""  />
+          <img class="img pc-box" src="./images/c2.png" alt=""  />
+          <img class="img mb-box" src="./images/p2.jpg" alt=""  />
           <div class="product-area-cont">
             <h3 class="product-area-h3">
               <div class="text-top" style="transition-delay: 0.8s">

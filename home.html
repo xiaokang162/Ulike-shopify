@@ -383,18 +383,18 @@
       };
 
       window.addEventListener("pageshow", async () => {
-        const cartContent = await (
-          await fetch(`${window.themeVariables.routes.cartUrl}.js`, {
-            cache: "reload",
-          })
-        ).json();
-        document.documentElement.dispatchEvent(
-          new CustomEvent("cart:refresh", {
-            detail: {
-              cart: cartContent,
-            },
-          })
-        );
+        // const cartContent = await (
+        //   await fetch(`${window.themeVariables.routes.cartUrl}.js`, {
+        //     cache: "reload",
+        //   })
+        // ).json();
+        // document.documentElement.dispatchEvent(
+        //   new CustomEvent("cart:refresh", {
+        //     detail: {
+        //       cart: cartContent,
+        //     },
+        //   })
+        // );
       });
 
       if ("noModule" in HTMLScriptElement.prototype) {
@@ -437,6 +437,7 @@
       Shopify.cdnHost = "ulike.com/cdn";
       Shopify.routes = Shopify.routes || {};
       Shopify.routes.root = "/";
+      !function(o){function n(){var o=[];function n(){o.push(Array.prototype.slice.apply(arguments))}return n.q=o,n}var t=o.Shopify=o.Shopify||{};t.loadFeatures=n(),t.autoloadFeatures=n()}(window);
     </script>
   </head>
 

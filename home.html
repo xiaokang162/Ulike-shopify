@@ -659,10 +659,30 @@
             color: #919191;
             line-height: 1.4;
             }
+            .menu-diy .linklist__item{
+                font-size: 16px;
+                color: #919191;
+                line-height: 1.4;
+                transition: all .4s ease;
+            }
+            .menu-diy .linklist__item:hover{
+                color: #000;
+            }
+            .menu-diy .link--faded:hover{
+                opacity: 1;
+            }
             .menu-diy .mega-menu__column:nth-child(2){
-            margin-left: 0;
-            padding-left: 40px;
-            border-left: 1px solid #f0f0f0;
+                margin-left: 0;
+                padding-left: 40px;
+                border-left: 1px solid #f0f0f0;
+            }
+            @media screen and (min-width: 1400px){
+                .mega-menu__image-push {
+                    width: 340px;
+                }
+                .menu-diy .mega-menu__image{
+                    width: 100%;
+                }
             }
         </style>
                     <!-- LEFT PART -->

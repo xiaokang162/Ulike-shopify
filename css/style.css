@@ -1898,11 +1898,6 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  transition: all 0.8s ease;
-}
-
-.product-area-box1 .product-area-img-item:hover .img {
-  transform: scale(1.1);
 }
 
 .product-area-box1 .product-area-cont {

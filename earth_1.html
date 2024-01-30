@@ -13,6 +13,7 @@
     .review-video {
       height: 100vh;
       overflow: hidden;
+      background: #000;
     }
 
     .review-video .webgl {
@@ -120,9 +121,9 @@
         airplane.add(directionalLight);
 
         let angles = [-0.3, -0.1, -0.3, -0.1];
-        let speeds = [0.003, 0.004, 0.003, 0.004];
+        let speeds = [0.018, 0.018, 0.015, 0.01];
         let rotations = [1, 0, 1, 0];
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < 4; i++) {
           const g = new THREE.Group();
           g.speed = speeds[i];
           subgroups.push(g);

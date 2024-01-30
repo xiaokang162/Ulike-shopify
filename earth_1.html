@@ -106,9 +106,9 @@
 
         airplane.children.forEach(child => {
           if (window.innerWidth > 640) {
-            child.geometry.scale(0.00008, 0.00008, 0.00008);
+            child.geometry.scale(0.00015, 0.00015, 0.00015);
           } else {
-            child.geometry.scale(0.0002, 0.0002, 0.0002);
+            child.geometry.scale(0.0003, 0.0003, 0.0003);
           }
           child.geometry.translate(0, 5.2, 0);
           child.material = mat;

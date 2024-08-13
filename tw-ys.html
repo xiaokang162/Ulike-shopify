@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css">
+  <link rel="stylesheet" href="./css/tw-ys.css">
+</head>
+<body>
+  <div class="officially-banner">
+    <div class="officially-banner-cont">
+      <img src="./images30/ba.jpg" alt="" class="img pc-box officially-banner-img">
+      <img src="./images30/bam.jpg" alt="" class="img mb-box officially-banner-img">
+      <div class="officially-banner-text">
+        <div class="officially-banner-title">Ulike Air10</div>
+        <div class="officially-banner-sub">全球領先雙燈管科技</div>
+      </div>
+      <div class="officially-banner-svg">
+        <img src="./images30/pc-svg.svg" alt="" class="img-svg pc-box">
+        <img src="./images30/m-svg.svg" alt="" class="img-svg mb-box">
+      </div>
+    </div>
+  </div>
+  <script>
+    function bannerScrollTo(){
+      ScrollTrigger.create({
+        trigger: ".officially-banner",
+        start: "top top",
+        end: "+=100%",
+        scrub: true,
+        animation:
+        gsap.timeline()
+        .to(".officially-banner-text",{'y': '-40%','opacity':0,ease:'power2.inOut'})
+        .to(".officially-banner-img",{'y': '-15%','scale':1.2,ease:'power2.inOut'},'<')
+        .to(".officially-banner-svg",{'scale':1,ease:'power2.inOut'})
+      })
+    }
+    window.addEventListener('load', () => {
+      bannerScrollTo()
+    })
+  </script>
+  <div class="officially-product">
+    <div class="container">
+      <div class="officially-product-cont">
+        <div class="officially-product-img">
+          <img src="./images30/pm.jpg" alt="" class="img">
+        </div>
+        <div class="officially-product-text">
+          <div class="officially-product-title">Ulike Air10 <div class="officially-product-d">藍寶石除毛儀</div></div>
+          <div class="officially-product-sub">
+            雙倍效果，2週見效<br />
+            雙燈管科技，最快0.25s/閃 <br />
+            SHR 模式，26J 超大能量 <br />
+            新一代藍寶石科技
+          </div>
+          <div class="officially-product-color">
+            <div class="officially-product-color-label">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <rect x="0.5" y="0.5" width="29" height="29" rx="14.5" stroke="black"/>
+                <rect x="3.33203" y="3.3335" width="23.3269" height="23.3333" rx="11.6635" fill="url(#paint0_linear_13_2817)"/>
+                <defs>
+                  <linearGradient id="paint0_linear_13_2817" x1="14.6654" y1="26.6668" x2="14.6654" y2="3.3335" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#A8A4CE"/>
+                    <stop offset="1" stop-color="#DDDBEE"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <div class="officially-product-price">
+            <span class="n-price">$9999</span>
+            <span class="d-price">$10999</span>
+          </div>
+          <div class="officially-product-btn">預  售</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preheat-identity">
+    <div class="container">
+      <div class="preheat-identity-cont">
+        <div class="preheat-identity-left">
+          <div class="preheat-identity-sub">Dual-Engine Tech</div>
+          <div class="preheat-identity-title">瞬時雙燈管科技</div>
+          <div class="preheat-identity-left-flex">
+            <div class="preheat-identity-pam">
+              <div class="preheat-identity-pam-t">26J</div>
+              <div class="preheat-identity-pam-p"> 超大能量</div>
+            </div>
+            <div class="preheat-identity-pam">
+              <div class="preheat-identity-pam-t">0.25s/閃</div>
+              <div class="preheat-identity-pam-p">最快0.25s/閃</div>
+            </div>
+          </div>
+        </div>
+        <div class="preheat-identity-right">
+          <div class="preheat-identity-flex">
+            <div class="preheat-identity-item">
+              <div class="preheat-identity-item-tag">Ulike Air10</div>
+              <div class="preheat-identity-item-cont">
+                <div class="preheat-identity-item-top">
+                  <img src="./images30/a1.png" alt="" class="img">
+                  <div class="preheat-identity-item-text">
+                    <div class="preheat-identity-item-sub">雙脈衝光</div>
+                    <div class="preheat-identity-item-p">
+                      <p>26J 超大能量</p>
+                      <p>最快0.25s/閃</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="preheat-identity-item-video">
+                  <video class="video-el" autoplay muted loop src="./images28/video.mp4"></video>
+                </div>
+              </div>
+            </div>
+            <div class="preheat-identity-item">
+              <div class="preheat-identity-item-tag"> 普通除毛儀 </div>
+              <div class="preheat-identity-item-cont">
+                <div class="preheat-identity-item-top">
+                  <img src="./images30/a2.png" alt="" class="img">
+                  <div class="preheat-identity-item-text">
+                    <div class="preheat-identity-item-sub">單脈衝光</div>
+                    <div class="preheat-identity-item-p">
+                      速度慢，能量低，效率差
+                    </div>
+                  </div>
+                </div>
+                <div class="preheat-identity-item-video">
+                  <video class="video-el" autoplay muted loop src="./images28/video.mp4"></video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preheat-modular">
+    <img src="./images30/b1.jpg" alt="" class="preheat-modular-img pc-box">
+    <img src="./images30/b2.png" alt="" class="preheat-modular-img mb-box">
+    <div class="preheat-modular-cont">
+      <div class="container">
+        <div class="preheat-modular-text">
+          <div class="preheat-modular-title">
+            全球領先<br/>
+            Dual-Engine Tech<br/>
+            瞬時雙燈管科技
+          </div>
+          <div class="preheat-modular-sub">傳統除毛儀一次打光只有一次脈衝光，“雙燈管”每次打光時發出雙倍更強的脈衝光，從而實現更快、更有效的除毛</div>
+          <div class="preheat-modular-svg">
+            <svg class="pc-box" xmlns="http://www.w3.org/2000/svg" width="202" height="61" viewBox="0 0 202 61" fill="none">
+              <path d="M64 49H202" stroke="#3F3636"/>
+              <path d="M56.5586 48.3869L8.21055 1.00006" stroke="#3F3636"/>
+              <path d="M74.7601 41.0001L55.6855 41.0001L55.6855 49.2721C55.6874 49.7468 55.693 50.2224 55.7135 50.6962C55.8207 53.1405 56.533 55.1566 57.8167 56.7557C58.8059 57.989 59.9647 58.7708 61.2103 59.2884C63.1597 60.0972 65.1482 60.2582 67.1554 59.9036C68.4373 59.6774 69.6791 59.2176 70.8463 58.4013C73.4372 56.589 74.7908 53.6719 74.7666 49.4638C74.7405 44.7652 74.761 41.0001 74.761 41.0001L74.7601 41.0001Z" fill="#E0004D"/>
+            </svg>
+            <svg class="mb-box" xmlns="http://www.w3.org/2000/svg" width="49" height="77" viewBox="0 0 49 77" fill="none">
+              <path d="M48.0645 0.913574L12.282 36.6828" stroke="#3F3636"/>
+              <path d="M7.16602 75.9141L7.16602 45.2547" stroke="#3F3636" stroke-linecap="round"/>
+              <path d="M0.0164499 32.5948L13.5645 32.5948L13.5645 38.4679C13.5631 38.805 13.5592 39.1427 13.5446 39.4791C13.4684 41.2145 12.9625 42.6459 12.0507 43.7813C11.3482 44.657 10.5251 45.2121 9.64043 45.5795C8.25583 46.1538 6.84342 46.2682 5.41777 46.0164C4.50729 45.8558 3.62528 45.5293 2.79624 44.9497C0.95607 43.663 -0.00540144 41.5918 0.0118155 38.6041C0.0303562 35.268 0.015789 32.5948 0.015789 32.5948L0.0164499 32.5948Z" fill="#E0004D"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preheat-modular preheat-modular-two">
+    <video src="./images30/video.mov" class="preheat-modular-video pc-box" autoplay muted loop></video>
+    <video src="./images30/video.mp4" class="preheat-modular-video mb-box" autoplay muted loop></video>
+    <div class="preheat-modular-cont">
+      <div class="container">
+        <div class="preheat-modular-text">
+          <div class="preheat-modular-title">
+            SHR模式 <br/>
+            院線除毛科技
+          </div>
+          <div class="preheat-modular-flex">
+            <div class="preheat-modular-item">
+              <div class="preheat-modular-t">26J</div>
+              <div class="preheat-modular-p">超大能量</div>
+            </div>
+            <div class="preheat-modular-item">
+              <div class="preheat-modular-t">1秒4閃</div>
+              <div class="preheat-modular-p">專脱粗硬毛髮</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preheat-modular preheat-modular-one">
+    <img src="./images30/c1.jpg" alt="" class="preheat-modular-img pc-box">
+    <img src="./images30/c2.jpg" alt="" class="preheat-modular-img mb-box">
+    <div class="preheat-modular-cont">
+      <div class="container">
+        <div class="preheat-modular-text">
+          <div class="preheat-modular-title">藍寶石冰點技術升級</div>
+          <div class="preheat-modular-sub">30分鐘冰點持續保持在16度以內</div>
+          <div class="preheat-modular-flex">
+            <div class="preheat-modular-item">
+              <div class="preheat-modular-t">&gt;16°C</div>
+              <div class="preheat-modular-p">16度以內</div>
+            </div>
+            <div class="preheat-modular-item">
+              <div class="preheat-modular-t">30min</div>
+              <div class="preheat-modular-p">冰點持續</div>
+            </div>
+          </div>
+          <div class="preheat-modular-svg">
+            <svg class="pc-box" width="431" height="142" viewBox="0 0 431 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M184 130L431 127.984" stroke="#FBFAF4"/>
+              <path d="M166.559 129.387L22 1" stroke="#FBFAF4"/>
+              <path d="M168.205 137.443L168.205 137.443C169.135 138.603 170.222 139.337 171.4 139.827C173.254 140.596 175.145 140.751 177.066 140.411L177.067 140.411C178.286 140.196 179.458 139.761 180.558 138.992C182.98 137.298 184.288 134.557 184.265 130.467L184.265 130.467C184.252 128.116 184.25 125.999 184.252 124.469C184.253 123.705 184.255 123.087 184.256 122.66L184.257 122.5L166.184 122.5L166.184 130.271C166.185 130.743 166.191 131.211 166.211 131.674L168.205 137.443ZM168.205 137.443C166.998 135.94 166.314 134.031 166.211 131.675L168.205 137.443Z" stroke="#FBFAF4"/>
+            </svg>
+            <svg class="mb-box" xmlns="http://www.w3.org/2000/svg" width="49" height="76" viewBox="0 0 49 76" fill="none">
+              <path d="M7 75.0186L7 45.0296" stroke="#FBFAF4" stroke-linecap="round"/>
+              <path d="M48 0.657837L13 35.6449" stroke="#FBFAF4"/>
+              <path d="M11.3854 42.2753L11.3852 42.2755C10.7569 43.0587 10.0236 43.5542 9.22608 43.8855C7.96713 44.4076 6.68305 44.5134 5.37428 44.2822L5.37416 44.2822C4.54572 44.1361 3.75324 43.8414 3.00959 43.3215C1.37846 42.1809 0.483393 40.332 0.499555 37.5272L0.499556 37.5271C0.508631 35.8942 0.509603 34.4235 0.508307 33.3611C0.507689 32.8546 0.506555 32.4409 0.505537 32.1465L12.7559 32.1465L12.7559 37.3902C12.7546 37.7175 12.7507 38.0396 12.7369 38.3583L11.3854 42.2753ZM11.3854 42.2753C12.2002 41.2607 12.6662 39.9676 12.7369 38.3586L11.3854 42.2753Z" stroke="#FBFAF4"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="preheat-modular preheat-modular-three">
+    <img src="./images30/d1.jpg" alt="" class="preheat-modular-img pc-box">
+    <img src="./images30/d2.jpg" alt="" class="preheat-modular-img mb-box">
+    <div class="preheat-modular-cont">
+      <div class="container">
+        <div class="preheat-modular-text">
+          <div class="preheat-modular-title">
+            智能膚色識別<br />
+            自動匹配最合適能量
+          </div>
+          <div class="preheat-modular-sub">
+            AIR10皮膚保護科技，專業檢測膚色，自動匹配最佳能量，如果除毛區域過黑，會自動停止打光，保護皮膚。
+          </div>
+          <img src="./images30/d3.svg" alt="" class="preheat-modular-icon">
+          <video src="./images30/w.mp4" class="preheat-modular-video-sm" autoplay muted loop></video>
+          <div class="preheat-modular-svg">
+            <svg class="pc-box" width="330" height="62" viewBox="0 0 330 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M266 50L3.93018e-06 50" stroke="#3F3636"/>
+              <path d="M273.209 48.3867L321.557 0.999832" stroke="#3F3636"/>
+              <path d="M255.006 42L274.08 42L274.08 50.272C274.078 50.7467 274.073 51.2223 274.052 51.6961C273.945 54.1404 273.233 56.1565 271.949 57.7556C270.96 58.9889 269.801 59.7707 268.555 60.2882C266.606 61.0971 264.617 61.2581 262.61 60.9035C261.328 60.6773 260.086 60.2175 258.919 59.4012C256.328 57.5889 254.975 54.6718 254.999 50.4637C255.025 45.7651 255.005 42 255.005 42L255.006 42Z" fill="#E0004D"/>
+            </svg>
+            <svg class="mb-box" xmlns="http://www.w3.org/2000/svg" width="92" height="73" viewBox="0 0 92 73" fill="none">
+              <path d="M81 6.5166H0.999999" stroke="#3F3636" stroke-linecap="round"/>
+              <path d="M89 72.5166L89 10.5166" stroke="#3F3636"/>
+              <path d="M78.0041 0.5166L91.2559 0.516602L91.2559 6.26344C91.2546 6.59323 91.2507 6.92367 91.2364 7.25282C91.1619 8.95094 90.6671 10.3516 89.7752 11.4626C89.088 12.3194 88.283 12.8626 87.4176 13.2221C86.0633 13.7841 84.6818 13.8959 83.2873 13.6495C82.3967 13.4924 81.534 13.173 80.7231 12.6058C78.9232 11.3468 77.9827 9.32018 77.9996 6.39665C78.0177 3.13233 78.0034 0.5166 78.0034 0.5166L78.0041 0.5166Z" fill="#E0004D"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</html>

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/labs.css" />
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="labs-icon">
+    <div class="container">
+      <div class="title-diy to-top">Salon-quality technology for long-lasting hair removal from home.</div>
+      <div class="labs-icon-list">
+        <div class="labs-icon-item to-top" style="transition-delay: 0.1s;">
+          <div class="labs-icon-img">
+            <img src="./images24/a1.svg" alt="" />
+          </div>
+          <div class="labs-icon-title">How safe?</div>
+          <div class="labs-link btn-diy">
+            <div class="btn-txt" text="Learn More">
+              <span>Learn More</span>
+            </div>
+          </div>
+          <div class="labs-icon-popup-desc">
+            <div class="labs-icon-popup-text">
+              <ul>
+                <li>FDA Cleared:</li>
+              </ul>
+              <p>Ulike's hair removal device has received FDA clearance, attesting to its safety and efficacy in hair
+                removal."</p>
+              <ul>
+                <li>Clinically Tested:</li>
+              </ul>
+              <p>"Backed by rigorous clinical testing, Ulike's hair removal device is proven to be safe for use on
+                various skin types.</p>
+              <ul>
+                <li>Clear Safety Features:</li>
+              </ul>
+              <p>Ulike's hair removal device is equipped with advanced safety features, ensuring a secure and worry-free
+                experience.</p>
+              <ul>
+                <li>Dermatologist-Recommended:</li>
+              </ul>
+              <p>Trust in the safety of Ulike, a hair removal device recommended by dermatologists for its gentle yet
+                effective results.</p>
+              <h4>Your safety is our priority. </h4>
+              <h4>
+                Ulike provides a safety assurance guarantee, ensuring peace of mind with every use of our hair removal
+                device. Don't just take our word for it – try it with yourself!
+              </h4>
+            </div>
+            <div class="labs-icon-popup-btn btn-diy">
+              <div class="btn-txt" text="Try Ulike Safely!">
+                <span>Try Ulike Safely!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="labs-icon-item to-top" style="transition-delay: 0.2s">
+          <div class="labs-icon-img">
+            <img src="./images24/a2.svg" alt="" />
+          </div>
+          <div class="labs-icon-title">How effective?</div>
+          <div class="labs-link btn-diy">
+            <div class="btn-txt" text="Learn More">
+              <span>Learn More</span>
+            </div>
+          </div>
+          <div class="labs-icon-popup-desc">
+            <div class="labs-icon-popup-text">
+              <ul>
+                <li>Proven Results:</li>
+              </ul>
+              <p>Experience the proven effectiveness of Ulike hair removal – delivering remarkable results with every
+                use.</p>
+              <ul>
+                <li>Visible Impact:</li>
+              </ul>
+              <p>Ulike's hair removal system ensures a visible impact, leaving you with smooth and hair-free skin.</p>
+              <ul>
+                <li>Effortless Precision:</li>
+              </ul>
+              <p>Achieve precision and effectiveness effortlessly with Ulike's advanced hair removal technology.</p>
+              <ul>
+                <li>Long-lasting Smoothness:</li>
+              </ul>
+              <p>Say goodbye to unwanted hair with Ulike – the key to long-lasting smoothness and effective hair
+                removal.</p>
+              <h4>Rest assured in the effectiveness of Ulike, clinically proven to deliver the promise of smooth,
+                hair-free skin. Don't just take our word for it – witness the results for yourself! Try Ulike today and
+                embark on a journey to visibly smoother and hair-free skin.</h4>
+            </div>
+            <div class="labs-icon-popup-btn btn-diy">
+              <div class="btn-txt" text="Try Ulike Today!">
+                <span>Try Ulike Today!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="labs-icon-item to-top" style="transition-delay: 0.3s">
+          <div class="labs-icon-img">
+            <img src="./images24/a3.svg" alt="" />
+          </div>
+          <div class="labs-icon-title">How painful?</div>
+          <div class="labs-link btn-diy">
+            <div class="btn-txt" text="Learn More">
+              <span>Learn More</span>
+            </div>
+          </div>
+          <div class="labs-icon-popup-desc">
+            <div class="labs-icon-popup-text">
+              <p>Introducing Ulike Sapphire, the epitome of painless hair removal innovation.</p>
+              <p>Our advanced technology seamlessly blends the power of Ulike with cutting-edge ice-cooling technology.
+              </p>
+              <p>This unique combination ensures a remarkably painless experience, providing you with the ultimate
+                comfort during your hair removal sessions.</p>
+              <p>With Ulike Sapphire, achieve smooth, hair-free skin effortlessly, all while enjoying a soothing and
+                comfortable process.</p>
+              <p>Elevate your hair removal routine with the perfect harmony of Ulike's precision and ice-cooling
+                technology – where painless beauty meets exceptional results.</p>
+              <h4>
+                Elevate your skincare routine, embrace the beauty of painless hair removal – try Ulike and experience
+                the difference today!
+              </h4>
+            </div>
+            <div class="labs-icon-popup-btn btn-diy">
+              <div class="btn-txt" text="Try painless hair removal!">
+                <span>Try painless hair removal!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="labs-icon-popup">
+    <div class="labs-icon-popup-box">
+      <div class="labs-icon-popup-cont">
+      </div>
+      <div class="labs-icon-popup-close"></div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function icoPopup($e) {
+        let $popup = $('.labs-icon-popup')
+        $e.find('.labs-link').click(function () {
+          $popup.find(`.labs-icon-popup-cont`).html($(this).siblings('.labs-icon-popup-desc').html()).closest('.labs-icon-popup').fadeIn(300)
+        })
+        $popup.find('.labs-icon-popup-close').click(function () {
+          $(this).closest('.labs-icon-popup').fadeOut(300)
+        })
+        $popup.on('click', '.labs-icon-popup-btn', function () {
+          $(this).closest('.labs-icon-popup').fadeOut(300)
+        })
+      }
+      icoPopup($('.labs-icon'))
+    })
+  </script>
+  <div class="review-industry">
+    <!-- hide-small -->
+    <div class="container">
+      <div class="title-diy to-top">
+        Recommended by experts.
+      </div>
+      <div class="review-industry-cont">
+        <div class="review-industry-img-list to-top">
+          <div class="list-box">
+            <div class="img-item" data-index="0">
+              <img src="./images24/b1.png" alt="" class="img pc-box">
+              <img src="./images24/b1.png" alt="" class="img mb-box">
+            </div>
+            <div class="img-item" data-index="1">
+              <img src="./images24/b2.png" alt="" class="img">
+            </div>
+            <div class="img-item" data-index="2">
+              <img src="./images24/b3.png" alt="" class="img">
+            </div>
+            <div class="img-item" data-index="3">
+              <img src="./images24/b4.png" alt="" class="img">
+            </div>
+            <div class="img-item" data-index="4">
+              <img src="./images24/b5.png" alt="" class="img">
+            </div>
+            <div class="img-item" data-index="5">
+              <img src="./images24/b6.png" alt="" class="img">
+            </div>
+            <div class="img-item" data-index="6">
+              <img src="./images24/b7.png" alt="" class="img">
+            </div>
+          </div>
+        </div>
+        <div class="review-industry-right to-top">
+          <div class="review-industry-text-list">
+            <div class="text-item active">
+              <div class="review-industry-text-p">
+                "Experience Ulike's expert and clinically proven home hair removal. See visible results in 2 weeks, with
+                up to 90% hair removal in 4 weeks."
+              </div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Dr. Danielle Kelvas MD</div>
+                <div class="review-industry-sub">Physician</div>
+              </div>
+            </div>
+            <div class="text-item">
+              <div class="review-industry-text-p">
+                "What was only possible in a clinic a few years ago has become an effective and safe option for patients
+                to undertake at the convenience and privacy of their own home."
+              </div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Dr. Davin Lim</div>
+                <div class="review-industry-sub">Board-certified Dermatologist</div>
+              </div>
+            </div>
+            <div class="text-item">
+              <div class="review-industry-text-p">"I confidently recommend IPL as the optimal solution for achieving
+                long-lasting hair removal. In my research, Ulike devices have consistently demonstrated remarkable
+                effectiveness, standing out in today's market."</div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Dr. Anna Chacón</div>
+                <div class="review-industry-sub">Board-certified Dermatologist</div>
+              </div>
+            </div>
+            <div class="text-item">
+              <div class="review-industry-text-p">“I am to merge the most important findings in photomedicine research
+                with Ulike’s robust research and development capabilities to attain industry breakthroughs with advanced
+                beauty products.”</div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Professor M.R. Hamblin</div>
+                <div class="review-industry-sub">Chief Scientific Advisor of Ulike Group</div>
+              </div>
+            </div>
+            <div class="text-item">
+              <div class="review-industry-text-p">"Ulike IPL devices have yielded higher efficacy results compared with
+                other devices tested."</div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Samuel Sarmiento, MD</div>
+                <div class="review-industry-sub">Physician</div>
+              </div>
+            </div>
+            <div class="text-item">
+              <div class="review-industry-text-p">"The IPL industry, with Ulike at the forefront, has truly impressed
+                me. By addressing the persistent challenge of safe and long-lasting at-home hair removal, it has
+                effectively transformed our approach to hair removal."</div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Dr. Sanober Pezad Doctor</div>
+                <div class="review-industry-sub">Board-certified Dermatologist</div>
+              </div>
+            </div>
+            <div class="text-item">
+              <div class="review-industry-text-p">"My journey with the Ulike IPL Hair Removal Device allowed me to
+                experience firsthand the incredible benefits it could offer. As a dermatologist, I was impressed by its
+                professional-grade IPL technology, user-friendly design, and safety features. "</div>
+              <div class="review-industry-text-name">
+                <div class="review-industry-name">Dr. Ahsan Farooq Khan</div>
+                <div class="review-industry-sub">Physician | Dermatologist- Skincare</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-industry-arraw">
+            <div class="review-industry-arraw-item"></div>
+            <div class="review-industry-arraw-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function industrySwiper(name) {
+      let $p = $(name)
+      let $list = $p.find('.list-box')
+      let $tList = $p.find('.review-industry-text-list')
+      let length = $p.find('.img-item').length
+      let width = $p.find('.img-item').width()
+      let index = length
+      $list.html($list.html() + $list.html() + $list.html())
+      $list.find('.img-item').eq(index).addClass('active')
+      skewTranslateX(0)
+      $p.find('.review-industry-arraw-item').click(function () {
+        let tIndex = $(this).index()
+        if (tIndex) {
+          index++
+        } else {
+          index--
+        }
+        skewTranslateX()
+      })
+
+      function skewTranslateX(time = 0.4) {
+        $list.find('.img-item').removeClass('active')
+        $list.find('.img-item').eq(index).addClass('active')
+        $list.css({ 'transform': 'translateX(-' + index * (width + 25) + 'px)', 'transition': ' all ' + time + 's ease' })
+
+        if (time) {
+          $tList.find('.text-item.active').addClass('posi-item')
+          $tList.find('.text-item').removeClass('active')
+          setTimeout(function () {
+            let sindex = index - length
+            if (sindex == length) sindex = 0
+            if (sindex == -1) sindex = length - 1
+            $tList.find('.text-item.posi-item').removeClass('posi-item')
+            $tList.find('.text-item').eq(Math.abs(sindex)).addClass('active')
+          }, 450)
+        }
+        if (index == length - 1) {
+          setTimeout(function () {
+            index = length * 2 - 1
+            $list.find('.img-item').eq(index).addClass('zero-am')
+            skewTranslateX(0)
+            setTimeout(function () {
+              $list.find('.img-item').eq(index).removeClass('zero-am')
+            }, 50)
+          }, 450)
+        }
+
+        if (index == length * 2) {
+          setTimeout(function () {
+            index = length
+            $list.find('.img-item').eq(index).addClass('zero-am')
+            skewTranslateX(0)
+            setTimeout(function () {
+              $list.find('.img-item').eq(index).removeClass('zero-am')
+            }, 50)
+          }, 450)
+        }
+      }
+
+      $p.on('click', '.img-item', function () {
+        let newIndex = $(this).data('index') * 1 + length
+        let isChange = newIndex == index
+        index = $(this).data('index') * 1 + length
+        if (!isChange) skewTranslateX()
+      })
+
+      function addSwipeHandler(element, leftCallback, rightCallback) {
+        let startX = 0;
+        let startY = 0;
+        let isHorizontalScrolling = false;
+
+        element.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isHorizontalScrolling = false;
+        });
+
+        element.addEventListener('touchmove', (e) => {
+          let endX = e.touches[0].clientX;
+          let endY = e.touches[0].clientY;
+
+          let diffX = startX - endX;
+          let diffY = startY - endY;
+
+          if (!isHorizontalScrolling) {
+            if (Math.abs(diffX) > 15 && Math.abs(diffX) > Math.abs(diffY)) {
+              isHorizontalScrolling = true;
+              e.preventDefault();
+            }
+          } else {
+            e.preventDefault();
+          }
+        }, { passive: false });
+
+        element.addEventListener('touchend', (e) => {
+          if (isHorizontalScrolling) {
+            let endX = e.changedTouches[0].clientX;
+            let diffX = startX - endX;
+
+            if (diffX > 0) {
+              leftCallback();
+            } else {
+              rightCallback();
+            }
+            isHorizontalScrolling = false;
+          }
+        });
+      }
+
+
+      let myElement = document.querySelector('.review-industry .review-industry-cont');
+
+      function onSwipeLeft() {
+        index++
+        skewTranslateX()
+      }
+
+      function onSwipeRight() {
+        index--
+        skewTranslateX()
+      }
+
+      if (window.innerWidth < 991) {
+        addSwipeHandler(myElement, onSwipeLeft, onSwipeRight);
+      }
+    }
+
+    window.addEventListener('load', function () {
+      industrySwiper('.review-industry')
+    })
+
+  </script>
+  <div class="u-carousel-box">
+    <div class="container">
+      <div class="title-diy">Hear what the experts are saying.</div>
+      <div class="u-carousel-box-sub">Blogs we're sure you'll find helpful.</div>
+      <div class="u-carousel-cont">
+        <div class="u-carousel-list">
+          <a href="details.html" class="u-carousel-item to-top" style="transition-delay: 0.1s">
+            <div class="u-carousel-img mark-bottom">
+              <img src="./images24/c1.jpg" alt="" class="img" />
+              <div class="u-more">READ MORE ></div>
+            </div>
+            <div class="u-carousel-title">
+              IPL vs Laser: How Do They Work
+            </div>
+            <div class="u-carousel-p">IPL (Intense Pulsed Light) and Laser hair removal techniques share a common
+              principle—they harness the power of light energy...</div>
+          </a>
+          <a href="details.html" class="u-carousel-item to-top" style="transition-delay: 0.2s">
+            <div class="u-carousel-img mark-bottom">
+              <img src="./images24/c2.jpg" alt="" class="img" />
+              <div class="u-more">READ MORE ></div>
+            </div>
+            <div class="u-carousel-title">
+              IPL vs Laser: How Many Sessions
+            </div>
+            <div class="u-carousel-p">The number of sessions required for IPL and Laser hair removal can vary based on
+              several factors, including individual characteristics...</div>
+          </a>
+          <a href="details.html" class="u-carousel-item to-top" style="transition-delay: 0.3s">
+            <div class="u-carousel-img mark-bottom">
+              <img src="./images24/c3.jpg" alt="" class="img" />
+              <div class="u-more">READ MORE ></div>
+            </div>
+            <div class="u-carousel-title">
+              IPL vs Laser: How Painful
+            </div>
+            <div class="u-carousel-p">The level of pain experienced during IPL and Laser hair removal treatments can
+              vary from person to person in terms of sensation.</div>
+          </a>
+          <a href="#" class="u-carousel-item to-top" style="transition-delay: 0.4s">
+            <div class="u-carousel-img mark-bottom">
+              <img src="./images24/c4.jpg" alt="" class="img" />
+              <div class="u-more">READ MORE ></div>
+            </div>
+            <div class="u-carousel-title">
+              IPL vs Laser: How to Use
+            </div>
+            <div class="u-carousel-p">The use of IPL (Intense Pulsed Light) and Laser for hair removal involves specific
+              steps to ensure safe and effective results.</div>
+          </a>
+          <a href="#" class="u-carousel-item to-top" style="transition-delay: 0.5s">
+            <div class="u-carousel-img mark-bottom">
+              <img src="./images24/c5.jpg" alt="" class="img" />
+              <div class="u-more">READ MORE ></div>
+            </div>
+            <div class="u-carousel-title">
+              IPL vs Laser: How Effective
+            </div>
+            <div class="u-carousel-p">Both IPL and laser methods are effective in reducing hair growth, but the
+              effectiveness can vary based on several factors, including individual...</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function mediaRealSlider($el) {
+      let $p = $el;
+      let $list = $p.find('.u-carousel-list');
+      let length = $list.find('.u-carousel-item').length;
+      let index = -length; //[0,-length-2]
+      let isLeftBtn = 1; //0左 1右
+      let timer = null;
+      let mrNum = window.innerWidth > 768 ? 50 : 28
+      if (length < 5) return;
+
+      $list.html(
+        $list.html().repeat(3)
+      );
+      skewTransform(true);
+      function skewTransform(auto, tIndex = index, skew = 0) {
+        let width = $list
+          .find('.u-carousel-item')
+          .eq(Math.abs(tIndex) - 1)
+          .width();
+        let translateX = (width + mrNum) * tIndex;
+        if (auto) {
+          translateX += skew;
+          $list.css({
+            transform: 'translateX(' + translateX + 'px)',
+            transition: ' all 0s ease',
+          });
+        } else {
+          $list.css({
+            transform: 'translateX(' + translateX + 'px)',
+            transition: ' all .6s ease',
+          });
+        }
+      }
+      function changeLeft(skew) {
+        if (isLeftBtn && index == -2 * length) {
+          skewTransform(true, -length + 1, skew);
+          index = -length;
+        }
+        if (!isLeftBtn && index == -length + 1) {
+          skewTransform(true, -2 * length, skew);
+          index = -2 * length + 1;
+        }
+        setTimeout(() => {
+          skewTransform();
+        }, 10);
+      }
+
+      function getTranslateX($element) {
+        var matrix = $element
+          .css('transform')
+          .replace(/[^0-9\-.,]/g, '')
+          .split(',');
+        var translateX = parseFloat(matrix[12] || matrix[4]);
+        return translateX;
+      }
+      function clearTimer() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      function initMobileCarousel() {
+        let startX = 0;
+        let listTar = 0;
+        let startY = 0;
+        let isScrolling = false;
+        let isDragging = false;
+
+        function setAutoPlay() {
+          clearTimer();
+          timer = setInterval(() => {
+            isLeftBtn = 1;
+            index--;
+            changeLeft();
+          }, 5000);
+        }
+
+        $list.on('touchstart mousedown', function (e) {
+          clearTimer();
+
+          if (e.type === 'touchstart') {
+            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+          } else {
+            startX = e.clientX;
+            startY = e.clientY;
+          }
+
+          isScrolling = false;
+          isDragging = true;
+          listTar = getTranslateX($list);
+          $(document).on('touchmove mousemove', handleMove);
+          $(document).on('touchend mouseup', handleEnd);
+        });
+
+        function handleMove(e) {
+          if (isDragging) {
+            if (e.type === 'touchmove') {
+              var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+              var diffX = touch.clientX - startX;
+              var diffY = touch.clientY - startY;
+            } else {
+              var diffX = e.clientX - startX;
+              var diffY = e.clientY - startY;
+            }
+
+            var translateX = listTar + diffX;
+
+            if (!isScrolling) {
+              if (Math.abs(diffX) > Math.abs(diffY)) {
+                isScrolling = true;
+              }
+            }
+            if (isScrolling && e.cancelable) {
+              e.preventDefault();
+              $list.css({ transform: 'translateX(' + translateX + 'px)', transition: 'all 0s ease' });
+            }
+          }
+        }
+
+        function handleEnd(e) {
+          if (isDragging) {
+            $(document).off('touchmove mousemove', handleMove);
+            $(document).off('touchend mouseup', handleEnd);
+
+            // 检查被拖动的目标元素是否是a标签
+            const isAnchorTag = $(e.target).closest('a').length > 0;
+
+            if (isScrolling) {
+              if (e.type === 'touchend') {
+                var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                var diffX = touch.clientX - startX;
+              } else {
+                var diffX = e.clientX - startX;
+              }
+
+              if (Math.abs(diffX) > window.innerWidth * 0.05) {
+                if (diffX > 0) {
+                  index = index + 1;
+                  isLeftBtn = 0;
+                } else {
+                  index = index - 1;
+                  isLeftBtn = 1;
+                }
+                changeLeft(diffX);
+              } else {
+                $list.css({ transform: 'translateX(' + listTar + 'px)', transition: 'all .4s ease' });
+              }
+            } else {
+              isDragging = false;
+            }
+
+            setAutoPlay(); // 保证只触发一次自动播放
+            if (isAnchorTag && window.innerWidth > 640) {
+              // 如果是a标签，阻止默认行为并返回
+              e.stopPropagation()
+              e.preventDefault()
+              return false
+            }
+            isScrolling = false;
+            isDragging = false;
+          }
+        }
+        $p.find('a').click(function (e) {
+          if (isDragging) {
+            e.preventDefault()
+            return false
+          }
+        })
+      }
+      initMobileCarousel();
+      clearTimer();
+
+      timer = setInterval(() => {
+        isLeftBtn = 1;
+        index--;
+        changeLeft();
+      }, 5000);
+
+      $list.hover(
+        function () {
+          clearTimer();
+        },
+        function () {
+          clearTimer();
+          timer = setInterval(() => {
+            isLeftBtn = 1;
+            index--;
+            changeLeft();
+          }, 5000);
+        }
+      );
+    }
+
+    window.addEventListener('load', function () {
+      mediaRealSlider($('.u-carousel-box'))
+    })
+
+  </script>
+  <div class="u-story-group">
+    <div class="container">
+      <div class="u-story-group-cont">
+        <div class="u-story-group-left to-top">
+          <div class="u-story-group-img mark-bottom">
+            <img src="./images24/d1.png" alt="" class="img">
+            <div class="u-blog-video-btn"
+              data-src="https://www.youtube.com/embed/MTSt4QCFXfE?playsinline=1&autoplay=1&controls=1&mute=1&loop=1&playlist=MTSt4QCFXfE&enablejsapi=1&rel=0&modestbranding=1&origin=https%3A%2F%2Fwww.ulike.com">
+            </div>
+          </div>
+          <div class="u-story-group-item-title">What is IPL Hair Removal and How Does It Work? </div>
+        </div>
+        <div class="u-story-group-right to-top" style="transition-delay: 0.1s">
+          <div class="u-story-group-title">
+            <h3>Insights from industry leaders.</h3>
+            <div class="u-story-group-arraw">
+              <div class="u-story-group-arraw-item"></div>
+              <div class="u-story-group-arraw-item"></div>
+            </div>
+          </div>
+          
+          <div class="u-story-group-box">
+            <div class="u-story-group-list">
+              <div class="u-story-group-item">
+                <div class="u-story-group-img mark-bottom">
+                  <img src="./images24/d2.png" alt="" class="img">
+                  <div class="u-blog-video-btn"
+                    data-src="https://www.youtube.com/embed/MTSt4QCFXfE?playsinline=1&autoplay=1&controls=1&mute=1&loop=1&playlist=MTSt4QCFXfE&enablejsapi=1&rel=0&modestbranding=1&origin=https%3A%2F%2Fwww.ulike.com">
+                  </div>
+                </div>
+                <div class="u-story-group-text">
+                  <div class="u-story-group-item-title">As a Dermatologist and Consultant, I Recommend Ulike to Remove
+                    Unwanted Hair</div>
+                </div>
+              </div>
+              <div class="u-story-group-item">
+                <div class="u-story-group-img mark-bottom">
+                  <img src="./images24/d3.png" alt="" class="img">
+                  <div class="u-blog-video-btn"
+                    data-src="https://www.youtube.com/embed/MTSt4QCFXfE?playsinline=1&autoplay=1&controls=1&mute=1&loop=1&playlist=MTSt4QCFXfE&enablejsapi=1&rel=0&modestbranding=1&origin=https%3A%2F%2Fwww.ulike.com">
+                  </div>
+                </div>
+                <div class="u-story-group-text">
+                  <div class="u-story-group-item-title">Why Sapphire and Ice-Cooling Technology?</div>
+                </div>
+              </div>
+              <div class="u-story-group-item">
+                <div class="u-story-group-img mark-bottom">
+                  <img src="./images24/d4.png" alt="" class="img">
+                  <div class="u-blog-video-btn"
+                    data-src="https://www.youtube.com/embed/MTSt4QCFXfE?playsinline=1&autoplay=1&controls=1&mute=1&loop=1&playlist=MTSt4QCFXfE&enablejsapi=1&rel=0&modestbranding=1&origin=https%3A%2F%2Fwww.ulike.com">
+                  </div>
+                </div>
+                <div class="u-story-group-text">
+                  <div class="u-story-group-item-title">Ulike IPL Technology vs Others: What's Difference?</div>
+                </div>
+              </div>
+              <div class="u-story-group-item">
+                <div class="u-story-group-img mark-bottom">
+                  <img src="./images24/d4.png" alt="" class="img">
+                  <div class="u-blog-video-btn"
+                    data-src="https://www.youtube.com/embed/MTSt4QCFXfE?playsinline=1&autoplay=1&controls=1&mute=1&loop=1&playlist=MTSt4QCFXfE&enablejsapi=1&rel=0&modestbranding=1&origin=https%3A%2F%2Fwww.ulike.com">
+                  </div>
+                </div>
+                <div class="u-story-group-text">
+                  <div class="u-story-group-item-title">Ulike IPL Technology vs Others: What's Difference?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="brand-story-popup">
+      <div class="brand-story-popup-cont">
+        <div class="brand-story-popup-video">
+          <iframe title="" src="" allow="autoplay;" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+        <div class="brand-story-popup-close">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function uStoryGroupSlider(name){
+    let $p=$(name)
+    let $list = $p.find('.u-story-group-list')
+    let $box = $p.find('.u-story-group-box')
+    let $bottomArrow = $p.find('.u-story-group-arraw')
+    let length = $list.find('.u-story-group-item').length
+    let itemHeight = $list.find('.u-story-group-item')[0].offsetHeight
+    let index = -2 //[0,-length-2]
+    let isLeftBtn = 1 //0左 1右
+    let timer = null
+    let timers = null
+    let dateTb = 0
+    let dateTs = 0
+    if(length<4) return
+    $box.css({'height': (itemHeight + 30)*3 - 30+'px'})
+    $list.html(
+    $list.find('.u-story-group-item')[length-2].outerHTML+
+    $list.find('.u-story-group-item')[length-1].outerHTML+
+    $list.html()+
+    $list.find('.u-story-group-item')[0].outerHTML+
+    $list.find('.u-story-group-item')[1].outerHTML)
+    skewTransform(true)
+    $p.find('.u-story-group-arraw-item').click(function() {
+      let sIndex = $(this).index()
+      if(+new Date() - dateTb<600) return
+      dateTb = +new Date()
+      isLeftBtn = sIndex
+      index += sIndex ? -1 : 1
+      clearInterval(timer)
+      changeLeft()
+      timer = setInterval(() => {
+        isLeftBtn = 1
+        index--
+        changeLeft()
+      }, 5000);
+    })
+    function skewTransform(auto,tIndex = index){
+      let translateY = (itemHeight + 30) * tIndex
+      if(auto){
+        $list.css({
+          'transform': 'translateY(' + translateY  + 'px)',
+          'transition': ' all 0s ease'
+        })
+      }else{
+        $list.css({
+          'transform': 'translateY(' + translateY + 'px)',
+          'transition': ' all .6s ease'
+        })
+      }
+    }
+    function changeLeft() {
+      if(isLeftBtn && index == (-length-2)){
+          skewTransform(true,-1)
+          index = -2
+      }
+
+      if(!isLeftBtn && index == 0){
+          skewTransform(true,-length-1)
+          index = -length
+      }
+      setTimeout(() => {
+          skewTransform()
+      }, 10);
+    }
+
+    clearInterval(timer)
+    timer = setInterval(() => {
+      isLeftBtn = 1
+      index--
+      changeLeft()
+    }, 5000);
+    $list.hover(function(){
+      clearInterval(timer)
+    },function(){
+      clearInterval(timer)
+      timer = setInterval(() => {
+        isLeftBtn = 1
+        index--
+        changeLeft()
+      }, 5000);
+    }) 
+  }
+
+  window.addEventListener('load', function () {
+    if(window.innerWidth>991){
+      uStoryGroupSlider('.u-story-group')
+    }
+    $('html').on('click', '.u-story-group .u-blog-video-btn', function () {
+      $('.brand-story-popup iframe').attr('src', $(this).attr('data-src'))
+      $('.brand-story-popup').fadeIn()
+    })
+    $('html').on('click', '.brand-story-popup .brand-story-popup-close', function () {
+      $('.brand-story-popup').fadeOut()
+      $('.brand-story-popup iframe').attr('src', '')
+    })
+  })
+</script>
+  <div class="ipl-certificates" style="--bg-img: url(../images20/f1.jpg);--bg-img-m: url(../images20/f1-m.jpg);">
+    <div class="container">
+      <div class="title-diy to-top">
+        International medical and safety standards.
+      </div>
+      <div class="ipl-certificates-list">
+        <div class="ipl-certificates-item to-top" style="transition-delay: 0.1s">
+          <div class="ipl-certificates-img">
+            <img src="./images20/f2.png" alt="" class="img" />
+          </div>
+          Cleared
+        </div>
+        <div class="ipl-certificates-item to-top" style="transition-delay: 0.2s">
+          <div class="ipl-certificates-img">
+            <img src="./images20/f3.png" alt="" class="img" />
+          </div>
+          United Kingdom
+        </div>
+        <div class="ipl-certificates-item to-top" style="transition-delay: 0.3s">
+          <div class="ipl-certificates-img">
+            <img src="./images20/f4.png" alt="" class="img" />
+          </div>
+          European conformity
+        </div>
+        <div class="ipl-certificates-item to-top" style="transition-delay: 0.4s">
+          <div class="ipl-certificates-img">
+            <img src="./images20/f5.png" alt="" class="img" />
+          </div>
+          Certified
+        </div>
+        <div class="ipl-certificates-item to-top" style="transition-delay: 0.5s">
+          <div class="ipl-certificates-img">
+            <img src="./images20/f6.png" alt="" class="img" />
+          </div>
+          Canada
+        </div>
+        <div class="ipl-certificates-item to-top" style="transition-delay: 0.6s">
+          <div class="ipl-certificates-img">
+            <img src="./images20/f7.png" alt="" class="img" />
+          </div>
+          Electromagnetic certificates
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="labs-product">
+    <div class="container">
+      <div class="labs-product-cont to-top">
+        <div class="labs-product-img to-top">
+          <img src="./images24/e1.jpg" alt="" />
+        </div>
+        <div class="labs-product-text to-top" style="transition-delay: 0.1s">
+          <div class="labs-product-text-cont">
+            <div class="labs-product-title title-diy">Ulike Air 3</div>
+            <div class="labs-product-txt">Long-lasting hair removal from the comfort of home.</div>
+            <div class="labs-product-p">
+              Visible Results in Just 2 Weeks<br />
+              Sapphire Ice-Cooling: Pain-Free Comfort<br />
+              AutoGlide: Quick Full-Body Sessions
+            </div>
+            <a href="#" class="labs-product-link btn-diy">
+              <div class="btn-txt" text="SHOP NOW">
+                <span>SHOP NOW</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="labs-review to-top">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 4" id="eye">
+        <path d="M1,1 C1.83333333,2.16666667 2.66666667,2.75 3.5,2.75 C4.33333333,2.75 5.16666667,2.16666667 6,1">
+        </path>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 7" id="mouth">
+        <path d="M1,5.5 C3.66666667,2.5 6.33333333,1 9,1 C11.6666667,1 14.3333333,2.5 17,5.5"></path>
+      </symbol>
+    </svg>
+    <div class="container">
+      <div class="title-diy to-top">Let's review.</div>
+      <div class="labs-review-cont">
+        <div class="labs-review-list">
+          <div class="labs-review-item to-top" index="1" style="transition-delay: 0.1s" data-r="1">
+            <div class="labs-review-title">Ulike Hair Removal Device is FDA Approved.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+            <div class="labs-review-results">
+              <div class="labs-review-results-top">
+                <ul class="feedback">
+                  <li class="happy">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="sad">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="mouth">
+                        <use xlink:href="#mouth">
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+                <div class="labs-review-results-txt">
+                  <div class="labs-review-results-txt-item">
+                    Correct answer!
+                  </div>
+                  <div class="labs-review-results-txt-item">
+                    Wrong answer!
+                  </div>
+                </div>
+              </div>
+              <div class="labs-review-results-p">
+                Ulike hair removal device is FDA-Cleared.
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="2" style="transition-delay: 0.2s" data-r="2">
+            <div class="labs-review-title">Pulsed light hair removal (IPL) is a form of laser hair removal.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+            <div class="labs-review-results">
+              <div class="labs-review-results-top">
+                <ul class="feedback">
+                  <li class="happy">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="sad">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="mouth">
+                        <use xlink:href="#mouth">
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+                <div class="labs-review-results-txt">
+                  <div class="labs-review-results-txt-item">
+                    Correct answer!
+                  </div>
+                  <div class="labs-review-results-txt-item">
+                    Wrong answer!
+                  </div>
+                </div>
+              </div>
+              <div class="labs-review-results-p">
+                Intense Pulsed Light (IPL) hair removal and laser hair removal are related but distinct technologies.
+                Both methods aim to reduce or remove hair by targeting hair follicles with light energy, but they use
+                different types of light.
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="3" style="transition-delay: 0.3s" data-r="1">
+            <div class="labs-review-title">IPL can effectively treat blond or pale red hair.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+            <div class="labs-review-results">
+              <div class="labs-review-results-top">
+                <ul class="feedback">
+                  <li class="happy">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="sad">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="mouth">
+                        <use xlink:href="#mouth">
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+                <div class="labs-review-results-txt">
+                  <div class="labs-review-results-txt-item">
+                    Correct answer!
+                  </div>
+                  <div class="labs-review-results-txt-item">
+                    Wrong answer!
+                  </div>
+                </div>
+              </div>
+              <div class="labs-review-results-p">
+                Generally, IPL (Intense Pulsed Light) hair removal is most effective on individuals with light to medium
+                skin tones and dark hair. The technology relies on the contrast between melanin in the hair and the
+                surrounding skin. Blond or pale red hair has less melanin, and therefore, the effectiveness of IPL is
+                reduced for these hair colors.
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="4" style="transition-delay: 0.4s" data-r="2">
+            <div class="labs-review-title">IPL is suitable for all skin.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+            <div class="labs-review-results">
+              <div class="labs-review-results-top">
+                <ul class="feedback">
+                  <li class="happy">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="sad">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="mouth">
+                        <use xlink:href="#mouth">
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+                <div class="labs-review-results-txt">
+                  <div class="labs-review-results-txt-item">
+                    Correct answer!
+                  </div>
+                  <div class="labs-review-results-txt-item">
+                    Wrong answer!
+                  </div>
+                </div>
+              </div>
+              <div class="labs-review-results-p">
+                While Intense Pulsed Light (IPL) hair removal can be effective for many individuals, it may not be
+                suitable for darker skin.
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="5" style="transition-delay: 0.5s">
+            <div class="labs-review-title">IPL hair removal is effective from the first session.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+            <div class="labs-review-results">
+              <div class="labs-review-results-top">
+                <ul class="feedback">
+                  <li class="happy">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="sad">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="mouth">
+                        <use xlink:href="#mouth">
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+                <div class="labs-review-results-txt">
+                  <div class="labs-review-results-txt-item">
+                    Correct answer!
+                  </div>
+                  <div class="labs-review-results-txt-item">
+                    Wrong answer!
+                  </div>
+                </div>
+              </div>
+              <div class="labs-review-results-p">
+                While Intense Pulsed Light (IPL) hair removal can be effective for many individuals, it may not be
+                suitable for darker skin.
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="6" style="transition-delay: 0.6s">
+            <div class="labs-review-title">I will never ever have any hair after IPL hair removal.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+            <div class="labs-review-results">
+              <div class="labs-review-results-top">
+                <ul class="feedback">
+                  <li class="happy">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                    </div>
+                  </li>
+                  <li class="sad">
+                    <div>
+                      <svg class="eye left-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="eye right-eye">
+                        <use xlink:href="#eye">
+                      </svg>
+                      <svg class="mouth">
+                        <use xlink:href="#mouth">
+                      </svg>
+                    </div>
+                  </li>
+                </ul>
+                <div class="labs-review-results-txt">
+                  <div class="labs-review-results-txt-item">
+                    Correct answer!
+                  </div>
+                  <div class="labs-review-results-txt-item">
+                    Wrong answer!
+                  </div>
+                </div>
+              </div>
+              <div class="labs-review-results-p">
+                While IPL (Intense Pulsed Light) hair removal can significantly reduce hair growth, it typically does
+                not result in permanent hair removal for everyone.
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="7" style="transition-delay: 0.6s">
+            <div class="labs-review-title">Intense Pulsed light hair removal prevents ingrown hairs.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="8" style="transition-delay: 0.6s">
+            <div class="labs-review-title">Intense Pulsed light hair removal prevents ingrown hairs.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="9" style="transition-delay: 0.6s">
+            <div class="labs-review-title">Intense Pulsed light hair removal prevents ingrown hairs.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="10" style="transition-delay: 0.6s">
+            <div class="labs-review-title">Intense Pulsed light hair removal prevents ingrown hairs.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+          </div>
+          <div class="labs-review-item to-top" index="11" style="transition-delay: 0.6s">
+            <div class="labs-review-title">Intense Pulsed light hair removal prevents ingrown hairs.</div>
+            <div class="labs-review-option">
+              <div class="labs-review-option-item"><span></span>True</div>
+              <div class="labs-review-option-item"><span></span>False</div>
+            </div>
+            <div class="labs-review-btn btn-diy">
+              <div class="btn-txt" text="CHECK">
+                <span>CHECK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="labs-review-arraw">
+          <div class="labs-review-arraw-item"></div>
+          <div class="labs-review-arraw-item"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function labsReviewSlider($el) {
+      let $p = $el;
+      let $list = $p.find('.labs-review-list');
+      let $arraw = $p.find('.labs-review-arraw');
+      let length = $list.find('.labs-review-item').length;
+      let index = -length; //[0,-length-2]
+      let isLeftBtn = 1; //0左 1右
+      let timer = null;
+      let mrNum = parseFloat($list.find('.labs-review-item').css('margin-right'))
+      if (length < 5) return;
+      $list.html(
+        $list.html().repeat(3)
+      );
+      skewTransform(true);
+      function skewTransform(auto, tIndex = index, skew = 0) {
+        let width = $list
+          .find('.labs-review-item')
+          .eq(Math.abs(tIndex) - 1)
+        [0].offsetWidth;
+        let translateX = (width + mrNum) * tIndex;
+        if (auto) {
+          translateX += skew;
+          $list.css({
+            transform: 'translateX(' + translateX + 'px)',
+            transition: ' all 0s ease',
+          });
+        } else {
+          $list.css({
+            transform: 'translateX(' + translateX + 'px)',
+            transition: ' all .6s ease',
+          });
+        }
+      }
+      function changeLeft(skew) {
+        if (isLeftBtn && index == -2 * length) {
+          skewTransform(true, -length + 1, skew);
+          index = -length;
+        }
+        if (!isLeftBtn && index == -length + 1) {
+          skewTransform(true, -2 * length, skew);
+          index = -2 * length + 1;
+        }
+        setTimeout(() => {
+          skewTransform();
+        }, 10);
+      }
+
+      $arraw.find('.labs-review-arraw-item').click(function () {
+        isLeftBtn = $(this).index();
+        index += (isLeftBtn ? -1 : 1);
+        changeLeft()
+      })
+      $p.on('click', '.labs-review-option-item', function () {
+        let $this = $(this);
+        let index = $this.index();
+        let $parent = $(this).parents('.labs-review-item');
+        let pIndex = $parent.attr('index');
+        if ($parent.hasClass('active')) return;
+        $list.find('.labs-review-item[index=' + pIndex + ']').each(function () {
+          $(this).find('.labs-review-option-item').removeClass('check').eq(index).addClass('check');
+        })
+      })
+
+      $p.on('click', '.labs-review-btn', function () {
+        let $this = $(this);
+        let $parent = $(this).parents('.labs-review-item');
+        if ($parent.find('.check').length == 0) return;
+        let answer = $parent.attr('data-r') || 0;
+        let index = $parent.find('.check').index();
+        let pIndex = $parent.attr('index');
+        if(answer==2){
+          index = index==0?1:0;
+        }
+        $list.find('.labs-review-item[index=' + pIndex + ']').each(function () {
+          let $pThis = $(this);
+          $pThis.addClass('active');
+          $pThis.find('.labs-review-btn').hide();
+          $pThis.find('.labs-review-results').fadeIn(300)
+          $pThis.find('.labs-review-results').find('li').eq(index).show()
+          $pThis.find('.labs-review-results').find('.labs-review-results-txt-item').eq(index).show()
+          setTimeout(() => {
+            $pThis.find('.labs-review-results').find('li').eq(index).addClass('active')
+          }, 300)
+        })
+      })
+
+      function getTranslateX($element) {
+        var matrix = $element
+          .css('transform')
+          .replace(/[^0-9\-.,]/g, '')
+          .split(',');
+        var translateX = parseFloat(matrix[12] || matrix[4]);
+        return translateX;
+      }
+
+      function initMobileCarousel() {
+        let startX = 0;
+        let listTar = 0;
+        let startY = 0;
+        let isScrolling = false;
+        let isDragging = false;
+        $list.on('touchstart', function (e) {
+          if (e.type === 'touchstart') {
+            var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+          } else {
+            startX = e.clientX;
+            startY = e.clientY;
+          }
+
+          isScrolling = false;
+          isDragging = true;
+          listTar = getTranslateX($list);
+          $(document).on('touchmove', handleMove);
+          $(document).on('touchend', handleEnd);
+        });
+
+        function handleMove(e) {
+          if (isDragging) {
+            if (e.type === 'touchmove') {
+              var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+              var diffX = touch.clientX - startX;
+              var diffY = touch.clientY - startY;
+            } else {
+              var diffX = e.clientX - startX;
+              var diffY = e.clientY - startY;
+            }
+
+            var translateX = listTar + diffX;
+
+            if (!isScrolling) {
+              if (Math.abs(diffX) > Math.abs(diffY)) {
+                isScrolling = true;
+              }
+            }
+            if (isScrolling && e.cancelable) {
+              e.preventDefault();
+              $list.css({ transform: 'translateX(' + translateX + 'px)', transition: 'all 0s ease' });
+            }
+          }
+        }
+
+        function handleEnd(e) {
+          if (isDragging) {
+            $(document).off('touchmove', handleMove);
+            $(document).off('touchend', handleEnd);
+
+            if (isScrolling) {
+              if (e.type === 'touchend') {
+                var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                var diffX = touch.clientX - startX;
+              } else {
+                var diffX = e.clientX - startX;
+              }
+
+              if (Math.abs(diffX) > window.innerWidth * 0.05) {
+                if (diffX > 0) {
+                  index = index + 1;
+                  isLeftBtn = 0;
+                } else {
+                  index = index - 1;
+                  isLeftBtn = 1;
+                }
+                changeLeft(diffX);
+              } else {
+                $list.css({ transform: 'translateX(' + listTar + 'px)', transition: 'all .4s ease' });
+              }
+            } else {
+              isDragging = false;
+            }
+            isScrolling = false;
+            isDragging = false;
+          }
+        }
+      }
+      initMobileCarousel();
+    }
+
+    window.addEventListener('load', function () {
+      labsReviewSlider($('.labs-review'))
+    })
+  </script>
+  <div class="labs-form to-top">
+    <div class="container">
+      <div class="labs-form-cont">
+        <div class="labs-form-text to-top" style="transition-delay: 0.1s">
+          <div class="labs-form-title">Get industry insights & exclusive offers.</div>
+          <div class="labs-form-p">Sign up today</div>
+        </div>
+        <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="labs-form-el"
+          onsubmit="window.Shopify.recaptchaV3.addToken(this, 'customer'); return false;">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input type="hidden" name="contact[context]" value="">
+          <div class="labs-form-input to-top" style="transition-delay: 0.2s">
+            <img src="./images24/send-email.svg" alt="">
+            <input type="email" id="newsletter[footer][contact][email]" name="contact[email]" required="" placeholder="Enter your email" />
+            <div class="form-mark"></div>
+            <button type="submit" class="labs-form-btn btn-diy">
+              <div class="btn-txt" text="SUBSCRIBE">
+                <span>SUBSCRIBE</span>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/theme.js"></script>
+<script src="./js/script.js"></script>
+
+</html>

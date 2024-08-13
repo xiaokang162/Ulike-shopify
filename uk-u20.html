@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/u20.css" />
+  <script src="./js/jquery.min.js"></script>
+  
+</head>
+<body>
+  <div class="officially-tab-bar">
+    <div class="officially-tab-bar-text">
+      Get Air5 at £99 when you're varified as A3 purchaser. 
+      <a href="#">Buy ></a>
+    </div>
+  </div>
+  <div class="officially-banner">
+    <div class="officially-banner-cont">
+      <img src="./images28/banner.jpg" alt="" class="img pc-box officially-banner-img">
+      <img src="./images28/banner-m.jpg" alt="" class="img mb-box officially-banner-img">
+      <div class="officially-banner-text">
+        <div class="officially-banner-title">Air 10</div>
+        <div class="officially-banner-sub">Super Hair Removal, See Results in Just 1 Week.</div>
+        <div class="officially-banner-btn btn-diy">
+          <div class="btn-txt" text="Preorder - £100 OFF">
+            <span>Preorder - £100 OFF</span>
+          </div>
+        </div>
+      </div>
+      <div class="officially-banner-svg">
+        <img src="./images28/SHR.svg" alt="" class="img-svg pc-box">
+        <img src="./images28/SHR-M.svg" alt="" class="img-svg mb-box">
+      </div>
+    </div>
+  </div>
+  <script>
+    function bannerScrollTo(){
+      ScrollTrigger.create({
+        trigger: ".officially-banner",
+        start: "top top",
+        end: "+=100%",
+        scrub: true,
+        animation:
+        gsap.timeline()
+        .to(".officially-banner-text",{'y': '-40%','opacity':0,ease:'power2.inOut'})
+        .to(".officially-banner-img",{'y': '-22%','scale':1.2,ease:'power2.inOut'},'<')
+        .to(".officially-banner-svg",{'scale':1,ease:'power2.inOut'})
+      })
+    }
+    window.addEventListener('load', () => {
+      bannerScrollTo()
+    })
+    // if (document.readyState === 'loading') {
+    //   document.addEventListener('DOMContentLoaded', () => {
+    //     bannerScrollTo()
+    //   });
+    // } else {
+    //   bannerScrollTo()
+    // }
+    
+  </script>
+  <div class="officially-features">
+    <div class="officially-features-cont">
+      <img src="./images28/1.png" alt="" class="product-img">
+      <div class="text-mark">
+        <div class="container">
+          <div class="text-mark-txt">
+            <p>Super</p>
+            <p>Hair</p>
+            <p>Removal</p>
+          </div>
+        </div>
+      </div>
+      <div class="officially-features-two">
+        <div class="svg-icon-box">
+          <svg width="266" height="62" class="pc-box" viewBox="0 0 266 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M202 50.0002H-6.03124e-06" stroke="#3F3636"/>
+            <path d="M209.211 48.387L257.559 1.00008" stroke="#3F3636"/>
+            <path d="M191.008 42.0002L210.082 42.0002L210.082 50.2722C210.08 50.7469 210.075 51.2226 210.054 51.6963C209.947 54.1406 209.235 56.1567 207.951 57.7558C206.962 58.9891 205.803 59.771 204.557 60.2885C202.608 61.0974 200.619 61.2584 198.612 60.9037C197.33 60.6776 196.088 60.2177 194.921 59.4014C192.33 57.5892 190.977 54.6721 191.001 50.464C191.027 45.7653 191.007 42.0002 191.007 42.0002L191.008 42.0002Z" fill="#E0004D"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="mb-box" width="92" height="73" viewBox="0 0 92 73" fill="none">
+            <path d="M81 6.34717H0.999999" stroke="#3F3636" stroke-linecap="round"/>
+            <path d="M85 72.3472L85 10.3472" stroke="#3F3636"/>
+            <path d="M78.0041 0.347167L91.2559 0.347168L91.2559 6.094C91.2546 6.4238 91.2507 6.75424 91.2364 7.08339C91.1619 8.78151 90.6671 10.1822 89.7752 11.2931C89.088 12.1499 88.283 12.6931 87.4176 13.0527C86.0633 13.6146 84.6818 13.7265 83.2873 13.4801C82.3967 13.323 81.534 13.0035 80.7231 12.4364C78.9232 11.1774 77.9827 9.15075 77.9996 6.22721C78.0177 2.96289 78.0034 0.347167 78.0034 0.347167L78.0041 0.347167Z" fill="#E0004D"/>
+          </svg>
+        </div>
+        <div class="officially-features-title">SHR mode</div>
+        <div class="officially-features-sub">The groundbreaking SHR mode, derived from technology used in professional salons, developed for treating stubborn hairs, sensitive skin areas, or regions of skin with darker skin tones.
+          Maximizing hair follicle heat absorbance while dissipating the energy over a shorter application time.</div>
+        <div class="officially-features-btn" data-popup="officially-features-popup-one">
+          Go deeper on SHR Mode 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_1505_2334)">
+            <path d="M12 0C5.38359 0 0 5.38359 0 12C0 18.6164 5.38359 24 12 24C18.6164 24 24 18.6164 24 12C24 5.38359 18.6164 0 12 0ZM12 22.957C5.95781 22.957 1.04297 18.0422 1.04297 12C1.04297 5.95781 5.95781 1.04297 12 1.04297C18.0422 1.04297 22.957 5.95781 22.957 12C22.957 18.0422 18.0422 22.957 12 22.957Z" fill="#190A0A"/>
+            <circle cx="12" cy="12" r="12" fill="#6C6AB4"/>
+            <path d="M18.2641 11.5954H12.5242V5.85786C12.5242 5.56958 12.2875 5.33521 12.0016 5.33521C11.7133 5.33521 11.4789 5.57192 11.4789 5.85786V11.5954H5.74141C5.45312 11.5954 5.21875 11.8321 5.21875 12.118C5.21875 12.4063 5.45547 12.6407 5.74141 12.6407H11.4789V18.3805C11.4789 18.6688 11.7156 18.9032 12.0016 18.9032C12.2898 18.9032 12.5242 18.6665 12.5242 18.3805V12.6407H18.2617C18.55 12.6407 18.7844 12.404 18.7867 12.118C18.7867 11.8297 18.55 11.5954 18.2641 11.5954Z" fill="#FBFAF4"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_1505_2334">
+            <rect width="24" height="24" fill="white"/>
+            </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <div class="officially-features-three">
+        <div class="svg-icon-box">
+          <svg width="268" height="116" class="pc-box" viewBox="0 0 268 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M130 104.52H268" stroke="#3F3636"/>
+            <path d="M122.559 103.907L19 0.348025" stroke="#3F3636"/>
+            <path d="M140.762 96.5198L121.688 96.5198L121.688 104.792C121.689 105.266 121.695 105.742 121.715 106.216C121.823 108.66 122.535 110.676 123.819 112.275C124.808 113.509 125.967 114.291 127.212 114.808C129.162 115.617 131.15 115.778 133.157 115.423C134.439 115.197 135.681 114.737 136.848 113.921C139.439 112.109 140.793 109.192 140.769 104.983C140.742 100.285 140.763 96.5198 140.763 96.5198L140.762 96.5198Z" fill="#E0004D"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-box" width="72" height="88" viewBox="0 0 72 88" fill="none">
+              <path d="M7 86.6528L7 56.6528" stroke="#3F3636" stroke-linecap="round"/>
+              <path d="M71 1.26514L13 48.2651" stroke="#3F3636"/>
+              <path d="M0.00409698 44.2651L13.2559 44.2651L13.2559 50.012C13.2546 50.3418 13.2507 50.6722 13.2364 51.0014C13.1619 52.6995 12.6671 54.1001 11.7752 55.2111C11.088 56.0679 10.283 56.6111 9.41764 56.9706C8.06332 57.5326 6.68179 57.6445 5.28731 57.3981C4.39674 57.2409 3.53401 56.9215 2.7231 56.3544C0.923171 55.0953 -0.0172766 53.0687 -0.000436343 50.1452C0.017699 46.8809 0.00344944 44.2651 0.00344944 44.2651L0.00409698 44.2651Z" fill="#E0004D"/>
+            </svg>
+        </div>
+        <div class="officially-features-title">Ice-Cooling Technology</div>
+        <div class="officially-features-sub">Retains a cool 16°C contact temperature for full-body sessions even after 30 minutes, eliminating any chance of burns and irritation.</div>
+        <div class="officially-features-btn" data-popup="officially-features-popup-two">
+          What Makes it Cooler
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_1505_2334)">
+            <path d="M12 0C5.38359 0 0 5.38359 0 12C0 18.6164 5.38359 24 12 24C18.6164 24 24 18.6164 24 12C24 5.38359 18.6164 0 12 0ZM12 22.957C5.95781 22.957 1.04297 18.0422 1.04297 12C1.04297 5.95781 5.95781 1.04297 12 1.04297C18.0422 1.04297 22.957 5.95781 22.957 12C22.957 18.0422 18.0422 22.957 12 22.957Z" fill="#190A0A"/>
+            <circle cx="12" cy="12" r="12" fill="#6C6AB4"/>
+            <path d="M18.2641 11.5954H12.5242V5.85786C12.5242 5.56958 12.2875 5.33521 12.0016 5.33521C11.7133 5.33521 11.4789 5.57192 11.4789 5.85786V11.5954H5.74141C5.45312 11.5954 5.21875 11.8321 5.21875 12.118C5.21875 12.4063 5.45547 12.6407 5.74141 12.6407H11.4789V18.3805C11.4789 18.6688 11.7156 18.9032 12.0016 18.9032C12.2898 18.9032 12.5242 18.6665 12.5242 18.3805V12.6407H18.2617C18.55 12.6407 18.7844 12.404 18.7867 12.118C18.7867 11.8297 18.55 11.5954 18.2641 11.5954Z" fill="#FBFAF4"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_1505_2334">
+            <rect width="24" height="24" fill="white"/>
+            </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="officially-features-popup officially-features-popup-one">
+    <div class="officially-features-popup-cont">
+      <div class="officially-features-popup-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="2.02941" y1="0.848633" x2="22.182" y2="21.0012" stroke="#3F3636" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="22.1836" y1="1.06066" x2="2.03105" y2="21.2132" stroke="#3F3636" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="officially-features-popup-det">
+        <div class="officially-features-popup-left">
+          <div class="officially-features-popup-sub">Super Hair Removal</div>
+        </div>
+        <div class="officially-features-popup-right">
+          <div class="officially-features-popup-title">Inspired by professional salons, eliminates the most stubborn hair.</div>
+          <div class="officially-features-popup-video">
+            <img src="./images28/2.jpg" alt="" class="img">
+            <video class="product-video" src="./images28/video.mp4" loop muted></video>
+          </div>
+          <div class="officially-features-popup-list">
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">>18%</div>
+              <div class="officially-features-popup-d">larger flash window</div>
+            </div>
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">≈ 2X</div>
+              <div class="officially-features-popup-d">faster treatments</div>
+            </div>
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">4X</div>
+              <div class="officially-features-popup-d">the pulse</div>
+            </div>
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">26J</div>
+              <div class="officially-features-popup-d">per 4-pulse</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="officially-features-popup officially-features-popup-two">
+    <div class="officially-features-popup-cont">
+      <div class="officially-features-popup-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="2.02941" y1="0.848389" x2="22.182" y2="21.0009" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="22.1836" y1="1.06066" x2="2.03105" y2="21.2132" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <img src="./images28/3.jpg" alt="" class="product-img-two">
+      <div class="officially-features-popup-det">
+        <div class="officially-features-popup-left">
+          <div class="officially-features-popup-sub">Ice-Cooling Technology</div>
+        </div>
+        <div class="officially-features-popup-right">
+          <div class="officially-features-popup-title">What Makes it Cooler</div>
+          <div class="officially-features-popup-svg">
+            <svg xmlns="http://www.w3.org/2000/svg" class="pc-box" width="54" height="85" viewBox="0 0 54 85" fill="none">
+              <path d="M7.8125 84L7.8125 50.5269" stroke="#FBFAF4" stroke-width="1.11618" stroke-linecap="round"/>
+              <path d="M53.5742 1L14.5079 40.052" stroke="#FBFAF4" stroke-width="1.11618"/>
+              <path d="M12.7091 47.4526L12.7089 47.4528C12.0075 48.327 11.1889 48.8801 10.2987 49.2499C8.89352 49.8326 7.46034 49.9506 5.9996 49.6926L5.99947 49.6926C5.0748 49.5295 4.19025 49.2006 3.36022 48.6203C1.53955 47.3472 0.540482 45.2835 0.558523 42.1529L0.558524 42.1527C0.568654 40.3301 0.569738 38.6886 0.568291 37.5027C0.567601 36.9374 0.566337 36.4755 0.5652 36.147L14.2388 36.147L14.2388 41.9999C14.2373 42.3652 14.233 42.7247 14.2176 43.0805L12.7091 47.4526ZM12.7091 47.4526C13.6186 46.3201 14.1388 44.8768 14.2176 43.0808L12.7091 47.4526Z" stroke="#FBFAF4" stroke-width="1.11618"/>
+            </svg>
+          </div>
+          <div class="officially-features-popup-list">
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">&gt;16℃</div>
+              <div class="officially-features-popup-d">Control temp</div>
+            </div>
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">30 min</div>
+              <div class="officially-features-popup-d">Treatment durations</div>
+            </div>
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">4X</div>
+              <div class="officially-features-popup-d">Cooling system</div>
+            </div>
+          </div>
+          <div class="officially-features-popup-video">
+            <img src="./images28/4.png" alt="" class="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+   function featuresScrollTo(){
+    let pam = {
+      right1:'93%',
+      right2:'168%',
+      top1:'-67%',
+      top2:'-113%'
+    }
+    if(window.innerWidth<1921){ //1920 * 1080
+      pam.right1 = '89%'
+      pam.right2 = '178%'
+      pam.top1 = '-64%'
+      pam.top2 = '-112%'
+    }
+    
+    if(window.innerWidth<1601){ //1600 * 900
+      pam.right1 = '83%'
+      pam.right2 = '167%'
+      pam.top1 = '-65%'
+      pam.top2 = '-120%'
+    }
+    if(window.innerWidth<1537){ //1536 * 695
+      pam.right1 = '82%'
+      pam.right2 = '170%'
+      pam.top1 = '-63%'
+      pam.top2 = '-108%'
+    }
+    if(window.innerWidth<1500){ //1440 * 900
+      pam.right1 = '80%'
+      pam.right2 = '175%'
+      pam.top1 = '-80%'
+      pam.top2 = '-123%'
+    }
+    if(window.innerWidth<1370){ //1366 * 768
+      pam.right1 = '77%'
+      pam.right2 = '180%'
+      pam.top1 = '-72%'
+      pam.top2 = '-115%'
+    }
+    if(window.innerWidth<1281){ // 1280 * 551
+      pam.right1 = '76%'
+      pam.right2 = '185%'
+      pam.top1 = '-78%'
+      pam.top2 = '-118%'
+    }
+    if(window.innerWidth<1025){ //1024 * 600
+      pam.right1 = '68%'
+      pam.right2 = '186%'
+      pam.top1 = '-71%'
+      pam.top2 = '-116%'
+    }
+    if(window.innerWidth<992){
+      pam.right1 = '36%'
+      pam.right2 = '108%'
+      pam.top1='-96%',
+      pam.top2='-150%'
+    }
+    ScrollTrigger.create({
+      trigger: ".officially-features",
+      start: "top top",
+      end: "+=160%",
+      scrub: true,
+      // pin: true,
+      animation:
+      gsap.timeline()
+      .to(".text-mark-txt",{'background-position': '0% 100%','opacity':0,ease:'power2.inOut'})
+      .to(".product-img",{'transform': 'translate('+pam.right1+','+pam.top1+')',ease:'power2.inOut'},'<')
+      .to(".officially-features-two",{'transform': 'translateY(0)','opacity':1,ease:'power2.inOut'})
+      .to(".officially-features-two",{'transform': 'translateY(-30px)','opacity':0,ease:'power2.inOut'})
+      .to(".product-img", {'transform': 'translate('+pam.right2+','+pam.top2+')'})
+      .to(".officially-features-three",{'display':'block','transform': 'translateY(0)','opacity':1,ease:'power2.inOut'})
+    })
+   }
+   
+  window.addEventListener('load', function(){
+    featuresScrollTo();
+    $('.officially-features-btn').click(function(){
+      let name = $(this).data('popup')
+      let $p =  $('.'+name)
+      $p.addClass('active')
+      if($p.find('.product-video').length > 0){
+        $p.find('.product-video').get(0).play()
+      }
+      $('body').css('overflow','hidden')
+    })
+    $('.officially-features-popup-close').click(function(){
+      let $p =  $('.officially-features-popup')
+      $p.removeClass('active')
+      if($p.find('.product-video').length > 0){
+        $p.find('.product-video').get(0).pause()
+        $p.find('.product-video').get(0).currentTime = 0
+      }
+      $('body').css('overflow','')
+    })
+  })
+  
+  </script>
+  <div class="officially-video">
+    <div class="officially-video-cont">
+      <div class="officially-video-text">
+        <div class="container">
+          <div class="officially-video-title">Dual Lights Tech</div>
+          <div class="officially-video-sub">
+            <p>Equipped 2 pulse lamps instead of industry standard 1.</p>
+            <p>This results in more effective hair removal and a reduced impact on the epidermis skin layer.</p>
+          </div>
+        </div>
+      </div>
+      <div class="officially-video-el"></div>
+      <!-- <video class="officially-video-el pc-box" src="./images28/video.mp4" muted></video>
+      <video class="officially-video-el mb-box" src="./images28/video-m.mp4" muted></video> -->
+      <!-- <video class="officially-video-el pc-box" muted>
+        <source src="./images28/video.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video> -->
+      <!-- <video class="officially-video-el mb-box" muted preload="none" x-webkit-airplay="allow" x5-playsinline="" webkit-playsinline="" playsinline="true">
+        <source src="./images28/video-m.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video> -->
+      <img class="officially-video-bg pc-box" src="./images28/PC.jpg" alt="">
+      <img class="officially-video-bg mb-box" src="./images28/M.jpg" alt="">
+      <div class="officially-video-mark">
+        <div class="officially-video-mark-cont">
+          <div class="officially-video-mark-item">
+            <div class="officially-video-mark-t">2x</div>
+            <div class="officially-video-mark-p">Light source</div>
+          </div>
+          <div class="officially-video-mark-item">
+            <div class="officially-video-mark-t">+65%</div>
+            <div class="officially-video-mark-p">Total energy output</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function videoScrollTo(){
+      let url = 'pc'
+      if(window.innerWidth<991){
+        url = 'm'
+      }
+      let imgP = new ImgPlay('.officially-video-el',`./images28/${url}/officially-video-${url}-ulike-`,20)
+      imgP.loadImg()
+      ScrollTrigger.create({
+        trigger: ".officially-video",
+        start: "top-=19% top",
+        end: "+=50%",
+        scrub: true,
+        // markers:true,
+        animation:
+        gsap.timeline()
+        .to(".officially-video-text",{'transform': 'translateY(0)','opacity':1,ease:'power2.inOut'})
+        .to(".officially-video-text",{'transform': 'translateY(-30px)','opacity':0,ease:'power2.inOut'})
+      })
+
+      ScrollTrigger.create({
+        trigger: ".officially-video",
+        start: "top top",
+        end: "+=130%",
+        scrub: true,
+        // pin: true,
+        onUpdate(self){
+          
+          try {
+            // videoEl.currentTime = self.progress * videoEl.duration
+            imgP.playImg(Math.round(self.progress*19))
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      })
+      ScrollTrigger.create({
+        trigger: ".officially-video",
+        start: "top+=50% top",
+        end: "+=30%",
+        scrub: true,
+        animation:
+        gsap.timeline()
+        .to(".officially-video-mark",{'opacity':1,ease:'power2.inOut'})
+        .to(".officially-video-cont",{'opacity':.7,'scale':.9,ease:'power2.inOut'})
+      })
+    }
+    window.addEventListener('load', () => {
+      videoScrollTo()
+    })
+    // if (document.readyState === 'loading') {
+    //   document.addEventListener('DOMContentLoaded', () => {
+    //     videoScrollTo()
+    //   });
+    // } else {
+    //   document.addEventListener('DOMContentLoaded', () => {
+    //     videoScrollTo()
+    //   });
+    // }
+    
+  </script>
+  <div class="preheat-video-results">
+    <div class="preheat-video-results-top">
+      <div class="container">
+        <div class="preheat-video-results-title line-top">Visible Results in Just One Week!</div>
+        <div class="preheat-video-results-sub line-top">Saw significant hair density reduction after repeat applications for just one week, tested by SGS Lab*.</div>
+        <div class="preheat-video-results-p line-top">
+          *Unretouched. Results based on a 6-week clinical study with 32 subjects with  continuously used for 7 days under normal conditions by capturing images to analyze Hair Count, Average hair length (pix unit) andHair Density (Hair %), conducting efficacy evaluation by the Dermatologist.
+        </div>
+      </div>
+    </div>
+    <div class="preheat-video-results-cont">
+      <img src="./images25/k1.jpg" alt="" class="img pc-box">
+      <img src="./images25/k2.jpg" alt="" class="img mb-box">
+    </div>
+    <div class="preheat-video-results-bottom">
+      <div class="container">
+        <div class="preheat-video-results-flex">
+          <div class="preheat-video-results-left to-top">
+            <img src="./images25/k1.svg" alt="" class="results-left-img">
+            <div class="results-left-text">Lab-effectiveness Certified</div>
+          </div>
+          <div class="preheat-video-results-right to-top" style="transition-delay: 0.1s">
+            <div class="preheat-video-results-item">
+              <div class="results-right-sub">Lateral forearms</div>
+              <div class="results-right-text number-anime">77%</div>
+              <div class="results-right-sub">Hair density reduction</div>
+            </div>
+            <div class="preheat-video-results-item">
+              <div class="results-right-sub">Armpit area</div>
+              <div class="results-right-text number-anime">82%</div>
+              <div class="results-right-sub">Hair density reduction</div>
+            </div>
+            <div class="preheat-video-results-item">
+              <div class="results-right-sub">Bikini area</div>
+              <div class="results-right-text number-anime">90%</div>
+              <div class="results-right-sub">Hair density reduction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function animateNumbersVisibleAnime(name) {
+      let elements = document.querySelectorAll(name)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            const start = 0;
+            const end = parseInt(element.textContent.match(/\d+/)[0]);
+            const duration = Math.max(800, Math.min(2000, Math.abs(end - start) * 20)); // 根据数字的大小调整动画时间，最小1000毫秒，最大4000毫秒
+            animateNumber(element, start, end, duration);
+            observer.unobserve(element); // 仅触发一次动画后停止观察
+          }
+        });
+      });
+
+      elements.forEach(element => {
+        observer.observe(element);
+      });
+    }
+
+    function animateNumber(element, start, end, duration) {
+      const initialValue = element.textContent;
+      let startTime = null;
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        const newValue = initialValue.replace(/\d+/, value.toString().padStart(initialValue.match(/\d+/)[0].length, '0'));
+        element.textContent = newValue;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+      requestAnimationFrame(step);
+    }
+    animateNumbersVisibleAnime('.preheat-video-results .number-anime');
+  </script>
+  <div class="slide-diy">
+    <div class="container">
+      <div class="slide-diy-top">
+        <div class="slide-diy-title line-top">Clinically Proven Benefits</div>
+        <div class="slide-diy-sub line-top" style="transition-delay: 0.1s">Professional-grade treatments. Zero downtime. Skin-transforming results at home in just 9 minutes a day.*</div>
+      </div>
+      <div class="slide-diy-cont">
+        <div class="slide-diy-arraw">
+          <div class="slide-diy-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="27" viewBox="0 0 36 27" fill="none">
+              <g clip-path="url(#clip0_860_8661)">
+                <path d="M0 13.5094C0 13.7228 0.08078 13.9344 0.235317 14.0961L12.528 26.9983L13.8117 25.825L2.89756 14.3696H36C36 13.42 35.2133 12.6493 34.2439 12.6493H0.918438C0.586536 12.6493 0.263416 12.8127 0.105366 13.1C0.0333672 13.229 0 13.3701 0 13.5094Z" fill="#190A0A"/>
+                <path d="M1.83648 10.4938C2.52312 11.1647 3.63473 11.1647 4.3196 10.4938L13.792 1.21625L12.5504 0L1.83824 10.4938H1.83648Z" fill="#190A0A"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_860_8661">
+                  <rect width="36" height="27" fill="white" transform="matrix(-1 0 0 1 36 0)"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="slide-diy-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="27" viewBox="0 0 36 27" fill="none">
+              <g clip-path="url(#clip0_860_8658)">
+                <path d="M36 13.5094C36 13.7228 35.9192 13.9344 35.7647 14.0961L23.472 26.9983L22.1883 25.825L33.1024 14.3696H0C0 13.42 0.786732 12.6493 1.7561 12.6493H35.0816C35.4135 12.6493 35.7366 12.8127 35.8946 13.1C35.9666 13.229 36 13.3701 36 13.5094Z" fill="#190A0A"/>
+                <path d="M34.1635 10.4938C33.4769 11.1647 32.3653 11.1647 31.6804 10.4938L22.208 1.21625L23.4496 0L34.1618 10.4938H34.1635Z" fill="#190A0A"/>
+              </g>
+              <defs>
+                <clipPath id="clip0_860_8658">
+                  <rect width="36" height="27" fill="white"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="slide-diy-left to-top" style="transition-delay: 0.2s">
+          <div class="slide-diy-left-top">
+            <div class="slide-diy-img">
+              <div class="slide-diy-img-item">
+                <img src="./images25/a1.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a3.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a5.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a7.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a9.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a11.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-txt">BEFORE</div>
+            </div>
+            <div class="slide-diy-img">
+              <div class="slide-diy-img-item">
+                <img src="./images25/a2.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a4.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a6.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a8.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a10.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-item">
+                <img src="./images25/a12.jpg" alt="" class="img">
+              </div>
+              <div class="slide-diy-img-txt">AFTER</div>
+            </div>
+          </div>
+          <div class="slide-diy-bottom to-top" style="transition-delay: 0.4s">
+            <div class="slide-diy-text">
+              <div class="slide-diy-txt-item">
+                Under Armpits
+              </div>
+              <div class="slide-diy-txt-item">
+                Bikini area
+              </div>
+              <div class="slide-diy-txt-item">
+                Back
+              </div>
+              <div class="slide-diy-txt-item">
+                Face
+              </div>
+              <div class="slide-diy-txt-item">
+                Arms
+              </div>
+              <div class="slide-diy-txt-item">
+                Legs
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide-diy-right to-top">
+          <div class="slide-diy-img-list to-top" style="transition-delay: 0.3s">
+            <div class="slide-diy-list">
+              <div class="slide-diy-sm">
+                <img src="./images25/a13.jpg" alt="" class="img" data-index="1">
+                <div class="slide-diy-sm-txt">Under Armpits</div>
+              </div>
+              <div class="slide-diy-sm">
+                <img src="./images25/a14.jpg" alt="" class="img" data-index="2">
+                <div class="slide-diy-sm-txt">Bikini area</div>
+              </div>
+              <div class="slide-diy-sm">
+                <img src="./images25/a15.jpg" alt="" class="img" data-index="3">
+                <div class="slide-diy-sm-txt">Back</div>
+              </div>
+              <div class="slide-diy-sm">
+                <img src="./images25/a16.jpg" alt="" class="img" data-index="4">
+                <div class="slide-diy-sm-txt">Face</div>
+              </div>
+              <div class="slide-diy-sm">
+                <img src="./images25/a17.jpg" alt="" class="img" data-index="5">
+                <div class="slide-diy-sm-txt">Arms</div>
+              </div>
+              <div class="slide-diy-sm">
+                <img src="./images25/a18.jpg" alt="" class="img" data-index="6">
+                <div class="slide-diy-sm-txt">Legs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-diy-msg line-top">
+        *Results from 12-week clinical study with 31 subjects and 1x/day use of pre-programmed 9-minute treatment. Individual results may vary.
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load',function(){
+      function slideDiySwiper(){
+        const content = document.querySelector('.slide-diy .slide-diy-cont');
+        let $p = $('.slide-diy')
+        let $imgBox = $p.find('.slide-diy-img')
+        let $imgSm = $p.find('.slide-diy-list')
+        let $txt = $p.find('.slide-diy-text')
+        let $arraw = $p.find('.slide-diy-arraw')
+        let $dot = $p.find('.slide-diy-dot-item')
+        let length = $imgSm.find('.slide-diy-sm').length
+        let width = $imgSm.find('.slide-diy-sm')[0].offsetWidth
+        let txtWidth = $txt.find('.slide-diy-txt-item')[0].offsetWidth
+        let index = 0
+        let smInex = length + index + 1
+        let time = +new Date()
+        let timerIn = null
+        let min = 0
+        $imgSm.html($imgSm.html().repeat(3))
+        if(window.innerWidth < 991){
+          min = 1
+        }
+        function changeTransform(bol){
+          if(index == length){
+            index = 0
+            $imgSm.css({'transform': 'translateX(-'+ (width + 24) * (length - min) +'px)','transition':'none'})
+          }
+          if(index == -1){
+            index = length - 1
+            $imgSm.css({'transform': 'translateX(-'+ (width + 24) * (length + length + 1 - min) +'px)','transition':'none'})
+          }
+          smInex = length + index + 1 - min
+          $imgBox.each(function(){
+            // $(this).find('.slide-diy-img-item.close').removeClass('close')
+            // $(this).find('.slide-diy-img-item.active').removeClass('active').addClass('close')
+            $(this).find('.slide-diy-img-item.active').removeClass('active')
+            $(this).find('.slide-diy-img-item').eq(index).addClass('active')
+            $('.slide-diy .slide-diy-bottom').removeClass('active')
+            setTimeout(()=>{
+              // $(this).find('.slide-diy-img-item.close').removeClass('close')
+              $('.slide-diy .slide-diy-bottom').addClass('active')
+            },600)
+          })
+
+          $txt.find('.slide-diy-txt-item').css({'transform': 'translateX(-'+ (txtWidth + 100) * index +'px)','transition': 'transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1)'})
+          $dot.removeClass('active').eq(index).addClass('active')
+          if(window.innerWidth < 991){
+            $imgSm.find('.slide-diy-sm').removeClass('active').eq(smInex).addClass('active')
+          }
+          setTimeout(() => {
+            if(bol){
+              $imgSm.css({'transform': 'translateX(-'+ (width + 24) * smInex +'px)'})
+            }else{
+              $imgSm.css({'transform': 'translateX(-'+ (width + 24) * smInex +'px)','transition': 'transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1)'})
+            }
+          }, 10);
+          timerIn = setTimeout(function(){
+            index++
+            changeTransform()
+          },3000)
+        }
+        changeTransform(true)
+        $arraw.find('.slide-diy-arraw-item').click(function(){
+          let sindex=$(this).index()
+          let clickTime = +new Date()
+          if(clickTime - time<800) return
+          time = +new Date()
+          index += sindex? 1 : -1
+          clearTimeout(timerIn)
+          changeTransform()
+        })
+
+        $imgSm.on('click','.slide-diy-sm',function(){
+          let sindex = $(this).find('.img').attr('data-index')*1 - 1
+          let clickTime = +new Date()
+          if(clickTime - time<800 || index == sindex) return
+          time = +new Date()
+          index = sindex
+          clearTimeout(timerIn)
+          changeTransform()
+        })
+
+        detectSwipe(content, () => {
+          index +=1
+          clearTimeout(timerIn)
+          changeTransform()
+        }, () => {
+          index -=1
+          clearTimeout(timerIn)
+          changeTransform()
+        });
+
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      slideDiySwiper()
+    })
+  </script>
+  <div class="officially-test">
+    <div class="container">
+      <div class="officially-test-flex">
+        <div class="officially-test-left">
+          <div class="officially-test-title">Detects skin tones and auto-adjusts power level</div>
+        </div>
+        <div class="officially-test-right">
+          <div class="officially-test-sub">Accurately detecting skin tones, our all-new SkinSensor technology automatically optimizes the power level of every flash to match the pigment concentration in your skin, providing a worry-free hair removal experience that's tailored to your skin type.</div>
+        </div>
+      </div>
+      <div class="officially-test-flex officially-test-mt">
+        <div class="officially-test-left">
+          <img src="./images28/c1.jpg" alt="" class="img">
+        </div>
+        <div class="officially-test-right">
+          <div class="officially-test-btn">
+            Try if Skin Sensor works for you
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <g clip-path="url(#clip0_1515_3388)">
+              <path d="M12 0C5.38359 0 0 5.38359 0 12C0 18.6164 5.38359 24 12 24C18.6164 24 24 18.6164 24 12C24 5.38359 18.6164 0 12 0ZM12 22.957C5.95781 22.957 1.04297 18.0422 1.04297 12C1.04297 5.95781 5.95781 1.04297 12 1.04297C18.0422 1.04297 22.957 5.95781 22.957 12C22.957 18.0422 18.0422 22.957 12 22.957Z" fill="#190A0A"/>
+              <circle cx="12" cy="12" r="12" fill="#6C6AB4"/>
+              <path d="M18.2641 11.5951H12.5242V5.85762C12.5242 5.56934 12.2875 5.33496 12.0016 5.33496C11.7133 5.33496 11.4789 5.57168 11.4789 5.85762V11.5951H5.74141C5.45312 11.5951 5.21875 11.8318 5.21875 12.1178C5.21875 12.4061 5.45547 12.6404 5.74141 12.6404H11.4789V18.3803C11.4789 18.6686 11.7156 18.9029 12.0016 18.9029C12.2898 18.9029 12.5242 18.6662 12.5242 18.3803V12.6404H18.2617C18.55 12.6404 18.7844 12.4037 18.7867 12.1178C18.7867 11.8295 18.55 11.5951 18.2641 11.5951Z" fill="#FBFAF4"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_1515_3388">
+              <rect width="24" height="24" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load',()=>{
+      $('.officially-test-btn').click(function(){
+        $('.officially-test-popup').addClass('active')
+        $('body').css('overflow','hidden')
+      })
+      $('.officially-test-popup-close').click(function(){
+        $('.officially-test-popup').removeClass('active')
+        $('body').css('overflow','')
+      })
+      function initSelect(){
+        let $p = $('.officially-test-popup')
+        let skinArr = [0,,1,2,3]
+        let hairArr = [0,1,2,3,4]
+        let skinIndex = null
+        let hairIndex = null
+
+        // 获取选中项对应的结果
+        function getResults(){
+          return skinArr.includes(skinIndex) && hairArr.includes(hairIndex)
+        }
+
+        // 重新测试
+        function resetAll(){
+          skinIndex = null
+          hairIndex = null
+          $p.find('.officially-test-popup-btn').css('display','none')
+          $p.find('.officially-test-popup-submit').removeClass('active').css('display','flex')
+          $p.find('.officially-test-popup-item').removeClass('active')
+          $p.find('.officially-test-popup-results-item').css('display','none')
+          $p.find('.officially-test-popup-lebel-span').attr('style','')
+          $p.find('.officially-test-popup-msg').css('display','block')
+        }
+        // 点击选项
+        $p.find('.officially-test-popup-item').click(function(){
+          if($p.find('.officially-test-popup-submit').css('display')=='none') return
+          let $this = $(this)
+          let $par = $this.parents('.officially-test-popup-list')
+          let type = $par.data('type')
+          let index = $this.index()
+          let src = $this.find('.popup-img').attr('src')
+          $this.addClass('active').siblings().removeClass('active')
+          if(type == 'skin'){
+            skinIndex = index
+          }else{
+            hairIndex = index
+          }
+          $par.siblings('.officially-test-popup-lebel').find('.officially-test-popup-lebel-span').css({'background':'url('+src+') no-repeat','background-size': 'cover'})
+          if(skinIndex !=null && hairIndex != null){
+            $p.find('.officially-test-popup-submit').addClass('active')
+          }
+        })
+        // 提交反馈结果
+        $p.find('.officially-test-popup-submit').click(function(){
+          let $this = $(this)
+          if($this.hasClass('active')){
+            $p.find('.officially-test-popup-results-item').css('display','none')
+            $this.css('display','none')
+            
+            if(getResults()){
+              $p.find('.officially-test-popup-results-item').eq(0).css('display','flex')
+              $this.siblings('.officially-test-popup-shop,.officially-test-popup-reset:not(.active)').css('display','flex')
+            }else{
+              $p.find('.officially-test-popup-results-item').eq(1).css('display','flex')
+              $this.siblings('.officially-test-popup-reset.active').css('display','flex')
+            }
+            $this.parents('.officially-test-popup-btn-box').siblings('.officially-test-popup-msg').css('display','none')
+          }
+        })
+        // 重新测试
+        $p.find('.officially-test-popup-reset').click(function(){
+          resetAll()
+        })
+
+        // Back to Shop
+        $p.find('.officially-test-popup-shop').click(function(){
+          $p.removeClass('active')
+          $('body').css('overflow','')
+          resetAll()
+        })
+      }
+      initSelect()
+    })
+  </script>
+  <div class="officially-test-popup">
+    <div class="officially-test-popup-cont">
+      <div class="officially-test-popup-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="0.75" y1="-0.75" x2="29.2002" y2="-0.75" transform="matrix(0.708282 0.705929 -0.708282 0.705929 0.96875 1.58008)" stroke="#3F3636" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="0.75" y1="-0.75" x2="29.2002" y2="-0.75" transform="matrix(-0.708282 0.705929 -0.708282 -0.705929 22.1836 0.734375)" stroke="#3F3636" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="officially-test-popup-det">
+        <div class="officially-test-popup-title">Is Air 10 right for you?</div>
+        <div class="officially-test-popup-sub">Select both hair and skin options that better suit you.</div>
+        <div class="officially-test-popup-select">
+          <div class="officially-test-popup-lebel">
+            Skin tone
+            <div class="officially-test-popup-lebel-span"></div>
+          </div>
+          <div class="officially-test-popup-list" data-type="skin">
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/d1.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Fair</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/d2.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Light</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/d3.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Medium</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/d4.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Tan</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/d5.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Tan-Deep</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/d6.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Deep</div>
+            </div>
+          </div>
+        </div>
+        <div class="officially-test-popup-select">
+          <div class="officially-test-popup-lebel">
+            Hair tone
+            <div class="officially-test-popup-lebel-span"></div>
+          </div>
+          <div class="officially-test-popup-list" data-type="hair">
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e1.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Black</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e2.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Dark Brown</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e3.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Brown</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e4.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Dark blonde</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e5.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Red</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e6.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Light Blonde</div>
+            </div>
+            <div class="officially-test-popup-item">
+              <div class="officially-test-popup-img">
+                <img src="./images28/e7.png" alt="" class="popup-img">
+              </div>
+              <div class="officially-test-popup-p">Grey/ White</div>
+            </div>
+          </div>
+        </div>
+        <div class="officially-test-popup-results">
+          <div class="officially-test-popup-results-item">
+            <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M33.5 16.5C33.5 25.3226 26.1269 32.5 17 32.5C7.87313 32.5 0.5 25.3226 0.5 16.5C0.5 7.67741 7.87313 0.5 17 0.5C26.1269 0.5 33.5 7.67741 33.5 16.5Z" stroke="#3F3636"/>
+              <path d="M10.3281 17.0453L14.501 20.8272L23.0019 12" stroke="#3F3636" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Ulike Air 10 is perfect for your skin tone and hair color. Get ready to start your journey to smooth skin with effective IPL technology and ice cooling tech. Experience real results in just one week and painless treatments right from the comfort of your home!
+          </div>
+          <div class="officially-test-popup-results-item">
+            <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M33.5 16.5C33.5 25.3226 26.1269 32.5 17 32.5C7.87313 32.5 0.5 25.3226 0.5 16.5C0.5 7.67741 7.87313 0.5 17 0.5C26.1269 0.5 33.5 7.67741 33.5 16.5Z" stroke="#3F3636"/>
+              <path d="M16.406 18.662L16.046 11.678L15.992 9.536H17.99L17.936 11.678L17.576 18.662H16.406ZM17 23.09C16.352 23.09 15.83 22.64 15.83 21.92C15.83 21.2 16.352 20.714 17 20.714C17.63 20.714 18.152 21.2 18.152 21.92C18.152 22.64 17.63 23.09 17 23.09Z" fill="black"/>
+            </svg>
+            Oops! Ulike Air 10 isn't suitable for your skin tone and hair color. IPL relies on melanin in the hair for effectiveness, so it may not work as expected.
+          </div>
+        </div>
+        <div class="officially-test-popup-btn-box">
+          <div class="officially-test-popup-btn officially-test-popup-submit">
+            Find out
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
+              <g clip-path="url(#clip0_1475_781)">
+              <path d="M13.0615 5.50363C13.0615 5.58264 13.0322 5.66101 12.9761 5.7209L8.51609 10.4995L8.05033 10.065L12.0102 5.8222H0C0 5.4705 0.285441 5.18506 0.637146 5.18506H12.7283C12.8487 5.18506 12.9659 5.24559 13.0233 5.35199C13.0494 5.39978 13.0615 5.45202 13.0615 5.50363Z" fill="#3F3636"/>
+              <path d="M12.3963 4.38659C12.1472 4.63508 11.7438 4.63508 11.4954 4.38659L8.05859 0.950462L8.50906 0.5L12.3956 4.38659H12.3963Z" fill="#3F3636"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_1475_781">
+              <rect width="13.0615" height="10" fill="white" transform="translate(0 0.5)"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="officially-test-popup-btn officially-test-popup-shop active">
+            Back to Shop
+          </div>
+          <div class="officially-test-popup-btn officially-test-popup-reset">
+            Try again
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+              <g clip-path="url(#clip0_1475_1362)">
+              <path d="M9.4988 1.49978C9.1988 1.49978 8.9988 1.69978 8.9988 1.99978V2.49978C8.4988 1.79978 7.7988 1.24978 6.9988 0.949776C4.4988 -0.150224 1.5488 0.999776 0.4488 3.49978C-0.6512 5.99978 0.4988 8.94978 2.9988 10.0498C5.4988 11.1498 8.4488 9.99978 9.5488 7.49978H9.4988C9.4988 7.19978 9.2988 6.99978 8.9988 6.99978C8.6988 6.99978 8.4988 7.19978 8.4988 7.49978H8.4488C7.9988 8.24978 7.3488 8.84978 6.4988 9.19978C4.4488 10.0498 2.1488 9.04978 1.2988 6.99978C0.4488 4.94978 1.4488 2.59978 3.4988 1.79978C5.3488 0.999776 7.4488 1.79978 8.4488 3.49978H7.4988C7.1988 3.49978 6.9988 3.69978 6.9988 3.99978C6.9988 4.29978 7.1988 4.49978 7.4988 4.49978H9.4988C9.7988 4.49978 9.9988 4.29978 9.9988 3.99978V1.99978C9.9988 1.69978 9.7988 1.49978 9.4988 1.49978Z" fill="#3F3636"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_1475_1362">
+              <rect width="10" height="10" fill="white" transform="translate(0 0.5)"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="officially-test-popup-btn officially-test-popup-reset active">
+            Try again
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="11" viewBox="0 0 10 11" fill="none">
+              <g clip-path="url(#clip0_1475_1362)">
+              <path d="M9.4988 1.49978C9.1988 1.49978 8.9988 1.69978 8.9988 1.99978V2.49978C8.4988 1.79978 7.7988 1.24978 6.9988 0.949776C4.4988 -0.150224 1.5488 0.999776 0.4488 3.49978C-0.6512 5.99978 0.4988 8.94978 2.9988 10.0498C5.4988 11.1498 8.4488 9.99978 9.5488 7.49978H9.4988C9.4988 7.19978 9.2988 6.99978 8.9988 6.99978C8.6988 6.99978 8.4988 7.19978 8.4988 7.49978H8.4488C7.9988 8.24978 7.3488 8.84978 6.4988 9.19978C4.4488 10.0498 2.1488 9.04978 1.2988 6.99978C0.4488 4.94978 1.4488 2.59978 3.4988 1.79978C5.3488 0.999776 7.4488 1.79978 8.4488 3.49978H7.4988C7.1988 3.49978 6.9988 3.69978 6.9988 3.99978C6.9988 4.29978 7.1988 4.49978 7.4988 4.49978H9.4988C9.7988 4.49978 9.9988 4.29978 9.9988 3.99978V1.99978C9.9988 1.69978 9.7988 1.49978 9.4988 1.49978Z" fill="#3F3636"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_1475_1362">
+              <rect width="10" height="10" fill="white" transform="translate(0 0.5)"/>
+              </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="officially-test-popup-msg">
+          *IPL technology works best on dark hair and fair skin. It is least efffective on blonde, grey and red hair and is not suitable to be used onvery dark skin.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="officially-product">
+    <div class="officially-product-header">
+      <div class="container">
+        <div class="officially-product-header-title">Head-to-toe hair removal for every skin sensitivity</div>
+        <div class="officially-product-header-sub">
+          The Air 10 is equipped with 4 smart treatment modes, 
+          each engineered and fine-tuned for different treatment applications, 
+          from sensitive areas like armpits and bikini lines to tough, stubborn hair.
+        </div>
+      </div>
+    </div>
+    <div class="officially-product-body">
+      <div class="officially-product-img">
+        <img src="./images28/f1.png" alt="" class="officially-product-t">
+        <img src="./images28/f2.png" alt="" class="officially-product-light light-one">
+        <img src="./images28/f3.png" alt="" class="officially-product-light light-two">
+        <img src="./images28/f4.png" alt="" class="officially-product-light light-three">
+        <img src="./images28/f14.png" alt="" class="officially-product-light light-four">
+        <!-- <video class="officially-product-video" muted preload="none" x-webkit-airplay="allow" x5-playsinline="" webkit-playsinline="" playsinline="true">
+          <source src="./images28/f.mp4" type="video/mp4">
+          Your browser does not support HTML video.
+        </video> -->
+        <div class="officially-product-video"></div>
+      </div>
+      <div class="officially-product-text officially-text-one">
+        <img src="./images28/f5.png" alt="" class="officially-product-icon">
+        <div class="officially-product-title">High Mode</div>
+        <div class="officially-product-sub">Best for removal of coarse, thick hair.</div>
+        <img src="./images28/f6.png" alt="" class="officially-product-icon">
+      </div>
+      <div class="officially-product-text officially-text-two">
+        <img src="./images28/f7.png" alt="" class="officially-product-icon">
+        <div class="officially-product-title">Normal Mode</div>
+        <div class="officially-product-sub">Ideal to remove finer to normal hair.</div>
+        <img src="./images28/f8.png" alt="" class="officially-product-icon">
+      </div>
+      <div class="officially-product-text officially-text-three">
+        <img src="./images28/f9.png" alt="" class="officially-product-icon">
+        <div class="officially-product-title">Fast Mode</div>
+        <div class="officially-product-sub">Best for maintenance and small touch-ups.</div>
+        <img src="./images28/f10.png" alt="" class="officially-product-icon">
+      </div>
+      <div class="officially-product-text officially-text-four">
+        <img src="./images28/f11.png" alt="" class="officially-product-icon">
+        <div class="officially-product-title">AutoGlide Mode</div>
+        <div class="officially-product-sub">Long press Under AutoGlide mode, device flashes up automatically.</div>
+        <div class="officially-product-btn">
+          Switch into AutoGlide
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_1505_2334)">
+            <path d="M12 0C5.38359 0 0 5.38359 0 12C0 18.6164 5.38359 24 12 24C18.6164 24 24 18.6164 24 12C24 5.38359 18.6164 0 12 0ZM12 22.957C5.95781 22.957 1.04297 18.0422 1.04297 12C1.04297 5.95781 5.95781 1.04297 12 1.04297C18.0422 1.04297 22.957 5.95781 22.957 12C22.957 18.0422 18.0422 22.957 12 22.957Z" fill="#190A0A"/>
+            <circle cx="12" cy="12" r="12" fill="#6C6AB4"/>
+            <path d="M18.2641 11.5954H12.5242V5.85786C12.5242 5.56958 12.2875 5.33521 12.0016 5.33521C11.7133 5.33521 11.4789 5.57192 11.4789 5.85786V11.5954H5.74141C5.45312 11.5954 5.21875 11.8321 5.21875 12.118C5.21875 12.4063 5.45547 12.6407 5.74141 12.6407H11.4789V18.3805C11.4789 18.6688 11.7156 18.9032 12.0016 18.9032C12.2898 18.9032 12.5242 18.6665 12.5242 18.3805V12.6407H18.2617C18.55 12.6407 18.7844 12.404 18.7867 12.118C18.7867 11.8297 18.55 11.5954 18.2641 11.5954Z" fill="#FBFAF4"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_1505_2334">
+            <rect width="24" height="24" fill="white"/>
+            </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <div class="officially-product-text officially-text-five">
+        <div class="officially-product-title">SHR Mode</div>
+        <div class="officially-product-sub">High-intensity treatment to eliminate stubborn hair</div>
+        <img src="./images28/f12.png" alt="" class="officially-product-icon">
+      </div>
+    </div>
+  </div>
+  <script>
+    class ImgPlay {
+      constructor(cont,urlRoot,maxLength,type='.jpg') {
+        this.urlRoot = urlRoot;
+        this.indexRange = [0, maxLength - 1];
+        this.maxLength = maxLength
+        // this.eleLoading = document.querySelector(loading);
+        this.eleContainer = document.querySelector(cont);
+        this.type = type;
+        this.percent = 0
+        this.store = {
+          length: 0
+        }
+        this.isPlay = false
+        this.pictureNum = null
+      }
+
+      loadImg(){
+        // 图片序列预加载
+        for ( let start = this.indexRange[0]; start <= this.indexRange[1]; start++) {
+            ((index)=> {
+              let that = this
+              let img = new Image();
+                img.onload = function () {
+                    that.store.length++;
+                    // 存储预加载的图片对象
+                    that.store[index] = this;
+                    that.updateLoading();
+                };
+                img.onerror = function () {
+                  that.store.length++;
+                  that.updateLoading();
+                };
+                img.src = that.urlRoot + index + this.type;
+            })(start);
+        }
+      }
+
+      updateLoading(){
+        // loading进度
+        this.percent = Math.round(100 * this.store.length / this.maxLength);
+        // this.eleLoading.setAttribute('data-percent', this.percent);
+        // this.eleLoading.style.backgroundSize = this.percent + '% 100%';
+        if(this.percent == 100 && this.isPlay){
+          this.playImg(this.pictureNum)
+        }
+      }
+
+      playImg(num = null){
+        // 全部加载完毕，无论成功还是失败
+        if (this.percent == 100) {
+          let index = num || this.indexRange[0];
+          this.eleContainer.innerHTML = '';
+          // 依次append图片对象
+          let step = ()=> {
+              if (this.store[index - 1] && num == null) {
+                  this.eleContainer.removeChild(this.store[index - 1]);
+              }
+              this.eleContainer.appendChild(this.store[index]);
+              // 序列增加
+              index++;
+              // 如果超过最大限制
+              if (index <= this.indexRange[1]) {
+                if(num == null){
+                  setTimeout(step, 42);
+                }else{
+
+                }
+              } else {
+                  // 本段播放结束回调
+                  // 我这里就放一个重新播放的按钮
+                  // this.eleContainer.insertAdjacentHTML('beforeEnd', '<button onclick="">再看一遍</button>');
+              }
+          };
+          if(num == null){
+            // 等100%动画结束后执行播放
+            setTimeout(step, 100);
+          }else{
+            step()
+          }
+          
+        }else{
+          this.isPlay = true
+          this.pictureNum = num
+        }
+      }
+    }
+
+ 
+    function productScrollTo(){
+      // const pv = document.querySelector('.officially-product-video')
+      // document.querySelector('body').addEventListener('touchstart', function(event) {
+      //   let vt=pv.getAttribute('is-t')
+      //   if(vt) return
+      //   pv.setAttribute('is-t',true)
+      //     pv.play();
+      //     pv.pause();
+      //     pv.currentTime = 0.01
+      // });
+      let imgP = new ImgPlay('.officially-product-video','./images28/v/officially-product-ulike-',16)
+      imgP.loadImg()
+      let pam = {
+        ml:'-8%',
+        ml1:'8%',
+        scale:0.8,
+        mt1:'-3%',
+        mt2:'-6%',
+        mt3:'-9%',
+        mt4:'-45%',
+        mt5:'-60%',
+        translateY:'-50%',
+        translateY1:'-250%',
+        translateX:'0',
+        translateX1:'0'
+      }
+      if(window.innerWidth < 992){
+        pam = {
+          ml:'0',
+          ml:'0',
+          scale:1,
+          mt1:'0',
+          mt2:'0',
+          mt3:'0',
+          mt4:'0',
+          mt5:'-120%',
+          translateY:'0',
+          translateY1:'0',
+          translateX:'0',
+          translateX1:'-20%'
+        }
+      }
+      ScrollTrigger.create({
+        trigger: ".officially-product",
+        start: "top top",
+        end: "+=260%",
+        scrub: true,
+        // markers:true,
+        animation:
+        gsap.timeline()
+        .to(".officially-product-img",{'margin-left':pam.ml,'scale':pam.scale,ease:'power2.inOut'})
+        .to(".officially-text-one",{'display':'block','transform':'translate('+ pam.translateX +','+ pam.translateY +')','opacity':'1',ease:'power2.inOut'})
+        .to(".light-one",{'opacity':'1',ease:'power2.inOut'},'<')
+        .to(".officially-text-one",{'display':'none','transform':'translate('+ pam.translateX1 +','+ pam.translateY1 +')','opacity':'0',ease:'power2.inOut'})
+        .to(".light-one",{'opacity':'0',ease:'power2.inOut'},'<')
+        .to(".officially-product-img",{'margin-top':pam.mt1,ease:'power2.inOut'},'<')
+        .to(".officially-text-two",{'display':'block','transform':'translate('+ pam.translateX +','+ pam.translateY +')','opacity':'1',ease:'power2.inOut'})
+        .to(".light-two",{'opacity':'1',ease:'power2.inOut'},'<')
+        .to(".officially-text-two",{'display':'none','transform':'translate('+ pam.translateX1 +','+ pam.translateY1 +')','opacity':'0',ease:'power2.inOut'})
+        .to(".light-two",{'opacity':'0',ease:'power2.inOut'},'<')
+        .to(".officially-product-img",{'margin-top':pam.mt2,ease:'power2.inOut'},'<')
+        .to(".officially-text-three",{'display':'block','transform':'translate('+ pam.translateX +','+ pam.translateY +')','opacity':'1',ease:'power2.inOut'})
+        .to(".light-three",{'opacity':'1',ease:'power2.inOut'},'<')
+        .to(".officially-text-three",{'display':'none','transform':'translate('+ pam.translateX1 +','+ pam.translateY1 +')','opacity':'0',ease:'power2.inOut'})
+        .to(".light-three",{'opacity':'0',ease:'power2.inOut'},'<')
+        .to(".officially-product-img",{'margin-top':pam.mt3,ease:'power2.inOut'},'<')
+        .to(".officially-text-four",{'display':'block','transform':'translate('+ pam.translateX +','+ pam.translateY +')','opacity':'1',ease:'power2.inOut'})
+        .to(".light-four",{'opacity':'1',ease:'power2.inOut'},'<')
+        .to(".officially-text-four",{'display':'none','transform':'translate('+ pam.translateX1 +','+ pam.translateY1 +')','opacity':'0',ease:'power2.inOut'})
+        .to(".light-four",{'opacity':'0',ease:'power2.inOut'},'<')
+        .to(".officially-product-img",{'margin-top':pam.mt4,ease:'power2.inOut'},'<')
+        .to(".officially-product-img",{'margin-left':pam.ml1,'margin-top':pam.mt5,ease:'power2.inOut'})
+      })
+      ScrollTrigger.create({
+        trigger: ".officially-product",
+        start: "top+=60% top",
+        end: "+=50%",
+        scrub: true,
+        // markers:true,
+        onUpdate(self){
+          const video = document.querySelector('.officially-product-video')
+          if(self.progress){
+            video.style.setProperty('display','block')
+          }else{
+            video.style.setProperty('display','none')
+          }
+          try {
+            // pv.currentTime = self.progress * pv.duration
+            imgP.playImg(Math.round(self.progress*15))
+          } catch (error) {
+            console.log(error);
+          }
+        },
+        animation:
+        gsap.timeline()
+        .to(".officially-text-five",{'display':'block','transform':'translate('+ pam.translateX +','+ pam.translateY +')','opacity':'1',ease:'power2.inOut'})
+      })
+    }
+    window.addEventListener('load', () => {
+      productScrollTo()
+      $('.officially-product-btn').click(function(){
+        let $p =  $('.officially-product-popup')
+        $p.addClass('active')
+        if($p.find('.product-video').length > 0){
+          $p.find('.product-video').get(0).play()
+        }
+        $('body').css('overflow','hidden')
+      })
+      $('.officially-product-close').click(function(){
+        let $p =  $('.officially-product-popup')
+        $p.removeClass('active')
+        if($p.find('.product-video').length > 0){
+          $p.find('.product-video').get(0).pause()
+          $p.find('.product-video').get(0).currentTime = 0
+        }
+        $('body').css('overflow','')
+      })
+    })
+  </script>
+  <div class="officially-product-popup">
+    <div class="officially-product-cont">
+      <div class="officially-product-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="2.02941" y1="0.848633" x2="22.182" y2="21.0012" stroke="#3F3636" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="22.1836" y1="1.06066" x2="2.03105" y2="21.2132" stroke="#3F3636" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="officially-product-popup-det">
+        <div class="officially-product-popup-left">
+          <div class="officially-product-popup-sub">AutoGlide Mode</div>
+        </div>
+        <div class="officially-product-popup-right">
+          <div class="officially-product-popup-title">Delivering 10 minutes full-body treatments, with faster flashes and larger coverage.</div>
+          <div class="officially-product-popup-p">You can use Fast Mode, Normal Mode, and High Mode with AutoGlide by long-pressing the button, so the device flashes automatically and you don't have to press the button every time.</div>
+          <div class="officially-product-popup-video">
+            <img src="./images28/f13.jpg" alt="" class="img">
+            <video class="product-video" src="./images28/video.mp4" loop muted></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./js/theme.js"></script>
+<script src="./js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+</html>

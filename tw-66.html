@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css">
+  <link rel="stylesheet" href="./css/66.css">
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="banner-diy">
+    <img src="./images35/d1.jpg" alt="" class="img pc-box">
+    <img src="./images35/d2.jpg" alt="" class="img mb-box">
+    <div class="banner-diy-box">
+      <div class="container">
+        <div class="banner-diy-cont">
+          <div class="banner-diy-title">
+            Ulike年中超級大促
+          </div>
+          <div class="banner-diy-sub">歷史最低價，最高立減$1000</div>
+          <div class="banner-diy-swiper">
+            <div class="banner-diy-list">
+              <div class="banner-diy-item">
+                <img src="./images35/d3.png" alt="">
+              </div>
+              <div class="banner-diy-item">
+                <img src="./images35/d4.png" alt="">
+              </div>
+              <div class="banner-diy-item">
+                <img src="./images35/d5.png" alt="">
+              </div>
+              <div class="banner-diy-item">
+                <img src="./images35/d6.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function bannerWsiperDiy() {
+        let $p = $('.banner-diy');
+        let $list = $p.find('.banner-diy-list')
+        let len = $list.find('.banner-diy-item').length
+        let width = $list.find('.banner-diy-item')[0].offsetWidth
+        let trW = 2 * (width + 30)
+        let index = 0
+        if (len == 3) {
+          trW = width + 30
+        }
+        function changeList() {
+          index++
+          if (index > 1) index = 0
+          $list.css({
+            transform: 'translateX(-' + trW * index + 'px)',
+            transition: 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s'
+          })
+        }
+
+        setInterval(changeList, 3000)
+
+      }
+      bannerWsiperDiy()
+    })
+  </script>
+  <div class="timeline-box">
+    <div class="timeline-cont">
+      <div class="timeline-title">每日優惠攻略</div>
+      <div class="timeline-list-top">
+        <div class="timeline-top-item" data-time="2024-05-01" data-end="2024-06-05 23:59:59">
+          <div class="timeline-time">6.1-6.5</div>
+          <div class="timeline-on">現在開搶</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-top-item" data-time="2024-06-06" data-end="2024-06-06">
+          <div class="timeline-time">6.6 雙日大促</div>
+          <div class="timeline-on">現在開搶</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-top-item" data-time="2024-06-07" data-end="2024-06-17">
+          <div class="timeline-time">6.7-6.17</div>
+          <div class="timeline-on">現在開搶</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-top-item" data-time="2024-06-18" data-end="2024-06-30">
+          <div class="timeline-time">6.18 年中大促</div>
+          <div class="timeline-on">現在開搶</div>
+          <div class="timeline-line"></div>
+        </div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-item">
+          <img src="./images35/a1.jpg" alt="">
+          <div class="timeline-end">
+            <span>已結束</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <img src="./images35/a1.jpg" alt="">
+          <div class="timeline-end">
+            <span>已結束</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <img src="./images35/a1.jpg" alt="">
+          <div class="timeline-end">
+            <span>已結束</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <img src="./images35/a1.jpg" alt="">
+          <div class="timeline-end">
+            <span>已結束</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // function isCurrentDateBetween(startDate, endDate) {
+    //   const currentDate = new Date();
+
+    //   // 将 startDate 和 endDate 转换为 Date 对象
+    //   const start = new Date(startDate);
+    //   const end = new Date(endDate);
+
+    //   // 将时分秒归零，只比较日期部分
+    //   start.setHours(0, 0, 0, 0);
+    //   end.setHours(23, 59, 59, 999);
+    //   currentDate.setHours(0, 0, 0, 0);
+
+    //   // 比较当前日期是否在 start 和 end 之间
+    //   return currentDate >= start && currentDate <= end;
+    // }
+    function isCurrentDateBetween(startTime, endTime) {
+      const currentTime = new Date();
+
+      // 如果只传入一个时间参数
+      if (endTime === undefined) {
+        const time = new Date(startTime);
+        return currentTime >= time;
+      }
+
+      // 将 startTime 和 endTime 转换为 Date 对象
+      const start = new Date(startTime);
+      const end = new Date(endTime);
+
+      // 直接比较当前时间是否在 start 和 end 之间
+      return currentTime >= start && currentTime <= end;
+    }
+
+    function setProgress() {
+      let $p = $('.timeline-box')
+      let $listTop = $p.find('.timeline-list-top')
+      let $list = $p.find('.timeline-list')
+      const content = document.querySelector('.timeline-box .timeline-list');
+      let length = $listTop.find('.timeline-top-item').length
+      let pWidth = $p[0].offsetWidth
+      let topWidth = length * $listTop.find('.timeline-top-item')[0].offsetWidth + 40
+      let listWidth = length * ($list.find('.timeline-item')[0].offsetWidth + 16) + 24
+      let index = 0
+      $listTop.find('.timeline-top-item').each(function () {
+        let start = $(this).data('time')
+        let end = $(this).data('end')
+        if (isCurrentDateBetween(start, end)) {
+          index = $(this).index()
+          $list.find('.timeline-item').eq(index).addClass('active')
+          $(this).addClass('active').siblings().removeClass('active')
+          if (window.innerWidth < 991) {
+            changeTransform()
+          }
+        } else {
+          if (isCurrentDateBetween(end)) {
+            index = $(this).index()
+            $list.find('.timeline-item').eq(index).addClass('ends-box')
+          }
+        }
+      })
+      function changeTransform() {
+        let translateX = $listTop.find('.timeline-top-item')[0].offsetWidth * index
+        let translateX1 = ($list.find('.timeline-item')[0].offsetWidth + 16) * index
+        if (translateX > topWidth - pWidth) {
+          translateX = topWidth - pWidth
+        }
+        if (translateX1 > listWidth - pWidth) {
+          translateX1 = listWidth - pWidth
+        }
+        $listTop.css({
+          transform: 'translateX(-' + translateX + 'px)',
+          transition: 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s'
+        })
+        $list.css({
+          transform: 'translateX(-' + translateX1 + 'px)',
+          transition: 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s'
+        })
+      }
+      if (window.innerWidth < 991) {
+        detectSwipe(content, () => {
+          console.log('asd', index);
+          index += 1
+          console.log(index);
+          changeTransform()
+        }, () => {
+          index -= 1
+          console.log(index);
+
+          changeTransform()
+        });
+      }
+
+      function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+        let startX = 0;
+
+        const getEventX = (event) => {
+          return event.touches ? event.touches[0].clientX : event.clientX;
+        };
+
+        const handleTouchStart = (e) => {
+          startX = getEventX(e);
+        };
+
+        const handleTouchMove = (e) => {
+          const deltaX = getEventX(e) - startX;
+          if (Math.abs(deltaX) > 10 && e.cancelable) {
+            e.preventDefault();
+          }
+        };
+
+        const handleTouchEnd = (e) => {
+          const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+          if (deltaX > 10) {
+            onSwipeRight();
+          } else if (deltaX < -10) {
+            onSwipeLeft();
+          }
+        };
+
+        element.addEventListener('touchstart', handleTouchStart);
+        element.addEventListener('touchmove', handleTouchMove);
+        element.addEventListener('touchend', handleTouchEnd);
+
+        // Add mouse event listeners for PC compatibility
+        element.addEventListener('mousedown', handleTouchStart);
+        element.addEventListener('mousemove', handleTouchMove);
+        element.addEventListener('mouseup', handleTouchEnd);
+      }
+
+    }
+    window.addEventListener('load', function () {
+      setProgress()
+    })
+
+
+  </script>
+
+  <div class="product-box">
+    <div class="container">
+      <div class="product-box-list">
+        <div class="product-box-item">
+          <div class="product-box-img">
+            <div class="product-box-img-list active">
+              <img src="./images35/b1.jpg" alt="" class="img active">
+              <img src="./images35/b1.jpg" alt="" class="img">
+              <img src="./images35/b1.jpg" alt="" class="img">
+              <div class="product-box-dot">
+                <div class="product-box-dot-item active"></div>
+                <div class="product-box-dot-item"></div>
+                <div class="product-box-dot-item"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-box-det">
+            <div class="product-box-title">
+              Ulike Air 10 Pro<br />
+              全球領先雙燈管IPL除毛儀
+            </div>
+            <div class="product-box-sub m-top">
+              2週見效，專治粗硬毛發<br />
+              SHR模式，26J大能量<br />
+              全球領先雙燈管科技，最快0.25s/閃<br />
+              新一代藍寶石冰點科技
+            </div>
+            <div class="product-box-pam m-top">
+              <div class="product-box-color">
+                <div class="product-box-pam-p">颜色：</div>
+                <div class="product-box-color-flex">
+                  <div class="product-box-color-item active" data-id="22"
+                    style="background: linear-gradient(to bottom ,#DDDBEE,#A8A4CE);"></div>
+                </div>
+              </div>
+              <div class="product-box-num">
+                <div class="product-box-pam-p">数量：</div>
+                <div class="product-box-num-flex">
+                  <div class="product-box-num-tap" data-n="-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <path d="M5.75 11.425H16.1" stroke="#190A0A" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <input type="number" value="1" class="inp">
+                  <div class="product-box-num-tap" data-n="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <path d="M5.75 11.1093H16.1" stroke="#190A0A" stroke-width="2" stroke-linecap="round" />
+                      <path d="M10.9248 5.9342L10.9248 16.2842" stroke="#190A0A" stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-box-flex m-top">
+              <div class="product-box-price">
+                <span class="price-n"> $10199</span>
+                <span class="price-d">$10999</span>
+              </div>
+              <div class="product-box-coupon" data-txt="Copy: UPOWER">
+                <span class="code-text">UPOWER</span>
+                <div class="product-box-coupon-t">$800 OFF</div>
+                <div class="product-box-coupon-tap copy-btn">Copy: UPOWER</div>
+              </div>
+            </div>
+            <div class="product-box-countdown m-top" data-time="2024-06-06 12:20:30">
+              Ends in
+              <span class="d">00</span>
+              天
+              <span class="h">00</span>
+              时
+              <span class="m">00</span>
+              分
+              <span class="s">00</span>
+              秒
+            </div>
+            <div class="product-box-btn m-top">
+              <div class="product-box-btn-item" data-type="1">加入購物車</div>
+              <div class="product-box-btn-item" data-type="2">立即購買</div>
+            </div>
+            <div class="product-box-protect m-top">
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-box-item">
+          <div class="product-box-img">
+            <div class="product-box-img-list active">
+              <img src="./images35/b1.jpg" alt="" class="img active">
+              <img src="./images35/b1.jpg" alt="" class="img">
+              <img src="./images35/b1.jpg" alt="" class="img">
+              <div class="product-box-dot">
+                <div class="product-box-dot-item active"></div>
+                <div class="product-box-dot-item"></div>
+                <div class="product-box-dot-item"></div>
+              </div>
+            </div>
+            <div class="product-box-img-list">
+              <img src="./images35/b1.jpg" alt="" class="img active">
+              <img src="./images35/b1.jpg" alt="" class="img">
+              <img src="./images35/b1.jpg" alt="" class="img">
+              <div class="product-box-dot">
+                <div class="product-box-dot-item active"></div>
+                <div class="product-box-dot-item"></div>
+                <div class="product-box-dot-item"></div>
+              </div>
+            </div>
+          </div>
+          <div class="product-box-det">
+            <div class="product-box-title">
+              Ulike Air 10 Pro<br />
+              全球領先雙燈管IPL除毛儀
+            </div>
+            <div class="product-box-sub m-top">
+              2週見效，專治粗硬毛發<br />
+              SHR模式，26J大能量<br />
+              全球領先雙燈管科技，最快0.25s/閃<br />
+              新一代藍寶石冰點科技
+            </div>
+            <div class="product-box-pam m-top">
+              <div class="product-box-color">
+                <div class="product-box-pam-p">颜色：</div>
+                <div class="product-box-color-flex">
+                  <div class="product-box-color-item active" data-id="22"
+                    style="background: linear-gradient(to bottom ,#DDDBEE,#A8A4CE);"></div>
+                  <div class="product-box-color-item" data-id="33"
+                    style="background: linear-gradient(to bottom ,#DDDBEE,#A8A4CE);"></div>
+                </div>
+              </div>
+              <div class="product-box-num">
+                <div class="product-box-pam-p">数量：</div>
+                <div class="product-box-num-flex">
+                  <div class="product-box-num-tap" data-n="-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <path d="M5.75 11.425H16.1" stroke="#190A0A" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <input type="number" value="1" class="inp">
+                  <div class="product-box-num-tap" data-n="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <path d="M5.75 11.1093H16.1" stroke="#190A0A" stroke-width="2" stroke-linecap="round" />
+                      <path d="M10.9248 5.9342L10.9248 16.2842" stroke="#190A0A" stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-box-flex m-top">
+              <div class="product-box-price">
+                <span class="price-n"> $10199</span>
+                <span class="price-d">$10999</span>
+              </div>
+              <div class="product-box-coupon" data-txt="Copy: UPOWER">
+                <span class="code-text">UPOWER</span>
+                <div class="product-box-coupon-t">$800 OFF</div>
+                <div class="product-box-coupon-tap copy-btn">Copy: UPOWER</div>
+              </div>
+            </div>
+            <div class="product-box-countdown m-top" data-time="2024-06-09 12:20:30">
+              Ends in
+              <span class="d">00</span>
+              天
+              <span class="h">00</span>
+              时
+              <span class="m">00</span>
+              分
+              <span class="s">00</span>
+              秒
+            </div>
+            <div class="product-box-btn m-top">
+              <div class="product-box-btn-item" data-type="1">加入購物車</div>
+              <div class="product-box-btn-item" data-type="2">立即購買</div>
+            </div>
+            <div class="product-box-protect m-top">
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 复制折扣码
+    function copyTextFun($el, btnTxt = 'Copy', txt) {
+      // txt='Copied'
+      let coupon = $el;
+      if (coupon) {
+        let cpnCode = coupon.querySelector('.code-text');
+        let cpnBtn = coupon.querySelector('.copy-btn');
+        cpnBtn.onclick = function () {
+          navigator.clipboard.writeText(cpnCode.innerHTML);
+          cpnBtn.innerHTML = txt || cpnCode.innerHTML; //"WELCOME";
+          setTimeout(() => {
+            cpnBtn.innerHTML = btnTxt //"Copy Code";
+          }, 6000)
+        }
+      }
+    }
+    // 倒计时
+    class Countdown {
+      constructor(endTime, $elDom, showDay = false) {
+        this.displayElement = $elDom[0];
+        this.timer = null;
+        this.showDay = showDay;
+        this.setEndTime(endTime);
+        this.start();
+      }
+      setEndTime(endTime) {
+        if (endTime) {
+          this.endTime = new Date(endTime).getTime();
+        } else {
+          this.endTime = new Date().getTime();
+        }
+      }
+      start() {
+        this.timer = setInterval(() => this.update(), 1000);
+      }
+
+      update() {
+        const now = new Date().getTime();
+        const distance = this.endTime - now;
+        let day = 0;
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+
+        if (distance < 0) {
+          clearInterval(this.timer);
+          day = 0;
+          hours = 0;
+          minutes = 0;
+          seconds = 0;
+        } else {
+          if (this.showDay) {
+            day = Math.floor(distance / (1000 * 60 * 60 * 24));
+            hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+          } else {
+            hours = Math.floor(distance / (1000 * 60 * 60));
+          }
+          minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        }
+        if (this.showDay) {
+          this.displayElement.querySelector('.d').innerHTML = this.formatTime(day)
+        }
+        this.displayElement.querySelector('.h').innerHTML = this.formatTime(hours)
+        this.displayElement.querySelector('.m').innerHTML = this.formatTime(minutes)
+        this.displayElement.querySelector('.s').innerHTML = this.formatTime(seconds)
+      }
+      formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+      }
+    }
+    window.addEventListener('load', function () {
+      function productBoxFun() {
+        let $p = $('.product-box');
+        let $item = $p.find('.product-box-item');
+        $item.each(function () {
+          let timer = null
+          let item = $(this);
+          let index = 0
+          let $img = item.find('.product-box-img');
+          let $imgList = item.find('.product-box-img-list');
+          // 倒计时
+          let countD = new Countdown(item.find('.product-box-countdown').data('time'), item.find('.product-box-countdown'), true);
+          // 优惠券复制
+          copyTextFun(item.find('.product-box-coupon')[0], item.find('.product-box-coupon').data('txt'))
+          // 图片轮播
+          function changeImg() {
+            $imgList.each(function () {
+              if ($(this).hasClass('active')) {
+                if (index == $(this).find('img').length) index = 0
+                $(this).find('img').removeClass('active').eq(index).addClass('active');
+                $(this).find('.product-box-dot-item').removeClass('active').eq(index).addClass('active');
+              }
+              $(this).find('.product-box-dot-item').click(function () {
+                clearTimeout(timer)
+                index = $(this).index()
+                changeImg()
+              })
+            })
+            clearTimeout(timer)
+            timer = setTimeout(function () {
+              index++
+              changeImg()
+            }, 3000)
+          }
+          changeImg()
+          // 切换颜色
+          $(this).find('.product-box-color-item').click(function () {
+            if ($(this).hasClass('active')) return
+            clearTimeout(timer)
+            index = 0
+            $(this).addClass('active').siblings().removeClass('active')
+            $imgList.removeClass('active').eq($(this).index()).addClass('active')
+            changeImg()
+          })
+          // 加减数量
+          item.find('.product-box-num-tap').click(function () {
+            let inp = $(this).siblings('.inp')
+            let val = parseInt(inp.val())
+            let n = parseInt($(this).data('n'))
+            val += n
+            if (val < 1) val = 1
+            inp.val(val)
+          })
+
+          // 控制输入框只能输入大于0的整数
+          item.find('.inp').blur(function () {
+            let val = parseInt($(this).val())
+            if (isNaN(val) || val < 1) {
+              $(this).val(1)
+            }
+          })
+
+
+          // 购买、加购
+          item.find('.product-box-btn-item').click(function () {
+            let type = $(this).data('type')
+            let id = item.find('.product-box-color-item.active').data('id')
+            let num = item.find('.inp').val()
+            if (type == 1) {
+              // addToCart(id,null,num)
+              console.log(id, num);
+            } else {
+              // buyProduct(id,num)
+              console.log(id, num);
+
+            }
+          })
+        })
+      }
+      productBoxFun()
+    })
+  </script>
+  <div class="reviews-section">
+    <div class="container">
+      <div class="reviews-section-title">
+        客戶歷史評價
+      </div>
+      <div class="reviews-section-cont">
+        <a href="#" class="reviews-section-item">
+          <img src="./images35/c1.png" class="pc-box" alt="">
+          <img src="./images35/c6.png" class="mb-box" alt="">
+        </a>
+        <a href="#" class="reviews-section-item">
+          <img src="./images35/c2.png" class="pc-box" alt="">
+          <img src="./images35/c7.png" class="mb-box" alt="">
+        </a>
+        <a href="#" class="reviews-section-item">
+          <img src="./images35/c3.png" class="pc-box" alt="">
+          <img src="./images35/c8.png" class="mb-box" alt="">
+        </a>
+        <a href="#" class="reviews-section-item">
+          <img src="./images35/c4.png" class="pc-box" alt="">
+          <img src="./images35/c9.png" class="mb-box" alt="">
+        </a>
+        <a href="#" class="reviews-section-item">
+          <img src="./images35/c5.png" class="pc-box" alt="">
+          <img src="./images35/c10.png" class="mb-box" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.header_ul li a').forEach(item => {
+      item.addEventListener('click', function (e) {
+        // 获取目标 section 的 ID
+
+        let targetSectionId = this.getAttribute('href').substring(1);
+
+        // 调用 scrollToSection 函数滚动到目标 section
+        scrollToSection(targetSectionId);
+      })
+    })
+
+    window.addEventListener('scroll', function () {
+      // 获取当前可视区域的顶部位置
+      const scrollPosition = window.scrollY || window.pageYOffset;
+      // 遍历所有的 <li> 元素
+      // 移除之前高亮的导航
+      document.querySelectorAll('.header_ul li a').forEach(item => {
+        item.classList.remove('active');
+      });
+      document.querySelectorAll('.header_ul li a').forEach(item => {
+        if (item.getAttribute('href').substring(1)) {
+          // 获取目标 section 的 ID
+          let targetSectionId = item.getAttribute('href').substring(1);
+          // 获取目标 section 的元素
+          let targetSection = document.getElementById(targetSectionId);
+          const sectionTop = targetSection.offsetTop;
+          const sectionHeight = targetSection.offsetHeight;
+          // 检查是否在可视区域内
+          if ((scrollPosition) >= (sectionTop - 100) && scrollPosition < (sectionTop + sectionHeight)) {
+            // 获取当前 section 的 ID
+            const currentId = targetSection.getAttribute('id');
+            // 高亮对应导航
+            document.querySelector(`.header_ul li a[href="#${currentId}"]`).classList.add('active');
+          }
+        }
+      });
+
+      let navbar = document.querySelector('.nav-new-scroll-extend');
+      if (window.scrollY > 30) {
+        navbar.classList.add('white_bg');
+      } else {
+        navbar.classList.remove('white_bg');
+      }
+    });
+  </script>
+  <div class="utilization-modular">
+    <div class="utilization-modular-title">如何使用</div>
+    <div class="utilization-modular-cont">
+      <div class="utilization-modular-top">
+        <div class="utilization-modular-st">
+          <div class="utilization-modular-st-item active">如何使用改善痘肌？</div>
+          <div class="utilization-modular-st-item">如何使用美白亮膚？</div>
+        </div>
+        <div class="utilization-modular-arraw">
+          <div class="utilization-modular-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+              <g clip-path="url(#clip0_2285_665)">
+                <path
+                  d="M1.90735e-06 11.4932C1.90735e-06 11.6746 0.067318 11.8546 0.196098 11.9922L10.44 22.9678L11.5098 21.9698L2.41463 12.2249H30C30 11.4171 29.3444 10.7615 28.5366 10.7615H0.765366C0.488781 10.7615 0.219515 10.9005 0.0878067 11.1449C0.0278072 11.2546 1.90735e-06 11.3746 1.90735e-06 11.4932Z"
+                  fill="#190A0A" />
+                <path
+                  d="M1.53073 8.92781C2.10292 9.49854 3.02926 9.49854 3.59999 8.92781L11.4937 1.03561L10.459 0.000976562L1.53219 8.92781H1.53073Z"
+                  fill="#190A0A" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_665">
+                  <rect width="30" height="22.9683" fill="white" transform="matrix(-1 0 0 1 30 0.000976562)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="utilization-modular-arraw-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+              <g clip-path="url(#clip0_2285_661)">
+                <path
+                  d="M30 11.4932C30 11.6746 29.9327 11.8546 29.8039 11.9922L19.56 22.9678L18.4902 21.9698L27.5854 12.2249H0C0 11.4171 0.65561 10.7615 1.46341 10.7615H29.2346C29.5112 10.7615 29.7805 10.9005 29.9122 11.1449C29.9722 11.2546 30 11.3746 30 11.4932Z"
+                  fill="#190A0A" />
+                <path
+                  d="M28.4693 8.92781C27.8971 9.49854 26.9707 9.49854 26.4 8.92781L18.5063 1.03561L19.541 0.000976562L28.4678 8.92781H28.4693Z"
+                  fill="#190A0A" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_661">
+                  <rect width="30" height="22.9683" fill="white" transform="translate(0 0.000976562)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="utilization-modular-box">
+        <div class="utilization-modular-list active">
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+        </div>
+        <div class="utilization-modular-list">
+          <div class="utilization-modular-item">
+            <img src="./images35/e1.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e1.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+          <div class="utilization-modular-item">
+            <img src="./images35/e.jpg" alt="">
+            <div class="utilization-modular-t">步驟1</div>
+            <div class="utilization-modular-p">在第一次進行療程前 24 小時進行敏感性測試，可在手臂測試；</div>
+          </div>
+        </div>
+      </div>
+      <div class="utilization-modular-txt">
+        一天可以使用不超過40分鐘，模式可以互相搭配或重複使用喔! 貼心小提醒: 白天要記得擦防曬乳喔！
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', () => {
+      function utilizationModular() {
+        let $p = $('.utilization-modular')
+        let $list = $p.find('.utilization-modular-list')
+        let $arraw = $p.find('.utilization-modular-arraw-item')
+        let $tp = $p.find('.utilization-modular-st')
+        let $title = $p.find('.utilization-modular-st-item')
+        let index = 0
+        const content = document.querySelector('.utilization-modular .utilization-modular-box');
+        let length = $list.eq(0).find('.utilization-modular-item').length
+        let width = $list.find('.utilization-modular-item')[0].offsetWidth + 18
+        let pWidth = $p[0].offsetWidth
+        let LWidth = length * width + 48
+
+
+        $arraw.click(function () {
+          let sIndex = $(this).index()
+          $(this).removeClass('active').siblings().addClass('active')
+          $title.removeClass('active').eq(sIndex).addClass('active')
+          $list.removeClass('active').eq(sIndex).addClass('active')
+          if (sIndex) {
+            $tp.addClass('row-reverse')
+          } else {
+            $tp.removeClass('row-reverse')
+          }
+          if (window.innerWidth < 991) {
+            index = 0
+            changeTransform()
+          }
+        })
+
+        function changeTransform() {
+          let translateX = width * index
+          if (translateX > LWidth - pWidth) {
+            translateX = LWidth - pWidth
+
+            index -= 1
+          }
+          if (translateX < 0) {
+            translateX = 0
+            index = 0
+          }
+          $list.css({
+            transform: 'translateX(-' + translateX + 'px)',
+            transition: 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s'
+          })
+        }
+
+        if (window.innerWidth < 991) {
+          detectSwipe(content, () => {
+            index += 1
+            changeTransform()
+          }, () => {
+            index -= 1
+            changeTransform()
+          });
+        }
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      utilizationModular()
+    })
+  </script>
+</body>
+<script src="./js/script.js"></script>
+
+</html>

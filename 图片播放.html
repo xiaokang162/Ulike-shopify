@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+        width: 256px;
+        height: 464px;
+        margin: auto;
+        background-color: #000;
+        position: relative;
+    }
+    .container > img {
+        position: absolute;
+        width: 100%; height: 100%;
+    }
+    .loading {
+        position: absolute;
+        height: 8px; width: 150px;
+        border: 1px solid #eee;
+        background: linear-gradient(to top, #eee, #eee);
+        background-size: 0 100%;
+        transition: background-size .1s;
+        left: 0; top: 0; right: 0; bottom: 0;
+        margin: auto;
+    }
+    .loading::before {
+        content: attr(data-percent)'%';
+        position: absolute;
+        left: 0; top: -1.5em;
+        font-size: 12px;
+        color: #eee;
+    }
+    button{
+      position: absolute;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" class="container">
+    <span id="loading" class="loading" data-percent="0"></span>
+  </div>
+  <script>
+    class ImgPlay {
+      constructor(cont,loading,urlRoot,maxLength) {
+        this.urlRoot = urlRoot;
+        this.indexRange = [0, maxLength - 1];
+        this.maxLength = maxLength
+        this.eleLoading = document.querySelector(loading);
+        this.eleContainer = document.querySelector(cont);
+        this.percent = 0
+        this.store = {
+          length: 0
+        }
+        this.isPlay = false
+        this.pictureNum = null
+      }
+
+      loadImg(){
+        // 图片序列预加载
+        for ( let start = this.indexRange[0]; start <= this.indexRange[1]; start++) {
+            ((index)=> {
+              let that = this
+              let img = new Image();
+                img.onload = function () {
+                    that.store.length++;
+                    // 存储预加载的图片对象
+                    that.store[index] = this;
+                    that.updateLoading();
+                };
+                img.onerror = function () {
+                  that.store.length++;
+                  that.updateLoading();
+                };
+                img.src = that.urlRoot + index + '.jpg';
+            })(start);
+        }
+      }
+
+      updateLoading(){
+        // loading进度
+        this.percent = Math.round(100 * this.store.length / this.maxLength);
+        this.eleLoading.setAttribute('data-percent', this.percent);
+        this.eleLoading.style.backgroundSize = this.percent + '% 100%';
+        if(this.percent == 100 && this.isPlay){
+          this.playImg(this.pictureNum)
+        }
+      }
+
+      playImg(num = null){
+        // 全部加载完毕，无论成功还是失败
+        if (this.percent == 100) {
+          let index = num || this.indexRange[0];
+          this.eleContainer.innerHTML = '';
+          // 依次append图片对象
+          let step = ()=> {
+              if (this.store[index - 1] && num == null) {
+                  this.eleContainer.removeChild(this.store[index - 1]);
+              }
+              this.eleContainer.appendChild(this.store[index]);
+              // 序列增加
+              index++;
+              // 如果超过最大限制
+              if (index <= this.indexRange[1]) {
+                if(num == null){
+                  setTimeout(step, 42);
+                }else{
+
+                }
+              } else {
+                  // 本段播放结束回调
+                  // 我这里就放一个重新播放的按钮
+                  this.eleContainer.insertAdjacentHTML('beforeEnd', '<button onclick="">再看一遍</button>');
+              }
+          };
+          if(num == null){
+            // 等100%动画结束后执行播放
+            setTimeout(step, 100);
+          }else{
+            step()
+          }
+          
+        }else{
+          this.isPlay = true
+          this.pictureNum = num
+        }
+      }
+    }
+
+ let imgP = new ImgPlay('#container', '#loading','./images31/v/twin-lamps-ulike-',75)
+ imgP.playImg()
+ imgP.loadImg()
+
+
+
+    // var urlRoot = './images31/v/twin-lamps-ulike-';
+    // var indexRange = [0, 74];
+    // var maxLength = indexRange[1] - indexRange[0] + 1;
+    // // loading
+    // var eleContainer = document.getElementById('container');
+    // var eleLoading = document.getElementById('loading');
+    // // 存储预加载的DOM对象和长度信息
+    // var store = {
+    //     img:[],
+    //     length: 0
+    // };
+    // // 图片序列预加载
+    // for ( var start = indexRange[0]; start <= indexRange[1]; start++) {
+    //     (function (index) {
+    //         var img = new Image();
+    //         img.onload = function () {
+    //             store.length++;
+    //             // 存储预加载的图片对象
+    //             store.img[index] = this;
+    //             play();
+    //         };
+    //         img.onerror = function () {
+    //             store.length++;
+    //             play();
+    //         };
+    //         img.src = urlRoot + index + '.jpg';
+    //     })(start);
+    // }
+
+    // var play = function () {
+    //     // loading进度
+    //     var percent = Math.round(100 * store.length / maxLength);
+    //     eleLoading.setAttribute('data-percent', percent);
+    //     eleLoading.style.backgroundSize = percent + '% 100%';
+    //     // 全部加载完毕，无论成功还是失败
+    //     if (percent == 100) {
+    //         var index = indexRange[0];
+    //         eleContainer.innerHTML = '';
+    //         // 依次append图片对象
+    //         var step = function () {
+    //             if (store.img[index - 1]) {
+    //                 eleContainer.removeChild(store.img[index - 1]);
+    //             }
+    //             eleContainer.appendChild(store.img[index]);
+    //             // 序列增加
+    //             index++;
+    //             // 如果超过最大限制
+    //             if (index <= indexRange[1]) {
+    //                 setTimeout(step, 42);
+    //             } else {
+    //                 // 本段播放结束回调
+    //                 // 我这里就放一个重新播放的按钮
+    //                 eleContainer.insertAdjacentHTML('beforeEnd', '<button onclick="play()">再看一遍</button>');
+    //             }
+    //         };
+    //         // 等100%动画结束后执行播放
+    //         setTimeout(step, 100);
+    //     }
+    // };
+  </script>
+</body>
+</html>

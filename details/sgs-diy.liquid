@@ -1,0 +1,339 @@
+<style>
+  .sgs-box{
+    padding: 100px 0;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+.sgs-box .sgs-box-cont{
+    position: relative;
+}
+.sgs-box .sgs-img{
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin: 0;
+}
+
+.sgs-box .mb-box{
+    display: none;
+}
+
+.sgs-box .sgs-text{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 100px;
+    color: #fff;
+    z-index: 2;
+    max-width: 585px;
+}
+
+.sgs-box .sgs-sub{
+    font-size: 18px;
+    line-height: 1.2;
+}
+.sgs-box .sgs-title{
+    position: relative;
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.sgs-box .sgs-title::before{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 18px;
+    height: 4px;
+    background: #fff;
+    left: 0;
+    bottom: 0;
+}
+
+.sgs-box .sgs-p{
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 435px;
+}
+.sgs-box .sgs-icon{
+    display: block;
+    margin-top: 20px;
+}
+
+.sgs-box .sgs-txt-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.sgs-box .sgs-txt-item{
+    text-align: center;
+    padding: 0 30px;
+    border-left: 1px solid #333333;
+}
+.sgs-box .sgs-txt-item:first-child{
+    padding-left: 0;
+    border: 0;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.sgs-box .sgs-txt-item:nth-child(2){
+    padding-left: 0;
+    border: 0;
+}
+
+.sgs-box .sgs-txt-p{
+    font-size: 14px;
+    line-height: 1.2;
+}
+.sgs-box .sgs-txt-num{
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+@media (max-width:1400px) {
+    .sgs-box .sgs-text{
+        max-width: 45%;
+        right: 50px;
+    }
+    .sgs-box .sgs-title{
+        font-size: 32px;
+    }
+    .sgs-box .sgs-txt-num{
+        font-size: 38px;
+    }
+}
+@media (max-width:1200px) {
+    .sgs-box .sgs-text{
+        right: 30px;
+    }
+    .sgs-box .sgs-title{
+        font-size: 28px;
+    }
+    .sgs-box .sgs-txt-num{
+        font-size: 30px;
+    }
+    .sgs-box .sgs-txt-item{
+        padding: 0 10px;
+    }
+    .sgs-box .sgs-icon{
+        width: 90px;
+    }
+}
+
+@media (max-width:991px) {
+    .sgs-box{
+        padding: 50px 0;
+    }
+    .sgs-box .sgs-title{
+        font-size: 18px;
+        padding-bottom: 20px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+    .sgs-box .mb-box{
+        display: block;
+    }
+    .sgs-box .pc-box{
+        display: none;
+    }
+    .sgs-box .sgs-text{
+        max-width: none;
+        width: 100%;
+        right: 0;
+        padding: 0 20px;
+        bottom: 0;
+        top: auto;
+        transform: translateY(0);
+        text-align: center;
+    }
+    .sgs-box .sgs-p{
+        max-width: none;
+    }
+    .sgs-box .sgs-txt-item,.sgs-box .sgs-txt-item:first-child{
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .sgs-box .sgs-txt-list{
+        margin-top: 30px;
+    }
+    .sgs-box .sgs-icon{
+        margin-top: 0;
+    }
+    .sgs-box .sgs-title::before{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .sgs-box .sgs-txt-item{
+        border: 0;
+    }
+    .sgs-box .sgs-p{
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .sgs-box .sgs-sub{
+        font-size: 14px;
+    }
+}
+</style>
+<section class="section-box">
+  <div class="sgs-box">
+    <div class="container">
+      <div class="sgs-box-cont">
+        {%- if block.settings.image != blank -%}
+          <img loading="lazy" class="sgs-img pc-box to-opacity" width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}" {% render 'image-attributes' , image: block.settings.image %}
+            alt="{{ block.settings.image.alt | escape }}">
+        {%- endif -%}
+        {%- if block.settings.image_m != blank -%}
+          <img loading="lazy" class="sgs-img mb-box to-opacity" width="{{ block.settings.image_m.width }}"
+            height="{{ block.settings.image_m.height }}" {% render 'image-attributes' , image: block.settings.image_m %}
+            alt="{{ block.settings.image_m.alt | escape }}">
+        {%- endif -%}
+        <div class="sgs-text">
+          <div class="sgs-sub text-top">{{ section.settings.text }}</div>
+          <div class="sgs-title text-top" style="transition-delay: 0.5s">{{ section.settings.text1 }}</div>
+          <div class="sgs-p to-top" style="transition-delay: 0.8s">
+            {{ section.settings.text2 }}
+          </div>
+          <div class="sgs-txt-list">
+            {%- if block.settings.image != blank -%}
+              <div class="sgs-txt-item to-top" style="transition-delay: 1s">
+                <img loading="lazy" class="sgs-icon" width="{{ block.settings.image1.width }}"
+                height="{{ block.settings.image1.height }}" {% render 'image-attributes' , image: block.settings.image1 %}
+                alt="{{ block.settings.image1.alt | escape }}">
+              </div>
+            {%- endif -%}
+            <div class="sgs-txt-item to-top" style="transition-delay: 1.1s">
+              <div class="sgs-txt-p">{{ section.settings.text3 }}</div>
+              <div class="sgs-txt-num">-<span class="num-an">{{ section.settings.text4 }}</span>%</div>
+            </div>
+            <div class="sgs-txt-item to-top" style="transition-delay: 1.1s">
+              <div class="sgs-txt-p">{{ section.settings.text5 }}</div>
+              <div class="sgs-txt-num">-<span class="num-an">{{ section.settings.text6 }}</span>%</div>
+            </div>
+            <div class="sgs-txt-item to-top" style="transition-delay: 1.1s">
+              <div class="sgs-txt-p">{{ section.settings.text7 }}</div>
+              <div class="sgs-txt-num">-<span class="num-an">{{ section.settings.text8 }}</span>%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (function() {
+    function animateNumber(element, start, end, duration) {
+      let startTime = null;
+      const step = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          element.textContent = Math.floor(progress * (end - start) + start);
+          if (progress < 1) {
+              requestAnimationFrame(step);
+          }
+      };
+      requestAnimationFrame(step);
+    }
+    function isElementInViewportNum(element) {
+      const bounding = element.getBoundingClientRect();
+      return (
+        bounding.bottom >= 0 &&
+        bounding.top <= window.innerHeight
+      );
+    }
+    window.addEventListener('scroll', function(){
+      document.querySelectorAll('.num-an').forEach(el=>{
+        if(isElementInViewportNum(el)){
+          if(!el.classList.contains('isan')){
+            animateNumber(el, 0, el.innerText, 3000)
+            el.classList.add('isan')
+          }
+        }
+      })
+    });
+  })();
+</script>
+{% schema %}
+  {
+    "name": "sgs-diy",
+    "class": "sgs-diy",
+    "blocks": [],
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_m",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text1",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text2",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text3",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text4",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text5",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text6",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text7",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "text8",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "sgs-diy",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

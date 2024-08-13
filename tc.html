@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .spin-win {
+      padding: 130px 0 70px;
+    }
+
+    .spin-win .container {
+      max-width: 1400px;
+    }
+
+    .spin-win .spin-box {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 1.00) -6.5%, #F0EFFF 106.5%);
+      padding: 40px 0;
+      border-radius: 10px;
+    }
+
+    .spin-win .img-box {
+      width: 60%;
+    }
+
+    .spin-win .img-box .img {
+      width: 50%;
+      display: block;
+      margin: 0 auto;
+      margin-top: -12%;
+    }
+
+    .spin-win .spin-title {
+      color: #000;
+      font-size: 45px;
+      line-height: 1.2;
+    }
+
+    .spin-win .spin-title p {
+      margin: 0;
+    }
+
+    .spin-win .spin-btn {
+      font-size: 18px;
+      background: #000;
+      color: #fff;
+      width: 188px;
+      height: 50px;
+      border-radius: 50px;
+      margin-top: 30px;
+      cursor: pointer;
+    }
+
+    @media (max-width:991px) {
+      .spin-win {
+        padding: 50px 0;
+      }
+
+      .spin-win .spin-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .spin-win .img-box {
+        width: 100%;
+      }
+
+      .spin-win .spin-title {
+        font-size: 28px;
+        text-align: center;
+      }
+
+      .spin-win .img-box .img {
+        width: 60%;
+        margin-top: -18%;
+      }
+
+      .spin-win .spin-btn {
+        margin: 0 auto;
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="spin-win">
+    <div class="container">
+      <div class="spin-box">
+        <div class="img-box">
+          <img src="./images/转盘.svg" alt="" class="img">
+        </div>
+        <div class="spin-text">
+          <div class="spin-title">
+            Spin to win<br />
+            Up to a Free device
+          </div>
+          <div class="spin-btn btn-diy">
+            <div class="btn-txt" text="Spin now">
+              <span>Spin now</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

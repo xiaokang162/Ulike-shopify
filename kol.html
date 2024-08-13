@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/kol.css" />
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="banner-swiper">
+    <div class="kol-banner-list">
+      <div class="kol-banner banner-swiper-item">
+        <picture>
+          <source srcset="./images37/banner-m.png" media="(max-width: 991px)">
+          <img class="img" src="./images37/banner.webp">
+        </picture>
+        <img src="./images37/pop.webp" alt="" class="pop-img">
+        <div class="kol-banner-text">
+          <div class="container">
+            <div class="kol-title">6,000<strong>,000</strong><em>+</em></div>
+            <div class="kol-p">happy customers</div>
+            <div class="kol-btn">Global IPL Device Sales <strong>No. 1</strong></div>
+          </div>
+        </div>
+        <div class="kol-banner-msg">
+          <div class="container">
+            <div class="kol-banner-msg-txt">
+              *Data source: Euromonitor International (Shanghai) Ltd., measured in terms of global retail sales volume
+              of
+              home hair removal devices in 2022, based on research conducted in Dec. 2023. Home hair removal device
+              refers
+              to an at-home device removing unwanted hair by utilizing light energy, with typical light sources
+              including
+              IPL and laser.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="img-box banner-swiper-item">
+        <picture>
+          <source srcset="./images37/banner-m.png" media="(max-width: 991px)">
+          <img class="img" src="./images37/banner.webp">
+        </picture>
+        <div class="img-box-text">
+          <div class="container">
+            <div class="img-box-title"></div>
+            <div class="img-box-sbu"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="banner-swiper-dot">
+      <div class="banner-swiper-dot-item active"></div>
+      <div class="banner-swiper-dot-item"></div>
+    </div>
+  </div>
+
+
+  <script>
+    window.addEventListener('load', function () {
+      AMD()
+      bannerSwiper()
+    })
+
+    function bannerSwiper() {
+      let $p = $('.banner-swiper')
+      let $swiper = $p.find('.kol-banner-list')
+      let $item = $p.find('.banner-swiper-item')
+      let $dot = $p.find('.banner-swiper-dot-item')
+      let length = $item.length
+      let index = 0
+      let width = $p.width()
+      let timer = null
+
+      function changeSwiper() {
+        $swiper.css({ transform: `translateX(-${index * width}px)`, transition: 'transform 0.3s ease-in' })
+        $dot.removeClass('active').eq(index).addClass('active')
+      }
+
+      timer = setTimeout(function () {
+        index++
+        if (index >= length) index = 0
+        changeSwiper()
+      }, 5 * 1000)
+      $dot.click(function () {
+        console.log(0);
+        clearTimeout(timer)
+        index = $(this).index()
+        changeSwiper()
+        timer = setTimeout(function () {
+          index++
+          if (index >= length) index = 0
+          changeSwiper()
+        }, 5 * 1000)
+      })
+    }
+
+    function AMD() {
+      let duration = 2000; // 滚动时间（毫秒）
+      let interval = 50; // 数字更新间隔（毫秒）
+      let steps = duration / interval; // 更新次数
+
+      // 查找所有数字并用 span 包裹起来
+      $('.kol-title').html(function (_, html) {
+        return html.replace(/(\d{1,3}(?:,\d{3})*(?:\.\d+)?|\d+)/g, function (match) {
+          return '<span class="number" data-original="' + match + '">' + match + '</span>';
+        });
+      });
+
+      // 定义更新数字的函数
+      function updateNumbers(step) {
+        $('.number').each(function () {
+          let originalNumStr = $(this).data('original').replace(/,/g, ''); // 移除逗号
+          let originalNum = parseFloat(originalNumStr);
+          if (originalNum === 0) {
+            let randomNum = Math.floor(Math.random() * 1000); // 生成0到999的随机数
+            $(this).text(randomNum);
+          } else {
+            let increment = originalNum / steps;
+            let currentNum = Math.min(originalNum, Math.floor(step * increment));
+            $(this).text(currentNum.toLocaleString());
+          }
+        });
+      }
+
+      // 开始逐步增加或随机滚动
+      var step = 0;
+      var intervalId = setInterval(function () {
+        step++;
+        updateNumbers(step);
+        if (step >= steps) {
+          clearInterval(intervalId);
+          // 恢复原始数字
+          $('.number').each(function () {
+            var originalNum = $(this).data('original');
+            $(this).text(originalNum);
+          });
+        }
+      }, interval);
+    }
+
+  </script>
+  <div class="evaluations-text">
+    <div class="container">
+      <div class="evaluations-text-cont">
+        <div class="evaluations-text-left">
+          <div class="evaluations-text-left-cont">
+            <div>
+              <div class="evaluations-text-num">4.5</div>
+              <div class="evaluations-text-star">
+                <svg xmlns="http://www.w3.org/2000/svg" width="159" height="29" viewBox="0 0 159 29" fill="none">
+                  <path
+                    d="M13.8636 2.13209C14.056 1.63596 14.758 1.63596 14.9504 2.13209L18.126 10.3212C18.2083 10.5335 18.4067 10.6783 18.6339 10.6922L26.8557 11.1941C27.3745 11.2258 27.5955 11.8695 27.2055 12.2131L21.1176 17.578C20.9616 17.7154 20.8907 17.9255 20.9314 18.1293L22.7087 27.0338C22.8084 27.5336 22.2639 27.9117 21.8305 27.6435L14.7137 23.2405C14.5258 23.1243 14.2883 23.1243 14.1004 23.2405L6.98352 27.6435C6.55013 27.9117 6.0056 27.5336 6.10535 27.0338L7.88268 18.1293C7.92336 17.9255 7.85241 17.7154 7.69646 17.578L1.60856 12.2131C1.21856 11.8695 1.43952 11.2258 1.95837 11.1941L10.1801 10.6922C10.4074 10.6783 10.6057 10.5335 10.688 10.3212L13.8636 2.13209Z"
+                    fill="#E7004C" />
+                  <path
+                    d="M46.4886 2.13209C46.681 1.63596 47.383 1.63596 47.5754 2.13209L50.751 10.3212C50.8333 10.5335 51.0317 10.6783 51.2589 10.6922L59.4807 11.1941C59.9995 11.2258 60.2205 11.8695 59.8305 12.2131L53.7426 17.578C53.5866 17.7154 53.5157 17.9255 53.5564 18.1293L55.3337 27.0338C55.4334 27.5336 54.8889 27.9117 54.4555 27.6435L47.3387 23.2405C47.1508 23.1243 46.9133 23.1243 46.7254 23.2405L39.6085 27.6435C39.1751 27.9117 38.6306 27.5336 38.7304 27.0338L40.5077 18.1293C40.5484 17.9255 40.4774 17.7154 40.3215 17.578L34.2336 12.2131C33.8436 11.8695 34.0645 11.2258 34.5834 11.1941L42.8051 10.6922C43.0324 10.6783 43.2307 10.5335 43.313 10.3212L46.4886 2.13209Z"
+                    fill="#E7004C" />
+                  <path
+                    d="M79.1195 2.13209C79.3119 1.63596 80.0139 1.63596 80.2063 2.13209L83.3819 10.3212C83.4642 10.5335 83.6625 10.6783 83.8898 10.6922L92.1115 11.1941C92.6304 11.2258 92.8513 11.8695 92.4613 12.2131L86.3734 17.578C86.2175 17.7154 86.1465 17.9255 86.1872 18.1293L87.9646 27.0338C88.0643 27.5336 87.5198 27.9117 87.0864 27.6435L79.9695 23.2405C79.7816 23.1243 79.5441 23.1243 79.3562 23.2405L72.2394 27.6435C71.806 27.9117 71.2615 27.5336 71.3612 27.0338L73.1385 18.1293C73.1792 17.9255 73.1083 17.7154 72.9523 17.578L66.8644 12.2131C66.4744 11.8695 66.6954 11.2258 67.2142 11.1941L75.436 10.6922C75.6632 10.6783 75.8616 10.5335 75.9439 10.3212L79.1195 2.13209Z"
+                    fill="#E7004C" />
+                  <path
+                    d="M111.739 2.13209C111.931 1.63596 112.633 1.63596 112.825 2.13209L116.001 10.3212C116.083 10.5335 116.282 10.6783 116.509 10.6922L124.731 11.1941C125.25 11.2258 125.47 11.8695 125.08 12.2131L118.993 17.578C118.837 17.7154 118.766 17.9255 118.806 18.1293L120.584 27.0338C120.683 27.5336 120.139 27.9117 119.706 27.6435L112.589 23.2405C112.401 23.1243 112.163 23.1243 111.975 23.2405L104.859 27.6435C104.425 27.9117 103.881 27.5336 103.98 27.0338L105.758 18.1293C105.798 17.9255 105.727 17.7154 105.571 17.578L99.4836 12.2131C99.0936 11.8695 99.3145 11.2258 99.8334 11.1941L108.055 10.6922C108.282 10.6783 108.481 10.5335 108.563 10.3212L111.739 2.13209Z"
+                    fill="#E7004C" />
+                  <path
+                    d="M144.364 2.13172C144.556 1.6356 145.258 1.6356 145.45 2.13172L148.626 10.3208C148.708 10.5331 148.907 10.678 149.134 10.6919L157.356 11.1938C157.875 11.2255 158.095 11.8691 157.705 12.2128L151.618 17.5776C151.462 17.715 151.391 17.9251 151.431 18.1289L153.209 27.0335C153.308 27.5332 152.764 27.9113 152.331 27.6432L145.214 23.2402C145.026 23.1239 144.788 23.1239 144.6 23.2402L137.484 27.6432C137.05 27.9113 136.506 27.5332 136.605 27.0335L138.383 18.1289C138.423 17.9251 138.352 17.715 138.196 17.5776L132.109 12.2128C131.719 11.8691 131.94 11.2255 132.458 11.1938L140.68 10.6919C140.907 10.678 141.106 10.5331 141.188 10.3208L144.364 2.13172Z"
+                    fill="#E7004C" />
+                  <mask id="mask0_3843_6153" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="131" y="1" width="27"
+                    height="27">
+                    <path
+                      d="M144.364 2.1316C144.556 1.63548 145.258 1.63547 145.45 2.1316L148.626 10.3207C148.708 10.533 148.907 10.6779 149.134 10.6917L157.356 11.1937C157.875 11.2253 158.095 11.869 157.705 12.2127L151.618 17.5775C151.462 17.7149 151.391 17.925 151.431 18.1288L153.209 27.0333C153.308 27.5331 152.764 27.9112 152.331 27.6431L145.214 23.24C145.026 23.1238 144.788 23.1238 144.6 23.24L137.484 27.6431C137.05 27.9112 136.506 27.5331 136.605 27.0333L138.383 18.1288C138.423 17.925 138.352 17.7149 138.196 17.5775L132.109 12.2127C131.719 11.869 131.94 11.2253 132.458 11.1937L140.68 10.6917C140.907 10.6779 141.106 10.533 141.188 10.3207L144.364 2.1316Z"
+                      fill="#E7004C" />
+                  </mask>
+                  <g mask="url(#mask0_3843_6153)">
+                    <rect x="143.95" y="-11.7064" width="15.7052" height="43.1397" fill="#D9D9D9" />
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="evaluations-text-txt">
+              Hair removal is a multifaceted subject—while some see it as a chore, others find it liberating, even
+              life-changing. We aim to break the taboo around body hair and explore diverse viewpoints. Hair removal
+              should be a personal choice, and selecting the right device can make all the difference.
+            </div>
+          </div>
+        </div>
+        <div class="evaluations-text-right">
+          <div class="evaluations-text-swiper">
+
+            <div class="evaluations-text-item">
+              <div class="evaluations-text-p">
+                "I was very skeptical about whether this would work as I have severe PCOS and dark coarse hair. All I
+                can
+                say is WOW. I've actually had better and quicker results using this IPL device than I have with proper
+                laser hair removal at a salon."
+              </div>
+              <div class="evaluations-text-name">
+                <strong>Samantha S.</strong> Verified
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                  <rect x="0.708008" y="0.362061" width="25" height="25" rx="5" fill="#190A0A" />
+                  <path d="M5.70801 14.5539L9.65538 18.7833L20.708 6.94116" stroke="white" stroke-width="1.5" />
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="evaluations-text-dot">
+        <div class="evaluations-dot-item active"></div>
+        <div class="evaluations-dot-item"></div>
+        <div class="evaluations-dot-item"></div>
+        <div class="evaluations-dot-item"></div>
+      </div>
+      <div class="evaluations-text-arraw">
+        <div class="evaluations-text-arraw-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="28" viewBox="0 0 37 28" fill="none">
+            <g clip-path="url(#clip0_3843_6254)">
+              <path
+                d="M0.938477 13.6691C0.938477 13.8825 1.01926 14.0941 1.17379 14.2558L13.4665 27.158L14.7502 25.9847L3.83604 14.5293H36.9385C36.9385 13.5797 36.1517 12.809 35.1824 12.809H1.85691C1.52501 12.809 1.20189 12.9724 1.04384 13.2597C0.971844 13.3887 0.938477 13.5298 0.938477 13.6691Z"
+                fill="#190A0A" />
+              <path
+                d="M2.77594 10.6535C3.46257 11.3244 4.57418 11.3244 5.25906 10.6535L14.7314 1.37592L13.4899 0.159668L2.77769 10.6535H2.77594Z"
+                fill="#190A0A" />
+            </g>
+            <defs>
+              <clipPath id="clip0_3843_6254">
+                <rect width="36" height="27" fill="white" transform="matrix(-1 0 0 1 36.9385 0.159668)" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <div class="evaluations-text-arraw-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="37" height="28" viewBox="0 0 37 28" fill="none">
+            <g clip-path="url(#clip0_3843_6257)">
+              <path
+                d="M36.9385 13.6691C36.9385 13.8825 36.8577 14.0941 36.7032 14.2558L24.4105 27.158L23.1268 25.9847L34.0409 14.5293H0.938477C0.938477 13.5797 1.72521 12.809 2.69457 12.809H36.02C36.3519 12.809 36.6751 12.9724 36.8331 13.2597C36.9051 13.3887 36.9385 13.5298 36.9385 13.6691Z"
+                fill="#190A0A" />
+              <path
+                d="M35.101 10.6535C34.4144 11.3244 33.3028 11.3244 32.6179 10.6535L23.1455 1.37592L24.3871 0.159668L35.0993 10.6535H35.101Z"
+                fill="#190A0A" />
+            </g>
+            <defs>
+              <clipPath id="clip0_3843_6257">
+                <rect width="36" height="27" fill="white" transform="translate(0.938477 0.159668)" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function evaluationsTextSwiper() {
+        let $p = $('.evaluations-text')
+        let $right = $p.find(`.evaluations-text-right`)
+        let content = document.querySelector('.evaluations-text .evaluations-text-right')
+        let $swiper = $p.find(`.evaluations-text-swiper`)
+        let $dot = $p.find(`.evaluations-text-dot .evaluations-dot-item`)
+        let $arraw = $p.find(`.evaluations-text-arraw-item`)
+        let boxWidth = $right[0].offsetWidth
+        let itemWidth = $p.find('.evaluations-text-item')[0].offsetWidth
+        let itemLength = $p.find('.evaluations-text-item').length
+        let index = 0
+        let timer = null
+        let isLast = false
+
+        function changeLeft() {
+          let left = index * itemWidth
+          if (left < 0) {
+            left = 0
+          }
+          if (left > -boxWidth + itemWidth * itemLength) {
+            left = -boxWidth + itemWidth * itemLength
+            isLast = true
+          }
+          $dot.eq(index).addClass('active').siblings().removeClass('active')
+          $swiper.css({ transform: `translateX(-${left}px)`, transition: 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)', })
+        }
+        $dot.click(function () {
+          index = $(this).index()
+          // $(this).addClass('active').siblings().removeClass('active')
+          changeLeft()
+        })
+        $arraw.click(function () {
+          let sindex = $(this).index()
+          index += sindex ? 1 : -1
+          if (index < 0) index = 0
+          if (index > itemLength - 1) index = itemLength - 1
+          changeLeft()
+        })
+        detectSwipe(content, () => {
+          if (isLast) return
+          index++
+          if (index > itemLength - 1) index = itemLength - 1
+          changeLeft()
+        }, () => {
+          isLast = false
+          index--
+          if (index < 0) index = 0
+          changeLeft()
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      evaluationsTextSwiper()
+    })
+  </script>
+  <div class="evaluations-image">
+    <div class="container">
+      <div class="evaluations-image-title">Endorsed by Creators: Trusted and Tested</div>
+      <div class="evaluations-image-sub">Discover why Ulike products are favoured and reviewed by social media content
+        creators.</div>
+      <div class="evaluations-image-cont">
+        <div class="evaluations-image-swiper">
+          <div class="evaluations-image-list">
+            <div class="evaluations-image-item">
+              <div class="evaluations-image-img">
+                <img src="./images37/banner.webp" alt="" class="img">
+              </div>
+              <div class="evaluations-image-text">
+                <div class="evaluations-image-text-top">
+                  <div class="evaluations-image-user">
+                    <div class="evaluations-image-user-left">
+                      <img src="./images37/user.jpg" alt="" class="img">
+                      <div class="evaluations-image-user-info">
+                        <div class="evaluations-image-user-ins">@lucierosedonlan</div>
+                        <div class="evaluations-image-user-name">Instagram Blogger</div>
+                      </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="11.02mm" height="11.02mm" viewBox="0 0 31.23 31.23">
+                      <path
+                        d="M15.61,7.6a8,8,0,1,0,8,8A8,8,0,0,0,15.61,7.6Zm0,13.22a5.21,5.21,0,1,1,5.21-5.21A5.22,5.22,0,0,1,15.61,20.82ZM24,5.41a1.87,1.87,0,1,0,1.87,1.87A1.87,1.87,0,0,0,24,5.41Z"
+                        fill="#3f3636" />
+                      <path
+                        d="M31.23,15.61c0-2.15,0-4.29-.1-6.44a9.33,9.33,0,0,0-2.52-6.55A9.3,9.3,0,0,0,22.06.1C19.9,0,17.77,0,15.61,0S11.32,0,9.17.1A9.28,9.28,0,0,0,2.62,2.62,9.28,9.28,0,0,0,.1,9.17C0,11.33,0,13.46,0,15.61s0,4.3.1,6.45a9.28,9.28,0,0,0,2.52,6.55,9.28,9.28,0,0,0,6.55,2.52c2.16.12,4.29.1,6.44.1s4.3,0,6.45-.1a9.33,9.33,0,0,0,6.55-2.52,9.3,9.3,0,0,0,2.52-6.55C31.25,19.91,31.23,17.77,31.23,15.61Zm-3.44,9.22a5.35,5.35,0,0,1-3,3c-2.05.82-6.93.64-9.21.64s-7.16.18-9.21-.63a4.91,4.91,0,0,1-1.79-1.18,5,5,0,0,1-1.18-1.79c-.82-2.06-.63-6.94-.63-9.22s-.19-7.16.63-9.21A5,5,0,0,1,4.61,4.61,5,5,0,0,1,6.4,3.43c2-.81,6.93-.63,9.21-.63s7.16-.18,9.22.63a5,5,0,0,1,1.78,1.18A4.82,4.82,0,0,1,27.79,6.4c.82,2,.63,6.94.63,9.21S28.61,22.77,27.79,24.83Z"
+                        fill="#3f3636" />
+                    </svg>
+                  </div>
+                  <div class="evaluations-image-txt">
+                    "I've been using the Ulike Sapphire Air 10 IPL hair removal device for the last week and I've
+                    already noticed amazing results.’"
+                  </div>
+                  <a class="evaluations-image-link" target="_blank" href="">+Check full post</a>
+                </div>
+                <div class="evaluations-image-name">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11.02mm" height="11.02mm" viewBox="0 0 31.23 31.23">
+                    <path
+                      d="M15.61,7.6a8,8,0,1,0,8,8A8,8,0,0,0,15.61,7.6Zm0,13.22a5.21,5.21,0,1,1,5.21-5.21A5.22,5.22,0,0,1,15.61,20.82ZM24,5.41a1.87,1.87,0,1,0,1.87,1.87A1.87,1.87,0,0,0,24,5.41Z"
+                      fill="#3f3636" />
+                    <path
+                      d="M31.23,15.61c0-2.15,0-4.29-.1-6.44a9.33,9.33,0,0,0-2.52-6.55A9.3,9.3,0,0,0,22.06.1C19.9,0,17.77,0,15.61,0S11.32,0,9.17.1A9.28,9.28,0,0,0,2.62,2.62,9.28,9.28,0,0,0,.1,9.17C0,11.33,0,13.46,0,15.61s0,4.3.1,6.45a9.28,9.28,0,0,0,2.52,6.55,9.28,9.28,0,0,0,6.55,2.52c2.16.12,4.29.1,6.44.1s4.3,0,6.45-.1a9.33,9.33,0,0,0,6.55-2.52,9.3,9.3,0,0,0,2.52-6.55C31.25,19.91,31.23,17.77,31.23,15.61Zm-3.44,9.22a5.35,5.35,0,0,1-3,3c-2.05.82-6.93.64-9.21.64s-7.16.18-9.21-.63a4.91,4.91,0,0,1-1.79-1.18,5,5,0,0,1-1.18-1.79c-.82-2.06-.63-6.94-.63-9.22s-.19-7.16.63-9.21A5,5,0,0,1,4.61,4.61,5,5,0,0,1,6.4,3.43c2-.81,6.93-.63,9.21-.63s7.16-.18,9.22.63a5,5,0,0,1,1.78,1.18A4.82,4.82,0,0,1,27.79,6.4c.82,2,.63,6.94.63,9.21S28.61,22.77,27.79,24.83Z"
+                      fill="#3f3636" />
+                  </svg>
+                  @lucierosedonlan
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="evaluations-image-arraw">
+          <div class="evaluations-image-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="28" viewBox="0 0 37 28" fill="none">
+              <g clip-path="url(#clip0_3843_6433)">
+                <path
+                  d="M0.870117 13.6291C0.870117 13.8424 0.950897 14.054 1.10543 14.2157L13.3981 27.1179L14.6818 25.9446L3.76768 14.4892H36.8701C36.8701 13.5396 36.0834 12.7689 35.114 12.7689H1.78856C1.45665 12.7689 1.13353 12.9323 0.975483 13.2196C0.903484 13.3487 0.870117 13.4897 0.870117 13.6291Z"
+                  fill="#190A0A" />
+                <path
+                  d="M2.70758 10.6134C3.39421 11.2843 4.50582 11.2843 5.1907 10.6134L14.6631 1.33588L13.4215 0.119629L2.70933 10.6134H2.70758Z"
+                  fill="#190A0A" />
+              </g>
+              <defs>
+                <clipPath id="clip0_3843_6433">
+                  <rect width="36" height="27" fill="white" transform="matrix(-1 0 0 1 36.8701 0.119629)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="evaluations-image-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="37" height="28" viewBox="0 0 37 28" fill="none">
+              <g clip-path="url(#clip0_3843_6436)">
+                <path
+                  d="M36.6172 13.6291C36.6172 13.8424 36.5364 14.054 36.3819 14.2157L24.0892 27.1179L22.8055 25.9446L33.7196 14.4892H0.617188C0.617188 13.5396 1.40392 12.7689 2.37329 12.7689H35.6987C36.0307 12.7689 36.3538 12.9323 36.5118 13.2196C36.5838 13.3487 36.6172 13.4897 36.6172 13.6291Z"
+                  fill="#190A0A" />
+                <path
+                  d="M34.7797 10.6134C34.0931 11.2843 32.9815 11.2843 32.2966 10.6134L22.8242 1.33588L24.0658 0.119629L34.778 10.6134H34.7797Z"
+                  fill="#190A0A" />
+              </g>
+              <defs>
+                <clipPath id="clip0_3843_6436">
+                  <rect width="36" height="27" fill="white" transform="translate(0.617188 0.119629)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="evaluations-image-dot">
+        <div class="evaluations-image-dot-item active"></div>
+        <div class="evaluations-image-dot-item"></div>
+        <div class="evaluations-image-dot-item"></div>
+        <div class="evaluations-image-dot-item"></div>
+        <div class="evaluations-image-dot-item"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function evaluationsImageSwiper() {
+        let $p = $('.evaluations-image')
+        let $right = $p.find(`.evaluations-image-swiper`)
+        let content = document.querySelector('.evaluations-image .evaluations-image-swiper')
+        let $swiper = $p.find(`.evaluations-image-list`)
+        let $dot = $p.find(`.evaluations-image-dot-item`)
+        let $arraw = $p.find(`.evaluations-image-arraw-item`)
+        let boxWidth = $right[0].offsetWidth
+        let itemWidth = $p.find('.evaluations-image-item')[0].offsetWidth
+        let itemLength = $p.find('.evaluations-image-item').length
+        let index = 0
+        let timer = null
+        function changeLeft() {
+          let left = index * (itemWidth + 40)
+          if (left < 0) {
+            left = 0
+          }
+          if (left > -boxWidth + (itemWidth + 40) * itemLength - 40) {
+            left = -boxWidth + (itemWidth + 40) * itemLength - 40
+          }
+          $dot.eq(index).addClass('active').siblings().removeClass('active')
+          $swiper.css({ transform: `translateX(-${left}px)`, transition: 'all .5s cubic-bezier(0.645, 0.045, 0.355, 1)', })
+        }
+        $arraw.click(function () {
+          let sindex = $(this).index()
+          index += sindex ? 1 : -1
+          if (index > itemLength - 1) index = itemLength - 1
+          if (index < 0) index = 0
+          changeLeft()
+        })
+        $dot.click(function () {
+          index = $(this).index()
+          changeLeft()
+        })
+        detectSwipe(content, () => {
+          index++
+          if (index > itemLength - 1) index = itemLength - 1
+          changeLeft()
+        }, () => {
+          index--
+          if (index < 0) index = 0
+          changeLeft()
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      evaluationsImageSwiper()
+    })
+  </script>
+</body>
+
+</html>

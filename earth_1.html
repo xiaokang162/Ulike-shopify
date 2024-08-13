@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .review-video {
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .review-video .webgl {
+      pointer-events: none;
+      position: relative;
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="review-video">
+    <canvas class="webgl"></canvas>
+  </div>
+  <script type="importmap">
+    {
+      "imports": {
+					"three": "./js/three.module.min.js",
+					"three/addons/": "./js/"
+				}
+    }
+  </script>
+
+  <script type="module">
+
+    import * as THREE from "three";
+
+    import { OrbitControls } from "three/addons/OrbitControls.js";
+    import { OBJLoader } from "https://cdn.skypack.dev/three@0.132.2/examples/jsm/loaders/OBJLoader.js";
+    import { mergeGeometries } from 'three/addons/BufferGeometryUtils.js';
+    let reviewVideo = document.querySelector('.review-video')
+    initThree()
+
+    function initThree() {
+      let earth;
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(window.innerWidth > 640 ? 45 : 75, reviewVideo.clientWidth / reviewVideo.clientHeight, .01, 50);
+      camera.position.set(0, 1, 7.5);
+      scene.position.set(0, -2.6, 0);
+      const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('canvas.webgl'),
+        antialias: true,
+        alpha: true
+      });
+      renderer.setSize(reviewVideo.clientWidth, reviewVideo.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+
+
+      let params = {
+        colors: { base: '#e7004c', gradInner: '#e7004c', gradOuter: '#e7004c' },
+        reset: () => { controls.reset() }
+      }
+
+      let uniforms = {
+        maxSize: {
+          value: 0.06
+        },
+        minSize: {
+          value: 0.009
+        },
+        waveHeight: {
+          value: 0.1
+        },
+        scaling: {
+          value: 1
+        },
+        gradInner: {
+          value: new THREE.Color(params.colors.gradInner)
+        },
+        gradOuter: {
+          value: new THREE.Color(params.colors.gradOuter)
+        }
+      }
+
+      makeGlobeOfPoints();
+      window.addEventListener('resize', onWindowResize);
+      const group = new THREE.Group();
+      scene.add(group);
+      group.rotation.y = 0;
+
+      let subgroups = [];
+      let airplane
+      new OBJLoader().load("./models/Airplane_model2.obj", (obj) => {
+        airplane = obj;
+        const mat = new THREE.MeshPhongMaterial({
+          emissive: 0xe7004c,
+          emissiveIntensity: 1,
+        });
+
+        airplane.children.forEach(child => {
+          if (window.innerWidth > 640) {
+            child.geometry.scale(0.00015, 0.00015, 0.00015);
+          } else {
+            child.geometry.scale(0.0003, 0.0003, 0.0003);
+          }
+          child.geometry.translate(0, 5.2, 0);
+          child.material = mat;
+        });
+
+
+        const directionalLight = new THREE.DirectionalLight(0xe7004c, 1);
+        directionalLight.position.set(0, 0, 0).normalize();
+        airplane.add(directionalLight);
+
+        let angles = [-0.3, -0.1, -0.3, -0.1];
+        let speeds = [0.018, 0.018, 0.015, 0.01];
+        let rotations = [1, 0, 1, 0];
+        for (let i = 0; i < 4; i++) {
+          const g = new THREE.Group();
+          g.speed = speeds[i];
+          subgroups.push(g);
+          group.add(g);
+          const g2 = new THREE.Group();
+          let _airplane = airplane.clone();
+          g.add(g2);
+          g2.add(_airplane);
+          g2.rotation.x = rotations[i];
+          g.rotation.y = angles[i];
+
+          // Reverse airplane rotation
+          g.reverse = i == 0;
+          if (i == 0) {
+            _airplane.children[0].geometry = airplane.children[0].geometry.clone().rotateY(Math.PI / 2);
+          }
+
+        }
+      });
+
+      renderer.setAnimationLoop(_ => {
+        earth.rotation.y += 0.001;
+        let speedNum = window.innerWidth > 640 ? 0.5 : 1
+        // Rotate each plane
+        subgroups.forEach((g, index) => {
+          if (index == 0) {
+            g.children[0].rotation.z += (g.speed * (g.reverse ? (0 - speedNum) : speedNum));
+          } else {
+            g.children[0].rotation.x += (g.speed * (g.reverse ? (0 - speedNum) : speedNum));
+          }
+        });
+
+        renderer.render(scene, camera);
+      });
+
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+
+      function makeGlobeOfPoints() {
+        let dummyObj = new THREE.Object3D();
+        let p = new THREE.Vector3();
+        let sph = new THREE.Spherical();
+        let geoms = [];
+        let tex = new THREE.TextureLoader().load('https://cdn.shopify.com/s/files/1/0656/9079/6273/files/earth1.jpg');
+        let counter = 75000;
+        let rad = 5;
+        let r = 0;
+        let dlong = Math.PI * (3 - Math.sqrt(5));
+        let dz = 2 / counter;
+        let long = 0;
+        let z = 1 - dz / 2;
+        for (let i = 0; i < counter; i++) {
+          r = Math.sqrt(1 - z * z);
+          p.set(Math.cos(long) * r, z, -Math.sin(long) * r).multiplyScalar(rad);
+          z = z - dz;
+          long = long + dlong;
+          sph.setFromVector3(p);
+          dummyObj.lookAt(p);
+          dummyObj.updateMatrix();
+          let g = new THREE.PlaneGeometry(1, 1);
+          g.applyMatrix4(dummyObj.matrix);
+          g.translate(p.x, p.y, p.z);
+          let centers = [
+            p.x, p.y, p.z,
+            p.x, p.y, p.z,
+            p.x, p.y, p.z,
+            p.x, p.y, p.z
+          ];
+          let uv = new THREE.Vector2(
+            (sph.theta + Math.PI) / (Math.PI * 2),
+            1. - sph.phi / Math.PI
+          );
+          let uvs = [
+            uv.x, uv.y,
+            uv.x, uv.y,
+            uv.x, uv.y,
+            uv.x, uv.y
+          ];
+          g.setAttribute('center', new THREE.Float32BufferAttribute(centers, 3));
+          g.setAttribute('baseUv', new THREE.Float32BufferAttribute(uvs, 2));
+          geoms.push(g);
+        }
+        let g = mergeGeometries(geoms);
+        let m = new THREE.MeshBasicMaterial({
+          color: new THREE.Color(params.colors.base),
+          onBeforeCompile: shader => {
+            shader.uniforms.maxSize = uniforms.maxSize;
+            shader.uniforms.minSize = uniforms.minSize;
+            shader.uniforms.waveHeight = uniforms.waveHeight;
+            shader.uniforms.scaling = uniforms.scaling;
+            shader.uniforms.gradInner = uniforms.gradInner;
+            shader.uniforms.gradOuter = uniforms.gradOuter;
+            shader.uniforms.tex = { value: tex };
+            shader.vertexShader = `
+						struct impact {
+						  vec3 impactPosition;
+						  float impactMaxRadius;
+						  float impactRatio;
+						};
+						uniform sampler2D tex;
+						uniform float maxSize;
+						uniform float minSize;
+						uniform float waveHeight;
+						uniform float scaling;
+			
+						attribute vec3 center;
+						attribute vec2 baseUv;
+			
+						varying float vFinalStep;
+						varying float vMap;
+			
+						${shader.vertexShader}
+					  `.replace(
+              `#include <begin_vertex>`,
+              `#include <begin_vertex>
+						float finalStep = 0.0;
+
+						finalStep = clamp(finalStep, 0., 1.);
+						vFinalStep = finalStep;
+			
+						float map = texture(tex, baseUv).g;
+						vMap = map;
+						float pSize = map < 0.5 ? maxSize : minSize;
+						float scale = scaling;
+			
+						transformed = (position - center) * pSize * mix(1., scale * 1.25, finalStep) + center; // scale on wave
+						transformed += normal * finalStep * waveHeight; // lift on wave
+						`
+            );
+            shader.fragmentShader = `
+						uniform vec3 gradInner;
+						uniform vec3 gradOuter;
+						varying float vFinalStep;
+						varying float vMap;
+						${shader.fragmentShader}
+						`.replace(
+              `vec4 diffuseColor = vec4( diffuse, opacity );`,
+              `
+						// shaping the point, pretty much from The Book of Shaders
+						vec2 hUv = (vUv - 0.5);
+						int N = 8;
+						float a = atan(hUv.x,hUv.y);
+						float r = PI2/float(N);
+						float d = cos(floor(.5+a/r)*r-a)*length(hUv);
+						float f = cos(PI / float(N)) * 0.5;
+						if (d > f) discard;
+			
+						vec3 grad = mix(gradInner, gradOuter, clamp( d / f, 0., 1.)); // gradient
+						vec3 diffuseMap = diffuse * ((vMap > 0.5) ? 0.5 : 1.);
+						vec3 col = mix(diffuseMap, grad, vFinalStep); // color on wave
+						//if (!gl_FrontFacing) col *= 0.25; // moderate the color on backside
+						vec4 diffuseColor = vec4( col , opacity );
+						`
+            );
+          }
+        });
+        m.defines = { 'USE_UV': '' };
+        earth = new THREE.Mesh(g, m);
+        earth.rotation.y = Math.PI;
+        earth.position.set(0, 0, 0);
+        scene.add(earth);
+      }
+
+      function onWindowResize() {
+        camera.aspect = reviewVideo.clientWidth / reviewVideo.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(reviewVideo.clientWidth, reviewVideo.clientHeight);
+      }
+    }
+  </script>
+</body>
+</body>
+
+</html>

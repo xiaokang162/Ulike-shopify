@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // this page is a demo that is not built, so fudge the module.exports support
+    // define a global `module` so that the actual source file can use it
+    window.module = {};
+  </script>
+  <script src="./js/confetti.js"></script>
+  <script>
+    // define the `module.exports` as the `confetti` global, the way that the
+    // cdn distributed file would
+    window.confetti = module.exports;
+  </script>
+</head>
+
+<body>
+  <button id="test-confetti">Emoji confetti test</button>
+</body>
+<script>
+  const connectTest = () => {
+    // const button = document.getElementById('test-confetti');
+
+    const scalar = 1;
+    // button.onclick = () => {
+    confetti({
+      colors: ['FFE400', 'FFBD00', 'E89400', 'FFCA6C', 'FDFFB8'],
+      particleCount: 200,
+      angle: -245,
+      spread: 60,
+      scalar,
+      origin: { y: 0.7, x: 0.5 }
+    });
+    confetti({
+      particleCount: 200,
+      angle: 45,
+      spread: 60,
+      scalar,
+      origin: { y: 0.7, x: 0.5 }
+    });
+    // };
+  };
+  connectTest();
+</script>
+
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/summer-sale.css" />
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="sunmmer-banner">
+    <img src="./images34/a1.jpg" alt="" class="img pc-box">
+    <img src="./images34/a2.jpg" alt="" class="img mb-box">
+    <div class="sunmmer-banner-text">
+      <div class="container">
+        <div class="sunmmer-banner-text-left">
+          <div class="sunmmer-banner-tag to-top">
+            SUMMER SALE
+          </div>
+          <div class="sunmmer-banner-title line-top" style="transition-delay: 0.1s">Air 10, visible results in just 1
+            week*</div>
+          <div class="sunmmer-banner-sub line-top" style="transition-delay: 0.2s">Laser-like effectiveness from comfort
+            of home.</div>
+        </div>
+        <div class="sunmmer-banner-text-right to-top" style="transition-delay: 0.3s">
+          <div class="sunmmer-banner-btn">
+            <div>
+              <div class="sunmmer-banner-t">Summer Exclusive Gifts <span>Worth £20</span></div>
+              <div class="sunmmer-banner-p">
+                Aloe Vera Gel × 1
+              </div>
+              <div class="sunmmer-banner-p">
+                Aloe Vera Gel × 1
+              </div>
+            </div>
+            <img src="./images34/a3.png" class="img" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sunmmer-icon">
+    <div class="container">
+      <div class="sunmmer-icon-cont">
+        <div class="sunmmer-icon-left">
+          <div class="sunmmer-icon-top">
+            <div class="sunmmer-icon-title">
+              Free Try,
+              Easy Return ×
+              <img src="./images34/b1.svg" alt="" class="title-img">
+            </div>
+          </div>
+          <div class="sunmmer-icon-sub">Don't worry, we offer a chance to regret it.</div>
+        </div>
+        <div class="sunmmer-icon-right">
+          <div class="sunmmer-icon-item">
+            <img src="./images34/1.svg" alt="" class="icon-img">
+            <div class="sunmmer-icon-p">Select Klarna - Pay in 30 days on Checkout.</div>
+          </div>
+          <div class="sunmmer-icon-item">
+            <img src="./images34/2.svg" alt="" class="icon-img">
+            <div class="sunmmer-icon-p">Try your Ulike for free in 30 days.</div>
+          </div>
+          <div class="sunmmer-icon-item">
+            <img src="./images34/3.svg" alt="" class="icon-img">
+            <div class="sunmmer-icon-p">Get charged after Klarna's Payment Confirmation Email.</div>
+          </div>
+          <div class="sunmmer-icon-item">
+            <img src="./images34/4.svg" alt="" class="icon-img">
+            <div class="sunmmer-icon-p">Return in 90 days if you are not interested.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sunmmer-icon-dot">
+        <div class="sunmmer-icon-dot-item active"></div>
+        <div class="sunmmer-icon-dot-item"></div>
+        <div class="sunmmer-icon-dot-item"></div>
+        <div class="sunmmer-icon-dot-item"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function sunmmerIconSwiper() {
+        let $p = $('.sunmmer-icon')
+        let $list = $p.find('.sunmmer-icon-right')
+        const content = document.querySelector('.sunmmer-icon .sunmmer-icon-right');
+        let length = $list.find('.sunmmer-icon-item').length
+        let width = $list.find('.sunmmer-icon-item')[0].offsetWidth
+        let $dot = $p.find('.sunmmer-icon-dot-item')
+        let index = 0
+        let pWidth = $p[0].offsetWidth
+        let marginW = 40
+        let lWidth = length * (width + marginW) + $list[0].offsetLeft
+        let translateX = 0
+
+        function changeTransform(num) {
+          index += num
+          translateX += (width + marginW) * num
+          if (translateX > lWidth - pWidth) {
+            translateX = lWidth - pWidth
+            index = length - 1
+          }
+          if (translateX < 0) translateX = 0
+          if (index < 0) index = 0
+          $dot.removeClass('active')
+          $dot.eq(index).addClass('active')
+          $list.css({
+            transform: 'translateX(-' + translateX + 'px)',
+            transition: 'all 1s cubic-bezier(0.645, 0.045, 0.355, 1) 0s'
+          })
+        }
+        detectSwipe(content, () => {
+          changeTransform(1)
+        }, () => {
+          changeTransform(-1)
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      if (window.innerWidth < 641) {
+        sunmmerIconSwiper()
+      }
+    })
+  </script>
+  <div class="visible-results to-top">
+    <div class="visible-results-title mb-box to-top">Visible Results in Just 1 Week*!</div>
+    <div class="visible-results-sub mb-box to-top">*Results based on a 6-week laboratory study with 32 subjects with
+      continuously used for 7 days under normalconditions by capturing images to analyze Hair Density (Hair %).</div>
+    <div class="visible-results-left to-top" style="transition-delay: 0.2s">
+      <div class="visible-results-dot">
+        <div class="visible-results-dot-item active">Special Events</div>
+        <div class="visible-results-dot-item">Special Events</div>
+        <div class="visible-results-dot-item">Special Events</div>
+        <div class="visible-results-dot-item">Special Events</div>
+        <div class="visible-results-dot-item">Special Events</div>
+      </div>
+      <div class="visible-results-cont">
+        <div class="visible-results-top">
+          <img src="./images34/d1.svg" alt="" class="icon-img pc-box">
+          <img src="./images34/d2.svg" alt="" class="icon-img mb-box">
+        </div>
+        <div class="visible-results-img">
+          <div class="visible-results-img-item active">
+            <img src="./images34/d1.jpg" alt="" class="img pc-box">
+            <img src="./images34/d2.jpg" alt="" class="img mb-box">
+          </div>
+          <div class="visible-results-img-item">
+            <img src="./images34/d1.jpg" alt="" class="img pc-box">
+            <img src="./images34/d2.jpg" alt="" class="img mb-box">
+          </div>
+          <div class="visible-results-img-item">
+            <img src="./images34/d1.jpg" alt="" class="img pc-box">
+            <img src="./images34/d2.jpg" alt="" class="img mb-box">
+          </div>
+          <div class="visible-results-img-item">
+            <img src="./images34/d1.jpg" alt="" class="img pc-box">
+            <img src="./images34/d2.jpg" alt="" class="img mb-box">
+          </div>
+          <div class="visible-results-img-item">
+            <img src="./images34/d1.jpg" alt="" class="img pc-box">
+            <img src="./images34/d2.jpg" alt="" class="img mb-box">
+          </div>
+        </div>
+
+        <div class="visible-results-arraw">
+          <div class="visible-results-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
+              <g clip-path="url(#clip0_2295_4473)">
+                <circle cx="25.5" cy="25.5" r="24.9205" stroke="white" stroke-width="1.15909" />
+                <path
+                  d="M15.0682 26.0559C15.0682 26.1937 15.1202 26.3304 15.2197 26.4349L23.1355 34.7727L23.9621 34.0145L16.934 26.6117H38.25C38.25 25.998 37.7434 25.5 37.1192 25.5H15.6596C15.4459 25.5 15.2378 25.6056 15.136 25.7913C15.0897 25.8746 15.0682 25.9658 15.0682 26.0559Z"
+                  fill="white" />
+                <path
+                  d="M15.0681 22.8636C15.6006 23.2879 16.4628 23.2879 16.994 22.8636L24.3408 16.9965L23.3779 16.2273L15.0695 22.8636H15.0681Z"
+                  fill="white" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2295_4473">
+                  <rect width="51" height="51" fill="white" transform="matrix(-1 0 0 1 51 0)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="visible-results-arraw-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
+              <g clip-path="url(#clip0_2295_4477)">
+                <circle cx="25.5" cy="25.5" r="24.9205" transform="matrix(-1 0 0 1 51 0)" stroke="white"
+                  stroke-width="1.15909" />
+                <path
+                  d="M37.091 25.9864C37.091 26.107 37.039 26.2266 36.9395 26.3181L29.0237 33.6136L28.1971 32.9502L35.2251 26.4727H13.9092C13.9092 25.9358 14.4158 25.5 15.04 25.5H36.4996C36.7133 25.5 36.9214 25.5924 37.0231 25.7549C37.0695 25.8278 37.091 25.9076 37.091 25.9864Z"
+                  fill="white" />
+                <path
+                  d="M35.9318 22.9166C35.5324 23.2702 34.8858 23.2702 34.4874 22.9166L28.9773 18.0273L29.6995 17.3864L35.9308 22.9166H35.9318Z"
+                  fill="white" />
+              </g>
+              <defs>
+                <clipPath id="clip0_2295_4477">
+                  <rect width="51" height="51" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="visible-results-right to-top" style="transition-delay: 0.3s">
+      <div class="visible-results-box">
+        <div class="visible-results-title pc-box">Visible Results in Just 1 Week*!</div>
+        <div class="visible-results-sub pc-box">*Results based on a 6-week laboratory study with 32 subjects with
+          continuously used for 7 days under normalconditions by capturing images to analyze Hair Density (Hair %).
+        </div>
+        <div class="visible-results-det">
+          <div class="visible-results-num-list">
+            <div class="visible-results-num active">
+              <div class="visible-results-n"><span>-90</span>.63%</div>
+              <div class="visible-results-p">Bikini area</div>
+            </div>
+            <div class="visible-results-num">
+              <div class="visible-results-n"><span>-91</span>.63%</div>
+              <div class="visible-results-p">Bikini area</div>
+            </div>
+            <div class="visible-results-num">
+              <div class="visible-results-n"><span>-92</span>.63%</div>
+              <div class="visible-results-p">Bikini area</div>
+            </div>
+            <div class="visible-results-num">
+              <div class="visible-results-n"><span>-93</span>.63%</div>
+              <div class="visible-results-p">Bikini area</div>
+            </div>
+            <div class="visible-results-num">
+              <div class="visible-results-n"><span>-94</span>.63%</div>
+              <div class="visible-results-p">Bikini area</div>
+            </div>
+          </div>
+          <div class="visible-results-db">
+            <div class="visible-results-db-item">
+              <div class="visible-results-tag">Before</div>
+              <div class="sm-box active" data-src="./images34/d3.jpg" data-src1="./images34/d5.jpg">
+                <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+              </div>
+            </div>
+            <div class="visible-results-db-item">
+              <div class="visible-results-tag">After</div>
+              <div class="sm-box active">
+                <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+              </div>
+              <div class="sm-box">
+                <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .visible-results-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+      background: rgba(0, 0, 0, .5);
+      display: none;
+    }
+
+    .visible-results-popup .visible-results-popup-cont {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+    }
+
+    .visible-results-popup .visible-results-popup-img {
+      display: flex;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .visible-results-popup .visible-results-popup-img::before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      background: #fff;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .visible-results-popup .visible-results-popup-img .img-item {
+      flex: 1;
+    }
+
+    .visible-results-popup .img-item {
+      position: relative;
+    }
+
+    .visible-results-popup .img-label {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10px;
+      font-size: 14px;
+      color: #fff;
+      z-index: 2;
+    }
+
+    .visible-results-popup .visible-results-popup-img img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .visible-results-popup .visible-results-popup-close svg {
+      width: 1em;
+      height: 1em;
+      display: block;
+    }
+
+    .visible-results-popup .visible-results-popup-close {
+      color: #fff;
+      font-size: 40px;
+      width: 40px;
+      margin: 0 auto;
+      margin-top: 25px;
+    }
+  </style>
+  <div class="visible-results-popup">
+    <div class="visible-results-popup-cont">
+      <div class="visible-results-popup-img">
+        <div class="img-item">
+          <div class="img-label">Before</div>
+          <img src="./images34/d2.jpg" alt="">
+        </div>
+        <div class="img-item">
+          <div class="img-label">After</div>
+          <img src="./images34/d2.jpg" alt="">
+        </div>
+      </div>
+      <div class="visible-results-popup-close">
+        <svg data-v-b39369a2="" data-v-034dd544="" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+          <path data-v-b39369a2=""
+            d="M289.94 256l95-95A24 24 0 0 0 351 127l-95 95l-95-95a24 24 0 0 0-34 34l95 95l-95 95a24 24 0 1 0 34 34l95-95l95 95a24 24 0 0 0 34-34z"
+            fill="currentColor"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function visibleResultsSwiper() {
+        let $p = $('.visible-results')
+        let $leftItem = $p.find('.visible-results-img-item')
+        let $rightItem = $p.find('.visible-results-db-item')
+        let $numItem = $p.find('.visible-results-num')
+        let $arraw = $p.find('.visible-results-arraw-item')
+        let $dotItem = $p.find('.visible-results-dot-item')
+        let index = 0
+        let len = $leftItem.length
+        let content = document.querySelector('.visible-results .visible-results-cont')
+        function changeItem() {
+          $leftItem.removeClass('active').eq(index).addClass('active')
+          $rightItem.each(function () {
+            $(this).find('.sm-box').removeClass('active').eq(index).addClass('active')
+          })
+          $dotItem.removeClass('active').eq(index).addClass('active')
+          $numItem.removeClass('active').eq(index).addClass('active')
+        }
+
+        $p.find('.sm-box').click(function () {
+          if (window.innerWidth > 768) return
+          let $popup = $('.visible-results-popup')
+          let src = $(this).attr('data-src')
+          let src1 = $(this).attr('data-src1')
+          if (!src || !src1) return
+          $popup.find('.img-item').eq(0).find('img').attr('src', src)
+          $popup.find('.img-item').eq(1).find('img').attr('src', src1)
+          $popup.fadeIn(300)
+        })
+
+        $('.visible-results-popup .visible-results-popup-close').click(function () {
+          $(this).closest('.visible-results-popup').fadeOut(300)
+        })
+        $arraw.click(function () {
+          let sindex = $(this).index()
+          index += sindex ? 1 : -1
+          if (index < 0) index = len - 1
+          if (index >= len) index = 0
+          changeItem()
+        })
+
+        $dotItem.click(function () {
+          index = $(this).index()
+          changeItem()
+        })
+        detectSwipe(content, () => {
+          index += 1
+          if (index >= len) index = 0
+          changeItem()
+        }, () => {
+          index -= 1
+          if (index < 0) index = len - 1
+          changeItem()
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      visibleResultsSwiper()
+    })
+  </script>
+</body>
+<script src="./js/theme.js"></script>
+<script src="./js/script.js"></script>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+      * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+          max-width: 1600px;
+          margin: 0 auto;
+          padding: 40px;
+        }
+        .master-modular .master-modular-cont{
+          display: flex;
+          gap: 20px;
+        }
+        .master-modular .master-modular-item{
+          flex: 1;
+          position: relative;
+        }
+        .master-modular .img{
+          width: 100%;
+          display: block;
+          position: relative;
+          z-index: 1;
+        }
+        .master-modular .mb-box{
+          display: none;
+        }
+        .master-modular .master-modular-top{
+          position: absolute;
+          width: 100%;
+          left: 0;
+          top: 80px;
+          padding: 0 20px;
+          z-index: 2;
+          text-align: center;
+          color: #000;
+          line-height: 1.5;
+        }
+
+        .master-modular .master-modular-title{
+          font-size: 32px;
+          font-family: var(--heading-font-family);
+        }
+
+        .master-modular .master-modular-sub{
+          font-size: 16px;
+          margin-top: 10px;
+        }
+
+        .master-modular .master-modular-sub p{
+          margin: 0;
+        }
+
+        .master-modular .master-modular-sub strong{
+          font-weight: normal;
+        }
+
+        .master-modular .master-modular-det{
+          position: absolute;
+          z-index: 2;
+          left: 8%;
+          bottom: 19%;
+          color: #000;
+          line-height: 1.5;
+        }
+        
+        .master-modular .master-modular-name{
+          font-size: 18px;
+          font-family: var(--heading-font-family);
+        }
+
+        .master-modular .master-modular-p{
+          font-size: 14px;
+          margin-top: 10px;
+        }
+
+        .master-modular .master-modular-p p{
+          margin: 0;
+        }
+
+        .master-modular .master-modular-p strong{
+          font-weight: normal;
+          font-family: var(--heading-font-family);
+        }
+        @media (max-width:1300px) {
+          .master-modular .master-modular-top{
+            top: 50px;
+          }
+          .master-modular .master-modular-title{
+            font-size: 28px;
+          }
+          .master-modular .master-modular-sub{
+            font-size: 14px;
+          }
+          .master-modular .master-modular-name{
+            font-size: 14px;
+          }
+          .master-modular .master-modular-p{
+            font-size: 12px;
+          }
+        }
+        
+        @media (max-width:991px) {
+
+          .master-modular .container{
+            padding: 0;
+          }
+
+          .master-modular .pc-box{
+            display: none;
+          }
+          .master-modular .mb-box{
+            display: block;
+          }
+          .master-modular .master-modular-cont{
+            flex-direction: column;
+            gap: 0;
+          }
+          .master-modular .master-modular-top{
+            top: 0;
+            position: relative;
+          }
+          .master-modular .master-modular-m{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 40px;
+            z-index: 2;
+          }
+
+          .master-modular .master-modular-det{
+            position: relative;
+            left: 0;
+            width: 100%;
+            bottom: auto;
+            text-align: center;
+            margin-top: 5px;
+          }
+
+          .master-modular .master-modular-sub strong{
+            display: block;
+          }
+        }
+
+    </style>
+</head>
+<body>
+  <div class="master-modular">
+    <div class="container">
+      <div class="master-modular-cont">
+        <div class="master-modular-item">
+          <img src="./images30/t1.jpg" alt="" class="img pc-box">
+          <img src="./images30/t3.jpg" alt="" class="img mb-box">
+          <div class="master-modular-m">
+            <div class="master-modular-top">
+              <div class="master-modular-title">專家推薦</div>
+              <div class="master-modular-sub">Ulike首席科學家聯合研發</div>
+            </div>
+            <div class="master-modular-det">
+              <div class="master-modular-name">Professor M.R. Hamblin</div>
+              <div class="master-modular-p">
+                全球光療領域開拓者<br />
+                哈佛大學/麻省理工博士生導師<br />
+                發表SCI論文386篇
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="master-modular-item">
+          <img src="./images30/t2.jpg" alt="" class="img pc-box">
+          <img src="./images30/t4.jpg" alt="" class="img mb-box">
+          <div class="master-modular-m">
+            <div class="master-modular-top">
+              <div class="master-modular-title">臨床報告驗證</div>
+              <div class="master-modular-sub">Ulike 除毛儀起效快，效果好 ----南方醫科大學皮膚病醫院</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

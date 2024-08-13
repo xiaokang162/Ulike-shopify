@@ -2563,9 +2563,9 @@ Line 122:4 Transforming let to the configured target environment ("es5") is not 
         return this.loadedProducts[productHandle];
       }
       this.loadedProducts[productHandle] = new Promise(async (resolve) => {
-        const response = await fetch(`${window.themeVariables.routes.rootUrlWithoutSlash}/products/${productHandle}.js`);
-        const responseAsJson = await response.json();
-        resolve(responseAsJson);
+        // const response = await fetch(`${window.themeVariables.routes.rootUrlWithoutSlash}/products/${productHandle}.js`);
+        // const responseAsJson = await response.json();
+        // resolve(responseAsJson);
       });
       return this.loadedProducts[productHandle];
     }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <script src="./js/jquery.min.js"></script>
+  <style>
+    .container {
+      padding: 0 40px;
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    .olympic-image {
+      padding: 50px 0;
+    }
+
+    .olympic-image .container {
+      max-width: 1580px;
+    }
+
+    .olympic-image .olympic-image-cont {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .olympic-image .olympic-image-left {
+      max-width: 580px;
+    }
+
+    .olympic-image .olympic-image-title {
+      color: #190A0A;
+      font-size: 48px;
+      line-height: 1.2;
+    }
+
+    .olympic-image .olympic-image-p {
+      color: #3F3636;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-top: 30px;
+    }
+
+    .olympic-image .img {
+      width: 100%;
+    }
+
+    @media (max-width: 991px) {
+      .olympic-image .olympic-image-cont {
+        align-items: normal;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .olympic-image .olympic-image-title {
+        font-size: 26px;
+      }
+
+      .olympic-image .olympic-image-p {
+        margin-top: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="olympic-image">
+    <div class="container">
+      <div class="olympic-image-cont">
+        <div class="olympic-image-left">
+          <div class="olympic-image-title">2 Years of Smooth Skin with 10 Treatments*</div>
+          <div class="olympic-image-p">*Hair Reduction Results based 6-week laboratory study after 10 continuous
+            treatments (hair %).</div>
+        </div>
+        <div class="olympic-image-img">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393810_1_430x.svg"
+              media="(max-width: 991px)">
+            <img class="img" src="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393810_430x.svg">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

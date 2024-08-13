@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/comm.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1600px;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    .box {
+      display: flex;
+      align-items: flex-start;
+      padding: 30px;
+      gap: 40px;
+    }
+
+    .left {
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    .title-box {
+      font-size: 40px;
+      font-family: var(--heading-font-family);
+    }
+
+    .p-box {
+      font-size: 25px;
+      margin-top: 10px;
+    }
+
+    .input-box {
+      width: 100%;
+      height: 65px;
+      border-radius: 65px;
+      border: 1px solid #cfcfcf;
+      background: #f9f9f9;
+      text-align: center;
+      font-size: 30px;
+      margin-top: 30px;
+      outline: 0;
+    }
+
+    .btn-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      color: #fff;
+      background: #e7004c;
+      position: relative;
+      overflow: hidden;
+      border-radius: 65px;
+      height: 65px;
+      margin-top: 30px;
+    }
+
+    .btn-box::before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 200%;
+      height: 200%;
+      z-index: 2;
+      background: linear-gradient(-45deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 60%);
+      animation: slideshowScanning 2.2s linear infinite;
+    }
+
+    @keyframes slideshowScanning {
+      0% {
+        transform: translate(-50%, -50%);
+      }
+
+      100% {
+        transform: translate(50%, 50%);
+      }
+    }
+
+    .msg-p {
+      font-size: 18px;
+      color: #777777;
+      margin-top: 40px;
+    }
+
+    .right {
+      max-width: 500px;
+      flex: 1;
+    }
+
+    .item {
+      display: flex;
+      font-size: 16px;
+      gap: 5px;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .item input {
+      height: 35px;
+      padding: 0 10px;
+      flex: 1;
+    }
+
+    .item-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <div class="container"> -->
+    <div class="box">
+      <div class="left"
+        :style="{'width':width+'px','padding':`${padS}px ${padL}px`,'background':bgColor,'color':txtColor}">
+        <div class="title-box">
+          {{title}}
+        </div>
+        <div class="p-box">
+          {{title1}}
+        </div>
+        <input class="input-box" type="text" v-model="inputTxt" :style="{'color':txtColor}">
+        <div class="btn-box" :style="{'background':btnColor,'color':btnTxtColor}">
+          {{btnTxt}}
+        </div>
+        <div class="msg-p" :style="{'color':msgColor}">
+          {{msg}}
+        </div>
+      </div>
+      <div class="right">
+        <div class="item">
+          宽度 ：{{width}}<input v-model="width" type="range" min="0" max="1200">
+        </div>
+        <p class="item-title">边距 </p>
+        <div class="item">
+          上下边距：{{padS}}<input v-model="padS" type="range" min="0" max="100">
+        </div>
+        <div class="item">
+          左右边距 ：{{padL}}<input v-model="padL" type="range" min="0" max="100">
+        </div>
+        <div class="item">
+          文字颜色 ：<input v-model="txtColor" type="color">
+        </div>
+        <div class="item">
+          背景颜色 ：
+          <input v-model="bgColor" type="color">
+        </div>
+        <div class="item">
+          标题 ：<input v-model="title" type="text">
+        </div>
+        <div class="item">
+          二标题 ：<input v-model="title1" type="text">
+        </div>
+        <div class="item">
+          按钮 ：<input v-model="btnTxt" type="text">
+        </div>
+        <div class="item">
+          按钮颜色 ：<input v-model="btnColor" type="color">
+        </div>
+        <div class="item">
+          按钮文字颜色 ：<input v-model="btnTxtColor" type="color">
+        </div>
+        <div class="item">
+          最后文字 ：<input v-model="msg" type="text">
+        </div>
+        <div class="item">
+          最后文字颜色 ：<input v-model="msgColor" type="color">
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+  <script>
+    const { createApp, ref } = Vue
+
+    createApp({
+      setup() {
+        const width = ref(800)
+        const padS = ref(50)
+        const padL = ref(40)
+        const txtColor = ref('#000')
+        const bgColor = ref('#fff')
+        const btnTxtColor = ref('#fff')
+        const title = ref('Discover Passionate Radiance')
+        const title1 = ref('GET $130 OFF AT CHECKOUT')
+        const inputTxt = ref('xxxx - xxxx - xxxx')
+        const btnTxt = ref('Redeem discount')
+        const btnColor = ref('#e7004c')
+        const msg = ref("The world's most effective IPL with Dual Lights.")
+        const msgColor = ref('#777')
+        return {
+          title,
+          title1,
+          width,
+          padS,
+          padL,
+          txtColor,
+          bgColor,
+          inputTxt,
+          btnTxt,
+          btnColor,
+          btnTxtColor,
+          msg,
+          msgColor
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

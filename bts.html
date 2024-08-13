@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/bts.css" />
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="benefits-list">
+    <div class="container">
+      <div class="benefits-title">Get Exclusive Benefits</div>
+      <div class="benefits-sub">Special offers must be placed on the offical website</div>
+      <div class="benefits-cont">
+        <div class="benefits-item">
+          <div class="benefits-popup-icon" data-txt="ad4dfsda">?</div>
+          <div class="benefits-item-cont">
+            <img src="./images39/icon.png" alt="" class="img">
+            <div class="benefits-text">
+              90-Day Money Back Garuntee
+            </div>
+          </div>
+        </div>
+        <div class="benefits-item">
+          <div class="benefits-popup-icon" data-txt="ads33ssda">?</div>
+          <div class="benefits-item-cont">
+            <img src="./images39/icon1.png" alt="" class="img">
+            <div class="benefits-text">
+              BUY 1, GET 3 FREE GIFTS
+            </div>
+          </div>
+        </div>
+        <div class="benefits-item">
+          <div class="benefits-popup-icon" data-txt="123sd">?</div>
+          <div class="benefits-item-cont">
+            <img src="./images39/icon2.png" alt="" class="img">
+            <div class="benefits-text">
+              <a href="#" target="_blank">
+                <img src="./images39/sb.svg" alt="">
+              </a>
+              <a href="#" target="_blank">
+                <img src="./images39/id.svg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="benefits-item">
+          <div class="benefits-popup-icon" data-txt="adsda">?</div>
+          <div class="benefits-item-cont">
+            <img src="./images39/icon3.png" alt="" class="img">
+            <div class="benefits-text">
+              Intrest Free for 6 Months
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="benefits-popup">
+    <div class="benefits-popup-cont">
+      <div class="benefits-popup-close"></div>
+      <div class="benefits-popup-p">
+        Enjoy a hassle-free full refund if you are not satisfied with the results within 90 days.
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function showPopup() {
+        let $p = $('.benefits-list')
+        let $item = $p.find('.benefits-popup-icon')
+        let $popup = $('.benefits-popup')
+        if (window.innerWidth > 991) {
+          $item.hover(function () {
+            let index = $(this).closest('.benefits-item').index()
+            let offSet = $(this).offset()
+            let text = $(this).attr('data-txt')
+            $popup.find('.benefits-popup-p').html(text)
+            let leftW = offSet.left
+            if (index == 3) {
+              leftW = offSet.left - $popup.width() + 20
+            }
+            $popup.css({ left: leftW + 'px', top: offSet.top - $popup.height() + 'px' })
+            $popup.fadeIn()
+          }, function () {
+            $('.benefits-popup').fadeOut()
+          })
+        } else {
+          $item.click(function () {
+            let text = $(this).attr('data-txt')
+            $popup.find('.benefits-popup-p').html(text)
+            $popup.fadeIn()
+          })
+
+          $popup.find('.benefits-popup-close').click(function () {
+            $popup.fadeOut()
+          })
+        }
+      }
+      showPopup()
+    })
+  </script>
+  <div class="subscribe-box">
+    <div class="container">
+      <div class="subscribe-box-cont">
+        <div class="subscribe-box-img">
+          <img src="./images39/j.png" alt="" class="j-img">
+          <img src="./images39/g.png" alt="" class="g-img">
+          <img src="./images39/s.png" alt="" class="s-img">
+        </div>
+        <div class="subscribe-box-text">
+          <div class="subscribe-box-title">Scratch & Win BIG!</div>
+          <div class="subscribe-box-submit">
+            <div class="subscribe-box-sub">
+              After entering your email address, please contact our customer service and we
+              will award you the prize results。
+            </div>
+
+            <input type="text" placeholder="Enter your email" class="subscribe-box-input">
+            <div class="subscribe-box-btn btn-diy">
+              <div class="btn-txt" text="SPIN NOW">
+                <span>SPIN NOW</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="subscribe-popup">
+    <div class="subscribe-popup-cont">
+      <div class="subscribe-popup-close"></div>
+      <div class="subscribe-popup-ovhide">
+
+        <div class="subscribe-popup-pos">
+          <div class="subscribe-popup-title">Congrats! You're in! </div>
+          <div class="subscribe-popup-text">Along with exclusive discounts, you could win a free order with your
+            purchase.
+          </div>
+          <div class="img-box">
+            <img src="./images39/q.png" alt="" class="img">
+            <img src="./images39/g.png" alt="" class="bg-img">
+          </div>
+          <div class="subscribe-popup-code">Code: XXX - XXX - XXX</div>
+          <div class="subscribe-popup-msg">Code expires in 48 hours.</div>
+          <div class="subscribe-popup-product">
+            <img src="./images39/pp.jpg" alt="" class="p-img">
+            <div class="subscribe-popup-txt">
+              <div class="subscribe-popup-pt">Ulike Air 10</div>
+              <div class="subscribe-popup-price">
+                <span class="n-price">$279</span>
+                <span class="d-price">$399</span>
+              </div>
+              <div class="subscribe-popup-p">Your long-lasting hair removal solution. </div>
+              <div class="subscribe-popup-btn btn-diy">
+                <div class="btn-txt" text="ADD TO CART">
+                  <span>ADD TO CART</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      $('.subscribe-box-btn').click(function () {
+        $('.subscribe-popup').addClass('open')
+      })
+      $('.subscribe-popup-close').click(function () {
+        $('.subscribe-popup').removeClass('open')
+      })
+    })
+  </script>
+  <div class="selling-point">
+    <div class="container">
+      <div class="selling-point-list">
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/1.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/a1.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">Dual Lights</div>
+            <div class="selling-point-sub">Double the lights, double<br />
+              the efficiency. </div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/2.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/a2.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">Sapphire Ice Cooling</div>
+            <div class="selling-point-sub">Stay Cool. No Burns, No Irritation.</div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/3.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/a3.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">SHR Mode</div>
+            <div class="selling-point-sub">Salon-Inspired for Thick, <br />Stubborn Hair.</div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/4.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/a4.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">SkinSensor</div>
+            <div class="selling-point-sub">Auto-Adjusts to keep <br /> your skin safe.</div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/5.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/a5.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">Visible Results in just 2 weeks</div>
+            <div class="selling-point-sub">Long-lasting smooth skin.</div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item selling-point-ratio">
+          <div class="selling-point-ratio-item">
+            <picture>
+              <source srcset="./images39/6-1.png" media="(max-width: 991px)">
+              <img class="img" src="./images39/a6.jpg">
+            </picture>
+            <div class="selling-point-ratio-tag">
+              Before
+            </div>
+          </div>
+          <div class="selling-point-ratio-item">
+            <picture>
+              <source srcset="./images39/6-2.png" media="(max-width: 991px)">
+              <img class="img" src="./images39/a7.jpg">
+            </picture>
+            <div class="selling-point-ratio-tag">
+              After
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="officially-features-popup officially-features-popup-one">
+    <div class="officially-features-popup-cont">
+      <div class="officially-features-popup-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="2.02941" y1="0.848633" x2="22.182" y2="21.0012" stroke="#3F3636" stroke-width="1.5"
+            stroke-linecap="round"></line>
+          <line x1="22.1836" y1="1.06066" x2="2.03105" y2="21.2132" stroke="#3F3636" stroke-width="1.5"
+            stroke-linecap="round"></line>
+        </svg>
+      </div>
+      <div class="officially-features-popup-det">
+        <div class="officially-features-popup-right">
+          <div class="officially-features-popup-title">Inspired by professional salons, eliminates the most stubborn
+            hair.</div>
+          <div class="officially-features-popup-p">The Air 10 prevents burns and irritation by
+            maintaining a cool 65° contact temperature, ensuring nearly painless hair removal- even in sensitive areas
+            like the bikini line.</div>
+          <div class="officially-features-popup-list">
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">&gt;18%</div>
+              <div class="officially-features-popup-d">larger flash window</div>
+            </div>
+            <div class="officially-features-popup-item">
+              <div class="officially-features-popup-t">≈ 2X</div>
+              <div class="officially-features-popup-d">faster treatments</div>
+            </div>
+          </div>
+          <div class="officially-features-popup-video">
+            <img src="./images28/2.jpg" alt="" class="img">
+            <video class="product-video" src="./images28/video.mp4" loop="" muted=""></video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="selling-point equal-width">
+    <div class="container">
+      <div class="selling-point-list">
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/b1.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/b1.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">Dual Lights</div>
+            <div class="selling-point-sub">Double the lights, double<br />
+              the efficiency. </div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/b2.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/b2.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">Sapphire Ice Cooling</div>
+            <div class="selling-point-sub">Stay Cool. No Burns, No Irritation.</div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+        <div class="selling-point-item">
+          <picture>
+            <source srcset="./images39/b3.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/b3.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">SHR Mode</div>
+            <div class="selling-point-sub">Salon-Inspired for Thick, <br />Stubborn Hair.</div>
+          </div>
+        </div>
+        <div class="selling-point-item popup-item">
+          <picture>
+            <source srcset="./images39/b4.png" media="(max-width: 991px)">
+            <img class="img" src="./images39/b4.jpg">
+          </picture>
+          <div class="selling-point-text">
+            <div class="selling-point-title">SkinSensor</div>
+            <div class="selling-point-sub">Auto-Adjusts to keep <br /> your skin safe.</div>
+            <div class="selling-point-btn">
+              +
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="officially-features-popup officially-features-popup-one ">
+    <div class="officially-features-popup-cont">
+      <div class="officially-features-popup-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="2.02941" y1="0.848633" x2="22.182" y2="21.0012" stroke="#3F3636" stroke-width="1.5"
+            stroke-linecap="round"></line>
+          <line x1="22.1836" y1="1.06066" x2="2.03105" y2="21.2132" stroke="#3F3636" stroke-width="1.5"
+            stroke-linecap="round"></line>
+        </svg>
+      </div>
+      <div class="officially-features-popup-det">
+        <div class="before-after-box">
+          <div class="officially-features-popup-title">
+            93% hair reduction in 4 weeks.
+          </div>
+          <div class="before-after-tab">
+            <div class="before-after-tab-item active">
+              1-4 Weeks
+            </div>
+            <div class="before-after-tab-item">
+              5-8 Weeks
+            </div>
+            <div class="before-after-tab-item">
+              8-12 Weeks
+            </div>
+            <div class="before-after-tab-span" style="transform: translateX(0px); transition: transform 0.4s;"></div>
+          </div>
+          <div class="before-after-cont">
+            <div class="before-after-text">
+              <div class="before-after-text-item active">
+                <div class="before-after-text-p">
+                  In less than 4 weeks of consistent treatments, you'll begin to see visible hair growth reduction.
+                </div>
+              </div>
+              <div class="before-after-text-item">
+                <div class="before-after-text-p">
+                  After 8 weeks of consistent bi-weekly treatments, the hair follicles start to shrink and the hair
+                  root begins to fall out.
+                </div>
+              </div>
+              <div class="before-after-text-item">
+                <div class="before-after-text-p">
+                  Most people will have achieved desired results by this stage, with skin becoming smooth and
+                  hair-free.
+                </div>
+              </div>
+            </div>
+            <div class="before-after-img-wrapper" style="--img-width:undefinedpx;--left-num:50%;--time-num:1s;">
+              <div class="before-after-img-item">
+                <img loading="lazy" class="img active" width="801" height="561" alt=""
+                  src="//www.ulike.com/cdn/shop/files/Before_801x.jpg?v=1698978634"
+                  srcset="//www.ulike.com/cdn/shop/files/Before_801x.jpg?v=1698978634 801w">
+                <img loading="lazy" class="img" width="801" height="561" alt=""
+                  src="//www.ulike.com/cdn/shop/files/1-3_weeks_7390fa3e-3149-4f33-9c76-fdc3e1ee1ef4_801x.jpg?v=1698978702"
+                  srcset="//www.ulike.com/cdn/shop/files/1-3_weeks_7390fa3e-3149-4f33-9c76-fdc3e1ee1ef4_801x.jpg?v=1698978702 801w">
+                <img loading="lazy" class="img" width="801" height="561" alt=""
+                  src="//www.ulike.com/cdn/shop/files/4-6_weeks_479b6791-7218-4551-95e7-8323c04217ea_801x.jpg?v=1698978756"
+                  srcset="//www.ulike.com/cdn/shop/files/4-6_weeks_479b6791-7218-4551-95e7-8323c04217ea_801x.jpg?v=1698978756 801w">
+                <div class="before-after-tag">
+                  <span class="active">
+                    Before
+                  </span>
+                  <span class="">
+                    Week 4
+                  </span>
+                  <span class="">
+                    Week 8
+                  </span>
+                </div>
+              </div>
+              <div class="before-after-img-item before-after-img-right">
+                <img loading="lazy" class="img active" width="801" height="561" alt=""
+                  src="//www.ulike.com/cdn/shop/files/1-3_weeks_801x.jpg?v=1698978634"
+                  srcset="//www.ulike.com/cdn/shop/files/1-3_weeks_801x.jpg?v=1698978634 801w">
+                <img loading="lazy" class="img" width="801" height="561" alt=""
+                  src="//www.ulike.com/cdn/shop/files/4-6_weeks_801x.jpg?v=1698978702"
+                  srcset="//www.ulike.com/cdn/shop/files/4-6_weeks_801x.jpg?v=1698978702 801w">
+                <img loading="lazy" class="img" width="801" height="561" alt=""
+                  src="//www.ulike.com/cdn/shop/files/7-10_weeks_801x.jpg?v=1698978756"
+                  srcset="//www.ulike.com/cdn/shop/files/7-10_weeks_801x.jpg?v=1698978756 801w">
+                <div class="before-after-tag">
+                  <span class="active">
+                    Week 4
+                  </span>
+                  <span class="">
+                    Week 8
+                  </span>
+                  <span class="">
+                    Week 12
+                  </span>
+                </div>
+              </div>
+              <div class="before-after-img-handle">
+                <div class="before-after-img-handle-btn">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="before-after-img-text">
+            *The specific results vary from person to person, and the duration of use can be extended based on hair
+            thickness until the desired results are achieved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    window.addEventListener('load', function () {
+      $('.before-after-box .before-after-tab-item').hover(function () {
+        let left = $(this)[0].offsetLeft
+        $(this).siblings('.before-after-tab-span').css({ 'transform': 'translateX(' + left + 'px)', 'transition': 'transform .4s' })
+      }, function () {
+        let left = $('.before-after-box .before-after-tab-item.active')[0].offsetLeft
+        $(this).siblings('.before-after-tab-span').css({ 'transform': 'translateX(' + left + 'px)', 'transition': 'transform .4s' })
+      })
+      $('.before-after-box .before-after-tab-item').click(function () {
+        let index = $(this).index()
+        let $imgBox = $(this).parents('.before-after-tab').siblings('.before-after-cont').find('.before-after-img-wrapper')
+        let width = $imgBox.clientWidth
+        console.log($imgBox);
+        $imgBox.attr('style', `--img-width:${width}px;--left-num:100%;--time-num:0s;`)
+        $(this).addClass('active').siblings().removeClass('active')
+        $(this).parents('.before-after-tab').siblings('.before-after-cont').find('.before-after-text-item').removeClass('active').eq(index).addClass('active')
+        $(this).parents('.before-after-tab').siblings('.before-after-cont').find('.before-after-img-item').each(function () {
+          $(this).find('.img').removeClass('active').eq(index).addClass('active')
+        })
+        $(this).parents('.before-after-tab').siblings('.before-after-cont').find('.before-after-tag').each(function () {
+          $(this).find('span').removeClass('active').eq(index).addClass('active')
+        })
+        setTimeout(() => {
+          $imgBox.attr('style', `--img-width:${width}px;--left-num:50%;--time-num:1s;`)
+        }, 100);
+      })
+      window.addEventListener('resize', function () {
+        initImg()
+      })
+      function initImg() {
+        let $p = document.querySelector('.before-after-box')
+        let $box = $p.querySelector('.before-after-img-wrapper')
+        let $hp = $p.querySelector('.before-after-img-handle')
+        let $hand = $hp.querySelector('.before-after-img-handle-btn')
+        let width = $box.clientWidth
+
+        $box.style = `--img-width:${width}px;--left-num:50%;`
+        makeElementDraggable($hand)
+        function makeElementDraggable(draggableElement) {
+          var isDragging = false;
+          var offsetX = 0;
+
+          draggableElement.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            offsetX = e.clientX - $hp.offsetLeft;
+            e.preventDefault(); // 阻止默认行为，避免文本选择
+          });
+
+          document.addEventListener('mouseup', function () {
+            isDragging = false;
+          });
+
+          document.addEventListener('mousemove', function (e) {
+            if (isDragging) {
+              var newX = e.clientX - offsetX;
+              if (newX <= 10) newX = 10;
+              if (newX >= width - 10) newX = width - 10;
+              $box.style = `--img-width:${width}px;--left-num:${newX / width * 100}%;--time-num:0s;`;
+              e.preventDefault(); // 阻止默认行为，避免文本选择
+            }
+          });
+
+          draggableElement.addEventListener('touchstart', function (e) {
+            isDragging = true;
+            offsetX = e.touches[0].clientX - $hp.offsetLeft;
+            e.preventDefault(); // 阻止默认行为
+          }, { passive: false });
+
+          document.addEventListener('touchend', function () {
+            isDragging = false;
+          });
+
+          document.addEventListener('touchmove', function (e) {
+            if (isDragging) {
+              e.preventDefault();
+              var newX = e.touches[0].clientX - offsetX;
+              if (newX <= 10) newX = 10;
+              if (newX >= width - 10) newX = width - 10;
+              $box.style = `--img-width:${width}px;--left-num:${newX / width * 100}%;--time-num:0s;`;
+            }
+          }, { passive: false });
+        }
+      }
+      initImg()
+    })
+
+  </script>
+  <div class="officially-features-popup officially-features-popup-one">
+    <div class="officially-features-popup-cont">
+      <div class="officially-features-popup-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+          <line x1="2.02941" y1="0.848633" x2="22.182" y2="21.0012" stroke="#3F3636" stroke-width="1.5"
+            stroke-linecap="round"></line>
+          <line x1="22.1836" y1="1.06066" x2="2.03105" y2="21.2132" stroke="#3F3636" stroke-width="1.5"
+            stroke-linecap="round"></line>
+        </svg>
+      </div>
+      <div class="officially-features-popup-det">
+        <div class="visible-results">
+          <div class="visible-results-title">Visible Results in Just 1 Week*!</div>
+          <div class="visible-results-sub">*Results based on a 6-week laboratory study with 32
+            subjects with
+            continuously used for 7 days under normalconditions by capturing images to analyze Hair Density (Hair %).
+          </div>
+          <div class="visible-results-flex">
+            <div class="visible-results-top">
+              <img src="./images34/d1.svg" alt="" class="icon-img pc-box">
+              <img src="./images34/d2.svg" alt="" class="icon-img mb-box">
+            </div>
+            <div class="visible-results-num-list">
+              <div class="visible-results-num active">
+                <div class="visible-results-n">-90.63%</div>
+                <div class="visible-results-p">Bikini area</div>
+              </div>
+              <div class="visible-results-num">
+                <div class="visible-results-n">-91.63%</div>
+                <div class="visible-results-p">Bikini area</div>
+              </div>
+              <div class="visible-results-num">
+                <div class="visible-results-n">-92.63%</div>
+                <div class="visible-results-p">Bikini area</div>
+              </div>
+              <div class="visible-results-num">
+                <div class="visible-results-n">-93.63%</div>
+                <div class="visible-results-p">Bikini area</div>
+              </div>
+            </div>
+          </div>
+          <div class="visible-results-left">
+            <div class="visible-results-dot">
+              <div class="visible-results-dot-item active">Sports</div>
+              <div class="visible-results-dot-item">Outdoor</div>
+              <div class="visible-results-dot-item">Vacation</div>
+              <div class="visible-results-dot-item">Party</div>
+            </div>
+            <div class="visible-results-cont">
+              <div class="visible-results-img">
+                <div class="visible-results-img-item active">
+                  <img src="./images34/d1.jpg" alt="" class="img pc-box">
+                  <img src="./images34/d2.jpg" alt="" class="img mb-box">
+                </div>
+                <div class="visible-results-img-item">
+                  <img src="./images34/d1.jpg" alt="" class="img pc-box">
+                  <img src="./images34/d2.jpg" alt="" class="img mb-box">
+                </div>
+                <div class="visible-results-img-item">
+                  <img src="./images34/d1.jpg" alt="" class="img pc-box">
+                  <img src="./images34/d2.jpg" alt="" class="img mb-box">
+                </div>
+                <div class="visible-results-img-item">
+                  <img src="./images34/d1.jpg" alt="" class="img pc-box">
+                  <img src="./images34/d2.jpg" alt="" class="img mb-box">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="visible-results-right">
+            <div class="visible-results-box">
+              <div class="visible-results-det">
+                <div class="visible-results-db">
+                  <div class="visible-results-db-item">
+                    <div class="visible-results-tag">Before</div>
+                    <div class="sm-box active" data-src="./images34/d3.jpg" data-src1="./images34/d5.jpg">
+                      <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                    <div class="sm-box">
+                      <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                    <div class="sm-box">
+                      <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                    <div class="sm-box">
+                      <img src="./images34/d3.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d5.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                  </div>
+                  <div class="visible-results-db-item">
+                    <div class="visible-results-tag">After</div>
+                    <div class="sm-box active">
+                      <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                    <div class="sm-box">
+                      <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                    <div class="sm-box">
+                      <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                    <div class="sm-box">
+                      <img src="./images34/d4.jpg" alt="" class="sm-img pc-box">
+                      <img src="./images34/d6.jpg" alt="" class="sm-img mb-box">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    window.addEventListener('load', function () {
+      function visibleResultsSwiper() {
+        let $p = $('.visible-results')
+        let $leftItem = $p.find('.visible-results-img-item')
+        let $rightItem = $p.find('.visible-results-db-item')
+        let $numItem = $p.find('.visible-results-num')
+        let $arraw = $p.find('.visible-results-arraw-item')
+        let $dotItem = $p.find('.visible-results-dot-item')
+        let index = 0
+        let len = $leftItem.length
+        let content = document.querySelector('.visible-results .visible-results-cont')
+        function changeItem() {
+          $leftItem.removeClass('active').eq(index).addClass('active')
+          $rightItem.each(function () {
+            $(this).find('.sm-box').removeClass('active').eq(index).addClass('active')
+          })
+          $dotItem.removeClass('active').eq(index).addClass('active')
+          $numItem.removeClass('active').eq(index).addClass('active')
+        }
+
+        $p.find('.sm-box').click(function () {
+          if (window.innerWidth > 768) return
+          let $popup = $('.visible-results-popup')
+          let src = $(this).attr('data-src')
+          let src1 = $(this).attr('data-src1')
+          if (!src || !src1) return
+          $popup.find('.img-item').eq(0).find('img').attr('src', src)
+          $popup.find('.img-item').eq(1).find('img').attr('src', src1)
+          $popup.fadeIn(300)
+        })
+
+        $('.visible-results-popup .visible-results-popup-close').click(function () {
+          $(this).closest('.visible-results-popup').fadeOut(300)
+        })
+        $arraw.click(function () {
+          let sindex = $(this).index()
+          index += sindex ? 1 : -1
+          if (index < 0) index = len - 1
+          if (index >= len) index = 0
+          changeItem()
+        })
+
+        $dotItem.click(function () {
+          index = $(this).index()
+          changeItem()
+        })
+        detectSwipe(content, () => {
+          index += 1
+          if (index >= len) index = 0
+          changeItem()
+        }, () => {
+          index -= 1
+          if (index < 0) index = len - 1
+          changeItem()
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      visibleResultsSwiper()
+    })
+
+  </script>
+  <div class="ratio-table">
+    <div class="container">
+      <div class="ratio-table-title">Why Ulike</div>
+      <div class="ratio-table-top">
+        <div class="ratio-table-sub">IPL Pays For Itself</div>
+        <div class="ratio-table-p">Choose Ulike IPL for a more convenient and cost-effective hair removal option. </div>
+      </div>
+      <div class="ratio-table-cont">
+        <div class="ratio-table-head">
+          <div class="ratio-table-head-item"></div>
+          <div class="ratio-table-head-item">Long-lasting results</div>
+          <div class="ratio-table-head-item">Safe for skin and no irritation</div>
+          <div class="ratio-table-head-item">Nearly painless</div>
+          <div class="ratio-table-head-item">Quick at-home treatments</div>
+          <div class="ratio-table-head-item">Lifetime purchase</div>
+        </div>
+        <div class="ratio-table-list">
+          <div class="ratio-table-item">
+            <div class="ratio-table-sitem">Ulike Air3</div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              $329 one life time
+            </div>
+          </div>
+          <div class="ratio-table-item">
+            <div class="ratio-table-sitem">Ulike Air3</div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              $329 one life time
+            </div>
+          </div>
+          <div class="ratio-table-item">
+            <div class="ratio-table-sitem">Ulike Air3</div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              <span class="ratio-table-icon"></span>
+            </div>
+            <div class="ratio-table-sitem">
+              $329 one life time
+            </div>
+          </div>
+        </div>
+        <div class="ratio-table-msg">* Average U.S. hair removal expense, according to American Laser Center</div>
+      </div>
+    </div>
+  </div>
+  <div class="remark-swiper">
+    <div class="container">
+      <div class="remark-swiper-top">
+        <div class="remark-swiper-left">
+          <div class="remark-swiper-title">Universally loved. 5M+ usersworldwide.</div>
+          <div class="remark-swiper-sub">Our overall rating is 4.8 out of 5 stars from over 2,860reviews.</div>
+        </div>
+        <div class="remark-swiper-arraw">
+          <div class="remark-swiper-arraw-item disable"></div>
+          <div class="remark-swiper-arraw-item"></div>
+        </div>
+      </div>
+      <div class="remark-swiper-list">
+        <div class="remark-swiper-item">
+          <div class="remark-swiper-item-top">
+            <div class="remark-swiper-user">
+              <div class="remark-swiper-user-img">
+                <img src="./images39/user.jpg" alt="" class="user-img">
+              </div>
+              <div class="remark-swiper-user-info">
+                <div class="remark-swiper-user-star">★★★★★</div>
+                <div class="remark-swiper-user-t">"I definitely recommend!"</div>
+                <div class="remark-swiper-user-name"> - Shayden</div>
+              </div>
+            </div>
+            <div class="remark-swiper-user-msg">"|'m loving Ulike, just a few weeks and l already seea huge difference!
+              And it's totally Painless!"</div>
+          </div>
+          <div class="remark-swiper-img">
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">Before</div>
+              <img src="./images39/c1.jpg" alt="" class="img">
+            </div>
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">After</div>
+              <img src="./images39/c2.jpg" alt="" class="img">
+            </div>
+          </div>
+        </div>
+        <div class="remark-swiper-item">
+          <div class="remark-swiper-item-top">
+            <div class="remark-swiper-user">
+              <div class="remark-swiper-user-img">
+                <img src="./images39/user.jpg" alt="" class="user-img">
+              </div>
+              <div class="remark-swiper-user-info">
+                <div class="remark-swiper-user-star">★★★★★</div>
+                <div class="remark-swiper-user-t">"I definitely recommend!"</div>
+                <div class="remark-swiper-user-name"> - Shayden</div>
+              </div>
+            </div>
+            <div class="remark-swiper-user-msg">"|'m loving Ulike, just a few weeks and l already seea huge difference!
+              And it's totally Painless!"</div>
+          </div>
+          <div class="remark-swiper-img">
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">Before</div>
+              <img src="./images39/c1.jpg" alt="" class="img">
+            </div>
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">After</div>
+              <img src="./images39/c2.jpg" alt="" class="img">
+            </div>
+          </div>
+        </div>
+        <div class="remark-swiper-item">
+          <div class="remark-swiper-item-top">
+            <div class="remark-swiper-user">
+              <div class="remark-swiper-user-img">
+                <img src="./images39/user.jpg" alt="" class="user-img">
+              </div>
+              <div class="remark-swiper-user-info">
+                <div class="remark-swiper-user-star">★★★★★</div>
+                <div class="remark-swiper-user-t">"I definitely recommend!"</div>
+                <div class="remark-swiper-user-name"> - Shayden</div>
+              </div>
+            </div>
+            <div class="remark-swiper-user-msg">"|'m loving Ulike, just a few weeks and l already seea huge difference!
+              And it's totally Painless!"</div>
+          </div>
+          <div class="remark-swiper-img">
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">Before</div>
+              <img src="./images39/c1.jpg" alt="" class="img">
+            </div>
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">After</div>
+              <img src="./images39/c2.jpg" alt="" class="img">
+            </div>
+          </div>
+        </div>
+        <div class="remark-swiper-item">
+          <div class="remark-swiper-item-top">
+            <div class="remark-swiper-user">
+              <div class="remark-swiper-user-img">
+                <img src="./images39/user.jpg" alt="" class="user-img">
+              </div>
+              <div class="remark-swiper-user-info">
+                <div class="remark-swiper-user-star">★★★★★</div>
+                <div class="remark-swiper-user-t">"I definitely recommend!"</div>
+                <div class="remark-swiper-user-name"> - Shayden</div>
+              </div>
+            </div>
+            <div class="remark-swiper-user-msg">"|'m loving Ulike, just a few weeks and l already seea huge difference!
+              And it's totally Painless!"</div>
+          </div>
+          <div class="remark-swiper-img">
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">Before</div>
+              <img src="./images39/c1.jpg" alt="" class="img">
+            </div>
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">After</div>
+              <img src="./images39/c2.jpg" alt="" class="img">
+            </div>
+          </div>
+        </div>
+        <div class="remark-swiper-item">
+          <div class="remark-swiper-item-top">
+            <div class="remark-swiper-user">
+              <div class="remark-swiper-user-img">
+                <img src="./images39/user.jpg" alt="" class="user-img">
+              </div>
+              <div class="remark-swiper-user-info">
+                <div class="remark-swiper-user-star">★★★★★</div>
+                <div class="remark-swiper-user-t">"I definitely recommend!"</div>
+                <div class="remark-swiper-user-name"> - Shayden</div>
+              </div>
+            </div>
+            <div class="remark-swiper-user-msg">"|'m loving Ulike, just a few weeks and l already seea huge difference!
+              And it's totally Painless!"</div>
+          </div>
+          <div class="remark-swiper-img">
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">Before</div>
+              <img src="./images39/c1.jpg" alt="" class="img">
+            </div>
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">After</div>
+              <img src="./images39/c2.jpg" alt="" class="img">
+            </div>
+          </div>
+        </div>
+        <div class="remark-swiper-item">
+          <div class="remark-swiper-item-top">
+            <div class="remark-swiper-user">
+              <div class="remark-swiper-user-img">
+                <img src="./images39/user.jpg" alt="" class="user-img">
+              </div>
+              <div class="remark-swiper-user-info">
+                <div class="remark-swiper-user-star">★★★★★</div>
+                <div class="remark-swiper-user-t">"I definitely recommend!"</div>
+                <div class="remark-swiper-user-name"> - Shayden</div>
+              </div>
+            </div>
+            <div class="remark-swiper-user-msg">"|'m loving Ulike, just a few weeks and l already seea huge difference!
+              And it's totally Painless!"</div>
+          </div>
+          <div class="remark-swiper-img">
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">Before</div>
+              <img src="./images39/c1.jpg" alt="" class="img">
+            </div>
+            <div class="remark-swiper-img-item">
+              <div class="remark-swiper-tag">After</div>
+              <img src="./images39/c2.jpg" alt="" class="img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function remarkSwiper() {
+        let $p = $('.remark-swiper')
+        let $list = $p.find('.remark-swiper-list')
+        let $item = $p.find('.remark-swiper-item')
+        let $arraw = $p.find('.remark-swiper-arraw-item')
+        let content = document.querySelector('.remark-swiper .remark-swiper-list')
+        let length = $item.length
+        let pW = $list.width()
+        let iW = $item.width()
+        let mW = window.innerWidth > 991 ? 40 : 30
+        let index = -length + 1
+        let timer = null
+
+        $list.html(
+          $list.html().repeat(3)
+        )
+        changeSwiper(true, index)
+        function changeSwiper(auto, tindex) {
+          let translateX = (iW + mW) * tindex;
+          if (auto) {
+            $list.css({
+              transform: 'translateX(' + translateX + 'px)',
+              transition: ' all 0s ease',
+            });
+          } else {
+            $list.css({
+              transform: 'translateX(' + translateX + 'px)',
+              transition: ' all .6s ease',
+            });
+          }
+
+        }
+
+        function changeIndex(num) {
+          index += num
+          if (index <= -2 * length + 2) {
+            changeSwiper(true, -length + 2)
+            index = -length + 1
+          }
+
+          if (index >= -length + 2) {
+            changeSwiper(true, - length - 2)
+            index = - length - 1
+          }
+          setTimeout(function () {
+            changeSwiper(false, index)
+          }, 10)
+        }
+
+        timer = setInterval(function () {
+          changeIndex(-1)
+        }, 3 * 1000)
+
+        $arraw.on('click', function () {
+          let sindex = $(this).index()
+          clearInterval(timer)
+          changeIndex(sindex ? -1 : 1)
+          timer = setInterval(function () {
+            changeIndex(-1)
+          }, 3 * 1000)
+        })
+
+        detectSwipe(content, () => {
+          clearInterval(timer)
+          changeIndex(-1)
+          timer = setInterval(function () {
+            changeIndex(-1)
+          }, 3 * 1000)
+        }, () => {
+          clearInterval(timer)
+          changeIndex(1)
+          timer = setInterval(function () {
+            changeIndex(-1)
+          }, 3 * 1000)
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+
+      }
+      remarkSwiper()
+    })
+
+  </script>
+  <div class="experts-swiper">
+    <div class="experts-swiper-title">
+      <div class="container">
+        Backed by experts
+      </div>
+    </div>
+    <div class="container">
+      <div class="experts-swiper-cont">
+        <div class="experts-swiper-left">
+          <div class="experts-swiper-hide">
+            <div class="experts-swiper-img">
+              <div class="experts-swiper-img-item">
+                <img src="./images39/e1.jpg" alt="" class="img">
+              </div>
+              <div class="experts-swiper-img-item">
+                <img src="./images39/e1.jpg" alt="" class="img">
+              </div>
+            </div>
+          </div>
+          <div class="experts-swiper-dot">
+            <div class="experts-swiper-dot-item">
+              <svg width="100%" height="100%" viewBox="0 0 105 105">
+                <circle stroke="rgba(0, 0, 0, 0.3)" fill="transparent" cx="50" cy="50" r="49" stroke-width="2">
+                </circle>
+                <circle class="cir-i" stroke="#e0004d" cx="50" cy="50" r="49" fill="transparent" stroke-width="2"
+                  pathLength="100"></circle>
+              </svg>
+            </div>
+            <div class="experts-swiper-dot-item">
+              <svg width="100%" height="100%" viewBox="0 0 105 105">
+                <circle stroke="rgba(0, 0, 0, 0.3)" fill="transparent" cx="50" cy="50" r="49" stroke-width="2">
+                </circle>
+                <circle class="cir-i" stroke="#e0004d" cx="50" cy="50" r="49" fill="transparent" stroke-width="2"
+                  pathLength="100"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="experts-swiper-right">
+          <div class="experts-swiper-thide">
+            <div class="experts-swiper-text">
+              <div class="experts-swiper-item">
+                <div class="experts-swiper-txt">“What was only possible in a clinic a few years ago has become an
+                  effective and safe option for patients to undertake at the convenience and privacy of their own home.”
+                </div>
+                <div>
+                  <div class="experts-swiper-name">- Dr. Davin Lim</div>
+                  <div class="experts-swiper-p">Board-Certified Dermatologist</div>
+                </div>
+              </div>
+              <div class="experts-swiper-item">
+                <div class="experts-swiper-txt">“What was only possible in a clinic a few years ago has become an
+                  effective and safe option for patients to undertake at the convenience and privacy of their own home.”
+                </div>
+                <div>
+                  <div class="experts-swiper-name">- Dr. Davin Lim</div>
+                  <div class="experts-swiper-p">Board-Certified Dermatologist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="experts-swiper-arraw">
+            <div class="experts-swiper-arraw-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+                <g clip-path="url(#clip0_3763_1290)">
+                  <path
+                    d="M1.90735e-06 11.4929C1.90735e-06 11.6744 0.067318 11.8544 0.196098 11.992L10.44 22.9676L11.5098 21.9695L2.41463 12.2246H30C30 11.4168 29.3444 10.7612 28.5366 10.7612H0.765366C0.488781 10.7612 0.219515 10.9003 0.0878067 11.1446C0.0278072 11.2544 1.90735e-06 11.3744 1.90735e-06 11.4929Z"
+                    fill="#190A0A" />
+                  <path
+                    d="M1.53073 8.92781C2.10292 9.49854 3.02926 9.49854 3.59999 8.92781L11.4937 1.03561L10.459 0.000976562L1.53219 8.92781H1.53073Z"
+                    fill="#190A0A" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_3763_1290">
+                    <rect width="30" height="22.9683" fill="white" transform="matrix(-1 0 0 1 30 0.000976562)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div class="experts-swiper-arraw-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+                <g clip-path="url(#clip0_3763_1286)">
+                  <path
+                    d="M30 11.4929C30 11.6744 29.9327 11.8544 29.8039 11.992L19.56 22.9676L18.4902 21.9695L27.5854 12.2246H0C0 11.4168 0.65561 10.7612 1.46341 10.7612H29.2346C29.5112 10.7612 29.7805 10.9003 29.9122 11.1446C29.9722 11.2544 30 11.3744 30 11.4929Z"
+                    fill="#190A0A" />
+                  <path
+                    d="M28.4693 8.92781C27.8971 9.49854 26.9707 9.49854 26.4 8.92781L18.5063 1.03561L19.541 0.000976562L28.4678 8.92781H28.4693Z"
+                    fill="#190A0A" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_3763_1286">
+                    <rect width="30" height="22.9683" fill="white" transform="translate(0 0.000976562)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function expertsSwiper() {
+        let $p = $('.experts-swiper')
+        let $img = $p.find('.experts-swiper-img')
+        let $text = $p.find('.experts-swiper-text')
+        let $arraw = $p.find('.experts-swiper-arraw-item')
+        let $dot = $p.find('.experts-swiper-dot-item')
+        let content = document.querySelector('.experts-swiper .experts-swiper-cont')
+        let imgW = $img.find('.experts-swiper-img-item').width()
+        let textW = $text.width()
+        let index = 0
+        let timer = null
+        let date = +new Date()
+        $dot.eq(index).addClass('active')
+        $text.find('.experts-swiper-item').eq(index).addClass('active')
+        function changeSwiper() {
+          $img.css({
+            transform: 'translateX(-' + index * imgW + 'px)',
+            transition: ' all .4s ease',
+          });
+          $text.css({
+            transform: 'translateX(-' + index * textW + 'px)',
+            transition: ' all .4s ease',
+          });
+          $dot.removeClass('active').eq(index).addClass('active')
+        }
+
+        function changeIndex(sindex) {
+          date = +new Date()
+          clearInterval(timer)
+          index += sindex ? 1 : -1
+          if (index >= $dot.length) index = 0
+          if (index < 0) index = $dot.length - 1
+          changeSwiper()
+          timer = setInterval(function () {
+            index++
+            if (index >= $dot.length) index = 0
+            changeSwiper()
+          }, 8 * 1000)
+        }
+
+        $arraw.on('click', function () {
+          if (+new Date() - date < 500) return
+          let sindex = $(this).index()
+          changeIndex(sindex)
+        })
+
+        timer = setInterval(function () {
+          index++
+          if (index >= $dot.length) index = 0
+          changeSwiper()
+        }, 8 * 1000)
+
+        detectSwipe(content, () => {
+          changeIndex(1)
+        }, () => {
+          changeIndex(0)
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+
+      }
+      expertsSwiper()
+    })
+  </script>
+  <div class="free-list">
+    <div class="container">
+      <div class="free-list-title">Free Local Shipping</div>
+      <div class="free-list-cont">
+        <div class="free-list-item">
+          <img src="./images39/d1.svg" alt="" class="img">
+          <div class="free-list-item-p">Free Local Shipping</div>
+        </div>
+        <div class="free-list-item">
+          <img src="./images39/d2.svg" alt="" class="img">
+          <div class="free-list-item-p">Buy Now Pay Over Time</div>
+        </div>
+        <div class="free-list-item">
+          <img src="./images39/d3.svg" alt="" class="img">
+          <div class="free-list-item-p">90-Day Money Back Guarantee</div>
+        </div>
+        <div class="free-list-item">
+          <img src="./images39/d4.svg" alt="" class="img">
+          <div class="free-list-item-p">2-Year Warranty</div>
+        </div>
+        <div class="free-list-item">
+          <img src="./images39/d5.svg" alt="" class="img">
+          <div class="free-list-item-p">24/7 Support</div>
+        </div>
+      </div>
+      <div class="free-list-dot">
+        <div class="free-list-dot-item active"></div>
+        <div class="free-list-dot-item"></div>
+        <div class="free-list-dot-item"></div>
+        <div class="free-list-dot-item"></div>
+        <div class="free-list-dot-item"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      function freeListSwiper() {
+        let $p = $('.free-list')
+        let $list = $p.find('.free-list-cont')
+        let $dot = $p.find('.free-list-dot-item')
+        let content = document.querySelector('.free-list .free-list-cont')
+        let width = $list[0].offsetWidth
+        let length = $dot.length
+        let index = 0
+        let timer = null
+
+        function changeSwiper() {
+          $list.css({ transform: `translateX(-${index * (width + 30)}px)`, transition: 'transform 0.3s ease-in' })
+          $dot.removeClass('active').eq(index).addClass('active')
+        }
+        timer = setInterval(function () {
+          index++
+          if (index >= length) index = 0
+          changeSwiper()
+        }, 5 * 1000)
+
+        detectSwipe(content, () => {
+          index++
+          if (index >= length) index = 0
+          changeSwiper()
+        }, () => {
+          index--
+          if (index < 0) index = length - 1
+          changeSwiper()
+        });
+
+        function detectSwipe(element, onSwipeLeft, onSwipeRight) {
+          let startX = 0;
+
+          const getEventX = (event) => {
+            return event.touches ? event.touches[0].clientX : event.clientX;
+          };
+
+          const handleTouchStart = (e) => {
+            startX = getEventX(e);
+          };
+
+          const handleTouchMove = (e) => {
+            const deltaX = getEventX(e) - startX;
+            if (Math.abs(deltaX) > 10 && e.cancelable) {
+              e.preventDefault();
+            }
+          };
+
+          const handleTouchEnd = (e) => {
+            const deltaX = getEventX(e.changedTouches ? e.changedTouches[0] : e) - startX;
+            if (deltaX > 10) {
+              onSwipeRight();
+            } else if (deltaX < -10) {
+              onSwipeLeft();
+            }
+          };
+
+          element.addEventListener('touchstart', handleTouchStart);
+          element.addEventListener('touchmove', handleTouchMove);
+          element.addEventListener('touchend', handleTouchEnd);
+
+          // Add mouse event listeners for PC compatibility
+          element.addEventListener('mousedown', handleTouchStart);
+          element.addEventListener('mousemove', handleTouchMove);
+          element.addEventListener('mouseup', handleTouchEnd);
+        }
+      }
+      if (window.innerWidth < 640) {
+        freeListSwiper()
+      }
+    })
+  </script>
+</body>
+
+</html>

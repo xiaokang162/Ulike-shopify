@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/comp.css" />
+  <script src="./js/jquery.min.js"></script>
+</head>
+<body>
+  <div class="comparison-banner">
+    <img src="./images33/a1.jpg" alt="" class="img pc-box">
+    <img src="./images33/a2.jpg" alt="" class="img mb-box">
+    <div class="comparison-banner-text">
+      <div class="container">
+        <div class="comparison-banner-text-left">
+          <div class="comparison-banner-tag to-top">
+            NEW
+          </div>
+          <div class="comparison-banner-title line-top" style="transition-delay: 0.1s">Air 10, visible results in just 1 week*</div>
+          <div class="comparison-banner-sub line-top" style="transition-delay: 0.2s">Laser-like effectiveness from comfort of home.</div>
+        </div>
+        <div class="comparison-banner-text-right to-top" style="transition-delay: 0.3s">
+          <div class="comparison-banner-btn btn-diy">
+            <div class="btn-txt" text="SHOP NOW - £100 OFF">
+              <span>SHOP NOW - £100 OFF</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comparison-top-sticky">
+    <div class="container">
+      <div class="comparison-top-sticky-cont">
+        <div class="comparison-top-sticky-left">
+          <div class="comparison-top-sticky-item" data-name="">1 Ulike Air 10</div>
+          <div class="comparison-top-sticky-item" data-name="">2 VS Regular keepups</div>
+          <div class="comparison-top-sticky-item" data-name="">3 vs Lasting options</div>
+        </div>
+        <div class="comparison-top-sticky-right">
+          <div class="hair-ads-sticky-cont">
+            <div class="hair-ads-sticky-left">
+              <div class="hair-ads-sticky-countdown">
+                <div class="hair-ads-sticky-p">
+                  End in
+                </div>
+                <div class="hair-ads-sticky-num">
+                  <span class="h time">00</span>
+                  : 
+                  <span class="m time">00</span>
+                  :
+                  <span class="s time">00</span>
+                </div>
+              </div>
+              <div class="hair-ads-sticky-price">
+                <span class="n">£269.00</span>
+                <span class="d">£369.00</span>
+              </div>
+            </div>
+            <a href="#" class="hair-ads-sticky-btn btn-diy">
+              <div class="btn-txt" text="Add to Cart">
+                <span>Add to Cart</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    class Countdown {
+      constructor(endTime, elName,loop = null) {
+        this.displayElement = document.querySelector(elName);
+        this.timer = null;
+        this.loop = loop
+        this.setEndTime(endTime);
+        this.start();
+      }
+      setEndTime(endTime) {
+        if (endTime) {
+          this.endTime = new Date(endTime).getTime();
+        } else {
+          if(this.loop){
+            let locTime = localStorage.getItem('loopTime');
+            if(locTime && locTime*1 > new Date().getTime()){
+              this.endTime = locTime*1
+            }else{
+              this.endTime = new Date().getTime() + 2 * 24 * 60 * 60 * 1000;
+              localStorage.setItem('loopTime', this.endTime)
+            }
+          }else{
+            this.endTime = new Date().getTime();
+          }
+        }
+      }
+      start() {
+        this.timer = setInterval(() => this.update(), 1000);
+      }
+
+      update() {
+        const now = new Date().getTime();
+        const distance = this.endTime - now;
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+
+        if (distance < 0) {
+          if(this.loop){
+            this.endTime = new Date().getTime() + 2 * 24 * 60 * 60 * 1000;
+            localStorage.setItem('loopTime', this.endTime)
+          }else{
+            clearInterval(this.timer);
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+          }
+          
+        }else{
+          hours = Math.floor(distance / (1000 * 60 * 60));
+          minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        }
+
+        this.displayElement.querySelector('.h').innerHTML = this.formatTime(hours)
+        this.displayElement.querySelector('.m').innerHTML = this.formatTime(minutes)
+        this.displayElement.querySelector('.s').innerHTML = this.formatTime(seconds)
+      }
+      formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+      }
+    }
+    // Example usage
+    const countdown = new Countdown("", ".comparison-top-sticky",'loop');
+  </script>
+  <script>
+   document.querySelectorAll('.comparison-top-sticky-item').forEach(item=>{
+    item.addEventListener('click', function(e){
+      // 获取目标 section 的 ID
+      let targetSectionId = item.getAttribute('data-name');
+      // 调用 scrollToSection 函数滚动到目标 section
+      scrollToSection(targetSectionId);
+    })
+   })
+  
+  window.addEventListener('scroll', function() {
+    // 获取当前可视区域的顶部位置
+    const scrollPosition = window.scrollY || window.pageYOffset;
+    // 遍历所有的 <li> 元素
+      document.querySelectorAll('.comparison-top-sticky-item').forEach(item=> {
+      // 获取目标 section 的 ID
+      let targetSectionId = item.getAttribute('data-name');
+      // 获取目标 section 的元素
+      let targetSection = document.getElementById(targetSectionId);
+      const sectionTop = targetSection.offsetTop;
+      const sectionHeight = targetSection.offsetHeight;
+      // 检查是否在可视区域内
+      if ((scrollPosition ) >= (sectionTop - 100) && scrollPosition < (sectionTop + sectionHeight)) {
+          // 获取当前 section 的 ID
+          const currentId = targetSection.getAttribute('id');
+
+          // 移除之前高亮的导航
+          document.querySelectorAll('.comparison-top-sticky-item').forEach(item => {
+              item.classList.remove('active');
+          });
+
+          // 高亮对应导航
+          document.querySelector(`.comparison-top-sticky-item[data-name="${currentId}"]`).parentNode.classList.add('active');
+      }
+    });
+  });
+  </script>
+  <div class="ipl-results">
+    <div class="container">
+      <div class="ipl-results-top">
+        <div class="ipl-results-title to-top">Long-lasting results in just 1 Week*!</div>
+        <div class="ipl-results-sub to-top" style="transition-delay: 0.1s">
+          Professional-grade treatments, saw significant hair density reduction after repeat applications for just one week, tested by SGS Lab. Skin-transforming results at home in just 10minutes* a day.
+        </div>
+      </div>
+      <div class="ipl-results-cont">
+        <div class="ipl-results-left">
+          <div class="ipl-results-progress">
+            <div class="ipl-progress-item to-top" style="transition-delay: 0.2s">
+              <div class="ipl-progress-txt">
+                <div class="ipl-progress-num"><span>-77</span>.40%</div>
+                <div class="ipl-results-p">Hair density reduction</div>
+              </div>
+            </div>
+            <div class="ipl-progress-item to-top" style="transition-delay: 0.3s">
+              <div class="ipl-progress-txt">
+                <div class="ipl-progress-num"><span>-82</span>.14%</div>
+                <div class="ipl-results-p">Hair length reduction</div>
+              </div>
+            </div>
+            <div class="ipl-progress-item to-top" style="transition-delay: 0.4s">
+              <div class="ipl-progress-txt">
+                <div class="ipl-progress-num"><span>-90</span>.63%</div>
+                <div class="ipl-results-p">Hair count reduction</div>
+              </div>
+            </div>
+          </div>
+          <div class="ipl-results-text to-top pc-box" style="transition-delay: 0.5s">
+            <div class="ipl-results-text-left">
+              <img src="./images33/b1.svg" alt="" class="img-icon">
+              <div class="ipl-results-text-p">Lab-effectiveness Certified</div>
+            </div>
+            <div class="ipl-results-text-right">
+              *Results based on a 6-week laboratorial study with 32 subjects continuously used for 7 days under normal conditions by capturing images to analyze Hair Density (Hair %).
+              <br/>
+              *10-minutes refer to the minimum usage minutes of a hair removal device covering the hair area of the body part once for an adult group of 66.96 inches in height.
+            </div>
+          </div>
+        </div>
+        <div class="ipl-results-compare">
+          <div class="before-after-img-wrapper to-top" style="transition-delay: 0.2s">
+            <div class="before-after-img-item">
+              <div class="before-after-img-box active">
+                <img src="./images20/c1-1.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c2-1.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c3-1.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c4-1.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c5-1.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c6-1.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-tag">Before</div>
+            </div>
+            <div class="before-after-img-item before-after-img-right">
+              <div class="before-after-img-box active">
+                <img src="./images20/c1-2.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c2-2.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c3-2.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c4-2.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c5-2.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-img-box">
+                <img src="./images20/c6-2.jpg" alt="" class="img" />
+              </div>
+              <div class="before-after-tag">After</div>
+            </div>
+            <div class="before-after-img-handle">
+              <div class="before-after-img-handle-btn">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="ipl-results-compare-sm to-top"
+            style="transition-delay: 0.3s"
+          >
+            <div class="ipl-results-sm-item active">
+              <img src="./images20/c1.jpg" alt="" class="img" />
+            </div>
+            <div class="ipl-results-sm-item">
+              <img src="./images20/c4.jpg" alt="" class="img" />
+            </div>
+            <div class="ipl-results-sm-item">
+              <img src="./images20/c2.jpg" alt="" class="img" />
+            </div>
+            <div class="ipl-results-sm-item">
+              <img src="./images20/c6.jpg" alt="" class="img" />
+            </div>
+            <div class="ipl-results-sm-item">
+              <img src="./images20/c3.jpg" alt="" class="img" />
+            </div>
+            <div class="ipl-results-sm-item">
+              <img src="./images20/c5.jpg" alt="" class="img" />
+            </div>
+          </div>
+        </div>
+        <div class="ipl-results-text mb-box to-top" style="transition-delay: 0.5s">
+          <div class="ipl-results-text-left">
+            <img src="./images33/b1.svg" alt="" class="img-icon">
+            <div class="ipl-results-text-p">Lab-effectiveness Certified</div>
+          </div>
+          <div class="ipl-results-text-right">
+            *Results based on a 6-week laboratorial study with 32 subjects continuously used for 7 days under normal conditions by capturing images to analyze Hair Density (Hair %).
+            <br/>
+            *10-minutes refer to the minimum usage minutes of a hair removal device covering the hair area of the body part once for an adult group of 66.96 inches in height.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      $('.ipl-results .ipl-results-sm-item').click(function () {
+        let index = $(this).index()
+        let $imgBox = $(this)
+          .parents('.ipl-results-compare-sm')
+          .siblings('.before-after-img-wrapper')
+        let width = $imgBox[0].offsetWidth
+        $imgBox.attr(
+          'style',
+          `--img-width:${width}px;--left-num:100%;--time-num:0s;`
+        )
+        $(this).addClass('active').siblings().removeClass('active')
+        $(this).parents('.ipl-results-compare-sm').siblings('.before-after-img-wrapper').find('.before-after-img-item').each(function () {
+            $(this).find('.before-after-img-box.active').addClass('close')
+            $(this).find('.before-after-img-box').removeClass('active').eq(index).addClass('active')
+            setTimeout(()=>{
+              $(this).find('.close').removeClass('close')
+            },1000)
+          })
+        setTimeout(() => {
+          $imgBox.attr(
+            'style',
+            `--img-width:${width}px;--left-num:50%;--time-num:1s;`
+          )
+        }, 100)
+      })
+      window.addEventListener('resize', function () {
+        initImg()
+      })
+      function initImg() {
+        let $p = document.querySelector('.ipl-results')
+        let $box = $p.querySelector('.before-after-img-wrapper')
+        let $hp = $p.querySelector('.before-after-img-handle')
+        let $hand = $hp.querySelector('.before-after-img-handle-btn')
+        let width = $box.offsetWidth
+
+        $box.style = `--img-width:${width}px;--left-num:50%;`
+        makeElementDraggable($hand)
+        function makeElementDraggable(draggableElement) {
+          var isDragging = false
+          var offsetX = 0
+
+          draggableElement.addEventListener('mousedown', function (e) {
+            isDragging = true
+            offsetX = e.clientX - $hp.offsetLeft
+            e.preventDefault() // 阻止默认行为，避免文本选择
+          })
+
+          document.addEventListener('mouseup', function () {
+            isDragging = false
+          })
+
+          document.addEventListener('mousemove', function (e) {
+            if (isDragging) {
+              var newX = e.clientX - offsetX
+              if (newX <= 10) newX = 10
+              if (newX >= width - 10) newX = width - 10
+              $box.style = `--img-width:${width}px;--left-num:${
+                (newX / width) * 100
+              }%;--time-num:0s;`
+              e.preventDefault() // 阻止默认行为，避免文本选择
+            }
+          })
+
+          draggableElement.addEventListener(
+            'touchstart',
+            function (e) {
+              isDragging = true
+              offsetX = e.touches[0].clientX - $hp.offsetLeft
+              e.preventDefault() // 阻止默认行为
+            },
+            { passive: false }
+          )
+
+          document.addEventListener('touchend', function () {
+            isDragging = false
+          })
+
+          document.addEventListener(
+            'touchmove',
+            function (e) {
+              if (isDragging) {
+                e.preventDefault()
+                var newX = e.touches[0].clientX - offsetX
+                if (newX <= 10) newX = 10
+                if (newX >= width - 10) newX = width - 10
+                $box.style = `--img-width:${width}px;--left-num:${
+                  (newX / width) * 100
+                }%;--time-num:0s;`
+              }
+            },
+            { passive: false }
+          )
+        }
+      }
+      initImg()
+
+        function animateNumbersWhenVisible(elements) {
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                    const element = entry.target;
+                    const start = 0;
+                    const end = parseInt(element.textContent.match(/\d+/)[0]);
+                    const duration = Math.max(1000, Math.min(4000, Math.abs(end - start) * 20)); // 根据数字的大小调整动画时间，最小1000毫秒，最大4000毫秒
+                    animateNumber(element, start, end, duration);
+                    observer.unobserve(element); // 仅触发一次动画后停止观察
+                  }
+              });
+          });
+
+          elements.forEach(element => {
+              observer.observe(element);
+          });
+      }
+
+      function animateNumber(element, start, end, duration) {
+          let startTime = null;
+          const step = (timestamp) => {
+              if (!startTime) startTime = timestamp;
+              const progress = Math.min((timestamp - startTime) / duration, 1);
+              const value = Math.floor(progress * (end - start) + start);
+              element.textContent = element.textContent.replace(/\d+/, value);
+              if (progress < 1) {
+                  requestAnimationFrame(step);
+              }
+          };
+          requestAnimationFrame(step);
+      }
+
+      const numberContainers = document.querySelectorAll('.ipl-progress-num span');
+      animateNumbersWhenVisible(numberContainers); // 当元素进入可视区域时执行动画
+    })
+  </script>
+  <div class="hair-ads-tabs">
+    <div class="container">
+      <div class="hair-ads-tabs-top">
+        <div class="hair-ads-tabs-title to-top">Overview of traditional hair removal methods</div>
+        <div class="hair-ads-tabs-sub to-top" style="transition-delay: 0.1s">Time to ditch old tools and say goodbye to the inconvenient trips to the clinic. Think about getting laser-like results from home.</div>
+      </div>
+      <div class="to-top" style="transition-delay: 0.2s">
+        <div class="hair-ads-tabs-list-top">
+          <div class="hair-ads-tabs-list-item active">Waxing
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-left" width="88" height="88" viewBox="0 0 88 88" fill="none">
+              <g clip-path="url(#clip0_2285_2559)">
+                <rect width="88" height="88" fill="none"></rect>
+                <mask id="path-1-inside-1_2285_2559" fill="white">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z"></path>
+                </mask>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z" fill="#F8F8F8"></path>
+                <path d="M-693.739 -168.569H-54.7827V-181.431H-693.739V-168.569ZM-748.526 20.1305V-113.783H-761.387V20.1305H-748.526ZM-2518.78 87.7785H-816.174V74.9172H-2518.78V87.7785ZM-2573.57 2564.48V142.565H-2586.43V2564.48H-2573.57ZM4245.74 2619.27H-2518.78V2632.13H4245.74V2619.27ZM4300.53 142.565V2564.48H4313.39V142.565H4300.53ZM67.6521 87.7785H4245.74V74.9172H67.6521V87.7785ZM0.00409193 -113.783V20.1304H12.8653V-113.783H0.00409193ZM67.6521 74.9172C37.3942 74.9172 12.8653 50.3883 12.8653 20.1304H0.00409193C0.00409193 57.4914 30.2911 87.7785 67.6521 87.7785V74.9172ZM4313.39 142.565C4313.39 105.204 4283.1 74.9172 4245.74 74.9172V87.7785C4276 87.7785 4300.53 112.307 4300.53 142.565H4313.39ZM4245.74 2632.13C4283.1 2632.13 4313.39 2601.84 4313.39 2564.48H4300.53C4300.53 2594.74 4276 2619.27 4245.74 2619.27V2632.13ZM-2586.43 2564.48C-2586.43 2601.84 -2556.14 2632.13 -2518.78 2632.13V2619.27C-2549.04 2619.27 -2573.57 2594.74 -2573.57 2564.48H-2586.43ZM-2518.78 74.9172C-2556.14 74.9172 -2586.43 105.204 -2586.43 142.565H-2573.57C-2573.57 112.307 -2549.04 87.7785 -2518.78 87.7785V74.9172ZM-761.387 20.1305C-761.387 50.3883 -785.916 74.9172 -816.174 74.9172V87.7785C-778.813 87.7785 -748.526 57.4914 -748.526 20.1305H-761.387ZM-54.7827 -168.569C-24.5248 -168.569 0.00409193 -144.041 0.00409193 -113.783H12.8653C12.8653 -151.144 -17.4218 -181.431 -54.7827 -181.431V-168.569ZM-693.739 -181.431C-731.1 -181.431 -761.387 -151.144 -761.387 -113.783H-748.526C-748.526 -144.04 -723.997 -168.569 -693.739 -168.569V-181.431Z" fill="#E4DDDD" mask="url(#path-1-inside-1_2285_2559)"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_2559">
+                  <rect width="88" height="88" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-right" width="88" height="88" viewBox="0 0 88 88" fill="none">
+              <g clip-path="url(#clip0_2285_2559)">
+                <rect width="88" height="88" fill="none"></rect>
+                <mask id="path-1-inside-1_2285_2559" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z"></path>
+                </mask>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z" fill="#F8F8F8"></path>
+                <path d="M-693.739 -168.569H-54.7827V-181.431H-693.739V-168.569ZM-748.526 20.1305V-113.783H-761.387V20.1305H-748.526ZM-2518.78 87.7785H-816.174V74.9172H-2518.78V87.7785ZM-2573.57 2564.48V142.565H-2586.43V2564.48H-2573.57ZM4245.74 2619.27H-2518.78V2632.13H4245.74V2619.27ZM4300.53 142.565V2564.48H4313.39V142.565H4300.53ZM67.6521 87.7785H4245.74V74.9172H67.6521V87.7785ZM0.00409193 -113.783V20.1304H12.8653V-113.783H0.00409193ZM67.6521 74.9172C37.3942 74.9172 12.8653 50.3883 12.8653 20.1304H0.00409193C0.00409193 57.4914 30.2911 87.7785 67.6521 87.7785V74.9172ZM4313.39 142.565C4313.39 105.204 4283.1 74.9172 4245.74 74.9172V87.7785C4276 87.7785 4300.53 112.307 4300.53 142.565H4313.39ZM4245.74 2632.13C4283.1 2632.13 4313.39 2601.84 4313.39 2564.48H4300.53C4300.53 2594.74 4276 2619.27 4245.74 2619.27V2632.13ZM-2586.43 2564.48C-2586.43 2601.84 -2556.14 2632.13 -2518.78 2632.13V2619.27C-2549.04 2619.27 -2573.57 2594.74 -2573.57 2564.48H-2586.43ZM-2518.78 74.9172C-2556.14 74.9172 -2586.43 105.204 -2586.43 142.565H-2573.57C-2573.57 112.307 -2549.04 87.7785 -2518.78 87.7785V74.9172ZM-761.387 20.1305C-761.387 50.3883 -785.916 74.9172 -816.174 74.9172V87.7785C-778.813 87.7785 -748.526 57.4914 -748.526 20.1305H-761.387ZM-54.7827 -168.569C-24.5248 -168.569 0.00409193 -144.041 0.00409193 -113.783H12.8653C12.8653 -151.144 -17.4218 -181.431 -54.7827 -181.431V-168.569ZM-693.739 -181.431C-731.1 -181.431 -761.387 -151.144 -761.387 -113.783H-748.526C-748.526 -144.04 -723.997 -168.569 -693.739 -168.569V-181.431Z" fill="#E4DDDD" mask="url(#path-1-inside-1_2285_2559)"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_2559">
+                  <rect width="88" height="88" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="hair-ads-tabs-list-item">Epilation
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-left" width="88" height="88" viewBox="0 0 88 88" fill="none">
+              <g clip-path="url(#clip0_2285_2559)">
+                <rect width="88" height="88" fill="none"></rect>
+                <mask id="path-1-inside-1_2285_2559" fill="white">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z"></path>
+                </mask>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z" fill="#F8F8F8"></path>
+                <path d="M-693.739 -168.569H-54.7827V-181.431H-693.739V-168.569ZM-748.526 20.1305V-113.783H-761.387V20.1305H-748.526ZM-2518.78 87.7785H-816.174V74.9172H-2518.78V87.7785ZM-2573.57 2564.48V142.565H-2586.43V2564.48H-2573.57ZM4245.74 2619.27H-2518.78V2632.13H4245.74V2619.27ZM4300.53 142.565V2564.48H4313.39V142.565H4300.53ZM67.6521 87.7785H4245.74V74.9172H67.6521V87.7785ZM0.00409193 -113.783V20.1304H12.8653V-113.783H0.00409193ZM67.6521 74.9172C37.3942 74.9172 12.8653 50.3883 12.8653 20.1304H0.00409193C0.00409193 57.4914 30.2911 87.7785 67.6521 87.7785V74.9172ZM4313.39 142.565C4313.39 105.204 4283.1 74.9172 4245.74 74.9172V87.7785C4276 87.7785 4300.53 112.307 4300.53 142.565H4313.39ZM4245.74 2632.13C4283.1 2632.13 4313.39 2601.84 4313.39 2564.48H4300.53C4300.53 2594.74 4276 2619.27 4245.74 2619.27V2632.13ZM-2586.43 2564.48C-2586.43 2601.84 -2556.14 2632.13 -2518.78 2632.13V2619.27C-2549.04 2619.27 -2573.57 2594.74 -2573.57 2564.48H-2586.43ZM-2518.78 74.9172C-2556.14 74.9172 -2586.43 105.204 -2586.43 142.565H-2573.57C-2573.57 112.307 -2549.04 87.7785 -2518.78 87.7785V74.9172ZM-761.387 20.1305C-761.387 50.3883 -785.916 74.9172 -816.174 74.9172V87.7785C-778.813 87.7785 -748.526 57.4914 -748.526 20.1305H-761.387ZM-54.7827 -168.569C-24.5248 -168.569 0.00409193 -144.041 0.00409193 -113.783H12.8653C12.8653 -151.144 -17.4218 -181.431 -54.7827 -181.431V-168.569ZM-693.739 -181.431C-731.1 -181.431 -761.387 -151.144 -761.387 -113.783H-748.526C-748.526 -144.04 -723.997 -168.569 -693.739 -168.569V-181.431Z" fill="#E4DDDD" mask="url(#path-1-inside-1_2285_2559)"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_2559">
+                  <rect width="88" height="88" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-right" width="88" height="88" viewBox="0 0 88 88" fill="none">
+              <g clip-path="url(#clip0_2285_2559)">
+                <rect width="88" height="88" fill="none"></rect>
+                <mask id="path-1-inside-1_2285_2559" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z"></path>
+                </mask>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z" fill="#F8F8F8"></path>
+                <path d="M-693.739 -168.569H-54.7827V-181.431H-693.739V-168.569ZM-748.526 20.1305V-113.783H-761.387V20.1305H-748.526ZM-2518.78 87.7785H-816.174V74.9172H-2518.78V87.7785ZM-2573.57 2564.48V142.565H-2586.43V2564.48H-2573.57ZM4245.74 2619.27H-2518.78V2632.13H4245.74V2619.27ZM4300.53 142.565V2564.48H4313.39V142.565H4300.53ZM67.6521 87.7785H4245.74V74.9172H67.6521V87.7785ZM0.00409193 -113.783V20.1304H12.8653V-113.783H0.00409193ZM67.6521 74.9172C37.3942 74.9172 12.8653 50.3883 12.8653 20.1304H0.00409193C0.00409193 57.4914 30.2911 87.7785 67.6521 87.7785V74.9172ZM4313.39 142.565C4313.39 105.204 4283.1 74.9172 4245.74 74.9172V87.7785C4276 87.7785 4300.53 112.307 4300.53 142.565H4313.39ZM4245.74 2632.13C4283.1 2632.13 4313.39 2601.84 4313.39 2564.48H4300.53C4300.53 2594.74 4276 2619.27 4245.74 2619.27V2632.13ZM-2586.43 2564.48C-2586.43 2601.84 -2556.14 2632.13 -2518.78 2632.13V2619.27C-2549.04 2619.27 -2573.57 2594.74 -2573.57 2564.48H-2586.43ZM-2518.78 74.9172C-2556.14 74.9172 -2586.43 105.204 -2586.43 142.565H-2573.57C-2573.57 112.307 -2549.04 87.7785 -2518.78 87.7785V74.9172ZM-761.387 20.1305C-761.387 50.3883 -785.916 74.9172 -816.174 74.9172V87.7785C-778.813 87.7785 -748.526 57.4914 -748.526 20.1305H-761.387ZM-54.7827 -168.569C-24.5248 -168.569 0.00409193 -144.041 0.00409193 -113.783H12.8653C12.8653 -151.144 -17.4218 -181.431 -54.7827 -181.431V-168.569ZM-693.739 -181.431C-731.1 -181.431 -761.387 -151.144 -761.387 -113.783H-748.526C-748.526 -144.04 -723.997 -168.569 -693.739 -168.569V-181.431Z" fill="#E4DDDD" mask="url(#path-1-inside-1_2285_2559)"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_2559">
+                  <rect width="88" height="88" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="hair-ads-tabs-list-item">Laser
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-left" width="88" height="88" viewBox="0 0 88 88" fill="none">
+              <g clip-path="url(#clip0_2285_2559)">
+                <rect width="88" height="88" fill="none"></rect>
+                <mask id="path-1-inside-1_2285_2559" fill="white">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z"></path>
+                </mask>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z" fill="#F8F8F8"></path>
+                <path d="M-693.739 -168.569H-54.7827V-181.431H-693.739V-168.569ZM-748.526 20.1305V-113.783H-761.387V20.1305H-748.526ZM-2518.78 87.7785H-816.174V74.9172H-2518.78V87.7785ZM-2573.57 2564.48V142.565H-2586.43V2564.48H-2573.57ZM4245.74 2619.27H-2518.78V2632.13H4245.74V2619.27ZM4300.53 142.565V2564.48H4313.39V142.565H4300.53ZM67.6521 87.7785H4245.74V74.9172H67.6521V87.7785ZM0.00409193 -113.783V20.1304H12.8653V-113.783H0.00409193ZM67.6521 74.9172C37.3942 74.9172 12.8653 50.3883 12.8653 20.1304H0.00409193C0.00409193 57.4914 30.2911 87.7785 67.6521 87.7785V74.9172ZM4313.39 142.565C4313.39 105.204 4283.1 74.9172 4245.74 74.9172V87.7785C4276 87.7785 4300.53 112.307 4300.53 142.565H4313.39ZM4245.74 2632.13C4283.1 2632.13 4313.39 2601.84 4313.39 2564.48H4300.53C4300.53 2594.74 4276 2619.27 4245.74 2619.27V2632.13ZM-2586.43 2564.48C-2586.43 2601.84 -2556.14 2632.13 -2518.78 2632.13V2619.27C-2549.04 2619.27 -2573.57 2594.74 -2573.57 2564.48H-2586.43ZM-2518.78 74.9172C-2556.14 74.9172 -2586.43 105.204 -2586.43 142.565H-2573.57C-2573.57 112.307 -2549.04 87.7785 -2518.78 87.7785V74.9172ZM-761.387 20.1305C-761.387 50.3883 -785.916 74.9172 -816.174 74.9172V87.7785C-778.813 87.7785 -748.526 57.4914 -748.526 20.1305H-761.387ZM-54.7827 -168.569C-24.5248 -168.569 0.00409193 -144.041 0.00409193 -113.783H12.8653C12.8653 -151.144 -17.4218 -181.431 -54.7827 -181.431V-168.569ZM-693.739 -181.431C-731.1 -181.431 -761.387 -151.144 -761.387 -113.783H-748.526C-748.526 -144.04 -723.997 -168.569 -693.739 -168.569V-181.431Z" fill="#E4DDDD" mask="url(#path-1-inside-1_2285_2559)"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_2559">
+                  <rect width="88" height="88" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon svg-right" width="88" height="88" viewBox="0 0 88 88" fill="none">
+              <g clip-path="url(#clip0_2285_2559)">
+                <rect width="88" height="88" fill="none"></rect>
+                <mask id="path-1-inside-1_2285_2559" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z"></path>
+                </mask>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.43471 -113.783C6.43471 -147.592 -20.9733 -175 -54.7827 -175H-693.739C-727.549 -175 -754.957 -147.592 -754.957 -113.783V20.1305C-754.957 53.9399 -782.365 81.3478 -816.174 81.3478H-2518.78C-2552.59 81.3478 -2580 108.756 -2580 142.565V2564.48C-2580 2598.29 -2552.59 2625.7 -2518.78 2625.7H4245.74C4279.55 2625.7 4306.96 2598.29 4306.96 2564.48V142.565C4306.96 108.756 4279.55 81.3478 4245.74 81.3478H67.6521C33.8427 81.3478 6.43471 53.9399 6.43471 20.1304V-113.783Z" fill="#F8F8F8"></path>
+                <path d="M-693.739 -168.569H-54.7827V-181.431H-693.739V-168.569ZM-748.526 20.1305V-113.783H-761.387V20.1305H-748.526ZM-2518.78 87.7785H-816.174V74.9172H-2518.78V87.7785ZM-2573.57 2564.48V142.565H-2586.43V2564.48H-2573.57ZM4245.74 2619.27H-2518.78V2632.13H4245.74V2619.27ZM4300.53 142.565V2564.48H4313.39V142.565H4300.53ZM67.6521 87.7785H4245.74V74.9172H67.6521V87.7785ZM0.00409193 -113.783V20.1304H12.8653V-113.783H0.00409193ZM67.6521 74.9172C37.3942 74.9172 12.8653 50.3883 12.8653 20.1304H0.00409193C0.00409193 57.4914 30.2911 87.7785 67.6521 87.7785V74.9172ZM4313.39 142.565C4313.39 105.204 4283.1 74.9172 4245.74 74.9172V87.7785C4276 87.7785 4300.53 112.307 4300.53 142.565H4313.39ZM4245.74 2632.13C4283.1 2632.13 4313.39 2601.84 4313.39 2564.48H4300.53C4300.53 2594.74 4276 2619.27 4245.74 2619.27V2632.13ZM-2586.43 2564.48C-2586.43 2601.84 -2556.14 2632.13 -2518.78 2632.13V2619.27C-2549.04 2619.27 -2573.57 2594.74 -2573.57 2564.48H-2586.43ZM-2518.78 74.9172C-2556.14 74.9172 -2586.43 105.204 -2586.43 142.565H-2573.57C-2573.57 112.307 -2549.04 87.7785 -2518.78 87.7785V74.9172ZM-761.387 20.1305C-761.387 50.3883 -785.916 74.9172 -816.174 74.9172V87.7785C-778.813 87.7785 -748.526 57.4914 -748.526 20.1305H-761.387ZM-54.7827 -168.569C-24.5248 -168.569 0.00409193 -144.041 0.00409193 -113.783H12.8653C12.8653 -151.144 -17.4218 -181.431 -54.7827 -181.431V-168.569ZM-693.739 -181.431C-731.1 -181.431 -761.387 -151.144 -761.387 -113.783H-748.526C-748.526 -144.04 -723.997 -168.569 -693.739 -168.569V-181.431Z" fill="#E4DDDD" mask="url(#path-1-inside-1_2285_2559)"></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_2285_2559">
+                  <rect width="88" height="88" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="hair-ads-tabs-cont">
+          <div class="hair-ads-tabs-left">
+            <div class="hair-ads-tabs-flex-m">
+              <div class="hair-ads-tabs-p">
+                Ulike Air 10 IPL
+              </div>
+              <img class="img pc-box" src="./images32/a1.jpg" alt="">
+              <img class="img mb-box" src="./images32/a2.jpg" alt="">
+            </div>
+            <div class="hair-ads-tabs-text">
+              <div class="hair-ads-tabs-text-p">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path d="M2 13.2857L7.26316 19L22 3" stroke="#E0004D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Efficient-visible results in 1 week.
+              </div>
+              <div class="hair-ads-tabs-text-p">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path d="M2 13.2857L7.26316 19L22 3" stroke="#E0004D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Nearly painless.
+              </div>
+              <div class="hair-ads-tabs-text-p">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path d="M2 13.2857L7.26316 19L22 3" stroke="#E0004D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Longlasting laser-like results.
+              </div>
+              <div class="hair-ads-tabs-text-p">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path d="M2 13.2857L7.26316 19L22 3" stroke="#E0004D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Cost effective in the long run.
+              </div>
+              <div class="hair-ads-tabs-text-p">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                  <path d="M2 13.2857L7.26316 19L22 3" stroke="#E0004D" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Versatile and convenient.
+              </div>
+            </div>
+          </div>
+          <div class="hair-ads-tabs-right">
+            <div class="hair-ads-tabs-flex-m">
+              <div class="hair-ads-tabs-p">
+                <div class="hair-ads-tabs-item active">Waxing</div>
+                <div class="hair-ads-tabs-item">Epilation</div>
+                <div class="hair-ads-tabs-item">Laser</div>
+              </div>
+              <div class="hair-ads-tabs-img-list">
+                <div class="img-box active">
+                  <img class="img pc-box" src="./images32/a1.jpg" alt="">
+                  <img class="img mb-box" src="./images32/a2.jpg" alt="">
+                </div>
+                <div class="img-box">
+                  <img class="img pc-box" src="./images32/a1.jpg" alt="">
+                  <img class="img mb-box" src="./images32/a2.jpg" alt="">
+                </div>
+                <div class="img-box">
+                  <img class="img pc-box" src="./images32/a1.jpg" alt="">
+                  <img class="img mb-box" src="./images32/a2.jpg" alt="">
+                </div>
+                <div class="img-box">
+                  <img class="img pc-box" src="./images32/a1.jpg" alt="">
+                  <img class="img mb-box" src="./images32/a2.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="hair-ads-tabs-list">
+              <div class="hair-ads-tabs-item active">
+                <div class="hair-ads-tabs-text">
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Temporary results.1
+                  </div>
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Risk of cuts and irritation.
+                  </div>
+                </div>
+              </div>
+              <div class="hair-ads-tabs-item">
+                <div class="hair-ads-tabs-text">
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Temporary results.2
+                  </div>
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Risk of cuts and irritation.
+                  </div>
+                </div>
+              </div>
+              <div class="hair-ads-tabs-item">
+                <div class="hair-ads-tabs-text">
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Temporary results.3
+                  </div>
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Risk of cuts and irritation.
+                  </div>
+                </div>
+              </div>
+              <div class="hair-ads-tabs-item">
+                <div class="hair-ads-tabs-text">
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Temporary results.4
+                  </div>
+                  <div class="hair-ads-tabs-text-p">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                      <g clip-path="url(#clip0_2061_156)">
+                        <path d="M19.597 4.1601L12.119 11.6381L4.64402 4.16315C4.26844 3.78757 3.65469 3.79062 3.28216 4.16315C2.90658 4.53873 2.90963 5.15249 3.28216 5.52502L10.7571 13L3.28216 20.475C2.90658 20.8506 2.90963 21.4643 3.28216 21.8368C3.65774 22.2124 4.2715 22.2094 4.64402 21.8368L12.119 14.3619L19.597 21.8399C19.9726 22.2155 20.5864 22.2124 20.9589 21.8399C21.3345 21.4643 21.3314 20.8506 20.9589 20.478L13.4809 13L20.9559 5.52502C21.3314 5.14943 21.3284 4.53568 20.9589 4.1601C20.5833 3.78452 19.9696 3.78757 19.597 4.1601Z" fill="#3F3636"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_2061_156">
+                          <rect width="24.9987" height="24.9987" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Risk of cuts and irritation.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      function hairAdsTabs() {
+        let $p = $('.hair-ads-tabs');
+        let $items = $p.find('.hair-ads-tabs-item');
+        let $tap = $p.find('.hair-ads-tabs-list-item');
+        let $imgs = $p.find('.hair-ads-tabs-img-list .img-box');
+        let $txtP = $p.find('.hair-ads-tabs-right .hair-ads-tabs-p');
+        $tap.on('click', function(e) {
+          setTab($(this).index())
+        })
+
+        function setTab(index) {
+          if(index!=0){
+            $p.addClass('radius-left')
+          }else{
+            $p.removeClass('radius-left')
+          }
+          $tap.eq(index).addClass('active').siblings().removeClass('active');
+          $imgs.eq(index).addClass('active').siblings().removeClass('active');
+          $items.eq(index).addClass('active').siblings().removeClass('active');
+        }
+      }
+      hairAdsTabs()
+      
+    })
+  </script>
+  <div class="comparison-image-text">
+    <div class="container">
+      <div class="comparison-image-text-list">
+        <div class="comparison-image-text-item">
+          <div class="comparison-image-text-img to-top">
+            <img src="./images33/c1.jpg" alt="" class="img">
+          </div>
+          <div class="comparison-image-text-txt to-top" style="transition-delay: 0.1s">
+            <div class="comparison-image-text-cont">
+              <div class="comparison-image-text-title">Detects skin tones and auto-adjusts power level</div>
+              <div class="comparison-image-text-p">Accurately detecting skin tones, our all-new SkinSensor technology automatically optimizes the power level of every flash to match the pigment concentration in your skin, providing a caring hair removal experience that's tailored to your skin type.</div>
+              <div class="comparison-image-text-btn">
+                Try if Skin Sensor works for you
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <g clip-path="url(#clip0_1515_3388)">
+                  <path d="M12 0C5.38359 0 0 5.38359 0 12C0 18.6164 5.38359 24 12 24C18.6164 24 24 18.6164 24 12C24 5.38359 18.6164 0 12 0ZM12 22.957C5.95781 22.957 1.04297 18.0422 1.04297 12C1.04297 5.95781 5.95781 1.04297 12 1.04297C18.0422 1.04297 22.957 5.95781 22.957 12C22.957 18.0422 18.0422 22.957 12 22.957Z" fill="#190A0A"></path>
+                  <circle cx="12" cy="12" r="12" fill="#6C6AB4"></circle>
+                  <path d="M18.2641 11.5951H12.5242V5.85762C12.5242 5.56934 12.2875 5.33496 12.0016 5.33496C11.7133 5.33496 11.4789 5.57168 11.4789 5.85762V11.5951H5.74141C5.45312 11.5951 5.21875 11.8318 5.21875 12.1178C5.21875 12.4061 5.45547 12.6404 5.74141 12.6404H11.4789V18.3803C11.4789 18.6686 11.7156 18.9029 12.0016 18.9029C12.2898 18.9029 12.5242 18.6662 12.5242 18.3803V12.6404H18.2617C18.55 12.6404 18.7844 12.4037 18.7867 12.1178C18.7867 11.8295 18.55 11.5951 18.2641 11.5951Z" fill="#FBFAF4"></path>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_1515_3388">
+                  <rect width="24" height="24" fill="white"></rect>
+                  </clipPath>
+                  </defs>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comparison-image-text-item reverse-box">
+          <div class="comparison-image-text-img to-top">
+            <img src="./images33/c1.jpg" alt="" class="img">
+          </div>
+          <div class="comparison-image-text-txt to-top" style="transition-delay: 0.1s">
+            <div class="comparison-image-text-cont">
+              <div class="comparison-image-text-title">Next-Gen Ice Cooling Technology</div>
+              <div class="comparison-image-text-p">The culmination of 10+ years of IPL research, our signature cooling system retains a cool 65°F contact temperature for full-body sessions even after 30 minutes. Protecting your skin, preventing burns, and even leaveing your skin feelin’ like new after each treatment.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="comparison-image to-top">
+    <img src="./images33/d1.jpg" alt="" class="img pc-box">
+    <img src="./images33/d2.jpg" alt="" class="img mb-box">
+    <div class="comparison-image-cont to-top" style="transition-delay: 0.1s">
+      <div class="container">
+        <div class="comparison-image-sub">SkinSensor and upgraded Ice Cooling tech</div>
+        <div class="comparison-image-title">Smart skin protection</div>
+        <div class="comparison-image-p">Expert-backed, laboratorially tested, and over a decade of breakthroughs in IPL skin safety, including our latest SkinSensor and Ice-Cooling technology — achieving Ulike's safest, most comfortable hair removal device.</div>
+      </div>
+    </div>
+  </div>
+  <div class="comparison-image comparison-image-product to-top">
+    <img src="./images33/e1.jpg" alt="" class="img pc-box">
+    <img src="./images33/e2.jpg" alt="" class="img mb-box">
+
+    <div class="comparison-image-btn comparison-image-btn-left">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <g clip-path="url(#clip0_2226_3528)">
+          <circle cx="14.0008" cy="14" r="13.2" fill="#6C6AB4"/>
+          <path d="M20.887 13.5549H14.5731V7.24367C14.5731 6.92656 14.3127 6.66875 13.9982 6.66875C13.6811 6.66875 13.4233 6.92914 13.4233 7.24367V13.5549H7.11203C6.79492 13.5549 6.53711 13.8153 6.53711 14.1298C6.53711 14.447 6.7975 14.7048 7.11203 14.7048H13.4233V21.0186C13.4233 21.3357 13.6837 21.5935 13.9982 21.5935C14.3153 21.5935 14.5731 21.3331 14.5731 21.0186V14.7048H20.8844C21.2015 14.7048 21.4593 14.4444 21.4619 14.1298C21.4619 13.8127 21.2015 13.5549 20.887 13.5549Z" fill="white"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_2226_3528">
+            <rect width="26.4" height="26.4" fill="white" transform="translate(0.800781 0.799988)"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="comparison-image-btn comparison-image-btn-right">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <g clip-path="url(#clip0_2226_3528)">
+          <circle cx="14.0008" cy="14" r="13.2" fill="#6C6AB4"/>
+          <path d="M20.887 13.5549H14.5731V7.24367C14.5731 6.92656 14.3127 6.66875 13.9982 6.66875C13.6811 6.66875 13.4233 6.92914 13.4233 7.24367V13.5549H7.11203C6.79492 13.5549 6.53711 13.8153 6.53711 14.1298C6.53711 14.447 6.7975 14.7048 7.11203 14.7048H13.4233V21.0186C13.4233 21.3357 13.6837 21.5935 13.9982 21.5935C14.3153 21.5935 14.5731 21.3331 14.5731 21.0186V14.7048H20.8844C21.2015 14.7048 21.4593 14.4444 21.4619 14.1298C21.4619 13.8127 21.2015 13.5549 20.887 13.5549Z" fill="white"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_2226_3528">
+            <rect width="26.4" height="26.4" fill="white" transform="translate(0.800781 0.799988)"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="comparison-image-cont to-top" style="transition-delay: 0.1s">
+      <div class="container">
+        <div class="comparison-image-sub">Salon-inspired Super Hair Removal</div>
+        <div class="comparison-image-title">Ulike's first IPL device with Dual Lights and SHR Mode</div>
+        <div class="comparison-image-p">Double the light source and salon-inspired SHR Mode provides the effortless, longest-lasting hair removal experience — all from the comfort of your home.</div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+<script src="./js/theme.js"></script>
+<script src="./js/script.js"></script>
+</html>

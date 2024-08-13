@@ -9773,6 +9773,7 @@
   .header__cart-count {
     background: rgb(var(--header-text-color));
     color: rgb(var(--header-background));
+    background: #e7004c;
   }
   
   .js .header--transparent .header__cart-count {
@@ -16232,9 +16233,13 @@
     height: 100%;
     background: #ffffff;
     position: absolute;
-    left: 0;
-    transition: all 0.5s;
+    top: 0;
+    left:0;
+    transition: transform 0.5s;
     z-index: -1;
+    transform: scaleX(0);
+    /* transform: translateX(-100%); */
+    transform-origin: right;
   }
   .button.button--primary.button--animate:hover{
     color: #040000;
@@ -16243,8 +16248,10 @@
     color: #C92C23;
   }
   .button.button--primary.button--animate:hover:after {
-    transition: all 0.3s;
-    transform: translateY(-100%);
+    /* transition: all 0.3s; */
+    /* transform: translateX(0%); */
+    transform: scaleX(1);
+    transform-origin: left;
   }
   .button.button--primary.button--animate.button--first{
     background: #ffffff;

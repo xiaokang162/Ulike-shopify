@@ -1,0 +1,552 @@
+<div class="diy-share-page">
+  <div class="diy-share-cont">
+    <div>
+      <div
+        class="sticky top-bar"
+        id="le-menu"
+        data-sticky
+        data-sticky-on="small"
+        data-margin-top="0"
+        data-check-every="0" style="display: none;">
+        <div class="grid-container fluid">
+          <div class="grid-x">
+            <div class="medium-12 cell">
+              <div class="grid-x">
+                <div class="auto cell align-self-bottom">
+                  <ul class="menu horizontal align-right">
+                    <li>
+                      <a class="float-left" style="text-underline-offset: 4px;">{{ 'common.page_navigation.portal_invite_link' | t }}</a>
+                    </li>
+                    <li>
+                      <a
+                        href="{{ advocate.portal.rewards_page_url }}"
+                        class="float-left"
+                        style="text-decoration:none">{{ 'common.page_navigation.portal_rewards_link' | t }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% assign count_earned = 0 %}
+
+      {% for rwd in rewards %}
+        {% if rwd.status != 'will_not_charge' and rwd.status != 'will_not_payout' %}
+          {% assign count_earned = count_earned | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      <div class="mt-md align-center" style="display: none;">
+        {% if settings.logo_image and settings.logo_image != "" %}
+          <img class="logo_image_fixed_top_bar" src="{{ settings.logo_image }}" />
+        {% else %}
+          <h3 class="mb-md shop-name">
+            {{ campaign.shop_name }}
+          </h3>
+        {% endif %}
+      </div>
+      <div data-alert class="copied-toast-overlay" style="display: none;">
+        {{ "page.sharing.copy_success" | t }}
+      </div>
+      {% if settings.banner_image and settings.banner_image != "" and settings.remove_banner_from %}
+        {% unless settings.remove_banner_from contains 'Share Page' %}
+          <div class="grid-x align-center">
+            <div class="mb-md small-12 medium-8 large-5 cell">
+              <img
+                alt="banner_image"
+                class="banner_image"
+                src="{{ settings.banner_image }}" />
+            </div>
+          </div>
+        {% endunless %}
+      {% endif %}
+      <div class="grid-x align-center">
+        <div class="header-container">
+          <div class="share-page-header">
+            {% if campaign.state != 'paused' %}
+              {{ "page.sharing.header" | t }}
+            {% else %}
+              {{ "page.sharing.paused_header" | t }}
+            {% endif %}
+          </div>
+          <div class="sub-header">
+            {% if campaign.state != 'paused' %}
+              {% if offer.type != 'none' %}
+                {{ "page.sharing.subtitle_offer_description" | t }}
+              {% endif %}
+              {{ "page.sharing.description" | t }}
+            {% else %}
+              {{ "page.sharing.paused_subtitle_offer_description" | t }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if campaign.state != 'paused' %}
+        <div class="grid-x align-center">
+          <div class="copy-button-group float-center restrict-copied-overlay-height" style="word-break:break-all;">
+              <div
+                class="grid-x"
+                id="copy-button"
+                data-clipboard-text="{{ referral_link.url }}">
+                <button type="button" class="button share-url-button button__copy">
+                  {{ referral_link.url }}
+                </button>
+                <button class="button share-copy-button">
+                  <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/1_77aab6bf-33b5-46c6-ae62-42419d7a28a5.png, medium]" class="share-page-icon" />
+                  <span class="copy-instructions">
+                    {{ "page.sharing.copy_instructions" | t }}
+                  </span>
+                </button>
+              </div>
+            </div>
+            <!-- TIER REWARD COMPONENT -->
+          <div class="small-10 medium-8 cell">
+            {% assign rewards_to_next_tier = nil %}
+            {% if reward_setup.tiers.size > 1 %}
+              <table class="tiers" align="center" style="width: 100%; margin: 20px 0; background: transparent; border: none; border-collapse: collapse; box-shadow: none; display: table;">
+                <tbody style="background: transparent; border: none;">
+                {% assign tier_count = 0 %}
+                
+
+                {% for tier in reward_setup.tiers %}
+                  {% if tier.criteria == 'rewards' %}
+                    {% if tier_count == 0 %}
+                      <tr>
+                    {% endif %}
+                    
+                    <td class="tier" style="font-size: 16px; vertical-align: baseline; text-align: center; padding: 10px; background: transparent; border: none;">
+                      <div class="tier-icon">
+                        ⭐️
+                      </div>
+
+                      <div class="tier-text">
+                        {% assign current_tier = tier.minimum_threshold %}
+                        {% assign next_tier = reward_setup.tiers[forloop.index].minimum_threshold %}
+
+                        {% if next_tier %} 
+                          {% assign next_tier_minus_one = next_tier | minus: 1 %}
+                          {% if current_tier == next_tier_minus_one %}
+                            {% assign tier_range = current_tier %}
+                          {% else %}
+                            {% assign tier_range = current_tier | append: "-" | append: next_tier_minus_one %}
+                          {% endif %}
+                          
+                          {% if rewards_to_next_tier == nil and count_earned < next_tier %}
+                            {% assign rewards_to_next_tier = next_tier | minus: count_earned %}
+                          {% endif %}
+
+                        {% else %}
+                          {% assign tier_range = current_tier | append: "+" %}
+                          {% if rewards_to_next_tier == nil %}
+                            {% assign rewards_to_next_tier = 0 %}
+                          {% endif %}
+                        {% endif %}
+
+
+                        {% assign is_in_current_tier = count_earned >= current_tier %}
+                        {% assign is_below_next_tier = next_tier == nil or count_earned < next_tier %}
+
+                        <p class="{% if is_in_current_tier and is_below_next_tier %}selected-tier{% endif %}">
+                          Tier {{ forloop.index }}: {{ tier_range }} 
+                          {% if tier_range == 1 %}
+                            reward
+                          {% else %}
+                            rewards
+                          {% endif %}
+                        </p>
+
+                        <p class="{% if is_in_current_tier and is_below_next_tier %}selected-tier{% endif %}">
+                          {{ tier.description }}
+                        </p>
+                      </div>
+                    </td>
+                    
+                    {% assign tier_count = tier_count | plus: 1 %}
+                    
+                    {% if tier_count == 3 or forloop.last %}
+                      </tr>
+                      {% assign tier_count = 0 %}
+                    {% endif %}
+                  {% endif %}  
+                {% endfor %}
+                </tbody>
+              </table>
+              <p>
+                You've earned {{ count_earned }} 
+                {% if count_earned == 1%}
+                  reward.
+                {% else %}
+                  rewards.
+                {% endif %}
+                {% if count_earned == 0 %}
+                  Start sharing to earn rewards!
+                {% elsif rewards_to_next_tier %}
+                  {{ rewards_to_next_tier }} more to move to the next tier!
+                {% else %}
+                  You have reached the highest tier!
+                {% endif %}
+              </p>
+            {% endif %}
+          </div>                             
+        </div>
+        <!-- Sharing buttons' ID is important for tracking purposes -->
+
+        <div>
+          <div class="share-list">
+            <p class="share-page-text-social">{{ "common.social_media_share_section.social_media_share_cta" | t }}</p>
+            <div class="icon-list">
+              <div id="share-facebook" class="shrink">
+                <a
+                  class="social-links__facebook"
+                  href='{{ referral_link.share_via_facebook }}'
+                  target="_blank"
+                  id="fb-button"><img class="social-links-logo" src="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393735.png" />Facebook</a>
+              </div>
+              <div id="share-whatsapp" class="shrink">
+                <a
+                  class="social-links__whatsapp show-for-medium"
+                  href='{{ referral_link.share_via_whatsapp_desktop }}'
+                  target="_blank"
+                  id="whatsapp-desktop-button"><img class="social-links-logo" src="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393737.png" />WhatsApp</a>
+              </div>
+              <div id="share-twitter" class="shrink">
+                <a
+                  class="social-links__twitter"
+                  href='{{ referral_link.share_via_twitter }}'
+                  target="_blank"
+                  id="tweet-button"><img class="social-links-logo" src="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393736.png" />Twitter</a>
+              </div>
+              <div id="share-messenger" class="shrink cell" style="display: none;">
+                <a
+                  class="social-links__messenger show-for-medium"
+                  href='{{ referral_link.share_via_messenger_desktop }}'
+                  target="_blank"
+                  id="messenger-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/messenger-icon.svg" /></a>
+                <a
+                  class="social-links__messenger hide-for-medium"
+                  href='{{ referral_link.share_via_messenger_mobile }}'
+                  target="_blank"
+                  id="messenger-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/messenger-icon.svg" /></a>
+              </div>
+              <div id="share-telegram" class="shrink cell" style="display: none;">
+                <a
+                  class="social-links__telegram show-for-medium"
+                  href='{{ referral_link.share_via_telegram_desktop }}'
+                  target="_blank"
+                  id="telegram-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/telegram-icon.svg" /></a>
+                <a
+                  class="social-links__telegram hide-for-medium"
+                  href='{{ referral_link.share_via_telegram_mobile }}'
+                  target="_blank"
+                  id="telegram-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/telegram-icon.svg" /></a>
+              </div>
+              <div id="share-email" class="shrink cell" style="display: none;">
+                <a
+                  class="social-links__email"
+                  href='{{ referral_link.share_via_email_mailto }}'
+                  target="_blank"
+                  id="email-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/email-icon.svg" /></a>
+              </div>
+              <div id="share-threads" class="shrink cell" style="display: none;">
+                <a
+                  class="social-links__threads show-for-medium"
+                  href='{{ referral_link.share_via_threads_desktop }}'
+                  target="_blank"
+                  id="threads-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/threads-black-icon.svg" /></a>
+                <a
+                  class="social-links__threads hide-for-medium"
+                  href='{{ referral_link.share_via_threads_mobile }}'
+                  target="_blank"
+                  id="threads-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/threads-black-icon.svg" /></a>
+              </div>
+            </div>
+            <p class="text__subtle mt-sm mb-md" style="display: none;">{{ "common.social_media_share_section.preview_assurance" | t }}</p>
+          </div>
+        </div>
+        <div class="grid-x grid-padding-x align-center">
+          <div class="small-12 medium-12 large-12 how-it-works-header-container">
+            <h1 id="how-it-works" class="how-it-works-header mt-sm"  style="display: none;">
+              {{ "common.how_it_works_section.header" | t }}
+            </h1>
+          </div>
+        </div>
+        <div class="grid-x grid-padding-x align-center mt-sm">
+          <div class="small-11 medium-8 large-5 grid-x icon-container">
+            <div class="small-4 medium-4 cell">
+              <div>
+                <div class="how-it-works-icon-background">
+                  <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393733.png, small], [https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393733.png, medium]" class="how-it-works-icon" />
+                </div>
+                <p>
+                  REFER
+                </p>
+              </div>
+            </div>
+            <div class="small-4 medium-4 cell">
+              <div>
+                <div class="how-it-works-icon-background">
+                  <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/5_e188b7db-4624-41e8-b14c-dba5670aec8e.png, small], [https://cdn.shopify.com/s/files/1/0740/5882/6015/files/5_e188b7db-4624-41e8-b14c-dba5670aec8e.png, medium]" class="how-it-works-icon" />
+                </div>
+                <p>
+                  REWARD
+              </p>
+              </div>
+            </div>
+            <div class="small-4 medium-4 cell">
+              <div>
+                <div class="how-it-works-icon-background">
+                  <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393734.png, small], [https://cdn.shopify.com/s/files/1/0740/5882/6015/files/Group_457393734.png, medium]" class="how-it-works-icon" />
+                </div>
+                <p>REPEAT</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid-x grid-padding-x align-center" style="display: none;">
+          <div class="small-11 medium-8 large-5 grid-x align-center how-it-works-text">
+            <div class="small-4 medium-4 cell">
+              <p>
+                {{ "common.how_it_works_section.share_link_text" | t }}
+              </p>
+            </div>
+            <div class="small-4 medium-4 cell">
+              <p>
+                {{ "common.how_it_works_section.friend_buys_text" | t }}
+              </p>
+            </div>
+            <div class="small-4 medium-4 cell">
+              <p>
+                {{ "common.how_it_works_section.get_rewarded_text" | t }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="join-bt-msg">
+          * Offer applies only to UK residents 18+. See <a href="">Ulike Referral Program Terms</a> for complete details.
+        </div>
+      {% else %}
+        <!-- "View Rewards" CTA button when campaign is paused -->
+        <div class="grid-x align-center">
+          <div class="small-6 medium-3 cell">
+            <a href="{{ advocate.portal.rewards_page_url }}" class="button view-rewards-button">{{ "page.sharing.paused_cta_button" | t }}</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <picture>
+    <source srcset="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/BG_d7cf1ba6-6ec2-4f4f-a692-999682250d71.jpg" media="(max-width: 991px)">
+    <img class="img-bg" src="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/banner_1_4e66cfb5-e836-4d1f-bc42-cae461f8c03f.jpg">
+  </picture>
+</div>
+<style>
+  .diy-share-page{
+    position: relative;
+  }
+  .diy-share-page .diy-share-cont{
+    position: absolute;
+    width: 89%;
+    max-width: 695px;
+    z-index: 2;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 60px 54px 45px 54px;
+    background: #fff;
+  }
+  .diy-share-page .img-bg{
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .diy-share-page .header-container{
+    max-width: none;
+  }
+
+  .diy-share-page .share-page-header{
+    font-size: 44px;
+    color: #3F3636;
+    line-height: 1.2;
+  }
+  .diy-share-page .sub-header{
+    color: #3F3636;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .diy-share-page .copy-button-group{
+    max-width: none;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .diy-share-page .share-url-button{
+    flex: 1;
+    height: 55px;
+    border-radius: 0;
+    border-color: #737577;
+    border-right: 0;
+    color: #3F3636;
+    font-size: 18px;
+    background: none;
+    text-align: left;
+  }
+
+  .diy-share-page .share-copy-button{
+    width: 145px;
+    border-radius: 0;
+    font-size: 16px;
+    height: 55px;
+    margin-bottom: 0;
+  }
+
+  .diy-share-page .share-page-icon{
+    min-width: auto;
+    width: 15px;
+  }
+
+  .diy-share-page .share-list{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 23px;
+    margin-bottom: 35px;
+  }
+
+  .diy-share-page .share-page-text-social{
+    color: #3F3636;
+    font-size: 18px;
+    font-weight: 570;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .diy-share-page .icon-list{
+    display: flex;
+    align-items: center;
+    gap: 23px;
+  }
+
+  .diy-share-page .share-list a{
+    color: #3F3636;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .diy-share-page .how-it-works-header-container{
+    border-color: #737577;
+  }
+
+  .diy-share-page .social-links-logo{
+    width: 18px;
+    height: auto;
+  }
+
+  .diy-share-page .icon-container p{
+    color: #3F3636;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 570;
+    line-height: 1.3;
+    margin-bottom: 0;
+  }
+
+.diy-share-page .how-it-works-icon-background{
+  width: 57px;
+  border-radius: 0;
+  height: auto;
+  background: none;
+  margin: 0 auto;
+  margin-bottom: 9px;
+}
+
+.diy-share-page .how-it-works-icon{
+  width: 100%;
+  margin: 0;
+}
+
+.diy-share-page .join-bt-msg{
+  color: #3F3636;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.196px;
+  margin-top: 26px;
+  text-align: left;
+}
+
+.diy-share-page .join-bt-msg a{
+  font-weight: 570;
+  color: #3F3636;
+  text-decoration: underline;
+}
+
+@media (max-width:991px) {
+  .diy-share-page .diy-share-cont{
+    left: 50%;
+    transform: translateX(-50%);
+    top: 17%;
+    padding: 40px 12px 45px 12px;
+  }
+
+  .diy-share-page .share-page-header{
+    font-size: 26px;
+  }
+
+  .diy-share-page .sub-header{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 23px;
+  }
+
+  .diy-share-page .share-url-button,.diy-share-page .share-copy-button{
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .diy-share-page .share-copy-button{
+    width: 105px;
+  }
+
+  .diy-share-page .share-page-text-social{
+    font-size: 12px;
+  }
+
+  .diy-share-page .share-list{
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .diy-share-page .share-list a{
+    font-size: 12px;
+    text-decoration: underline;
+  }
+
+  .diy-share-page .how-it-works-icon-background{
+    width: 40px;
+  }
+
+  .diy-share-page .icon-container p{
+    font-size: 12px;
+  }
+
+  .diy-share-page .join-bt-msg{
+    margin-top: 23px;
+    text-align: left;
+    font-size: 12px;
+  }
+}
+</style>

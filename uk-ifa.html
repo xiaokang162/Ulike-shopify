@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./test/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/ifa.css" />
+  <script src="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.aio.min.js"></script>
+  <!-- <script src="./test/js/swiper.min.js"></script> -->
+</head>
+
+<body>
+  <div class="what-ifa">
+    <div class="container">
+      <div class="what-ifa-cont">
+        <div class="what-ifa-left">
+          <div>
+            <h3 class="what-ifa-h3">What is IFA?</h3>
+            <div class="what-ifa-sub">
+              IFA is the world's largest and one of the oldest home and consumer technology events, showcasing the
+              latest innovations in consumer electronics and home appliances.
+            </div>
+            <div class="what-ifa-p">
+              <p>
+                <strong>Date:</strong> September 5–9, 2025 <br />
+                <strong>Location:</strong> Messe Berlin, Germany<br />
+                <strong>Visit:</strong> Get your ticket
+              </p>
+            </div>
+          </div>
+          <img src="./images70/a2.svg" class="icon-img" alt="">
+        </div>
+        <div class="what-ifa-right">
+          <img src="./images70/a1.jpg" alt="" class="img">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-animation-new">
+    <picture>
+      <source srcset="./images70/b2.jpg" media="(max-width: 991px)">
+      <img class="img" src="./images70/b1.jpg">
+    </picture>
+    <div class="text-animation-cont">
+      <div class="container">
+        <div class="text-animation-dob">
+          <div class="text-animation-txt" style="--num-backgroundSize:0%;">
+            <span>
+              Your beauty journey
+              starts here:<br />
+              Discover confidence.
+              Discover beauty.
+            </span>
+          </div>
+          <div class="text-animation-gtxt">
+            <span>
+              Your beauty journey
+              starts here:<br />
+              Discover confidence.
+              Discover beauty.
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function handleScroll() {
+      let textElement = document.querySelector('.text-animation-txt');
+      let scrollPosition = window.scrollY;
+      let windowHeight = window.innerHeight;
+      let reat = textElement.getBoundingClientRect()
+      let scrollThresholdStart = windowHeight * 0.2; // 设置动画开始的滚动位置为页面高度的 20%
+      let scrollThresholdEnd = windowHeight * 0.8; // 设置动画结束的滚动位置为页面高度的 80%
+      // 根据滚动位置计算背景大小
+      let backgroundSize = (1 - (reat.top - windowHeight * 0.2) / (windowHeight * 0.6)) * 100;
+
+      // 如果滚动位置在阈值范围内，则显示文本并设置背景大小
+      if (reat.top >= scrollThresholdStart && reat.top <= scrollThresholdEnd) {
+        textElement.style = '--num-backgroundSize:' + backgroundSize + '%'
+      }
+      if (reat.top < scrollThresholdStart) {
+        textElement.style = '--num-backgroundSize:100%'
+      }
+      if (reat.top > scrollThresholdEnd) {
+        textElement.style = '--num-backgroundSize:0%'
+      }
+    }
+
+    // 监听滚动事件
+    window.addEventListener('scroll', handleScroll);
+
+    // 页面加载完成时触发一次滚动事件，以确保初始状态正确
+    window.addEventListener('load', handleScroll);
+  </script>
+  <div class="ifa-swiper">
+    <div class="container">
+      <h3 class="ifa-swiper-h3">Celebrating Ulike's Awards at IFA 2025</h3>
+    </div>
+    <div class="ifa-swiper-cont">
+      <div class="ifa-swiper-list swiper-wrapper">
+        <div class="ifa-swiper-item swiper-slide">
+          <picture>
+            <source srcset="./images70/e1.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images70/e1.jpg">
+          </picture>
+
+        </div>
+        <div class="ifa-swiper-item swiper-slide">
+          <picture>
+            <source srcset="./images70/e1.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images70/e1.jpg">
+          </picture>
+        </div>
+        <div class="ifa-swiper-item swiper-slide">
+          <picture>
+            <source srcset="./images70/e1.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images70/e1.jpg">
+          </picture>
+        </div>
+        <div class="ifa-swiper-item swiper-slide">
+          <picture>
+            <source srcset="./images70/e1.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images70/e1.jpg">
+          </picture>
+        </div>
+      </div>
+    </div>
+
+    <div class="ifa-swiper-bottom">
+      <div class="ifa-swiper-arraw ifa-swiper-button-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+          <g clip-path="url(#clip0_4710_368)">
+            <path
+              d="M1.90735e-06 11.4922C1.90735e-06 11.6737 0.067318 11.8537 0.196098 11.9912L10.44 22.9668L11.5098 21.9688L2.41463 12.2239H30C30 11.4161 29.3444 10.7605 28.5366 10.7605H0.765366C0.488781 10.7605 0.219515 10.8995 0.0878067 11.1439C0.0278072 11.2537 1.90735e-06 11.3737 1.90735e-06 11.4922Z"
+              fill="#190A0A" />
+            <path
+              d="M1.53073 8.92683C2.10292 9.49756 3.02926 9.49756 3.59999 8.92683L11.4937 1.03463L10.459 0L1.53219 8.92683H1.53073Z"
+              fill="#190A0A" />
+          </g>
+          <defs>
+            <clipPath id="clip0_4710_368">
+              <rect width="30" height="22.9683" fill="white" transform="matrix(-1 0 0 1 30 0)" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div class="ifa-swiper-pagination"></div>
+      <div class="ifa-swiper-arraw ifa-swiper-button-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+          <g clip-path="url(#clip0_4710_364)">
+            <path
+              d="M30 11.4922C30 11.6737 29.9327 11.8537 29.8039 11.9912L19.56 22.9668L18.4902 21.9688L27.5854 12.2239H0C0 11.4161 0.65561 10.7605 1.46341 10.7605H29.2346C29.5112 10.7605 29.7805 10.8995 29.9122 11.1439C29.9722 11.2537 30 11.3737 30 11.4922Z"
+              fill="#190A0A" />
+            <path
+              d="M28.4693 8.92683C27.8971 9.49756 26.9707 9.49756 26.4 8.92683L18.5063 1.03463L19.541 0L28.4678 8.92683H28.4693Z"
+              fill="#190A0A" />
+          </g>
+          <defs>
+            <clipPath id="clip0_4710_364">
+              <rect width="30" height="22.9683" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    window.onload = function () {
+      let swiper = new Swiper('.ifa-swiper-cont', {
+        autoplay: false,
+        speed: 1000,
+        spaceBetween: 20,
+        autoplayDisableOnInteraction: false,
+        loop: false,
+        centeredSlides: false,
+        slidesPerView: "auto",
+        pagination: {
+          el: ".ifa-swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".ifa-swiper-button-next",
+          prevEl: ".ifa-swiper-button-prev",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 50,
+            centeredSlides: true,
+            loop: true,
+          }
+        }
+      });
+    }
+  </script>
+  <div class="discover-experience">
+    <div class="container">
+      <div class="discover-experience-cont">
+        <h3 class="discover-experience-h3">Discover the Ulike Experience</h3>
+        <div class="discover-experience-p">Begin your journey to a confident glow.</div>
+        <img src="./images70/c1.png" alt="" class="img">
+        <div class="discover-experience-text">
+          <h4 class="discover-experience-h4">Ulike Program</h4>
+          <div class="discover-experience-table">
+            <div class="discover-experience-tr">
+              <div class="discover-experience-td">Event</div>
+              <div class="discover-experience-td">Time</div>
+              <div class="discover-experience-td">Location</div>
+            </div>
+            <div class="discover-experience-tr">
+              <div class="discover-experience-td">Showstopper</div>
+              <div class="discover-experience-td">September 4, 2025 | 6:00 PM – 9:00 PM</div>
+              <div class="discover-experience-td">Table 36, South Entrance Hall, Messe Berlin</div>
+            </div>
+            <div class="discover-experience-tr">
+              <div class="discover-experience-td">Ulike Devices Showcase</div>
+              <div class="discover-experience-td">September 5–9, 2025 | 9:30 AM – 6:00 PM</div>
+              <div class="discover-experience-td">Stand H19-101 & Beauty Hub (Hall 17), Messe Berlin</div>
+            </div>
+            <div class="discover-experience-tr">
+              <div class="discover-experience-td">European Premiere & Visionary Keynote</div>
+              <div class="discover-experience-td">September 8, 2025 | 12:30 PM – 1:00 PM</div>
+              <div class="discover-experience-td">Dream Stage (Hall 25), Messe Berlin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="discover-list">
+    <div class="container">
+      <h3 class="discover-list-h3">The Future of At-Home Hair Removal</h3>
+      <div class="discover-list-sub">Smooth. Protected. Confident.</div>
+      <div class="discover-list-cont">
+        <div class="discover-list-item">
+          <img src="./images70/d1.jpg" alt="" class="img">
+          <div class="discover-list-item-txt">
+            <h4 class="discover-list-h4">Innovation you can trust.</h4>
+            <div class="discover-list-p">With more than 800 patents, including our signature Sapphire Ice Cooling
+              technology that reduces contact temperatures to just 18.3 °C, Ulike ensures an ultra-comfortable
+              hair-removal experience, even on the most sensitive areas like the bikini line and underarms.</div>
+          </div>
+        </div>
+        <div class="discover-list-item">
+          <img src="./images70/d2.jpg" alt="" class="img">
+          <div class="discover-list-item-txt">
+            <h4 class="discover-list-h4">Innovation you can trust.</h4>
+            <div class="discover-list-p">With more than 800 patents, including our signature Sapphire Ice Cooling
+              technology that reduces contact temperatures to just 18.3 °C, Ulike ensures an ultra-comfortable
+              hair-removal experience, even on the most sensitive areas like the bikini line and underarms.</div>
+          </div>
+        </div>
+        <div class="discover-list-item">
+          <img src="./images70/d3.jpg" alt="" class="img">
+          <div class="discover-list-item-txt">
+            <h4 class="discover-list-h4">Innovation you can trust.</h4>
+            <div class="discover-list-p">With more than 800 patents, including our signature Sapphire Ice Cooling
+              technology that reduces contact temperatures to just 18.3 °C, Ulike ensures an ultra-comfortable
+              hair-removal experience, even on the most sensitive areas like the bikini line and underarms.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

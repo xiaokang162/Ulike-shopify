@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="145" height="145" viewBox="0 0 145 145">
+  <defs>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3" data-name="Nueva muestra de degrad copia 3" x1="68.71" y1="77.88" x2="-3.57" y2="-7.58" gradientUnits="userSpaceOnUse">
+      <stop offset="0.01" stop-color="#45282e"/>
+      <stop offset="0.26" stop-color="#6f4e41"/>
+      <stop offset="0.49" stop-color="#e39b77"/>
+      <stop offset="0.66" stop-color="#ead6b0"/>
+      <stop offset="0.83" stop-color="#d99e89"/>
+      <stop offset="1" stop-color="#8a5b50"/>
+    </linearGradient>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-2" x1="-38.24" y1="-26.91" x2="95.02" y2="82.26" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-3" x1="45.46" y1="104.38" x2="125.27" y2="4.25" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-4" x1="136.31" y1="19.9" x2="21.01" y2="121.34" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-5" x1="19.83" y1="-0.19" x2="157.61" y2="163.56" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-6" x1="69.49" y1="75.68" x2="149.3" y2="158.5" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-7" x1="24.43" y1="124.23" x2="124.57" y2="32.75" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-8" x1="38.26" y1="101.11" x2="104.12" y2="29.49" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-9" x1="65.56" y1="88.1" x2="65.56" y2="-54.33" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-10" x1="79.44" y1="219.78" x2="79.44" y2="-58.85" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-11" x1="-79.4" y1="69.6" x2="247.73" y2="62.83" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-12" x1="56.91" y1="79.44" x2="213.98" y2="79.44" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-13" x1="79.44" y1="157.37" x2="79.44" y2="-28.98" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-14" x1="65.56" y1="76.43" x2="65.56" y2="192.06" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-15" x1="-29.04" y1="79.44" x2="239.74" y2="79.44" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <linearGradient id="Nueva_muestra_de_degrad_copia_3-16" x1="0" y1="65.56" x2="72.5" y2="65.56" xlink:href="#Nueva_muestra_de_degrad_copia_3"/>
+    <radialGradient id="radial-gradient" cx="148.3" cy="187.54" r="16.98" gradientTransform="matrix(1.57, 0.01, 0, 0.15, -185.1, 42.58)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.04" stop-color="#fffcfa" stop-opacity="0.93"/>
+      <stop offset="0.2" stop-color="#fff4e8" stop-opacity="0.68"/>
+      <stop offset="0.35" stop-color="#ffedd9" stop-opacity="0.48"/>
+      <stop offset="0.5" stop-color="#ffe7cc" stop-opacity="0.3"/>
+      <stop offset="0.64" stop-color="#ffe2c3" stop-opacity="0.17"/>
+      <stop offset="0.77" stop-color="#ffdfbc" stop-opacity="0.08"/>
+      <stop offset="0.9" stop-color="#ffddb7" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="#ffdcb6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="308.84" cy="370.95" r="22.92" gradientTransform="matrix(0.02, 1.57, -0.18, 0, 132.92, -443.81)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.17" stop-color="#fff6ec" stop-opacity="0.74"/>
+      <stop offset="0.33" stop-color="#ffeedb" stop-opacity="0.51"/>
+      <stop offset="0.49" stop-color="#ffe8ce" stop-opacity="0.33"/>
+      <stop offset="0.64" stop-color="#ffe3c4" stop-opacity="0.19"/>
+      <stop offset="0.78" stop-color="#ffdfbc" stop-opacity="0.08"/>
+      <stop offset="0.9" stop-color="#ffddb8" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="#ffdcb6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-3" cx="202.53" cy="-227.32" r="16.98" gradientTransform="matrix(0, -1.57, 0.19, 0, 115.2, 405.78)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0.04" stop-color="#fffaf5" stop-opacity="0.86"/>
+      <stop offset="0.1" stop-color="#fff4e8" stop-opacity="0.68"/>
+      <stop offset="0.16" stop-color="#ffeedc" stop-opacity="0.52"/>
+      <stop offset="0.23" stop-color="#ffe9d2" stop-opacity="0.38"/>
+      <stop offset="0.31" stop-color="#ffe5c9" stop-opacity="0.26"/>
+      <stop offset="0.39" stop-color="#ffe2c2" stop-opacity="0.17"/>
+      <stop offset="0.48" stop-color="#ffdfbd" stop-opacity="0.09"/>
+      <stop offset="0.59" stop-color="#ffddb9" stop-opacity="0.04"/>
+      <stop offset="0.73" stop-color="#ffdcb7" stop-opacity="0.01"/>
+      <stop offset="1" stop-color="#ffdcb6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-4" cx="168.07" cy="-93.67" r="16.98" gradientTransform="matrix(1.57, 0, 0, 0.15, -165.06, 87.57)" xlink:href="#radial-gradient"/>
+  </defs>
+  <g style="isolation: isolate">
+    <g id="图层_2" data-name="图层 2">
+      <g id="OBJECTS">
+        <g>
+          <g>
+            <polygon points="37.11 36.69 64.97 64.89 50.48 64.89 37.11 36.69" fill="url(#Nueva_muestra_de_degrad_copia_3)"/>
+            <polygon points="64.97 50.4 64.97 64.89 37.11 36.69 64.97 50.4" fill="url(#Nueva_muestra_de_degrad_copia_3-2)"/>
+            <polygon points="107.88 36.7 80.01 50.41 80.01 64.9 107.88 36.7" fill="url(#Nueva_muestra_de_degrad_copia_3-3)"/>
+            <polygon points="94.5 64.9 80.01 64.9 107.88 36.7 94.5 64.9" fill="url(#Nueva_muestra_de_degrad_copia_3-4)"/>
+            <polygon points="107.81 107.62 94.44 79.87 79.94 79.87 107.81 107.62" fill="url(#Nueva_muestra_de_degrad_copia_3-5)"/>
+            <polygon points="79.94 94.36 79.94 79.87 107.81 107.62 79.94 94.36" fill="url(#Nueva_muestra_de_degrad_copia_3-6)"/>
+            <polygon points="37.1 107.7 64.96 79.96 64.96 94.45 37.1 107.7" fill="url(#Nueva_muestra_de_degrad_copia_3-7)"/>
+            <polygon points="50.47 79.96 37.1 107.7 64.96 79.96 50.47 79.96" fill="url(#Nueva_muestra_de_degrad_copia_3-8)"/>
+          </g>
+          <g>
+            <polygon points="72.5 0 72.5 72.5 58.62 58.62 72.5 0" fill="url(#Nueva_muestra_de_degrad_copia_3-9)"/>
+            <polygon points="86.38 58.62 72.5 72.5 72.5 0 86.38 58.62" fill="url(#Nueva_muestra_de_degrad_copia_3-10)"/>
+            <polygon points="145 72.5 86.38 58.62 72.5 72.5 145 72.5" fill="url(#Nueva_muestra_de_degrad_copia_3-11)"/>
+            <polygon points="86.38 86.38 72.5 72.5 145 72.5 86.38 86.38" fill="url(#Nueva_muestra_de_degrad_copia_3-12)"/>
+            <polygon points="72.5 145 86.38 86.38 72.5 72.5 72.5 145" fill="url(#Nueva_muestra_de_degrad_copia_3-13)"/>
+            <polygon points="58.62 86.38 72.5 72.5 72.5 145 58.62 86.38" fill="url(#Nueva_muestra_de_degrad_copia_3-14)"/>
+            <polygon points="0 72.5 72.5 72.5 58.62 86.38 0 72.5" fill="url(#Nueva_muestra_de_degrad_copia_3-15)"/>
+            <polygon points="58.62 58.62 0 72.5 72.5 72.5 58.62 58.62" fill="url(#Nueva_muestra_de_degrad_copia_3-16)"/>
+            <path d="M78.48,72.72c1.47,3.93-63.23,3.6-61.71-.31C15.3,68.49,80,68.81,78.48,72.72Z" fill="url(#radial-gradient)" style="mix-blend-mode: overlay"/>
+            <path d="M73.29,78.19C67,79.93,66.17,4,72.46,5.57,78.71,3.83,79.57,79.79,73.29,78.19Z" fill="url(#radial-gradient-2)" style="mix-blend-mode: overlay"/>
+            <path d="M72.54,56.77c4.9-1.42,4.73,63.16-.16,61.71C67.48,119.9,67.65,55.32,72.54,56.77Z" fill="url(#radial-gradient-3)" style="mix-blend-mode: overlay"/>
+            <path d="M129.67,72.5c1.51,3.91-63.19,4.06-61.7.14C66.46,68.73,131.17,68.58,129.67,72.5Z" fill="url(#radial-gradient-4)" style="mix-blend-mode: overlay"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

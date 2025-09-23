@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/new-reglow.css" />
+</head>
+
+<body>
+  <div class="skin-renewal">
+    <img class="skin-renewal-bg" src="" />
+    <div class="skin-renewal-cont">
+      <div class="container">
+        <h3 class="skin-renewal-h3">4-in-1 Skin Renewal</h3>
+        <p class="skin-renewal-p">A complete skincare solution in one.</p>
+        <div class="skin-renewal-bottom">
+          <div class="skin-renewal-t">
+            <div class="skin-renewal-tab">
+              <div class="skin-renewal-tab-item active" data-src="./images59/a1.jpg" data-src1="./images59/a5.jpg">Firm
+              </div>
+              <div class="skin-renewal-tab-item" data-src="./images59/a2.jpg" data-src1="./images59/a5.jpg">Rejuvenate
+              </div>
+              <div class="skin-renewal-tab-item" data-src="./images59/a3.jpg" data-src1="./images59/a5.jpg">Clear </div>
+              <div class="skin-renewal-tab-item" data-src="./images59/a4.jpg" data-src1="./images59/a5.jpg">Glow</div>
+            </div>
+            <div class="skin-renewal-text">
+              <div class="skin-renewal-text-item active">
+                <h3 class="skin-renewal-item-h3">Firm Mode</h3>
+                <div class="skin-renewal-tag">
+                  <div class="skin-renewal-tag-item" style="background: #FF000C; box-shadow: 0 0 10px #FF000C;"></div>
+                  <div class="skin-renewal-tag-item" style="background: #F555DB;box-shadow: 0 0 10px #F555DB;"></div>
+                </div>
+                <h4 class="skin-renewal-h4">Red (630nm) + Infrared (830nm)</h4>
+                <p class="skin-renewal-item-p">Stimulates collagen to plump skin and reduce wrinkles.</p>
+              </div>
+              <div class="skin-renewal-text-item">
+                <h3 class="skin-renewal-item-h3">Rejuvenate Mode</h3>
+                <div class="skin-renewal-tag">
+                  <div class="skin-renewal-tag-item" style="background: #FFD200;box-shadow: 0 0 10px #FFD200;"></div>
+                  <div class="skin-renewal-tag-item" style="background: #FF000C;box-shadow: 0 0 10px #FF000C;"></div>
+                </div>
+                <h4 class="skin-renewal-h4">Yellow (590nm) + Red (630nm)</h4>
+                <p class="skin-renewal-item-p">Strengthens the skin barrier for a calmer, more even complexion.</p>
+              </div>
+              <div class="skin-renewal-text-item">
+                <h3 class="skin-renewal-item-h3">Clear Mode</h3>
+                <div class="skin-renewal-tag">
+                  <div class="skin-renewal-tag-item" style="background: #57A4FF;box-shadow: 0 0 10px #57A4FF;"></div>
+                  <div class="skin-renewal-tag-item" style="background: #FF000C;box-shadow: 0 0 10px #FF000C;"></div>
+                  <div class="skin-renewal-tag-item" style="background: #F555DB;box-shadow: 0 0 10px #F555DB;"></div>
+                </div>
+                <h4 class="skin-renewal-h4">Blue (465nm) + Red (630nm) + Infrared (830nm)</h4>
+                <p class="skin-renewal-item-p">Targets acne-causing bacteria to soothe irritation and control breakouts.
+                </p>
+              </div>
+              <div class="skin-renewal-text-item">
+                <h3 class="skin-renewal-item-h3">Glow Mode</h3>
+                <div class="skin-renewal-tag">
+                  <div class="skin-renewal-tag-item" style="background: #FFD200;box-shadow: 0 0 10px #FFD200;"></div>
+                  <div class="skin-renewal-tag-item" style="background: #FF000C;box-shadow: 0 0 10px #FF000C;"></div>
+                  <div class="skin-renewal-tag-item" style="background: #F555DB;box-shadow: 0 0 10px #F555DB;"></div>
+                </div>
+                <h4 class="skin-renewal-h4">Yellow (590nm) + Red (630nm) + Infrared (830nm)</h4>
+                <p class="skin-renewal-item-p">Brightens blemishes and dullness for a more radiant tone.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function skinRenewalInit(tabSelector, contentSelector, bgSelector = null, activeClass = 'active') {
+      const tabs = document.querySelectorAll(tabSelector);
+      const contents = document.querySelectorAll(contentSelector);
+      const bgElement = bgSelector ? document.querySelector(bgSelector) : null;
+
+      if (!tabs.length || !contents.length) return;
+
+      function setBackground(tab) {
+        if (!bgElement || !tab) return;
+        const isMobile = window.innerWidth <= 991;
+        const bgUrl = isMobile ? tab.getAttribute('data-src1') : tab.getAttribute('data-src');
+
+        if (bgUrl) {
+          const img = new Image();
+          img.src = bgUrl;
+
+          img.onload = function () {
+            bgElement.classList.add('fade-out');
+
+            setTimeout(() => {
+              bgElement.setAttribute('src', bgUrl);
+              bgElement.classList.remove('fade-out');
+            }, 0);
+          }
+        }
+      }
+
+      // 初始化，选中第一个 tab 和内容
+      tabs.forEach(t => t.classList.remove(activeClass));
+      contents.forEach(c => c.classList.remove(activeClass));
+
+      tabs[0].classList.add(activeClass);
+      contents[0].classList.add(activeClass);
+      setBackground(tabs[0]);
+
+      // 后续点击事件
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove(activeClass));
+          tab.classList.add(activeClass);
+
+          contents.forEach(c => c.classList.remove(activeClass));
+          contents[index].classList.add(activeClass);
+
+          setBackground(tab);
+        });
+      });
+    }
+
+    skinRenewalInit('.skin-renewal .skin-renewal-tab-item', '.skin-renewal .skin-renewal-text-item', '.skin-renewal .skin-renewal-bg');
+  </script>
+
+  <div class="comparison-container">
+    <div class="container">
+      <div class="comparison-cont">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>
+                How Ulike ReGlow Stands Out From Other LED Masks
+              </th>
+              <th>
+                <img src="./images59/b1.png" alt="Ulike ReGlow Mask">
+                Ulike ReGlow
+                <div class="small">4-in-1 Skin Renewal</div>
+              </th>
+              <th>
+                <img src="./images59/b2.png" alt="Competitor 1 Mask">
+                Competitor 1<br>
+                <div class="small">Portable Mask</div>
+              </th>
+              <th>
+                <img src="./images59/b3.png" alt="Competitor 2 Mask">
+                Competitor 2<br>
+                <div class="small">Rejuvenation Mask</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Infrared <span class="feature-color infrared"></span>
+                <div class="small">(stimulates collagen & elastin)</div>
+              </td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon check competitor"></span></td>
+              <td><span class="icon cross"></span></td>
+            </tr>
+            <tr>
+              <td>
+                Red<span class="feature-color red"></span>
+                <div class="small">(reduces fine lines & wrinkles)</div>
+              </td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon check competitor"></span></td>
+              <td><span class="icon check competitor"></span></td>
+            </tr>
+            <tr>
+              <td>
+                Yellow<span class="feature-color yellow"></span>
+                <div class="small">(reduces redness & calms skin)</div>
+              </td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon cross"></span></td>
+              <td><span class="icon check competitor"></span></td>
+            </tr>
+            <tr>
+              <td>
+                Blue<span class="feature-color blue"></span>
+                <div class="small">(clears acne & breakouts)</div>
+              </td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon cross"></span></td>
+              <td><span class="icon cross"></span></td>
+            </tr>
+            <tr>
+              <td>Wavelengths</td>
+              <td>830nm (Infrared)<br>630nm (Red)<br>590nm (Yellow)<br>465nm (Blue)</td>
+              <td>830nm (Infrared)<br>633nm (Red)</td>
+              <td>630nm (Red)<br>415nm (Blue)</td>
+            </tr>
+            <tr>
+              <td>LEDs per slot</td>
+              <td>4</td>
+              <td>1</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>Total LEDs</td>
+              <td>272</td>
+              <td>132</td>
+              <td>160</td>
+            </tr>
+            <tr>
+              <td>360° Mirror Reflection Technology
+                <div class="small">(no missed spots)</div>
+              </td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon cross"></span></td>
+              <td><span class="icon cross"></span></td>
+            </tr>
+            <tr>
+              <td>No-glare design</td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon cross"></span></td>
+              <td><span class="icon cross"></span></td>
+            </tr>
+            <tr>
+              <td>FDA-cleared</td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon check competitor"></span></td>
+              <td><span class="icon check competitor"></span></td>
+            </tr>
+            <tr>
+              <td>Backed by a Pioneer in Light Therapy</td>
+              <td><span class="icon check ulike"></span></td>
+              <td><span class="icon cross"></span></td>
+              <td><span class="icon cross"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./test/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/a4.css" />
+
+  <script src="./test/js/swiper.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="preface-new to-top">
+    <div class="container">
+      <div class="preface-cont">
+        <div class="preface-left">
+          <img class="img" src="images43/logo.svg" alt="">
+        </div>
+        <div class="preface-right">
+          <div class="preface-title text-top">More than just hair removal.</div>
+          <div class="preface-text text-top"> Beauty, like hair removal, isn't just about looking good. It's about
+            feeling good too.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      // 监听滚动事件
+      let lastScrollTopNew = 0;
+      $(window).scroll(function () {
+        let scrollTopNew = $(this).scrollTop();
+        if (scrollTopNew > lastScrollTopNew) {
+          checkVisible($('.preface-left'));
+        }
+        lastScrollTopNew = scrollTopNew;
+      });
+
+      // 检查元素是否在屏幕中间区域可视内并改变颜色
+      function checkVisible($elements) {
+        let windowHeight = $(window).height();
+        let windowTop = $(window).scrollTop();
+        let windowBottom = windowTop + windowHeight;
+        let middleScreenTop = windowTop + windowHeight / 3; // 屏幕中间区域的顶部
+        let middleScreenBottom = windowBottom - windowHeight / 3; // 屏幕中间区域的底部
+
+        $elements.each(function () {
+          let $element = $(this);
+          let elementTop = $element.offset().top;
+          let elementBottom = elementTop + $element.outerHeight();
+
+          // 判断元素是否在屏幕中间区域可视内
+          if (elementTop <= middleScreenBottom && elementBottom >= middleScreenTop) {
+            $element.addClass('changed');
+          } else {
+            $element.removeClass('changed');
+          }
+        });
+      }
+    });
+
+  </script>
+  <div class="product-area-box to-top">
+    <div class="product-area-first product-area-mp">
+      <div class="container">
+        <div class="product-area-item to-top" style="transition-delay: 0.1s">
+          <div class="product-area-tag">NEW</div>
+          <div class="product-area-text">
+            <h3 class="product-area-h3 text-top">
+              Air 10
+            </h3>
+            <div class="product-area-p text-top">
+              96% hair reduction in just 2 weeks<br />
+              Full body treatments in 10 minutes
+            </div>
+            <div class="product-area-star">
+              <img class="star" src="./images43/star1.svg" alt="">
+              <div class="product-area-star-txt">
+                4.6/5 (<strong>968</strong>)
+              </div>
+            </div>
+          </div>
+          <div class="product-area-img-list">
+            <div class="product-area-img-item active">
+              <img class="img h-hide" src="./images43/zs.png" alt="" />
+              <img class="img h-show" src="./images43/hover.jpg" alt="" />
+            </div>
+            <div class="product-area-img-item">
+              <img class="img h-hide" src="./images43/zs.png" alt="" />
+              <img class="img h-show" src="./images43/hover1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="product-area-cont">
+            <div class="product-area-dot to-top">
+              <div class="product-area-dot-item active" style="background:linear-gradient(to bottom ,#9e9bcf,#6867a0);"
+                data-color="linear-gradient(180deg,#e7e5fe 0%,#fbfaff 33.21%,#fff 64.3%,#f9f9f9 100%)">
+              </div>
+              <div class="product-area-dot-item" style="background:linear-gradient(to bottom ,#ffebeb,#e6c8c6);"
+                data-color="linear-gradient(180deg, #FCF4F2 0%, #FCF4F2 33.21%, #FFF 64.3%, #F9F9F9 100%)"></div>
+            </div>
+            <div class="product-area-btn-box">
+              <div class="product-area-btn to-top">
+                <a href="#" class="product-area-btn-item btn-diy">
+                  <div class="btn-txt" text="SHOP NOW  $399.00 USD">
+                    <span>SHOP NOW $399.00 USD</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="product-area-msg">Dual Lights for double the efficiency.</div>
+          </div>
+        </div>
+      </div>
+      <div class="product-area-remark">
+        <div class="product-area-remark-cont">
+          <div class="product-area-remark-top">
+            <div class="product-area-remark-title">Reviews</div>
+            <div class="product-area-remark-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                <path d="M20.2656 6.85693L7.26562 19.8569" stroke="#040000" stroke-width="1.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M7.26562 6.85693L20.2656 19.8569" stroke="#040000" stroke-width="1.4" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="product-area-remark-img">
+            <div class="product-area-remark-img-item">
+              <span>5</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                  fill="#190A0A" />
+              </svg>
+              <div class="product-area-remark-progress" style="--progress-num:80%;"></div>
+            </div>
+            <div class="product-area-remark-img-item">
+              <span>4</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                  fill="#190A0A" />
+              </svg>
+              <div class="product-area-remark-progress" style="--progress-num:50%;"></div>
+            </div>
+            <div class="product-area-remark-img-item">
+              <span>3</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                  fill="#190A0A" />
+              </svg>
+              <div class="product-area-remark-progress" style="--progress-num:30%;"></div>
+            </div>
+            <div class="product-area-remark-img-item">
+              <span>2</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                  fill="#190A0A" />
+              </svg>
+              <div class="product-area-remark-progress" style="--progress-num:0%;"></div>
+            </div>
+            <div class="product-area-remark-img-item">
+              <span>1</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                  fill="#190A0A" />
+              </svg>
+              <div class="product-area-remark-progress" style="--progress-num:10%;"></div>
+            </div>
+          </div>
+          <div style="text-align: left;">
+            <a href="#" class="product-area-remark-link">Read all reviews</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="product-area-swiper">
+        <div class="product-area-list swiper-wrapper">
+          <div class="product-area-item product-area-mp to-top swiper-slide" style="transition-delay: 0.1s">
+            <div class="product-area-tag">NEW</div>
+            <div class="product-area-img-list">
+              <div class="product-area-img-item active">
+                <img class="img h-hide" src="./images43/zs3.jpg" alt="" />
+                <img class="img h-show" src="./images43/hover.jpg" alt="" />
+              </div>
+              <div class="product-area-img-item">
+                <img class="img h-hide" src="./images43/zs3.jpg" alt="" />
+                <img class="img h-show" src="./images43/hover1.jpg" alt="" />
+              </div>
+              <div class="product-area-img-item">
+                <img class="img h-hide" src="./images43/zs3.jpg" alt="" />
+                <img class="img h-show" src="./images43/hover.jpg" alt="" />
+              </div>
+            </div>
+            <div class="product-area-cont">
+              <div class="product-area-cont-top">
+                <h3 class="product-area-h3 text-top">
+                  Ulike Air 3
+                </h3>
+                <div class="product-area-p text-top">
+                  Visible results in 3 weeks<br />
+                  Full body treatments in 12 minutes
+                </div>
+                <div class="product-area-star">
+                  <img class="star" src="./images43/star1.svg" alt="">
+                  <div class="product-area-star-txt">
+                    4.6/5 (<strong>968</strong>)
+                  </div>
+                </div>
+                <div class="product-area-dot to-top">
+                  <div class="product-area-dot-item active"
+                    style="background:linear-gradient(to bottom ,#9e9bcf,#6867a0);">
+                  </div>
+                  <div class="product-area-dot-item" style="background:linear-gradient(to bottom ,#ffffff,#d9dadb);">
+                  </div>
+                  <div class="product-area-dot-item" style="background:linear-gradient(to bottom ,#ffebeb,#e6c8c6);">
+                  </div>
+                </div>
+              </div>
+              <div class="product-area-btn-box">
+                <div class="product-area-btn to-top">
+                  <a href="#" class="product-area-btn-item btn-diy">
+                    <div class="btn-txt" text="SHOP NOW $399.00 USD">
+                      <span>SHOP NOW $399.00 USD</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="product-area-msg">Dual Lights for double the efficiency.</div>
+            </div>
+            <div class="product-area-remark">
+              <div class="product-area-remark-cont">
+                <div class="product-area-remark-top">
+                  <div class="product-area-remark-title">Reviews</div>
+                  <div class="product-area-remark-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                      <path d="M20.2656 6.85693L7.26562 19.8569" stroke="#040000" stroke-width="1.4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M7.26562 6.85693L20.2656 19.8569" stroke="#040000" stroke-width="1.4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="product-area-remark-img">
+                  <div class="product-area-remark-img-item">
+                    <span>5</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                        fill="#190A0A" />
+                    </svg>
+                    <div class="product-area-remark-progress" style="--progress-num:80%;"></div>
+                  </div>
+                </div>
+
+                <a href="#" class="product-area-remark-link">Read all reviews</a>
+              </div>
+            </div>
+          </div>
+          <div class="product-area-item product-area-mp to-top swiper-slide" style="transition-delay: 0.2s">
+            <div class="product-area-tag">HOT</div>
+            <div class="product-area-img-list">
+              <div class="product-area-img-item active">
+                <img class="img h-hide" src="./images43/hs.jpg" alt="" />
+                <img class="img h-show" src="./images43/hover.jpg" alt="" />
+              </div>
+            </div>
+            <div class="product-area-cont">
+              <div class="product-area-cont-top">
+                <h3 class="product-area-h3 text-top">
+                  Ulike X
+                </h3>
+                <div class="product-area-p text-top">
+                  Visible results in 2 weeks<br />
+                  Full body treatments in 10 minutes
+                </div>
+                <div class="product-area-star">
+                  <img class="star" src="./images43/star.svg" alt="">
+                  <div class="product-area-star-txt">
+                    4.6/5 (<strong>968</strong>)
+                  </div>
+                </div>
+                <div class="product-area-dot to-top">
+                  <div class="product-area-dot-item active"
+                    style="background:linear-gradient(180deg, #121011 -6.5%, #565656 106.5%);">
+                  </div>
+                </div>
+              </div>
+              <div class="product-area-btn-box">
+                <div class="product-area-btn to-top">
+                  <a href="#" class="product-area-btn-item btn-diy">
+                    <div class="btn-txt" text="SHOP NOW $399.00 USD">
+                      <span>SHOP NOW $399.00 USD</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="product-area-msg">Dual Lights for double the efficiency.</div>
+            </div>
+            <div class="product-area-remark">
+              <div class="product-area-remark-cont">
+                <div class="product-area-remark-top">
+                  <div class="product-area-remark-title">Reviews</div>
+                  <div class="product-area-remark-close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
+                      <path d="M20.2656 6.85693L7.26562 19.8569" stroke="#040000" stroke-width="1.4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M7.26562 6.85693L20.2656 19.8569" stroke="#040000" stroke-width="1.4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="product-area-remark-img">
+                  <div class="product-area-remark-img-item">
+                    <span>5</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M6.16026 2.46227C6.38446 1.9233 7.14796 1.9233 7.37211 2.46227L8.41311 4.96513L11.1152 5.18175C11.6971 5.2284 11.933 5.95453 11.4897 6.33428L9.43101 8.09778L10.06 10.7345C10.1954 11.3023 9.57771 11.7511 9.07951 11.4468L6.76621 10.0338L4.45288 11.4468C3.95472 11.7511 3.33702 11.3023 3.47246 10.7345L4.10142 8.09778L2.04275 6.33428C1.59943 5.95453 1.83537 5.2284 2.41723 5.18175L5.11928 4.96513L6.16026 2.46227Z"
+                        fill="#190A0A" />
+                    </svg>
+                    <div class="product-area-remark-progress" style="--progress-num:80%;"></div>
+                  </div>
+                </div>
+
+                <a href="#" class="product-area-remark-link">Read all reviews</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-area-pagination"></div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      $('html').on('click', '.product-area-box .product-area-dot-item', function () {
+        let $this = $(this)
+        let index = $this.index()
+        if ($this.hasClass('active')) return
+        if ($this.closest('.product-area-first').length) {
+          $this.closest('.product-area-first').css('background', $this.attr('data-color'))
+        }
+        $this.closest('.product-area-item').find('.product-area-img-item.close').removeClass('close')
+        $this.addClass('active').siblings().removeClass('active')
+        $this.closest('.product-area-item').find('.product-area-img-item.active').removeClass('active').addClass('close')
+        $this.closest('.product-area-item').find('.product-area-img-item').eq(index).addClass('active')
+        setTimeout(() => {
+          $this.closest('.product-area-item').find('.product-area-img-item.close').removeClass('close')
+        }, 600)
+      })
+
+      if (window.innerWidth < 991) {
+        var productSwiper = new Swiper(".product-area-swiper", {
+          slidesPerView: "auto",
+          spaceBetween: 16,
+          pagination: {
+            el: ".product-area-pagination",
+            clickable: true,
+          },
+        });
+      }
+
+      $('.product-area-box .product-area-star').click(function (e) {
+        e.stopPropagation()
+
+        $('.product-area-mp').removeClass('show-progress').find('.product-area-remark').fadeOut()
+
+        $(this).closest('.product-area-mp').find('.product-area-remark').fadeIn(300, () => {
+          $(this).closest('.product-area-mp').addClass('show-progress')
+        })
+      })
+      $(document).on('click', function () {
+        $('.product-area-box .product-area-remark').fadeOut(300, () => {
+          $('.product-area-box .product-area-mp').removeClass('show-progress')
+        })
+      })
+    })
+
+  </script>
+  <div class="user-reviews to-top">
+    <div class="container">
+      <div class="user-reviews-top">
+        <h3 class="user-reviews-title to-top">Trusted by over 6 million users worldwide.</h3>
+        <div class="user-reviews-arraw to-top">
+          <div class="user-reviews-arraw-item user-reviews-arraw-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M23.6003 33.9318L24.1054 34.4369L25.1155 33.4267L24.6104 32.9217L19.9992 28.3104L15.6526 23.9638C15.0947 23.406 14.1902 23.406 13.6323 23.9638L18.9891 29.3206L23.6003 33.9318ZM11.1003 20.4217C10.8213 20.7006 10.8213 21.1529 11.1003 21.4318C11.1942 21.5257 11.3078 21.588 11.4278 21.6187L11.4278 21.641L11.6038 21.641L11.6069 21.641L12.1421 21.641L19.4639 21.641L26.7857 21.641L28.5715 21.641C29.3605 21.641 30.0001 21.0014 30.0001 20.2125L26.7857 20.2125L13.3298 20.2125L24.6104 8.93182L25.1155 8.42674L24.1054 7.41659L23.6003 7.92166L11.1003 20.4217Z"
+                fill="#190A0A" />
+              <circle cx="20" cy="20.8655" r="19.2857" stroke="#190A0A" stroke-width="1.42857" />
+            </svg>
+          </div>
+          <div class="user-reviews-arraw-item user-reviews-arraw-right">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M16.3997 7.79914L15.8946 7.29407L14.8845 8.30422L15.3896 8.8093L20.0008 13.4205L24.3474 17.7671C24.9053 18.325 25.8098 18.325 26.3677 17.7671L21.011 12.4104L16.3997 7.79914ZM28.8997 21.3093C29.1787 21.0303 29.1787 20.5781 28.8997 20.2991C28.8058 20.2052 28.6922 20.1429 28.5722 20.1122V20.0899H28.3962H28.3931H27.8579H20.5361H13.2143H11.4285C10.6395 20.0899 9.99995 20.7295 9.99995 21.5185H13.2143H26.6702L15.3896 32.7991L14.8845 33.3042L15.8946 34.3144L16.3997 33.8093L28.8997 21.3093Z"
+                fill="#190A0A" />
+              <circle cx="20" cy="20.8655" r="19.2857" stroke="#190A0A" stroke-width="1.42857" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="user-reviews-cont">
+        <div class="user-reviews-list swiper-wrapper">
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .1s;">
+            <div class="user-reviews-img">
+              <img class="img" src="./images43/a0.jpg" alt="" />
+              <div class="user-reviews-tag">
+                Before
+              </div>
+              <div class="user-reviews-tag">
+                After
+              </div>
+              <!-- <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div> -->
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .2s;">
+            <div class="user-reviews-img">
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div>
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .3s;">
+            <div class="user-reviews-img">
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div>
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .4s;">
+            <div class="user-reviews-img">
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div>
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .5s;">
+            <div class="user-reviews-img">
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div>
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .6s;">
+            <div class="user-reviews-img">
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div>
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="user-reviews-item swiper-slide to-top" style="transition-delay: .7s;">
+            <div class="user-reviews-img">
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a1.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  Before
+                </div>
+              </div>
+              <div class="user-reviews-img-item">
+                <img class="img" src="./images43/a2.jpg" alt="" />
+                <div class="user-reviews-tag">
+                  After
+                </div>
+              </div>
+            </div>
+            <div class="user-reviews-info">
+              <div class="user-reviews-star">
+                <img src="./images43/star1.svg" alt="" class="star-img">
+                4.8
+              </div>
+              <div class="user-reviews-h3">It’s amazing!</div>
+              <div class="user-reviews-p">"It’s amazing, I was able to recover my hair with this powerful product. I
+                don’t have extensions."</div>
+              <div class="user-reviews-det">
+                <img src="./images43/a9.png" alt="" class="user-img">
+                Gilbert Bargas
+              </div>
+            </div>
+            <div class="user-reviews-product">
+              <img class="product-img" src="./images43/a10.jpg" alt="">
+              <div class="user-reviews-product-info">
+                <div class="user-reviews-product-h3">Air 10</div>
+                <a class="user-reviews-product-link" href="#">
+                  LEARN MORE
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                    <path d="M0 5.59607L13.087 5.59546" stroke="#190A0A" stroke-width="0.608696" />
+                    <path d="M10.3477 2.85632L13.553 5.59606L10.3477 8.26641" stroke="#190A0A" stroke-width="0.608696"
+                      stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var userSwiper = new Swiper(".user-reviews-cont", {
+      slidesPerView: "auto",
+      spaceBetween: 15,
+      navigation: {
+        nextEl: ".user-reviews-arraw-right",
+        prevEl: ".user-reviews-arraw-left",
+      },
+      breakpoints: {
+        768: {
+          spaceBetween: 20
+        },
+      }
+    });
+  </script>
+  <div class="experts-new to-top">
+    <div class="container">
+      <h3 class="experts-new-h3 to-top">Recommended by experts.</h3>
+      <div class="experts-new-swiper">
+        <div class="experts-new-list swiper-wrapper">
+          <div class="experts-new-item swiper-slide to-top" style="transition-delay: .1s;">
+            <div class="experts-new-img">
+              <img class="img" src="./images43/b1.png" alt="">
+            </div>
+            <div class="experts-new-text">
+              <div class="experts-new-text-top">
+                <div class="experts-new-msg">Chief Scientific Advisor of Ulike Group</div>
+                <div class="experts-new-h4">Professor M.R. Hamblin</div>
+              </div>
+              <div class="experts-new-p">
+                “I am to merge the most important findings in photomedicine with Ulike’s robust research and development
+                capabilities to attain industry breakthroughs with advanced beauty products.”
+              </div>
+            </div>
+          </div>
+          <div class="experts-new-item swiper-slide to-top" style="transition-delay: .2s;">
+            <div class="experts-new-img">
+              <img class="img" src="./images43/b2.png" alt="">
+            </div>
+            <div class="experts-new-text">
+              <div class="experts-new-text-top">
+                <div class="experts-new-msg">Board-Certified Dermatologist</div>
+                <div class="experts-new-h4">Dr. Davin Lim</div>
+              </div>
+              <div class="experts-new-p">
+                “What was only possible in a clinic a few years ago has become an effective and safe option for patients
+                to undertake at the convenience and privacy of their own home.”
+              </div>
+            </div>
+          </div>
+          <div class="experts-new-item swiper-slide to-top" style="transition-delay: .3s;">
+            <div class="experts-new-img">
+              <img class="img" src="./images43/b2.png" alt="">
+            </div>
+            <div class="experts-new-text">
+              <div class="experts-new-text-top">
+                <div class="experts-new-msg">Board-Certified Dermatologist</div>
+                <div class="experts-new-h4">Dr. Davin Lim</div>
+              </div>
+              <div class="experts-new-p">
+                “What was only possible in a clinic a few years ago has become an effective and safe option for patients
+                to undertake at the convenience and privacy of their own home.”
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="experts-new-dot"></div>
+  </div>
+  <script>
+    var swiper = new Swiper(".experts-new-swiper", {
+      slidesPerView: "auto",
+      spaceBetween: 16,
+      pagination: {
+        el: ".experts-new-dot",
+        clickable: true,
+      },
+      breakpoints: {
+        700: {
+          spaceBetween: 20
+        },
+      }
+    });
+
+
+  </script>
+
+  <div class="brand-video to-top">
+    <div class="container">
+      <div class="brand-video-cont">
+        <div class="brand-video-list swiper-wrapper">
+          <div class="brand-video-item swiper-slide">
+            <div class="brand-video-img">
+              <div class="brand-video-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M17.4656 6.46148C17.6528 6.72402 17.6649 7.07298 17.4964 7.34784C16.474 9.01559 15.8845 10.977 15.8845 13.0787C15.8845 18.2843 19.5072 22.6459 24.37 23.776C24.8023 23.8764 25.0713 24.3083 24.9707 24.7405C24.8703 25.1728 24.4384 25.4419 24.0062 25.3414C18.4317 24.0459 14.2774 19.0484 14.2774 13.0787C14.2774 11.3718 14.6174 9.74307 15.2337 8.25764C11.2166 9.89042 8.38449 13.8331 8.38449 18.4358C8.38449 24.501 13.3014 29.418 19.3667 29.418C23.3307 29.418 26.8049 27.3183 28.737 24.1666C28.9689 23.7882 29.4636 23.6695 29.842 23.9015C30.2203 24.1334 30.3391 24.6282 30.1071 25.0066C27.8952 28.6149 23.9127 31.0251 19.3667 31.0251C12.4138 31.0251 6.77734 25.3887 6.77734 18.4358C6.77734 12.4193 10.9971 7.39019 16.6378 6.14325C16.9526 6.07366 17.2785 6.19895 17.4656 6.46148Z"
+                    fill="#F7F1E8" />
+                </svg>
+                Vacation
+              </div>
+              <img class="video-img" src="./images43/v.jpg" alt="">
+              <video class="brand-video-el" muted autoplay loop src="./images5/video.mp4"></video>
+              <div class="brand-video-play">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none"
+                  class="play-show-svg">
+                  <circle cx="20" cy="20.9375" r="20" fill="white" fill-opacity="0.4" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M22.2394 27.1486L22.2394 13.8199C23.0284 13.8199 23.668 14.4595 23.668 15.2485L23.668 27.1486L22.2394 27.1486Z"
+                    fill="white" />
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M16.3331 27.1486L16.3331 13.8199C17.1221 13.8199 17.7617 14.4595 17.7617 15.2485L17.7617 27.1486L16.3331 27.1486Z"
+                    fill="white" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none"
+                  class="play-hide-svg">
+                  <path
+                    d="M20 40.9375C31.0457 40.9375 40 31.9832 40 20.9375C40 9.89181 31.0457 0.9375 20 0.9375C8.95431 0.9375 0 9.89181 0 20.9375C0 31.9832 8.95431 40.9375 20 40.9375Z"
+                    fill="white" fill-opacity="0.4" />
+                  <path d="M16 12.9374L24.7989 18.8033L25.9133 19.5462L27.1718 20.3852L28 20.9374L16 28.9374V12.9374Z"
+                    stroke="white" stroke-width="1.42857" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="brand-video-text">
+              <div class="brand-video-text-left">
+                <div class="brand-video-h4">Vacation has never been so smooth.</div>
+                <div class="brand-video-p">Enjoy hair-free skin — anywhere, anytime.</div>
+              </div>
+              <a href="#" class="brand-video-btn btn-diy">
+                <div class="btn-txt" text="Learn More">
+                  <span>Learn More</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="brand-video-item swiper-slide">
+
+            <div class="brand-video-img">
+              <div class="brand-video-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M17.4656 6.46148C17.6528 6.72402 17.6649 7.07298 17.4964 7.34784C16.474 9.01559 15.8845 10.977 15.8845 13.0787C15.8845 18.2843 19.5072 22.6459 24.37 23.776C24.8023 23.8764 25.0713 24.3083 24.9707 24.7405C24.8703 25.1728 24.4384 25.4419 24.0062 25.3414C18.4317 24.0459 14.2774 19.0484 14.2774 13.0787C14.2774 11.3718 14.6174 9.74307 15.2337 8.25764C11.2166 9.89042 8.38449 13.8331 8.38449 18.4358C8.38449 24.501 13.3014 29.418 19.3667 29.418C23.3307 29.418 26.8049 27.3183 28.737 24.1666C28.9689 23.7882 29.4636 23.6695 29.842 23.9015C30.2203 24.1334 30.3391 24.6282 30.1071 25.0066C27.8952 28.6149 23.9127 31.0251 19.3667 31.0251C12.4138 31.0251 6.77734 25.3887 6.77734 18.4358C6.77734 12.4193 10.9971 7.39019 16.6378 6.14325C16.9526 6.07366 17.2785 6.19895 17.4656 6.46148Z"
+                    fill="#F7F1E8" />
+                </svg>
+                Vacation
+              </div>
+              <img class="video-img" src="./images43/v.jpg" alt="">
+              <div class="brand-video-play"></div>
+            </div>
+            <div class="brand-video-text">
+              <div class="brand-video-text-left">
+                <div class="brand-video-h4">Vacation has never been so smooth.</div>
+                <div class="brand-video-p">Enjoy hair-free skin — anywhere, anytime.</div>
+              </div>
+              <a href="#" class="brand-video-btn btn-diy">
+                <div class="btn-txt" text="Learn More">
+                  <span>Learn More</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="brand-video-item swiper-slide">
+            <div class="brand-video-img">
+              <div class="brand-video-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M17.4656 6.46148C17.6528 6.72402 17.6649 7.07298 17.4964 7.34784C16.474 9.01559 15.8845 10.977 15.8845 13.0787C15.8845 18.2843 19.5072 22.6459 24.37 23.776C24.8023 23.8764 25.0713 24.3083 24.9707 24.7405C24.8703 25.1728 24.4384 25.4419 24.0062 25.3414C18.4317 24.0459 14.2774 19.0484 14.2774 13.0787C14.2774 11.3718 14.6174 9.74307 15.2337 8.25764C11.2166 9.89042 8.38449 13.8331 8.38449 18.4358C8.38449 24.501 13.3014 29.418 19.3667 29.418C23.3307 29.418 26.8049 27.3183 28.737 24.1666C28.9689 23.7882 29.4636 23.6695 29.842 23.9015C30.2203 24.1334 30.3391 24.6282 30.1071 25.0066C27.8952 28.6149 23.9127 31.0251 19.3667 31.0251C12.4138 31.0251 6.77734 25.3887 6.77734 18.4358C6.77734 12.4193 10.9971 7.39019 16.6378 6.14325C16.9526 6.07366 17.2785 6.19895 17.4656 6.46148Z"
+                    fill="#F7F1E8" />
+                </svg>
+                Vacation
+              </div>
+              <img class="video-img" src="./images43/v.jpg" alt="">
+              <div class="brand-video-play"></div>
+            </div>
+            <div class="brand-video-text">
+              <div class="brand-video-text-left">
+                <div class="brand-video-h4">Vacation has never been so smooth.</div>
+                <div class="brand-video-p">Enjoy hair-free skin — anywhere, anytime.</div>
+              </div>
+              <a href="#" class="brand-video-btn btn-diy">
+                <div class="btn-txt" text="Learn More">
+                  <span>Learn More</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="brand-video-arraws">
+      <div class="brand-video-arraw brand-video-arraw-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <circle cx="28" cy="28" r="28" transform="rotate(-180 28 28)" fill="#FBFAF4" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M33.0404 46.2929L33.7475 47L35.1617 45.5858L34.4546 44.8787L27.9989 38.423L21.9137 32.3377C21.1326 31.5567 19.8663 31.5567 19.0852 32.3377L26.5847 39.8372L33.0404 46.2929ZM15.5404 27.3787C15.1499 27.7692 15.1499 28.4024 15.5404 28.7929C15.6719 28.9244 15.8309 29.0116 15.9989 29.0546L15.9989 29.0858L16.2453 29.0858L16.2497 29.0858L16.9989 29.0858L27.2494 29.0858L37.5 29.0858L40.0001 29.0858C41.1046 29.0858 42.0001 28.1904 42.0001 27.0858L37.5 27.0858L18.6617 27.0858L34.4546 11.2929L35.1617 10.5858L33.7475 9.17158L33.0404 9.87868L15.5404 27.3787Z"
+            fill="#190A0A" />
+        </svg>
+      </div>
+      <div class="brand-video-arraw brand-video-arraw-right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="57" height="56" viewBox="0 0 57 56" fill="none">
+          <circle cx="28" cy="28" r="28" transform="matrix(1 -8.74228e-08 -8.74228e-08 -1 0.320312 56)"
+            fill="#FBFAF4" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M23.2799 46.2929L22.5728 47L21.1586 45.5858L21.8657 44.8787L28.3214 38.423L34.4067 32.3377C35.1877 31.5567 36.454 31.5567 37.2351 32.3377L29.7356 39.8372L23.2799 46.2929ZM40.7799 27.3787C41.1704 27.7692 41.1704 28.4024 40.7799 28.7929C40.6484 28.9244 40.4894 29.0116 40.3214 29.0546L40.3214 29.0858L40.075 29.0858L40.0706 29.0858L39.3214 29.0858L29.0709 29.0858L18.8203 29.0858L16.3202 29.0858C15.2157 29.0858 14.3202 28.1904 14.3202 27.0858L18.8203 27.0858L37.6586 27.0858L21.8657 11.2929L21.1586 10.5858L22.5728 9.17158L23.2799 9.87868L40.7799 27.3787Z"
+            fill="#190A0A" />
+        </svg>
+      </div>
+    </div>
+    <div class="brand-video-dot"></div>
+  </div>
+  <script>
+    window.addEventListener('load', function () {
+      $('.brand-video .brand-video-play').click(function () {
+        if ($(this).siblings('video')[0].paused) {
+          $(this).siblings('video')[0].play()
+          $(this).removeClass('pause-btn')
+        } else {
+          $(this).siblings('video')[0].pause()
+          $(this).addClass('pause-btn')
+        }
+      })
+
+
+    })
+
+    var aaswiper = new Swiper('.brand-video-cont', {
+      centeredSlides: true,
+      initialSlide: 0,
+      loop: true,
+      paginationType: 'bullets',
+      slidesPerView: 'auto',
+      preventClicks: false,
+      spaceBetween: '8%',
+      navigation: {
+        nextEl: ".brand-video-arraw-right",
+        prevEl: ".brand-video-arraw-left",
+      },
+      pagination: {
+        el: ".brand-video-dot",
+        clickable: true,
+      },
+      breakpoints: {
+        1400: {
+          spaceBetween: 50
+        },
+        991: {
+          spaceBetween: 30
+        },
+        640: {
+          spaceBetween: 16
+        },
+      }
+    });
+  </script>
+
+  <div class="market-new to-top">
+    <div class="container">
+      <h3 class="market-new-h3 to-top">Why choose Ulike?</h3>
+      <div class="market-new-cont">
+        <div class="market-new-list swiper-wrapper">
+          <div class="market-new-item to-top swiper-slide" style="transition-delay: .1s;">
+            <div class="market-new-img">
+              <img class="img" src="./images43/c1.jpg" alt="">
+            </div>
+            <div class="market-new-text">
+              <div>
+                <h4 class="market-new-h4">We See You</h4>
+                <div class="market-new-p">Proud partners of the PCOS community and celebrating the inspirational women
+                  who
+                  are a part of it.</div>
+              </div>
+              <a href="#" class="market-new-btn btn-diy">
+                <div class="btn-txt" text="Learn More">
+                  <span>Learn More</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="market-new-item to-top swiper-slide" style="transition-delay: .2s;">
+            <div class="market-new-img">
+              <img class="img" src="./images43/c2.jpg" alt="">
+            </div>
+            <div class="market-new-text">
+              <div>
+                <h4 class="market-new-h4">Ulike Treatment Tracker</h4>
+                <div class="market-new-p">Stay on top of sessions with a treatment schedule tailored to your hair, skin,
+                  and body areas.</div>
+              </div>
+              <a href="#" class="market-new-btn btn-diy">
+                <div class="btn-txt" text="Learn More">
+                  <span>Learn More</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="market-new-item to-top swiper-slide" style="transition-delay: .3s;">
+            <div class="market-new-img">
+              <img class="img" src="./images43/c1.jpg" alt="">
+            </div>
+            <div class="market-new-text">
+              <div>
+                <h4 class="market-new-h4">Community Discounts</h4>
+                <div class="market-new-p">Unlock additional savings for students and other groups — everyone deserves to
+                  save!</div>
+              </div>
+              <a href="#" class="market-new-btn btn-diy">
+                <div class="btn-txt" text="Learn More">
+                  <span>Learn More</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="market-new-dot"></div>
+  </div>
+  <script>
+    if (window.innerWidth < 991) {
+      var marketSwiper = new Swiper(".market-new-cont", {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+        pagination: {
+          el: ".market-new-dot",
+          clickable: true,
+        }
+      });
+    }
+  </script>
+  <div class="safeguards-new to-top">
+    <div class="container">
+      <div class="safeguards-new-list">
+        <div class="safeguards-new-item to-top" style="transition-delay: .1s;" data-txt="1321">
+          <img src="./images43/d1.svg" alt="" class="img">
+          <div class="safeguards-new-h3">Fast & Free Shipping</div>
+          <div class="safeguards-new-p">Fast delivery from the nearest warehouse.</div>
+        </div>
+        <div class="safeguards-new-item to-top" style="transition-delay: .2s;" data-txt="1321 dasd">
+          <img src="./images43/d2.svg" alt="" class="img">
+          <div class="safeguards-new-h3">90-Day Money Back</div>
+          <div class="safeguards-new-p">You can return your order for a full refund.</div>
+        </div>
+        <div class="safeguards-new-item to-top" style="transition-delay: .3s;" data-txt="weq 1321">
+          <img src="./images43/d3.svg" alt="" class="img">
+          <div class="safeguards-new-h3">24/7 Support</div>
+          <div class="safeguards-new-p">Enjoy peace of mind with our round-the-clock support.</div>
+        </div>
+        <div class="safeguards-new-item to-top" style="transition-delay: .4s;" data-txt="ada 1321">
+          <img src="./images43/d4.svg" alt="" class="img">
+          <div class="safeguards-new-h3">2-Year Warranty</div>
+          <div class="safeguards-new-p">Ulike devices are covered for a period of 2 years.</div>
+        </div>
+        <div class="safeguards-new-item to-top" style="transition-delay: .5s;">
+          <img src="./images43/d5.svg" alt="" class="img">
+          <div class="safeguards-new-h3">Buy Now, Pay Later</div>
+          <div class="safeguards-new-p">Shop with ease thanks to our flexible payment options.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="safeguards-new-msg">
+    <div class="safeguards-new-msg-cont">
+      <div class="safeguards-new-msg-top">
+        <span></span>
+        <div class="safeguards-new-msg-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M16.8417 7.44357C16.6464 7.2483 16.3298 7.2483 16.1346 7.44357L12.4951 11.0831L8.85554 7.44357C8.66028 7.2483 8.3437 7.2483 8.14844 7.44357L7.79488 7.79712C7.59962 7.99238 7.59962 8.30896 7.79488 8.50423L11.4344 12.1437L7.79488 15.7833C7.59962 15.9785 7.59962 16.2951 7.79488 16.4904L8.14844 16.8439C8.3437 17.0392 8.66028 17.0392 8.85554 16.8439L12.4951 13.2044L16.1346 16.8439C16.3298 17.0392 16.6464 17.0392 16.8417 16.8439L17.1952 16.4904C17.3905 16.2951 17.3905 15.9785 17.1952 15.7833L13.5557 12.1437L17.1952 8.50423C17.3905 8.30896 17.3905 7.99238 17.1952 7.79712L16.8417 7.44357Z"
+              fill="#161823" />
+          </svg>
+        </div>
+      </div>
+      <div class="safeguards-new-msg-txt">
+        I'm the description copywriter.I'm the description copywriter.I'm the description copywriter.I'm the
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', function () {
+      if (window.innerWidth > 641) {
+        $('.safeguards-new-item').hover(function (e) {
+          let txt = $(this).attr('data-txt');
+          if (!txt) return;
+          let pd = $(this)[0].getBoundingClientRect()
+          var left = pd.left;
+          var top = pd.top + pd.height + 20;
+          var width = pd.width;
+          $(".safeguards-new-msg .safeguards-new-msg-txt").html(txt);
+          $(".safeguards-new-msg").css({
+            "left": left + 'px',
+            "top": top + 'px',
+            "width": width + 'px'
+          }).show()
+        }, function () {
+          $(".safeguards-new-msg").hide()
+        });
+        $(window).scroll(function () {
+          $(".safeguards-new-msg").hide()
+        })
+      } else {
+        $('.safeguards-new .safeguards-new-item').click(function () {
+          let txt = $(this).attr('data-txt');
+          let title = $(this).find('.safeguards-new-h3').text();
+          if (!txt) return;
+          $(".safeguards-new-msg .safeguards-new-msg-top span").text(title);
+          $(".safeguards-new-msg .safeguards-new-msg-txt").html(txt);
+          $(".safeguards-new-msg").show()
+        })
+
+        $(".safeguards-new-msg,.safeguards-new-msg .safeguards-new-msg-close").click(function () {
+          $(".safeguards-new-msg").hide()
+        })
+      }
+    })
+  </script>
+
+  <div class="blog-new to-top">
+    <div class="container">
+      <div class="blog-new-top">
+        <h3 class="blog-new-h3 to-top">Ulike IPL insights.</h3>
+        <a href="#" class="blog-new-top-btn btn-diy">
+          <div class="btn-txt" text="View All Blogs ">
+            <span>View All Blogs </span>
+          </div>
+        </a>
+      </div>
+      <div class="blog-new-cont">
+        <div class="blog-new-left to-top" style="transition-delay: .1s;">
+          <img src="./images43/e1.jpg" alt="" class="img">
+          <div class="blog-new-left-text">
+            <div class="blog-new-time">Jun 09, 2023</div>
+            <div class="blog-new-left-flex">
+              <div class="blog-new-h4">IPL Hair Removal Aftercare: Do’s and Don’ts After an
+                IPL Session</div>
+              <a href="#" class="blog-new-link">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="blog-new-right">
+          <div class="blog-new-list swiper-wrapper">
+            <div class="blog-new-item to-top swiper-slide" style="transition-delay: .2s;">
+              <div class="blog-new-img">
+                <img src="./images43/e2.jpg" alt="" class="img">
+              </div>
+              <div class="blog-new-text">
+                <div>
+                  <div class="blog-new-time">Jun 09, 2023</div>
+                  <div class="blog-new-h4">IPL Hair Removal Aftercare: Do’s and Don’ts After an
+                    IPL Session</div>
+                </div>
+                <a href="#" class="blog-new-link">Read More</a>
+              </div>
+            </div>
+            <div class="blog-new-item to-top swiper-slide" style="transition-delay: .3s;">
+              <div class="blog-new-img">
+                <img src="./images43/e2.jpg" alt="" class="img">
+              </div>
+              <div class="blog-new-text">
+                <div>
+                  <div class="blog-new-time">Jun 09, 2023</div>
+                  <div class="blog-new-h4">IPL Hair Removal Aftercare: Do’s and Don’ts After an
+                    IPL Session</div>
+                </div>
+                <a href="#" class="blog-new-link">Read More</a>
+              </div>
+            </div>
+            <div class="blog-new-item to-top swiper-slide" style="transition-delay: .4s;">
+              <div class="blog-new-img">
+                <img src="./images43/e2.jpg" alt="" class="img">
+              </div>
+              <div class="blog-new-text">
+                <div>
+                  <div class="blog-new-time">Jun 09, 2023</div>
+                  <div class="blog-new-h4">IPL Hair Removal Aftercare: Do’s and Don’ts After an
+                    IPL Session</div>
+                </div>
+                <a href="#" class="blog-new-link">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    if (window.innerWidth < 991) {
+      var blogSwiper = new Swiper(".blog-new-right", {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+      });
+    }
+
+
+  </script>
+  <style>
+    .box {
+      width: 100%;
+      height: 100vh;
+      background-color: #f5f6fa;
+      position: relative;
+    }
+
+    .market-tip {
+      position: absolute;
+      width: 345px;
+      bottom: 36px;
+      right: 10%;
+      z-index: 3;
+      padding: 4px;
+      background: #fff;
+      border-radius: 4px;
+      display: none;
+    }
+
+    .market-tip .market-tip-close {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      right: 4px;
+      top: 4px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .market-tip .market-tip-cont {
+      position: relative;
+      display: flex;
+      z-index: 1;
+      gap: 20px;
+    }
+
+    .market-tip .tip-img {
+      width: 50.7%;
+      min-height: 100%;
+      object-fit: cover;
+    }
+
+    .market-tip .market-tip-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 15px 15px 10px 0;
+    }
+
+    .market-tip .market-tip-h3 {
+      color: #190A0A;
+      font-size: 14px;
+      line-height: 1.78;
+    }
+
+    .market-tip .market-tip-h3 p {
+      margin: 0;
+    }
+
+    .market-tip .market-tip-link {
+      color: #190A0A;
+      font-size: 14px;
+      font-family: var(--heading-font-family);
+      line-height: 1;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .market-tip {
+        width: 260px;
+        right: auto;
+        left: 50%;
+        bottom: 30px;
+        transform: translateX(-50%);
+      }
+
+      .market-tip .market-tip-cont {
+        gap: 10px;
+      }
+
+      .market-tip .market-tip-text {
+        gap: 10px;
+        padding: 5px 5px 5px 0;
+      }
+
+      .market-tip .market-tip-h3 {
+        font-size: 12px;
+        line-height: 1.5;
+        zoom: .9;
+      }
+
+      .market-tip .market-tip-link {
+        font-size: 12px;
+      }
+    }
+  </style>
+  <div class="box">
+    <div class="market-tip">
+      <div class="market-tip-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+          <path d="M14.2266 4.5L5.22656 13.5" stroke="#756B6E" stroke-width="0.969231" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M5.22656 4.5L14.2266 13.5" stroke="#756B6E" stroke-width="0.969231" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="market-tip-cont">
+        <img class="tip-img" src="./images43/tip.jpg" alt="">
+        <div class="market-tip-text">
+          <div class="market-tip-h3">
+            Smooth Skin <br />
+            You'llLove—$100 Off
+          </div>
+          <a href="" class="market-tip-link">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      function marketChange() {
+        let timer = null
+        setTimeout(() => {
+          $('.market-tip').slideDown(400)
+          timer = setTimeout(() => {
+            $('.market-tip').slideUp(400)
+          }, 3 * 1000)
+        }, 3 * 1000);
+
+        $('.market-tip .market-tip-close').click(() => {
+          clearTimeout(timer)
+          $('.market-tip').slideUp(400);
+        })
+
+      }
+      if (window.innerWidth > 768) { }
+      marketChange()
+    })
+  </script>
+</body>
+<script src="./js/script.js"></script>
+
+</html>

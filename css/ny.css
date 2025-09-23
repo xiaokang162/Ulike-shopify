@@ -1,0 +1,374 @@
+.container {
+  padding: 0 40px;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+.new-year-banner {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.new-year-banner .img-bg {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: block;
+}
+
+.new-year-banner .img-r {
+  position: absolute;
+  z-index: 2;
+  width: 55%;
+  bottom: 0;
+  right: 0;
+}
+
+.new-year-banner .new-year-banner-content {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.new-year-banner .new-year-banner-txt {
+  max-width: 50%;
+}
+
+.new-year-banner .img-txt {
+  width: 100%;
+  display: block;
+}
+
+.new-year-banner .new-year-banner-p {
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 40px;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.new-year-banner .stage-container {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  mix-blend-mode: lighten;
+}
+
+.stage-container canvas {
+  position: absolute;
+  mix-blend-mode: lighten;
+  transform: translateZ(0);
+  z-index: 1;
+}
+
+@media (max-width: 1600px) {
+  .new-year-banner .new-year-banner-txt {
+    max-width: 40%;
+  }
+  .new-year-banner .new-year-banner-p {
+    margin-top: 30px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 991px) {
+  .new-year-banner .new-year-banner-content {
+    top: 30px;
+    transform: translateY(0);
+  }
+  .new-year-banner .new-year-banner-txt {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .new-year-banner .new-year-banner-p {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+  .new-year-banner .img-r {
+    width: 100%;
+  }
+}
+
+.new-year-coupon {
+  padding: 70px 0;
+}
+
+.new-year-coupon .new-year-coupon-h3 {
+  font-size: 60px;
+  color: #000;
+  text-align: center;
+  font-weight: normal;
+  line-height: 1;
+  margin: 0;
+  font-family: var(--heading-font-family);
+  margin-bottom: 70px;
+}
+
+.new-year-coupon .new-year-coupon-list {
+  display: flex;
+  gap: 30px;
+}
+
+.new-year-coupon .new-year-coupon-item {
+  width: calc(25% - 22.5px);
+}
+
+.new-year-coupon .new-year-coupon-ov {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.new-year-coupon .mask-span::before,
+.new-year-coupon .mask-span::after,
+.new-year-coupon .new-year-coupon-ov::after,
+.new-year-coupon .new-year-coupon-ov::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 2;
+}
+.new-year-coupon .mask-span::before,
+.new-year-coupon .mask-span::after {
+  top: 0;
+  transform: translateY(-50%);
+}
+.new-year-coupon .new-year-coupon-ov::after,
+.new-year-coupon .new-year-coupon-ov::before {
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+.new-year-coupon .mask-span::before,
+.new-year-coupon .new-year-coupon-ov::before {
+  left: 10%;
+}
+
+.new-year-coupon .mask-span::after,
+.new-year-coupon .new-year-coupon-ov::after {
+  right: 10%;
+}
+
+.new-year-coupon .new-year-coupon-cont {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  border: 1px solid #ffe2ab;
+  background: linear-gradient(0deg, #b00427 17.71%, #8f1224 81.36%);
+  padding: 30px 15px 20px 15px;
+  z-index: 1;
+}
+
+.new-year-coupon .new-year-coupon-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  gap: 10px;
+  color: transparent;
+  font-size: 35px;
+  background: linear-gradient(180deg, #fff 15%, #efddc3 54%, #fff2e5 92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.new-year-coupon .new-year-coupon-num p {
+  margin: 0;
+}
+
+.new-year-coupon .new-year-coupon-num strong {
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+  font-size: 100px;
+  margin-top: -3px;
+}
+
+.new-year-coupon .new-year-coupon-p {
+  font-size: 16px;
+  color: #f1e3cd;
+  line-height: 1;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.new-year-coupon .new-year-coupon-progress {
+  --width-num: 80%;
+  position: relative;
+  background: linear-gradient(270deg, #b00427 0%, #8f1224 100%);
+  border-radius: 25px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.new-year-coupon .new-year-coupon-progress::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  background: #fff;
+  border-radius: 25px;
+  z-index: 0;
+}
+
+.new-year-coupon .new-year-coupon-progress-span {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(270deg, #b00427 0%, #8f1224 100%);
+  width: var(--width-num);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 1;
+  color: #fff;
+  height: 24px;
+}
+
+.new-year-coupon .new-year-coupon-btn {
+  height: 42px;
+  background: #000;
+  color: #fff;
+  margin-top: 22px;
+  border-radius: 42px;
+  cursor: pointer;
+  border: 1.5px solid #000;
+}
+
+.new-year-coupon .new-year-coupon-btn .btn-txt::before {
+  color: #000;
+}
+
+.new-year-coupon .new-year-coupon-msg {
+  font-size: 14px;
+  color: #000;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 15px;
+}
+
+.new-year-coupon .wait-coupon .new-year-coupon-bottom,
+.new-year-coupon .end-coupon .new-year-coupon-bottom {
+  display: none;
+}
+.new-year-coupon .wait-coupon .new-year-coupon-progress {
+  background: #000;
+}
+.new-year-coupon .wait-coupon .new-year-coupon-progress-span,
+.new-year-coupon .end-coupon .new-year-coupon-progress-span {
+  width: 100%;
+  background: none;
+  color: #000;
+}
+.new-year-coupon .wait-coupon .new-year-coupon-progress::before {
+  background: #f9f9f9;
+}
+.new-year-coupon .wait-coupon .new-year-coupon-progress-right {
+  display: none;
+}
+
+.new-year-coupon .end-coupon .new-year-coupon-cont {
+  background: #c7c7c7;
+  border: 0;
+}
+
+.new-year-coupon .end-coupon .new-year-coupon-num {
+  background: linear-gradient(180deg, #a5a5a5 15%, #a5a5a5 54%, #a5a5a5 92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.new-year-coupon .end-coupon .new-year-coupon-p {
+  color: #a0a0a0;
+}
+.new-year-coupon .end-coupon .new-year-coupon-progress {
+  background: #000;
+}
+.new-year-coupon .end-coupon .new-year-coupon-progress::before {
+  background: #c7c7c7;
+}
+
+@media (max-width: 1600px) {
+  .new-year-coupon .new-year-coupon-num strong {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .new-year-coupon .new-year-coupon-num {
+    font-size: 25px;
+  }
+  .new-year-coupon .new-year-coupon-num strong {
+    font-size: 60px;
+  }
+  .new-year-coupon .new-year-coupon-p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .new-year-coupon .new-year-coupon-num strong {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 991px) {
+  .new-year-coupon {
+    padding: 50px 0;
+  }
+  .new-year-coupon .new-year-coupon-h3 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .new-year-coupon .new-year-coupon-list {
+    flex-wrap: wrap;
+  }
+  .new-year-coupon .new-year-coupon-item {
+    width: calc(50% - 15px);
+  }
+}
+
+@media (max-width: 640px) {
+  .new-year-coupon .new-year-coupon-item {
+    width: 100%;
+  }
+  .new-year-coupon .new-year-coupon-num strong {
+    font-size: 90px;
+    margin-top: -3px;
+  }
+  .new-year-coupon .new-year-coupon-num {
+    font-size: 35px;
+  }
+  .new-year-coupon .new-year-coupon-btn {
+    margin-top: 15px;
+  }
+}

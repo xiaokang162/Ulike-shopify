@@ -1,0 +1,307 @@
+<div class="diy-access-page">
+  <div class="diy-access-cont">
+    <div class="mt-md align-center" style="display: none;">
+      {% if settings.logo_image and settings.logo_image != "" %}
+        <img class="logo_image_fixed_top_bar" src="{{ settings.logo_image }}"/>
+      {% else %}
+        <h3 class="mb-no shop-name">
+          {{ campaign.shop_name }}
+        </h3>
+      {% endif %}
+    </div>
+    {% if settings.banner_image and settings.banner_image != "" and settings.remove_banner_from %}
+      {% unless settings.remove_banner_from contains 'Join Page' %}
+        <div class="grid-x align-center">
+          <div class="mt-sm small-12 medium-8 large-5 cell">
+            <img alt="banner_image" class="banner_image" src="{{ settings.banner_image }}" />
+          </div>
+        </div>
+      {% endunless %}
+    {% endif %}
+    <div class="grid-x align-center">
+      <div class="large-12 medium-12 small-12 cell header-container">
+        <div class="join-page-header">
+          {% if campaign.state != 'paused' %}
+            {{ "page.access_page.header" | t }}
+          {% else %}
+            {{ "page.access_page.paused_header" | t }}
+          {% endif %}
+        </div>
+          <div class="sub-header">
+            {% if campaign.state != 'paused' %}
+              {% if offer_setup.description != 'none' %}
+                {{ "page.access_page.subtitle_offer_description" | t }}
+              {% endif %}
+              {{ "page.access_page.description" | t }}
+            {% else %}
+              {{ "page.access_page.paused_subtitle_offer_description" | t }}
+            {% endif %}
+          </div>
+      </div>
+    </div>
+
+    {% if campaign.state != 'paused' %}
+      <div class="grid-x grid-padding-x align-center">
+        <div class="join-page-form-container">
+          <div>
+            {% form 'registration_form' %}
+              <div>
+                <label id="access_page_email_label" for="email" style="display: none;">
+                  <span class="join-page-form-label-name">
+                    {{ 'page.access_page.signup_form_email_label' | t }}
+                  </span>
+                </label>
+                <input id="access_page_email_input" class="has-tip" name="email" type="email" placeholder="{{ 'page.access_page.signup_form_email_placeholder' | t }}" required tabindex="2"/>
+                <label for="email" style="display: none;">
+                  <span class="join-page-form-label-description">
+                    {{ 'page.access_page.signup_form_email_label_description' | t }}
+                  </span>
+                </label>
+                <label for="first_name" style="display: none;">
+                  <span class="join-page-form-label-name">
+                    {{ 'page.access_page.signup_form_name_label' | t }}
+                  </span>
+                </label>
+                <input id="access_page_first_name_input" class="has-tip" name="first_name" type="text" placeholder="{{ 'page.access_page.signup_form_name_placeholder' | t }}" tabindex="2"/>
+                <label for="first_name" style="display: none;">
+                  <span class="join-page-form-label-description">
+                    {{ 'page.access_page.signup_form_name_label_description' | t }}
+                  </span>
+                </label>
+              </div>
+              <button class="button join-page-submit-button" type="submit">
+                {{ 'page.access_page.signup_form_submit' | t }}
+              </button>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+      <div class="join-jg">
+        How to Join <span></span>
+      </div>
+      <div class="grid-x grid-padding-x align-center">
+        <div class="small-12 medium-12 large-12 grid-x icon-container">
+          <div class="small-4 medium-4 cell">
+            <div>
+              <div class="how-it-works-icon-background">
+                <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/2_89181958-8da4-4d0a-922f-8456eb431b1a.png, small], [https://cdn.shopify.com/s/files/1/0740/5882/6015/files/2_89181958-8da4-4d0a-922f-8456eb431b1a.png, medium]" class="how-it-works-icon"/>
+              </div>
+              <div class="how-it-works-step">Step 1</div>
+              <div class="how-it-works-txt">{{ "common.how_it_works_section.share_link_text" | t }}</div>
+            </div>
+          </div>
+          <div class="small-4 medium-4 cell">
+            <div>
+              <div class="how-it-works-icon-background">
+                <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/1_7ec96903-7e00-4e87-a6fe-765a613b0cae.png, small], [https://cdn.shopify.com/s/files/1/0740/5882/6015/files/1_7ec96903-7e00-4e87-a6fe-765a613b0cae.png, medium]" class="how-it-works-icon"/>
+              </div>
+              <div class="how-it-works-step">Step 2</div>
+              <div class="how-it-works-txt">{{ "common.how_it_works_section.friend_buys_text" | t }}</div>
+            </div>
+          </div>
+          <div class="small-4 medium-4 cell">
+            <div>
+              <div class="how-it-works-icon-background">
+                <img data-interchange="[https://cdn.shopify.com/s/files/1/0740/5882/6015/files/3_cae3bc6e-7d03-42bf-a215-ed47bbc8f9f5.png, small], [https://cdn.shopify.com/s/files/1/0740/5882/6015/files/3_cae3bc6e-7d03-42bf-a215-ed47bbc8f9f5.png, medium]" class="how-it-works-icon"/>
+              </div>
+              <div class="how-it-works-step">Step 3</div>
+              <div class="how-it-works-txt">{{ "common.how_it_works_section.get_rewarded_text" | t }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="join-bt-msg">
+        * Offer applies only to UK residents 18+. See <a href="">Ulike Referral Program Terms</a> for complete details.
+      </div>
+    {% else %}
+      <!-- "Shop Now" CTA button when campaign is paused -->
+      <div class="grid-x align-center">
+        <div class="small-6 medium-3 cell">
+          <!-- Button same style for consistency with share page -->
+          <a href="{{ campaign.shop_url }}" class="button view-rewards-button">{{ "page.access_page.paused_cta_button" | t }}</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <picture>
+    <source srcset="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/BG_d7cf1ba6-6ec2-4f4f-a692-999682250d71.jpg" media="(max-width: 991px)">
+    <img class="img-bg" src="https://cdn.shopify.com/s/files/1/0740/5882/6015/files/banner_1_4e66cfb5-e836-4d1f-bc42-cae461f8c03f.jpg">
+  </picture>
+</div>
+
+<style>
+  .diy-access-page{
+    position: relative;
+  }
+  .diy-access-page .diy-access-cont{
+    position: absolute;
+    width: 89%;
+    max-width: 695px;
+    z-index: 2;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 60px 54px 45px 54px;
+    background: #fff;
+  }
+  .diy-access-page .img-bg{
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .diy-access-page .header-container{
+    max-width: none;
+  }
+
+  .diy-access-page .join-page-header{
+    font-size: 44px;
+    color: #3F3636;
+    line-height: 1.2;
+  }
+
+  .diy-access-page .sub-header{
+    color: #3F3636;
+    font-size: 18px;
+    line-height: 1.3;
+    margin-top: 16px;
+    margin-bottom: 28px;
+  }
+
+  .diy-access-page .join-page-form-container{
+    max-width: none;
+    border: 0;
+    width: 100%;
+    border: 0;
+    background: 0;
+  }
+
+  .diy-access-page #access_page_first_name_input,.diy-access-page #access_page_email_input{
+  height: 55px;
+  border: 0;
+  border: 1px solid #737577;
+  color: #737577;
+  font-size: 18px;
+  margin-bottom: 20px;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.diy-access-page .join-page-submit-button{
+  height: 55px !important;
+  font-size: 16px !important;
+  border-radius: 0;
+  margin-bottom: 50px !important;
+  font-weight: 570;
+}
+
+.diy-access-page .join-jg{
+  color: #3F3636;
+  font-size: 20px;
+  font-weight: 570;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.diy-access-page .join-jg span{
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: #737577;
+}
+
+.diy-access-page .how-it-works-step{
+  color: #3F3636;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 570;
+  line-height: 1;
+  margin-top: 5px;
+}
+
+.diy-access-page .how-it-works-txt{
+  color: #3F3636;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+  margin-top: 5px;
+}
+
+.diy-access-page .how-it-works-icon-background{
+  border-radius: 0;
+  background: none;
+  width: 57px;
+  margin: 0 auto;
+}
+
+.diy-access-page .how-it-works-icon-background .how-it-works-icon{
+  margin: 0;
+}
+
+.diy-access-page .join-bt-msg{
+  color: #3F3636;
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.196px;
+  text-align: center;
+  margin-top: 26px;
+}
+.diy-access-page .join-bt-msg a{
+  font-weight: 570;
+  color: #3F3636;
+  text-decoration: underline;
+}
+@media (max-width:991px) {
+  .diy-access-page .diy-access-cont{
+    left: 50%;
+    transform: translateX(-50%);
+    top: 17%;
+    padding: 40px 12px 45px 12px;
+  }
+
+  .diy-access-page .join-page-header{
+    font-size: 26px;
+  }
+  .diy-access-page .sub-header{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 23px;
+  }
+
+  .diy-access-page #access_page_first_name_input, .diy-access-page #access_page_email_input{
+    height: 38px;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .diy-access-page .join-page-submit-button{
+    height:38px !important;
+    font-size: 12px !important;
+    margin-bottom: 27px !important;
+  }
+  .diy-access-page .join-jg{
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  .diy-access-page .how-it-works-icon-background{
+    width: 40px;
+  }
+  .diy-access-page .how-it-works-step{
+    font-size: 12px;
+  }
+
+  .diy-access-page .how-it-works-txt{
+    font-size: 12px;
+  }
+  .diy-access-page .join-bt-msg{
+    margin-top: 23px;
+    text-align: left;
+    font-size: 12px;
+  }
+}
+</style>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+      padding: 0;
+    }
+
+    .email-container {
+      width: 100%;
+      max-width: 600px;
+      background-color: #ffffff;
+      margin: 0 auto;
+    }
+
+    .features-section {
+      padding: 30px 20px 0 20px;
+      text-align: center;
+      font-size: 0;
+      display: block;
+    }
+
+    .feature-item {
+      /* width: 25%; */
+      /* display: inline-block; */
+      /* padding: 0 5px; */
+      text-decoration: none;
+      position: relative;
+      /* padding-bottom: 18px; */
+    }
+
+    .feature-item img {
+      width: 48px;
+      height: auto;
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .feature-item p {
+      font-size: 12px;
+      color: #3F3636;
+      margin: 0;
+      white-space: nowrap;
+      /* position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0; */
+    }
+
+    .payments-section {
+      padding: 0 20px;
+      margin-top: 50px;
+      display: block;
+      overflow: hidden;
+    }
+
+    .payments-section p {
+      font-size: 14px;
+      color: #040000;
+      float: left;
+      width: 55%;
+      margin-top: 6px;
+    }
+
+    .payment-logos {
+      display: block;
+      text-decoration: none;
+      font-size: 0;
+      float: right;
+    }
+
+    .payment-logos img {
+      display: inline-block;
+      width: auto;
+      height: 30px;
+      margin: 0;
+      margin-left: 5px;
+    }
+
+    .payment-logos img:first-child {
+      margin-left: 0;
+    }
+
+    .no-section {
+
+      width: 93%;
+      margin: 0 auto;
+      margin-top: 50px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .no-section-top {
+      text-align: center;
+      padding: 50px 30px 46px 30px;
+      border-radius: 10px;
+      background: #F8F8F8;
+    }
+
+    .no-img {
+      width: 158px;
+      height: auto;
+      margin: 0;
+    }
+
+    .no-section-p {
+      color: #E0004D;
+      font-size: 21.724px;
+      font-weight: 500;
+      line-height: 1;
+      margin-top: 13px;
+    }
+
+    .no-section-list {
+      width: 100%;
+      margin-top: 40px;
+    }
+
+    .no-section-num {
+      color: #3F3636;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .no-section-sub {
+      color: #3F3636;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .no-section-list td {
+      border-right: 1.5px solid #D1D1D1;
+    }
+
+    .no-section-list td:last-child {
+      border-right: none;
+    }
+
+    .ask-expert-section {
+      width: 93%;
+      padding: 27px;
+      padding-left: 30%;
+      border-radius: 6.25px;
+      background: #F8F8F8;
+      margin: 0 auto;
+      margin-top: 50px;
+      position: relative;
+    }
+
+    .ask-expert-section .chat-icon {
+      width: 30%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 27px;
+      text-align: center;
+    }
+
+    .ask-expert-section .chat-icon svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .ask-expert-text h3 {
+      font-size: 16px;
+      color: #3F3636;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .ask-expert-text p {
+      font-size: 12px;
+      color: #3F3636;
+      margin-top: 8px;
+      line-height: 1.2;
+    }
+
+    .chat-with-us-link {
+      text-decoration: underline;
+    }
+
+    .footer-section {
+      background: #F8F8F8;
+      color: #190A0A;
+      padding: 48px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .footer-section .follow-us {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .social-icons {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .social-icon {
+      width: 35px;
+      display: inline-block;
+      margin: 0 6px
+    }
+
+    .social-icon img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .footer-links {
+      margin-bottom: 33px;
+      border-top: 1px solid #190A0A;
+      border-bottom: 1px solid #190A0A;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .footer-links a {
+      color: #190A0A;
+      text-decoration: underline;
+      font-size: 12px;
+      display: inline-block;
+      margin-left: 52px;
+    }
+
+    .footer-links a:first-child {
+      margin-left: 0;
+    }
+
+    .footer-info {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .footer-address {
+      line-height: 1.35;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+
+    .footer-msg {
+      font-size: 12px;
+      color: #8B8B8B;
+      margin-top: 16px;
+    }
+
+    .footer-msg a {
+      color: #8B8B8B;
+    }
+
+    .logo-svg {
+      display: block;
+      width: 88px;
+      height: auto;
+      margin: 0 auto;
+      margin-top: 40px;
+    }
+
+    @media (max-width:580px) {
+      .payments-section p {
+        font-size: 12px;
+        margin-top: 3px;
+      }
+
+      .payment-logos img {
+        height: 22px;
+      }
+
+      .no-section-num {
+        font-size: 24px;
+      }
+
+      .no-section-sub {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .features-section {
+        padding: 30px 16px 0 16px;
+      }
+
+      .feature-item img {
+        width: 30px;
+      }
+
+      .payments-section {
+        margin-top: 30px;
+      }
+
+      .payments-section p {
+        transform: scale(0.67);
+        white-space: nowrap;
+        transform-origin: 0 0;
+      }
+
+      .payment-logos img {
+        height: 18px;
+      }
+
+      .no-section {
+        width: 91%;
+        margin-top: 30px;
+      }
+
+      .no-section-top {
+        border-radius: 6px;
+        padding: 30px 20px;
+      }
+
+      .no-img {
+        width: 99px;
+      }
+
+      .no-section-p {
+        font-size: 13px;
+        margin-top: 8px;
+      }
+
+      .no-section-list {
+        margin-top: 20px;
+      }
+
+      .no-section-num {
+        font-size: 19px;
+      }
+
+      .no-section-sub {
+        transform: scale(0.83);
+      }
+
+      .ask-expert-section {
+        width: 91%;
+        padding: 24px 23px;
+        padding-left: 104px;
+        margin-top: 12px;
+      }
+
+      .ask-expert-section .chat-icon {
+        width: 46px;
+      }
+
+      .ask-expert-text h3 {
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .ask-expert-text p {
+        margin-top: 6px;
+        transform: scale(0.83);
+        transform-origin: 0 0;
+        white-space: nowrap;
+      }
+
+      .ask-expert-text p:last-child {
+        margin-top: 1px;
+      }
+
+      .footer-section {
+        margin-top: 30px;
+        padding: 48px 16px;
+      }
+
+      .footer-section .follow-us {
+        font-size: 12px;
+        margin-bottom: 17px;
+      }
+
+      .social-icons {
+        margin-bottom: 32px;
+      }
+
+      .social-icon {
+        width: 30px;
+      }
+
+      .footer-links {
+        margin-bottom: 32px;
+      }
+
+      .footer-links a {
+        margin-left: 45px;
+      }
+
+      .footer-info {
+        transform: scale(0.83);
+        transform-origin: 0 0;
+        width: 120%;
+      }
+
+      .footer-address {
+        transform: scale(0.83);
+        transform-origin: 0 0;
+        width: 120%;
+        margin-top: 10px;
+      }
+
+      .footer-msg {
+        transform: scale(0.83);
+        transform-origin: 0 0;
+        width: 120%;
+        margin-top: 10px;
+      }
+
+      .logo-svg {
+        margin-top: 30px;
+      }
+
+    }
+
+    .header-box {
+      max-width: 600px;
+      padding: 25px 30px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: block;
+      margin-top: 3px;
+    }
+
+    .logo-img {
+      display: block;
+      height: 19px;
+      width: auto;
+      margin: 0;
+    }
+
+    .header-item {
+      color: #3F3636;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 25px;
+      letter-spacing: 0.14px;
+      margin-left: 38px;
+      text-decoration: none;
+    }
+
+    .header-item:last-child {
+      height: 25px;
+      padding: 0 11px;
+      border-radius: 3px;
+      border: 0.8px solid #3F3636;
+    }
+
+    @media (max-width:480px) {
+      .header-box {
+        padding: 20px 18px;
+      }
+
+      .logo-img {
+        height: 13px;
+      }
+
+      .header-item {
+        transform: scale(0.83);
+        transform-origin: right center;
+        line-height: 19px;
+        margin-left: 24px;
+      }
+
+      .header-item:last-child {
+        height: 19px;
+        padding: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header-box">
+    <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 30%;">
+          <a href="https://hk.ulike.com/" class="logo">
+            <img class="logo-img"
+              src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/logo_b2143584-4b2f-4a4e-a0e2-ad4b6de7a5a2.svg"
+              alt="">
+          </a>
+        </td>
+        <td style="width: 70%;text-align: right;">
+          <a href="https://hk.ulike.com/" class="header-item">産品</a>
+          <a href="https://hk.ulike.com/pages/how-it-works" class="header-item">産品原理</a>
+          <a href="https://hk.ulike.com/pages/99" class="header-item">Shop</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="email-container">
+    <!-- <a href="https://hk.ulike.com/pages/99" class="features-section">
+      <div class="feature-item">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/001.svg" alt="">
+        <p>2-3個工作日到貨</p>
+      </div>
+      <div class="feature-item">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/002.svg" alt="">
+        <p>15天無理由退款</p>
+      </div>
+      <div class="feature-item">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/003.svg" alt="">
+        <p>免費換貨</p>
+      </div>
+      <div class="feature-item">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/004.svg" alt="">
+        <p>2年保固</p>
+      </div>
+    </a> -->
+
+    <table style="width: 100%;padding: 25px 20px 0 20px;text-align: center;" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td>
+          <div class="feature-item">
+            <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/001.svg" alt="">
+            <p>2-3個工作日到貨</p>
+          </div>
+        </td>
+        <td>
+          <div class="feature-item">
+            <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/002.svg" alt="">
+            <p>15天無理由退款</p>
+          </div>
+        </td>
+        <td>
+          <div class="feature-item">
+            <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/003.svg" alt="">
+            <p>免費換貨</p>
+          </div>
+        </td>
+        <td>
+          <div class="feature-item">
+            <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/004.svg" alt="">
+            <p>2年保養</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <a href="https://hk.ulike.com/pages/99" class="payments-section">
+      <p>支持多種支付方式：PayPal、Gpay、支付寶 </p>
+      <div class="payment-logos">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/paypal.svg" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/gpay.svg" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/alipay.svg" alt="">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/wechat.svg" alt="">
+      </div>
+    </a>
+    <a href="https://hk.ulike.com/pages/99" class="no-section">
+      <div class="no-section-top">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/Mask_group_2_3555a025-089a-4018-b582-08e947684db0.png?v=1757645823"
+          alt="" class="no-img">
+        <div class="no-section-p">全球銷量*</div>
+        <table class="no-section-list" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <div class="no-section-item">
+                <div class="no-section-num">800+</div>
+                <p class="no-section-sub">全球專利*</p>
+              </div>
+            </td>
+            <td>
+              <div class="no-section-item">
+                <div class="no-section-num">10+ Years</div>
+                <p class="no-section-sub">IPL技術*</p>
+              </div>
+            </td>
+            <td>
+              <div class="no-section-item">
+                <div class="no-section-num">8 Million+</div>
+                <p class="no-section-sub">銷量*</p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="no-section-msg"
+        style="color: #190A0A;font-size: 12px;font-weight: 400;line-height: 1.2;opacity: .5;margin-top: 10px;">
+        來源：弗若斯特沙利文（北京）諮詢有限公司上海分公司，基於對全球脫毛儀市場的獨立研究；按2022至2024年全球脫毛儀銷售量計；脫毛儀是指通過激光、強脈衝光等技術作用於毛囊的美容儀器，旨在減少或去除毛髮；本調研於2025年2月完成。<br />
+        *数据来源于Ulike内部统计，截止2025年7月，全平台脱毛仪销售数量合计。
+      </div>
+    </a>
+    <div class="ask-expert-section">
+      <a href="https://hk.ulike.com/pages/contact" class="chat-icon">
+        <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/asking.svg" alt="">
+      </a>
+      <div class="ask-expert-text">
+        <h3>任何問題，請隨時聯繫我們！</h3>
+        <p>我們的專業護膚顧問將為您竭盡全力解決問題！</p>
+        <p>聯繫我們<span class="chat-with-us-link">seasupport@ulike.com</span></p>
+      </div>
+    </div>
+    <div class="footer-section">
+      <div class="social-icons">
+        <a href="https://www.instagram.com/ulike.hk/" class="social-icon">
+          <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/INS_cfc1807f-9dba-48a2-b395-0bbead5396d2.svg"
+            alt="">
+        </a>
+        <a href="https://facebook.com/ulikeglobal" class="social-icon">
+          <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/FB_636c36af-f58a-4083-8dff-7ceb6d1039b4.svg"
+            alt="">
+        </a>
+        <a href="https://www.tiktok.com/@ulikeglobal" class="social-icon">
+          <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/TT_48da4653-756d-4642-b47c-ab2ff13fc30b.svg"
+            alt="">
+        </a>
+        <a href="https://www.youtube.com/channel/UCR5GSUNp0G6DG9sE9jtnfGA" class="social-icon">
+          <img src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/YT.svg" alt="">
+        </a>
+      </div>
+      <div class="footer-links">
+        <a href="https://hk.ulike.com/">©Ulike.HK</a>
+        <a href="https://hk.ulike.com/pages/how-it-works">產品原理</a>
+        <a href="https://hk.ulike.com/pages/faqs">FAQs</a>
+        <a href="https://hk.ulike.com/blogs/news">BLOG</a>
+      </div>
+      <div class="footer-info">
+        This email was sent to [contact.email] <br />
+        because you've subscribed on our site or made a purchase.
+      </div>
+      <div class="footer-address">
+        ©Ulike HK - SOUTH KOREA ULIKE GROUP CO., LIMITED<br />
+        610彌敦道, 旺角, 九龙 香港特别行政区, 香港特别行政区, Hong Kong, 610
+      </div>
+      <div class="footer-msg">
+        <a href="https://hk.ulike.com/pages/privacy-policy"> Privacy policy</a> & <a
+          href="https://hk.ulike.com/pages/service">Terms of service</a> <br />
+        <a href="[[preference_link]]">Edit preferences</a> | <a href="[[unsubscribe_link]]">Unsubscribe</a>
+      </div>
+      <img class="logo-svg"
+        src="https://cdn.shopify.com/s/files/1/0631/5966/4808/files/logo_b2143584-4b2f-4a4e-a0e2-ad4b6de7a5a2.svg"
+        alt="">
+    </div>
+  </div>
+</body>
+
+</html>

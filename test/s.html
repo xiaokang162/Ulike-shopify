@@ -1,0 +1,209 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Shooting Star</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .canvas-el {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .canvas-box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <style>
+    .swiper-wrapper {
+      height: auto;
+    }
+  </style>
+</head>
+
+<body class="o-start">
+  <div class="canvas-el">
+    <canvas id="canvas" class="canvas-box"></canvas>
+    <canvas id="canvasSnow" class="canvas-box"></canvas>
+  </div>
+  <!-- <img src="./img/bg.jpg" alt=""> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.5/dat.gui.min.js"></script> -->
+  <script type="module" src="./js/new-copy.js"></script>
+  <!-- <script type="module" src="./js/index.js"></script> -->
+  <!-- <script>
+    class SnowfallEffect {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) {
+          console.error(`未找到 ID 为 '${canvasId}' 的 canvas 元素。`);
+          return;
+        }
+
+        this.width = window.innerWidth; // 画布的宽度
+        this.height = window.innerHeight; // 画布的高度
+        this.range = 400; // 雪花出现范围
+        this.zMin = 3; // 雪花出现的最近 z 位置
+        this.zMax = -50;  // 雪花出现的最远 z 位置
+
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+
+        // 渲染器，使用现有的 <canvas> 元素
+        this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas, alpha: true });
+        this.renderer.setSize(this.width, this.height);
+        this.renderer.setClearColor(0x000000, 0);
+
+        // 场景和相机
+        this.scene = new THREE.Scene();
+        this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 1, 500);
+        this.camera.position.set(0, 0, 50);
+        this.camera.lookAt(this.scene.position);
+        this.scene.add(this.camera);
+
+        this.points = null;
+        this.animationFrameId = null;
+        this.brightnessDelta = [];
+
+        this.init();
+      }
+
+      init() {
+        let loader = new THREE.TextureLoader();
+        loader.load('https://cdn.shopify.com/s/files/1/0656/9079/6273/files/20241114-093513.png', (texture) => {
+          let material = new THREE.PointsMaterial({
+            map: texture,
+            transparent: true,
+            size: 3,
+            vertexColors: true,
+          });
+
+          let geom = new THREE.Geometry();
+          let colors = [];
+          for (let i = 0; i < 2000; i++) {
+            let v = new THREE.Vector3(
+              Math.random() * this.range - this.range / 2,
+              Math.random() * this.range - this.range / 2,
+              Math.random() * (this.zMax - this.zMin) + this.zMin
+            );
+            v.velocity = this.createVelocity();
+            geom.vertices.push(v);
+
+            let color = new THREE.Color(1, 1, 1);
+            let brightness = Math.random() * 0.5 + 0.5;
+            color.setHSL(0, 0, brightness);
+            colors.push(color);
+
+            this.brightnessDelta.push(Math.random() * 0.02 + 0.003);
+          }
+          geom.colors = colors;
+
+          this.points = new THREE.Points(geom, material);
+          this.scene.add(this.points);
+          this.renderer.render(this.scene, this.camera);
+          this.animate();
+        });
+      }
+
+      animate() {
+        let vertices = this.points.geometry.vertices;
+        let colors = this.points.geometry.colors;
+        let hsl = new THREE.Color();
+        vertices.forEach((v, i) => {
+          v.y += v.velocity.y;
+          v.x += v.velocity.x;
+          v.z += v.velocity.z;
+
+          let color = colors[i];
+          color.getHSL(hsl);
+          let brightness = hsl.l;
+          brightness += this.brightnessDelta[i];
+
+          if (brightness >= 1 || brightness <= 0.5) {
+            this.brightnessDelta[i] = -this.brightnessDelta[i];
+          }
+          hsl.l = brightness;
+          color.setHSL(hsl.h, hsl.s, hsl.l);
+
+          if (v.y <= -this.range / 2) v.y = this.range / 2;
+          if (v.x <= -this.range / 2 || v.x >= this.range / 2) v.x = v.x * -1;
+          if (v.z <= this.zMin || v.z >= this.zMax) v.velocity.z = v.velocity.z * -1;
+        });
+
+        this.points.geometry.colorsNeedUpdate = true;
+        this.points.geometry.verticesNeedUpdate = true;
+        this.renderer.render(this.scene, this.camera);
+
+        this.animationFrameId = requestAnimationFrame(() => this.animate());
+      }
+
+      createVelocity() {
+        let velocity = new THREE.Vector3(0, -0.1, 0);
+        this.rotateX(velocity, this.randomRange(-45, 45));
+        this.rotateY(velocity, this.randomRange(0, 360));
+        return velocity;
+      }
+
+      randomRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      rotateY(vector, angle) {
+        let cosRY = Math.cos(angle * Math.PI / 180);
+        let sinRY = Math.sin(angle * Math.PI / 180);
+        let x = vector.x;
+        vector.x = x * cosRY + vector.z * sinRY;
+        vector.z = x * -sinRY + vector.z * cosRY;
+      }
+
+      rotateX(vector, angle) {
+        let cosRY = Math.cos(angle * Math.PI / 180);
+        let sinRY = Math.sin(angle * Math.PI / 180);
+        let y = vector.y;
+        vector.y = y * cosRY + vector.z * sinRY;
+        vector.z = y * -sinRY + vector.z * cosRY;
+      }
+
+      rotateZ(vector, angle) {
+        let cosRY = Math.cos(angle * Math.PI / 180);
+        let sinRY = Math.sin(angle * Math.PI / 180);
+        let x = vector.x;
+        vector.x = x * cosRY + vector.y * sinRY;
+        vector.y = x * -sinRY + vector.y * cosRY;
+      }
+
+      stop() {
+        cancelAnimationFrame(this.animationFrameId);
+      }
+    }
+
+    const snowfall = new SnowfallEffect('canvasSnow');
+  </script> -->
+</body>
+
+</html>

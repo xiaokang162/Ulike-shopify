@@ -8,6 +8,111 @@
 </head>
 
 <body>
+  <style>
+    .box {
+      width: 300px;
+      height: 400px;
+      position: relative;
+      background: url(./img/video-bg.png) no-repeat 50% 100%;
+      background-blend-mode: overlay;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    img {
+      width: 600px;
+      position: absolute;
+
+    }
+
+    img:nth-child(1) {
+      mask: linear-gradient(124deg, #000 55%, transparent 45%)
+    }
+
+    img:nth-child(2) {
+      mask: linear-gradient(301deg, #000 48%, transparent 53%)
+    }
+
+    @keyframes tip {
+      from {
+        transform: skewX(45deg) translateX(80px);
+      }
+
+      to {
+        transform: skewX(45deg) translateX(-10px);
+      }
+    }
+
+    .tips {
+      width: 45px;
+      margin-left: 10px;
+      background-color: red;
+      font-size: 10px;
+      padding: 5px 10px;
+      font-weight: bold;
+      border-radius: 2px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      margin: 100px 100px;
+    }
+
+    .tips::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 15px;
+      height: 100%;
+      background-color: rgb(255, 255, 255, 0.5);
+      mask: linear-gradient(90deg,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent);
+      animation: tip 1s linear infinite;
+    }
+
+    @keyframes shine {
+      from {
+        background-position: -100% 0%;
+      }
+
+      to {
+        background-position: 200% 100%;
+      }
+    }
+
+    .box1 {
+      width: 200px;
+      height: 100px;
+      border-radius: 5px;
+      font-weight: bold;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tip {
+      font-size: 30px;
+      background: #525252 linear-gradient(to left, transparent, #fff, transparent) no-repeat 0 0;
+      background-size: 40% 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shine 1.5s linear infinite;
+    }
+  </style>
+
+  <div class="box">
+    <!-- <img src="./img/video-bg.png" alt="">
+    <img src="./img/video-bg.png" alt=""> -->
+
+  </div>
+  <div class="box1">
+    <span class="tip">文字扫光效果</span>
+  </div>
+  <div class="tips">热门商品</div>
   <script>
     // this page is a demo that is not built, so fudge the module.exports support
     // define a global `module` so that the actual source file can use it
@@ -49,7 +154,7 @@
     const connectTest = ({ fontFamily }) => {
       const button = document.getElementById('test-confetti');
 
-      const scalar = 3;
+      const scalar = 1;
 
       // make this a getter so that the shapes don't initialize on page load
       const getShapes = ((shapes) => () => {
@@ -70,16 +175,16 @@
 
         confetti({
           particleCount: 100,
-          shapes: shapesDefault,
-          scalar,
-          origin: { y: 0.7, x: 0.25 }
+          spread: 70,
+          origin: { y: 0.5 },
+          colors: ['B37BF4', '8BD7D1', 'EB647D', 'F5C188', 'F8E16B', 'FCEC4F', 'EA667D']
         });
-        confetti({
-          particleCount: 100,
-          shapes: shapesFont,
-          scalar,
-          origin: { y: 0.7, x: 0.75 }
-        });
+        // confetti({
+        //   particleCount: 100,
+        //   shapes: shapesFont,
+        //   scalar,
+        //   origin: { y: 0.7, x: 0.75 }
+        // });
       };
     };
 

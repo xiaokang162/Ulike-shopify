@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/hw.css" />
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script> -->
+  <script src="./js/jquery.min.js"></script>
+  <!-- <script type="module" src="./test/js/new.js"></script> -->
+</head>
+
+<body>
+  <!-- <div class="canvas-el">
+    <canvas id="canvas" class="canvas-box"></canvas>
+  </div> -->
+
+  <div class="bf-banner">
+    <img src="./images44/banner.png" alt="" class="img pc-box">
+    <img src="./images44/banner-m.png" alt="" class="img mb-box">
+    <div class="bf-banner-txt">
+      <div class="container">
+        <div class="bf-banner-txt-cont">
+          <div class="bf-banner-icon">
+            <img src="./images44/title.png" alt="" class="bf-banner-title-img">
+            <img src="./images44/dd.png" alt="" class="bf-banner-dd-img">
+            <img src="./images44/b-icon.svg" alt="" class="bf-banner-icon-img icon-img-t">
+            <img src="./images44/b-icon.svg" alt="" class="bf-banner-icon-img icon-img-b">
+          </div>
+          <div class="bf-banner-h3">
+            <p><strong>UP TO</strong>$130 OFF</p>
+          </div>
+          <div class="bf-banner-p">Best price of the year and free gifts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bf-tab-sticky" style="display: none;">
+    <div class="container">
+      <div class="bf-tab-cont">
+        <div class="bf-tab-item">
+          Exclusive Perks
+        </div>
+        <div class="bf-tab-item">
+          Holiday Gift
+        </div>
+        <div class="bf-tab-item">
+          Gift for Her
+        </div>
+        <div class="bf-tab-item">
+          Gift for Him
+        </div>
+        <div class="bf-tab-item">
+          Gift Under $250
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+
+    window.addEventListener('load', function () {
+      $('.chances-tab-tap .chances-tab-label-item').hover(function () {
+        let left = $(this)[0].offsetLeft - 6
+        let w = $(this).outerWidth()
+
+        $(this).siblings('span').css({ 'transform': 'translate(' + left + 'px,-50%)', 'transition': 'transform .4s', 'width': w + 'px' })
+      }, function () {
+        let left = $('.chances-tab-tap .chances-tab-label-item.active')[0].offsetLeft - 6
+        let w = $('.chances-tab-tap .chances-tab-label-item.active').outerWidth()
+        $(this).siblings('span').css({ 'transform': 'translate(' + left + 'px,-50%)', 'transition': 'transform .4s', 'width': w + 'px' })
+      })
+
+      function initSpan() {
+        let left = $('.chances-tab-tap .chances-tab-label-item.active')[0].offsetLeft - 6
+        let w = $('.chances-tab-tap .chances-tab-label-item.active').outerWidth()
+        $('.chances-tab-tap .chances-tab-label span').css({ 'transform': 'translate(' + left + 'px,-50%)', 'transition': 'transform .4s', 'width': w + 'px' })
+      }
+      initSpan()
+
+
+    })
+
+  </script>
+  <div class="chances-tab-tap">
+    <div class="container">
+      <div class="chances-tab-top">
+        <div class="chances-tab-label">
+          <div class="chances-tab-label-item">Prize</div>
+          <div class="chances-tab-label-item active">How to enter</div>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chances-tab-new">
+    <div class="container">
+      <div class="chances-tab-cont">
+        <div class="chances-tab-cont-item">
+          <h3 class="chances-tab-h3">More chances to win.</h3>
+          <div class="chances-tab-cont-box">
+            <div class="chances-tab-box-item">
+              <img src="./images44/icon.svg" alt="" class="icon icon-l">
+              <img src="./images44/icon.svg" alt="" class="icon icon-c">
+              <img src="./images44/a1.png" alt="" class="img">
+              <div class="chances-tab-cont-txt">
+                <div class="chances-tab-cont-p">1st Prize</div>
+                <div class="chances-tab-cont-h4">Holiday Gift Set</div>
+              </div>
+            </div>
+            <div class="chances-tab-box-item">
+              <img src="./images44/icon.svg" alt="" class="icon icon-l">
+              <img src="./images44/icon.svg" alt="" class="icon icon-c">
+              <img src="./images44/a2.png" alt="" class="img">
+
+              <div class="chances-tab-cont-txt">
+                <div class="chances-tab-cont-p">1st Prize</div>
+                <div class="chances-tab-cont-h4">Holiday Gift Set</div>
+              </div>
+            </div>
+            <div class="chances-tab-box-item">
+              <img src="./images44/icon.svg" alt="" class="icon icon-l">
+              <img src="./images44/icon.svg" alt="" class="icon icon-c">
+              <img src="./images44/a3.png" alt="" class="img">
+
+              <div class="chances-tab-cont-txt">
+                <div class="chances-tab-cont-p">1st Prize</div>
+                <div class="chances-tab-cont-h4">Holiday Gift Set</div>
+              </div>
+            </div>
+            <div class="chances-tab-box-item">
+              <img src="./images44/icon.svg" alt="" class="icon icon-l">
+              <img src="./images44/icon.svg" alt="" class="icon icon-c">
+              <img src="./images44/a4.png" alt="" class="img">
+
+              <div class="chances-tab-cont-txt">
+                <div class="chances-tab-cont-p">1st Prize</div>
+                <div class="chances-tab-cont-h4">Holiday Gift Set</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bf-icon-new">
+    <div class="container">
+      <div class="bf-icon-new-cont">
+        <div class="bf-icon-new-img">
+          <img src="./images44/100-icon.png" alt="" class="img">
+        </div>
+        <div class="bf-icon-new-text">
+          <div class="bf-icon-new-h3">100-Day Hair-Free Guarantee</div>
+          <div class="bf-icon-new-p">We're confident you'll love Ulike IPL. If you're not satisfied, enjoy a hassle-free
+            full refund!</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="bf-product-block">
+    <div class="container">
+      <div class="bf-product-cont">
+        <div class="bf-product-img">
+          <img src="./images44/d1.jpg" alt="" class="img">
+        </div>
+        <div class="bf-product-text">
+          <div class="bf-product-tag">Limited Edition</div>
+          <div class="bf-product-h3">Holiday Gift Set</div>
+          <div class="bf-product-p">Get our purple edition Air 10 in a special holiday gift set that includes a free
+            luxury moisturizer!</div>
+          <div class="bf-product-desc">Purple Ulike Air 10</div>
+          <div class="bf-product-price">
+            <div class="bf-product-price-n">$299</div>
+            <div class="bf-product-price-d">$419</div>
+            <div class="bf-product-label">A $564 value!</div>
+          </div>
+          <div class="bf-product-btn">
+            <div class="bf-product-btn-item btn-diy">
+              <div class="btn-txt" text="ADD TO CART">
+                <span>ADD TO CART</span>
+              </div>
+            </div>
+            <div class="bf-product-btn-item btn-diy">
+              <div class="btn-txt" text="BUY NOW">
+                <span>BUY NOW</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

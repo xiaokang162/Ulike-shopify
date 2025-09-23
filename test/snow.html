@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snowfall Effect with Blur and Glow</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #001d3d, #003566);
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="snowCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('snowCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 雪花类
+    class Snowflake {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width; // 初始横坐标
+        this.y = Math.random() * -canvas.height; // 初始纵坐标（负值从顶部外生成）
+        this.size = Math.random() * 5 + 1; // 大小随机
+        this.speedY = Math.random() * 1; // 垂直速度随机
+        this.speedX = Math.random() * 1 - 0.5; // 水平速度随机
+        this.opacity = Math.random() * 0.5 + 0.5; // 透明度随机
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        // 如果雪花超出屏幕，重置其位置
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save(); // 保存当前绘图状态
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+        // 设置模糊和发光效果
+        ctx.shadowBlur = this.size * 2; // 根据雪花大小设置模糊程度
+        ctx.shadowColor = `rgba(255, 255, 255, ${this.opacity})`; // 发光颜色和透明度
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`; // 雪花颜色和透明度
+        ctx.fill();
+
+        ctx.restore(); // 恢复绘图状态
+      }
+    }
+
+    // 初始化雪花数组
+    const snowflakes = [];
+    for (let i = 0; i < 80; i++) {
+      snowflakes.push(new Snowflake());
+    }
+
+    // 动画循环
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 更新并绘制每片雪花
+      snowflakes.forEach(snowflake => {
+        snowflake.update();
+        snowflake.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // 窗口大小调整时更新画布大小
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // 开始动画
+    animate();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css">
+  <link rel="stylesheet" href="./css/tw-wd.css">
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <img src="./images35/b1.jpg" alt="" class="img">
+  <div class="product-box">
+    <div class="container">
+      <div class="product-box-list">
+        <div class="product-box-top-text">
+          <h3 class="product-box-h3">Ulike Air 10</h3>
+          <p class="product-box-p">專注根源性脫毛</p>
+        </div>
+        <div class="product-box-item">
+          <div class="product-box-img">
+            <div class="product-box-img-list">
+              <img src="./images53/a2.png" alt="" class="img">
+            </div>
+          </div>
+          <div class="product-box-det">
+            <div class="product-box-title">
+              Ulike Air 10 Pro<br />
+              全球領先雙燈管IPL除毛儀
+            </div>
+            <div class="product-box-sub m-top">
+              2週見效，專治粗硬毛發<br />
+              SHR模式，26J大能量<br />
+              全球領先雙燈管科技，最快0.25s/閃<br />
+              新一代藍寶石冰點科技
+            </div>
+            <div class="product-box-pam m-top">
+              <div class="product-box-color">
+                <div class="product-box-pam-p">颜色：</div>
+                <div class="product-box-color-flex">
+                  <div class="product-box-color-item active" data-id="22"
+                    style="background: linear-gradient(to bottom ,#DDDBEE,#A8A4CE);"></div>
+                </div>
+              </div>
+              <div class="product-box-num">
+                <div class="product-box-pam-p">数量：</div>
+                <div class="product-box-num-flex">
+                  <div class="product-box-num-tap" data-n="-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <path d="M5.75 11.425H16.1" stroke="#190A0A" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </div>
+                  <input type="number" value="1" class="inp">
+                  <div class="product-box-num-tap" data-n="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="24" viewBox="0 0 23 24" fill="none">
+                      <path d="M5.75 11.1093H16.1" stroke="#190A0A" stroke-width="2" stroke-linecap="round" />
+                      <path d="M10.9248 5.9342L10.9248 16.2842" stroke="#190A0A" stroke-width="2"
+                        stroke-linecap="round" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="product-box-flex m-top">
+              <div class="product-box-price">
+                <span class="price-n"> $10199</span>
+                <span class="price-d">$10999</span>
+              </div>
+              <div class="product-box-coupon" data-txt="Copy: UPOWER">
+                <span class="code-text">UPOWER</span>
+                <div class="product-box-coupon-t">$800 OFF</div>
+                <div class="product-box-coupon-tap copy-btn">Copy: UPOWER</div>
+              </div>
+            </div>
+            <div class="product-box-countdown m-top" data-time="2025-03-06 12:20:30">
+              Ends in
+              <span class="d">00</span>
+              天
+              <span class="h">00</span>
+              时
+              <span class="m">00</span>
+              分
+              <span class="s">00</span>
+              秒
+            </div>
+            <div class="product-box-btn m-top">
+              <div class="product-box-btn-item" data-type="1">加入購物車</div>
+              <div class="product-box-btn-item" data-type="2">立即購買</div>
+            </div>
+            <div class="product-box-protect m-top">
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+              <div class="product-box-protect-item">
+                <img src="./images35/b1.svg" alt="" class="icon-img">
+                包郵包稅
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="./images35/b1.jpg" alt="" class="img">
+  <img src="./images35/b1.jpg" alt="" class="img">
+  <script>
+    // document.addEventListener("DOMContentLoaded", () => {
+    //   const target = document.querySelector(".product-box-item");
+    //   const image = document.querySelector(".product-box .product-box-img-list .img");
+
+    //   // 节流函数，限制 handleScroll 的调用频率
+    //   let isScrolling = false;
+    //   const throttleScroll = () => {
+    //     if (isScrolling) return;
+    //     isScrolling = true;
+    //     requestAnimationFrame(() => {
+    //       handleScroll();
+    //       isScrolling = false;
+    //     });
+    //   };
+
+    //   function handleScroll() {
+    //     if (!target || !image) return;
+
+    //     const rect = target.getBoundingClientRect();
+    //     const windowHeight = window.innerHeight;
+
+    //     // 如果元素完全不在视口内，则提前返回
+    //     if (rect.top > windowHeight || rect.bottom < 0) return;
+
+    //     const totalHeight = rect.bottom - rect.top;
+    //     const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+    //     let percent = Math.max(0, Math.min(1, visibleHeight / totalHeight));
+
+    //     image.style.transform = `translateY(${-90 + percent * 90}%)`;
+    //   }
+
+    //   // 为滚动事件和加载事件添加节流
+    //   window.addEventListener("scroll", throttleScroll);
+    //   window.addEventListener("load", handleScroll);
+    //   handleScroll();
+    // });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.innerWidth > 991) {
+        const target = document.querySelector(".product-box-item");
+        const image = document.querySelector(".product-box .product-box-img-list .img");
+
+        if (!target || !image) return;
+
+        function handleScroll() {
+          const rect = target.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          console.log(rect.bottom, rect.height);
+
+
+          if (rect.top > windowHeight || rect.bottom < rect.height) return;
+
+          const totalHeight = rect.bottom - rect.top;
+          const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+          let percent = Math.max(0, Math.min(1, visibleHeight / totalHeight));
+
+          console.log(percent);
+
+          requestAnimationFrame(() => {
+            image.style.transform = `translateY(${-90 + percent * 90}%)`;
+          });
+        }
+
+
+        // IntersectionObserver 监听可见性
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) {
+              handleScroll();
+            }
+          },
+          { threshold: [0, 0.5, 1] }
+        );
+
+        observer.observe(target);
+        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("load", handleScroll);
+        handleScroll();
+      }
+    });
+
+
+
+  </script>
+  <script>
+    // 复制折扣码
+    function copyTextFun($el, btnTxt = 'Copy', txt) {
+      // txt='Copied'
+      let coupon = $el;
+      if (coupon) {
+        let cpnCode = coupon.querySelector('.code-text');
+        let cpnBtn = coupon.querySelector('.copy-btn');
+        cpnBtn.onclick = function () {
+          navigator.clipboard.writeText(cpnCode.innerHTML);
+          cpnBtn.innerHTML = txt || cpnCode.innerHTML; //"WELCOME";
+          setTimeout(() => {
+            cpnBtn.innerHTML = btnTxt //"Copy Code";
+          }, 6000)
+        }
+      }
+    }
+    // 倒计时
+    class Countdown {
+      constructor(endTime, $elDom, showDay = false) {
+        this.displayElement = $elDom[0];
+        this.timer = null;
+        this.showDay = showDay;
+        this.setEndTime(endTime);
+        this.start();
+      }
+      setEndTime(endTime) {
+        if (endTime) {
+          this.endTime = new Date(endTime).getTime();
+        } else {
+          this.endTime = new Date().getTime();
+        }
+      }
+      start() {
+        this.timer = setInterval(() => this.update(), 1000);
+      }
+
+      update() {
+        const now = new Date().getTime();
+        const distance = this.endTime - now;
+        let day = 0;
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+
+        if (distance < 0) {
+          clearInterval(this.timer);
+          day = 0;
+          hours = 0;
+          minutes = 0;
+          seconds = 0;
+        } else {
+          if (this.showDay) {
+            day = Math.floor(distance / (1000 * 60 * 60 * 24));
+            hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+          } else {
+            hours = Math.floor(distance / (1000 * 60 * 60));
+          }
+          minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        }
+        if (this.showDay) {
+          this.displayElement.querySelector('.d').innerHTML = this.formatTime(day)
+        }
+        this.displayElement.querySelector('.h').innerHTML = this.formatTime(hours)
+        this.displayElement.querySelector('.m').innerHTML = this.formatTime(minutes)
+        this.displayElement.querySelector('.s').innerHTML = this.formatTime(seconds)
+      }
+      formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+      }
+    }
+    window.addEventListener('load', function () {
+      function productBoxFun() {
+        let $p = $('.product-box');
+        let $item = $p.find('.product-box-item');
+        $item.each(function () {
+          let timer = null
+          let item = $(this);
+          let index = 0
+          let $img = item.find('.product-box-img');
+          let $imgList = item.find('.product-box-img-list');
+          // 倒计时
+          let countD = new Countdown(item.find('.product-box-countdown').data('time'), item.find('.product-box-countdown'), true);
+          // 优惠券复制
+          copyTextFun(item.find('.product-box-coupon')[0], item.find('.product-box-coupon').data('txt'))
+          // 图片轮播
+          function changeImg() {
+            $imgList.each(function () {
+              if ($(this).hasClass('active')) {
+                if (index == $(this).find('img').length) index = 0
+                $(this).find('img').removeClass('active').eq(index).addClass('active');
+                $(this).find('.product-box-dot-item').removeClass('active').eq(index).addClass('active');
+              }
+              $(this).find('.product-box-dot-item').click(function () {
+                clearTimeout(timer)
+                index = $(this).index()
+                changeImg()
+              })
+            })
+            clearTimeout(timer)
+            timer = setTimeout(function () {
+              index++
+              changeImg()
+            }, 3000)
+          }
+          changeImg()
+          // 切换颜色
+          $(this).find('.product-box-color-item').click(function () {
+            if ($(this).hasClass('active')) return
+            clearTimeout(timer)
+            index = 0
+            $(this).addClass('active').siblings().removeClass('active')
+            $imgList.removeClass('active').eq($(this).index()).addClass('active')
+            changeImg()
+          })
+          // 加减数量
+          item.find('.product-box-num-tap').click(function () {
+            let inp = $(this).siblings('.inp')
+            let val = parseInt(inp.val())
+            let n = parseInt($(this).data('n'))
+            val += n
+            if (val < 1) val = 1
+            inp.val(val)
+          })
+
+          // 控制输入框只能输入大于0的整数
+          item.find('.inp').blur(function () {
+            let val = parseInt($(this).val())
+            if (isNaN(val) || val < 1) {
+              $(this).val(1)
+            }
+          })
+
+
+          // 购买、加购
+          item.find('.product-box-btn-item').click(function () {
+            let type = $(this).data('type')
+            let id = item.find('.product-box-color-item.active').data('id')
+            let num = item.find('.inp').val()
+            if (type == 1) {
+              // addToCart(id,null,num)
+              console.log(id, num);
+            } else {
+              // buyProduct(id,num)
+              console.log(id, num);
+
+            }
+          })
+        })
+      }
+      productBoxFun()
+    })
+  </script>
+</body>
+
+</html>

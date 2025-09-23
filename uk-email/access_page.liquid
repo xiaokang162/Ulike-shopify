@@ -1,0 +1,133 @@
+<div class="mt-md align-center">
+  {% if settings.logo_image and settings.logo_image != "" %}
+    <img class="logo_image_fixed_top_bar" src="{{ settings.logo_image }}"/>
+  {% else %}
+    <h3 class="mb-no shop-name">
+      {{ campaign.shop_name }}
+    </h3>
+  {% endif %}
+</div>
+{% if settings.banner_image and settings.banner_image != "" and settings.remove_banner_from %}
+  {% unless settings.remove_banner_from contains 'Join Page' %}
+    <div class="grid-x align-center">
+      <div class="mt-sm small-12 medium-8 large-5 cell">
+        <img alt="banner_image" class="banner_image" src="{{ settings.banner_image }}" />
+      </div>
+    </div>
+  {% endunless %}
+{% endif %}
+<div class="grid-x align-center">
+  <div class="large-5 medium-6 small-10 cell header-container">
+    <div class="mt-sm join-page-header">
+      {% if campaign.state != 'paused' %}
+        {{ "page.access_page.header" | t }}
+      {% else %}
+        {{ "page.access_page.paused_header" | t }}
+      {% endif %}
+    </div>
+      <div class="mt-sm mb-md cell sub-header">
+        {% if campaign.state != 'paused' %}
+          {% if offer_setup.description != 'none' %}
+            {{ "page.access_page.subtitle_offer_description" | t }}
+          {% endif %}
+          {{ "page.access_page.description" | t }}
+        {% else %}
+          {{ "page.access_page.paused_subtitle_offer_description" | t }}
+        {% endif %}
+      </div>
+  </div>
+</div>
+
+{% if campaign.state != 'paused' %}
+  <div class="grid-x grid-padding-x align-center">
+    <div class="cell grid-x grid-padding-x align-center small-10 medium-7 large-5 mb-sm join-page-form-container">
+      <div class="cell medium-10 small-10">
+        {% comment %}
+          To protect you, we keep a record of the text used in this form that your customers have agreed to.
+          Do not remove this form or its text fields.
+        {% endcomment %}
+        {% form 'registration_form' %}
+          <div>
+            <label id="access_page_email_label" for="email">
+              <span class="join-page-form-label-name">
+                {{ 'page.access_page.signup_form_email_label' | t }}
+              </span>
+            </label>
+            <input id="access_page_email_input" class="has-tip" name="email" type="email" placeholder="{{ 'page.access_page.signup_form_email_placeholder' | t }}" required tabindex="2"/>
+            <label for="email">
+              <span class="join-page-form-label-description">
+                {{ 'page.access_page.signup_form_email_label_description' | t }}
+              </span>
+            </label>
+            <label for="first_name">
+              <span class="join-page-form-label-name">
+                {{ 'page.access_page.signup_form_name_label' | t }}
+              </span>
+            </label>
+            <input id="access_page_first_name_input" class="has-tip" name="first_name" type="text" placeholder="{{ 'page.access_page.signup_form_name_placeholder' | t }}" tabindex="2"/>
+            <label for="first_name">
+              <span class="join-page-form-label-description">
+                {{ 'page.access_page.signup_form_name_label_description' | t }}
+              </span>
+            </label>
+          </div>
+          <button class="button mt-xxs join-page-submit-button" type="submit">
+            {{ 'page.access_page.signup_form_submit' | t }}
+          </button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+  <div class="grid-x grid-padding-x align-center">
+    <div class="small-11 medium-8 large-5 grid-x icon-container">
+      <div class="small-4 medium-4 cell mt-xs">
+        <div class="grid-x grid-padding-x align-center">
+          <div class="small-3 medium-3 cell how-it-works-icon-background" ">
+            <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/message-circle@mobile.svg, small], [https://cdn.referralcandy.com/themes/evergreen-dev/page/message-circle.svg, medium]" class="how-it-works-icon"/>
+          </div>
+        </div>
+      </div>
+      <div class="small-4 medium-4 cell mt-xs">
+        <div class="grid-x grid-padding-x align-center">
+          <div class="small-3 medium-3 cell how-it-works-icon-background">
+            <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/shopping-cart@mobile.svg, small], [https://cdn.referralcandy.com/themes/evergreen-dev/page/shopping-cart.svg, medium]" class="how-it-works-icon"/>
+          </div>
+        </div>
+      </div>
+      <div class="small-4 medium-4 cell mt-xs">
+        <div class="grid-x grid-padding-x align-center">
+          <div class="small-3 medium-3 cell how-it-works-icon-background">
+            <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/gift@mobile.svg, small], [https://cdn.referralcandy.com/themes/evergreen-dev/page/gift.svg, medium]" class="how-it-works-icon"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="grid-x grid-padding-x align-center">
+    <div class="small-11 medium-8 large-5 grid-x align-center how-it-works-text">
+      <div class="small-4 medium-4 cell">
+        <p>
+          {{ "common.how_it_works_section.share_link_text" | t }}
+        </p>
+      </div>
+      <div class="small-4 medium-4 cell">
+        <p>
+          {{ "common.how_it_works_section.friend_buys_text" | t }}
+        </p>
+      </div>
+      <div class="small-4 medium-4 cell">
+        <p>
+          {{ "common.how_it_works_section.get_rewarded_text" | t }}
+        </p>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <!-- "Shop Now" CTA button when campaign is paused -->
+  <div class="grid-x align-center">
+    <div class="small-6 medium-3 cell">
+      <!-- Button same style for consistency with share page -->
+      <a href="{{ campaign.shop_url }}" class="button view-rewards-button">{{ "page.access_page.paused_cta_button" | t }}</a>
+    </div>
+  </div>
+{% endif %}

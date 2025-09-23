@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .masonry {
+      display: grid;
+      gap: 16px;
+      padding: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 80px;
+    }
+
+    .masonry-item {
+      background: #2196F3;
+      color: white;
+      padding: 1rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 随机高度模拟 */
+    .masonry-item:nth-child(2n) {
+      grid-row: span 2;
+      background: #FF5722;
+    }
+
+    .masonry-item:nth-child(3n) {
+      grid-row: span 3;
+      background: #4CAF50;
+    }
+
+    .masonry-item:nth-child(5n) {
+      grid-row: span 4;
+      background: #9C27B0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="masonry">
+    <div class="masonry-item">内容块1</div>
+    <div class="masonry-item">内容块2</div>
+    <div class="masonry-item">内容块3</div>
+    <div class="masonry-item">内容块4</div>
+    <div class="masonry-item">内容块5</div>
+    <div class="masonry-item">内容块6</div>
+    <div class="masonry-item">内容块7</div>
+    <div class="masonry-item">内容块8</div>
+  </div>
+</body>
+
+</html>

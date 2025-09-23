@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/uk-h.css" />
+  <script src="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.aio.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <div class="place-product-list">
+    <div class="container">
+      <h3 class="place-product-h3">Step into spring with confidence.</h3>
+      <p class="place-product-p">Update your routine and enjoy smooth skin all season long.</p>
+      <div class="place-product-list-cont">
+        <a href="" class="place-product-item">
+          <div class="place-product-item-img">
+            <img src="./images57/g1.jpg" alt="" class="img">
+            <div class="place-product-img-tag">MOST ADVANCED</div>
+          </div>
+          <div class="place-product-text">
+            <div class="place-product-text-flex">
+              <div class="place-product-top">
+                <h3 class="place-product-item-title">Ulike Air10</h3>
+                <div class="place-product-item-p">Visible results in 3 weeks
+                  <br />
+                  Full body treatments in 12 minutes
+                </div>
+              </div>
+              <div class="place-product-bottom">
+                <div class="place-product-price">
+                  <span class="n-price">£279.99</span>
+                  <span class="d-price">£399.00</span>
+                  <div class="place-product-p-tag">EASTER SALE</div>
+                </div>
+                <div class="place-product-colors">
+                  <div class="place-product-color-item active" data-id=""></div>
+                  <div class="place-product-color-item" data-id=""></div>
+                </div>
+              </div>
+            </div>
+            <div class="place-product-btns">
+              <div class="place-product-btn">SHOP NOW</div>
+              <div class="place-product-btn">LEARN MORE</div>
+            </div>
+          </div>
+        </a>
+        <a href="" class="place-product-item">
+          <div class="place-product-item-img">
+            <img src="./images57/g1.jpg" alt="" class="img">
+            <div class="place-product-img-tag">MOST ADVANCED</div>
+          </div>
+          <div class="place-product-text">
+            <div class="place-product-text-flex">
+              <div class="place-product-top">
+                <h3 class="place-product-item-title">Ulike Air10</h3>
+                <div class="place-product-item-p">Visible results in 3 weeks
+                  <br />
+                  Full body treatments in 12 minutes
+                </div>
+              </div>
+              <div class="place-product-bottom">
+                <div class="place-product-price">
+                  <span class="n-price">£279.99</span>
+                  <span class="d-price">£399.00</span>
+                  <div class="place-product-p-tag">EASTER SALE</div>
+                </div>
+                <div class="place-product-colors">
+                  <div class="place-product-color-item active" data-id=""></div>
+                  <div class="place-product-color-item" data-id=""></div>
+                </div>
+              </div>
+            </div>
+            <div class="place-product-btns">
+              <div class="place-product-btn">SHOP NOW</div>
+              <div class="place-product-btn">LEARN MORE</div>
+            </div>
+          </div>
+        </a>
+        <a href="" class="place-product-item">
+          <div class="place-product-item-img">
+            <img src="./images57/g1.jpg" alt="" class="img">
+            <div class="place-product-img-tag">MOST ADVANCED</div>
+          </div>
+          <div class="place-product-text">
+            <div class="place-product-text-flex">
+              <div class="place-product-top">
+                <h3 class="place-product-item-title">Ulike Air10</h3>
+                <div class="place-product-item-p">Visible results in 3 weeks
+                  <br />
+                  Full body treatments in 12 minutes
+                </div>
+              </div>
+              <div class="place-product-bottom">
+                <div class="place-product-price">
+                  <span class="n-price">£279.99</span>
+                  <span class="d-price">£399.00</span>
+                  <div class="place-product-p-tag">EASTER SALE</div>
+                </div>
+                <div class="place-product-colors">
+                  <div class="place-product-color-item active" data-id=""></div>
+                  <div class="place-product-color-item" data-id=""></div>
+                </div>
+              </div>
+            </div>
+            <div class="place-product-btns">
+              <div class="place-product-btn">SHOP NOW</div>
+              <div class="place-product-btn">LEARN MORE</div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    $(".place-product-list .place-product-color-item").click(function () {
+      let index = $(this).index();
+      $(this).addClass("active").siblings().removeClass("active");
+      $(this).closest('.place-product-item').find('.place-product-item-img .img').removeClass('active').eq(index).addClass('active');
+    })
+
+    $('.add-to-cart-place').click(function () {
+      let product_id = $(this).closest('.place-product-item').find('.place-product-color-item.active').data('id');
+    })
+
+  </script>
+  <div class="place-image">
+    <div class="container">
+      <div class="place-image-list">
+        <div class="place-image-item" data-name="place-popup1">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Mask_group_7.jpg"
+              media="(max-width: 991px)">
+            <img class="img"
+              src="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Group_457394625.png?v=1744189174">
+          </picture>
+          <div class="place-image-text">
+            <div>
+              <h3 class="place-image-h3">Head-to-toe hair removal</h3>
+              <p class="place-image-p">Enjoy quick, full-body sessions.</p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M19.9878 39.9756C31.0268 39.9756 39.9756 31.0268 39.9756 19.9878C39.9756 8.94885 31.0268 0 19.9878 0C8.94885 0 0 8.94885 0 19.9878C0 31.0268 8.94885 39.9756 19.9878 39.9756Z"
+                fill="white" />
+              <path
+                d="M18.8659 28.7394V20.6482H10.7744V18.8569H18.8659V10.7754H20.6583V18.8569H28.7393V20.6482H20.6583V28.7394H18.8659Z"
+                fill="#3F3636" />
+            </svg>
+          </div>
+        </div>
+        <div class="place-image-item" data-name="place-popup2">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Mask_group_8.jpg?v=1744189336"
+              media="(max-width: 991px)">
+            <img class="img"
+              src="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Group_457394626.png?v=1744189174">
+          </picture>
+          <div class="place-image-text">
+            <div>
+              <h3 class="place-image-h3">Gentle on sensitive skin</h3>
+              <p class="place-image-p">Laser-like results without the “ouch”.</p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M19.9878 39.9756C31.0268 39.9756 39.9756 31.0268 39.9756 19.9878C39.9756 8.94885 31.0268 0 19.9878 0C8.94885 0 0 8.94885 0 19.9878C0 31.0268 8.94885 39.9756 19.9878 39.9756Z"
+                fill="white" />
+              <path
+                d="M18.8659 28.7394V20.6482H10.7744V18.8569H18.8659V10.7754H20.6583V18.8569H28.7393V20.6482H20.6583V28.7394H18.8659Z"
+                fill="#3F3636" />
+            </svg>
+          </div>
+        </div>
+        <div class="place-image-item">
+          <picture>
+            <source
+              srcset="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/before-after_5b064291-8db9-4b63-9819-217e47a345aa.png?v=1744189336"
+              media="(max-width: 991px)">
+            <img class="img" src="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/before-after.png?v=1744189174">
+          </picture>
+        </div>
+        <div class="place-image-item" data-name="place-popup3">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Group_457394629.png?v=1744189336"
+              media="(max-width: 991px)">
+            <img class="img"
+              src="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Group_457394627.png?v=1744189173">
+          </picture>
+          <div class="place-image-text">
+            <div>
+              <h3 class="place-image-h3">Long-lasting smoothness</h3>
+              <p class="place-image-p">Say goodbye to shaving or waxing.</p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M19.9878 39.9756C31.0268 39.9756 39.9756 31.0268 39.9756 19.9878C39.9756 8.94885 31.0268 0 19.9878 0C8.94885 0 0 8.94885 0 19.9878C0 31.0268 8.94885 39.9756 19.9878 39.9756Z"
+                fill="white" />
+              <path
+                d="M18.8659 28.7394V20.6482H10.7744V18.8569H18.8659V10.7754H20.6583V18.8569H28.7393V20.6482H20.6583V28.7394H18.8659Z"
+                fill="#3F3636" />
+            </svg>
+          </div>
+        </div>
+        <div class="place-image-item" data-name="place-popup4">
+          <picture>
+            <source srcset="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Group_457394630.png?v=1744189336"
+              media="(max-width: 991px)">
+            <img class="img"
+              src="https://cdn.shopify.com/s/files/1/0617/6125/7610/files/Group_457394628.png?v=1744189172">
+          </picture>
+          <div class="place-image-text">
+            <div>
+              <h3 class="place-image-h3">Certified for safety</h3>
+              <p class="place-image-p">No skin burns or irritation.</p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M19.9878 39.9756C31.0268 39.9756 39.9756 31.0268 39.9756 19.9878C39.9756 8.94885 31.0268 0 19.9878 0C8.94885 0 0 8.94885 0 19.9878C0 31.0268 8.94885 39.9756 19.9878 39.9756Z"
+                fill="white" />
+              <path
+                d="M18.8659 28.7394V20.6482H10.7744V18.8569H18.8659V10.7754H20.6583V18.8569H28.7393V20.6482H20.6583V28.7394H18.8659Z"
+                fill="#3F3636" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="place-image-popup svg-mini place-popup1">
+    <div class="place-image-popup-cont">
+      <div class="place-image-popup-close"></div>
+      <h3 class="place-image-popup-h3">Clinically-proven hair removal.</h3>
+      <p class="place-image-popup-p">
+        UKCA-cleared and meeting international standards,
+        our IPL devices undergo rigorous testing to ensure the highest level of skin safety.
+        The built-in UV filter offers additional protection,
+        you can enjoy worry-free hair removal from start to finish.
+      </p>
+      <div class="place-image-popup-list">
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/a6.svg" alt="" class="img">
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/a7.svg" alt="" class="img">
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/a8.svg" alt="" class="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="place-image-popup place-popup2">
+    <div class="place-image-popup-cont">
+      <div class="place-image-popup-close"></div>
+      <h3 class="place-image-popup-h3">How does IPL work?</h3>
+      <div class="place-image-popup-list">
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/a9.jpg" alt="" class="img">
+          </div>
+          <div class="place-image-popup-text">
+            <div class="place-image-popup-num">01</div>
+            <p class="place-image-popup-text-p">IPL targets the melanin in hair follicles during their growth phase
+              (anagen phase).</p>
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/a10.jpg" alt="" class="img">
+          </div>
+          <div class="place-image-popup-text">
+            <div class="place-image-popup-num">02</div>
+            <p class="place-image-popup-text-p">The light disrupts the hair growth cycle, putting the follicles into a
+              dormant state.</p>
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/a11.jpg" alt="" class="img">
+          </div>
+          <div class="place-image-popup-text">
+            <div class="place-image-popup-num">03</div>
+            <p class="place-image-popup-text-p">As a result, hair grows back thinner and slower, and eventually stops
+              growing altogether.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="place-image-popup first-big place-popup3">
+    <div class="place-image-popup-cont">
+      <div class="place-image-popup-close"></div>
+      <h3 class="place-image-popup-h3">Clinically-proven hair removal.</h3>
+      <p class="place-image-popup-p">
+        UKCA-cleared and meeting international standards,
+        our IPL devices undergo rigorous testing to ensure the highest level of skin safety.
+        The built-in UV filter offers additional protection,
+        you can enjoy worry-free hair removal from start to finish.
+      </p>
+      <div class="place-image-popup-list">
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/z1.jpg" alt="" class="img">
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/z2.jpg" alt="" class="img">
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/z3.jpg" alt="" class="img">
+          </div>
+        </div>
+        <div class="place-image-popup-item">
+          <div class="place-image-popup-img">
+            <img src="./images57/z4.jpg" alt="" class="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="place-image-popup place-video-popup">
+    <div class="place-image-popup-cont">
+      <div class="place-image-popup-close"></div>
+      <div class="place-image-popup-video-text">
+        <h3 class="place-image-popup-h3">AutoGlide Mode</h3>
+        <p class="place-image-popup-p">
+          With AutoGlide Mode, you can effortlessly cover large areas or perform touch-ups quickly,
+          all without needing to press the button repeatedly.
+          Complete full-body sessions in no time, leaving you with more time for the things that matter most.
+        </p>
+      </div>
+      <div class="place-image-popup-video">
+        <img src="./images57/a12.jpg" alt="" class="img">
+      </div>
+    </div>
+  </div>
+  <div class="place-image-popup place-video-popup place-popup4">
+    <div class="place-image-popup-cont">
+      <div class="place-image-popup-close"></div>
+      <div class="place-image-popup-video-text">
+        <h3 class="place-image-popup-h3">AutoGlide Mode</h3>
+        <p class="place-image-popup-p">
+          With AutoGlide Mode, you can effortlessly cover large areas or perform touch-ups quickly,
+          all without needing to press the button repeatedly.
+          Complete full-body sessions in no time, leaving you with more time for the things that matter most.
+        </p>
+      </div>
+      <div class="place-image-popup-video">
+        <img src="./images57/a12.jpg" alt="" class="img">
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll(".place-image .place-image-item svg").forEach(function (el) {
+
+      el.addEventListener("click", () => {
+        let name = el.closest('.place-image-item').getAttribute("data-name");
+        if (name) {
+          fadeIn(document.querySelector(`.${name}`))
+        }
+      })
+    })
+
+    // document.querySelectorAll(".place-image-popup .place-image-popup-close").forEach(function (el) {
+    //   el.addEventListener("click", () => {
+    //     fadeOut(el.closest(".place-image-popup"))
+    //   })
+    // })
+
+    document.querySelectorAll(".place-image-popup").forEach(function (el) {
+      el.addEventListener("click", () => {
+        fadeOut(el)
+      })
+    })
+
+    // dom显示
+    function fadeIn(element, callback = null, duration = 400) {
+      if (window.getComputedStyle(element).display === 'none') {
+        element.style.display = 'block'; // 先显示元素
+        element.style.opacity = 0; // 设为透明
+      }
+
+      let startTime = performance.now();
+
+      function animate(currentTime) {
+        let elapsedTime = currentTime - startTime;
+        let progress = elapsedTime / duration;
+
+        if (progress >= 1) {
+          element.style.opacity = 1; // 透明度设为 1
+          if (callback) callback(); // 调用回调函数
+        } else {
+          element.style.opacity = progress;
+          requestAnimationFrame(animate);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // dom隐藏
+    function fadeOut(element, callback = null, duration = 400) {
+      let startTime = performance.now();
+
+      function animate(currentTime) {
+        let elapsedTime = currentTime - startTime;
+        let progress = elapsedTime / duration;
+
+        if (progress >= 1) {
+          element.style.opacity = 0;
+          element.style.display = 'none'; // 完全隐藏
+          if (callback) callback(); // 调用回调函数
+        } else {
+          element.style.opacity = 1 - progress;
+          requestAnimationFrame(animate);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+
+  </script>
+
+  <div class="place-remark">
+    <div class="container">
+      <div class="place-remark-cont">
+        <h3 class="place-remark-title">what our customers say</h3>
+        <div class="place-remark-arraws">
+          <div class="place-remark-arraw place-remark-arraw-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+              <g clip-path="url(#clip0_1522_1044)">
+                <path
+                  d="M1.90735e-06 11.4915C1.90735e-06 11.6729 0.067318 11.8529 0.196098 11.9905L10.44 22.9661L11.5098 21.9681L2.41463 12.2232H30C30 11.4154 29.3444 10.7598 28.5366 10.7598H0.765366C0.488781 10.7598 0.219515 10.8988 0.0878067 11.1432C0.0278072 11.2529 1.90735e-06 11.3729 1.90735e-06 11.4915Z"
+                  fill="#190A0A" />
+                <path
+                  d="M1.53073 8.92683C2.10292 9.49756 3.02926 9.49756 3.59999 8.92683L11.4937 1.03463L10.459 0L1.53219 8.92683H1.53073Z"
+                  fill="#190A0A" />
+              </g>
+              <defs>
+                <clipPath id="clip0_1522_1044">
+                  <rect width="30" height="22.9683" fill="white" transform="matrix(-1 0 0 1 30 0)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="place-remark-arraw place-remark-arraw-next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="23" viewBox="0 0 30 23" fill="none">
+              <g clip-path="url(#clip0_1522_1040)">
+                <path
+                  d="M30 11.4915C30 11.6729 29.9327 11.8529 29.8039 11.9905L19.56 22.9661L18.4902 21.9681L27.5854 12.2232H0C0 11.4154 0.65561 10.7598 1.46341 10.7598H29.2346C29.5112 10.7598 29.7805 10.8988 29.9122 11.1432C29.9722 11.2529 30 11.3729 30 11.4915Z"
+                  fill="#190A0A" />
+                <path
+                  d="M28.4693 8.92683C27.8971 9.49756 26.9707 9.49756 26.4 8.92683L18.5063 1.03463L19.541 0L28.4678 8.92683H28.4693Z"
+                  fill="#190A0A" />
+              </g>
+              <defs>
+                <clipPath id="clip0_1522_1040">
+                  <rect width="30" height="22.9683" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="place-remark-slide">
+          <div class="place-remark-list swiper-wrapper">
+            <div class="place-remark-item swiper-slide">
+              <div class="place-remark-item-img">
+                <img src="./images57/b1.jpg" alt="" class="img">
+              </div>
+              <div class="place-remark-text">
+                <p class="place-remark-p">I absolutely love my Maize hoodie! The quality is outstanding, and it keeps me
+                  warm and cozy during the colder months. Highly recommend!</p>
+                <div class="place-remark-bottom">
+                  <p class="place-remark-name">— sarah davis</p>
+                  <img src="./images57/b4.svg" alt="" class="star-svg">
+                </div>
+              </div>
+            </div>
+            <div class="place-remark-item swiper-slide">
+              <div class="place-remark-item-img">
+                <img src="./images57/b1.jpg" alt="" class="img">
+              </div>
+              <div class="place-remark-text">
+                <p class="place-remark-p">I absolutely love my Maize hoodie! The quality is outstanding, and it keeps me
+                  warm and cozy during the colder months. Highly recommend!</p>
+                <div class="place-remark-bottom">
+                  <p class="place-remark-name">— sarah davis</p>
+                  <img src="./images57/b4.svg" alt="" class="star-svg">
+                </div>
+              </div>
+            </div>
+            <div class="place-remark-item swiper-slide">
+              <div class="place-remark-item-img">
+                <img src="./images57/b1.jpg" alt="" class="img">
+              </div>
+              <div class="place-remark-text">
+                <p class="place-remark-p">I absolutely love my Maize hoodie! The quality is outstanding, and it keeps me
+                  warm and cozy during the colder months. Highly recommend!</p>
+                <div class="place-remark-bottom">
+                  <p class="place-remark-name">— sarah davis</p>
+                  <img src="./images57/b4.svg" alt="" class="star-svg">
+                </div>
+              </div>
+            </div>
+            <div class="place-remark-item swiper-slide">
+              <div class="place-remark-item-img">
+                <img src="./images57/b1.jpg" alt="" class="img">
+              </div>
+              <div class="place-remark-text">
+                <p class="place-remark-p">I absolutely love my Maize hoodie! The quality is outstanding, and it keeps me
+                  warm and cozy during the colder months. Highly recommend!</p>
+                <div class="place-remark-bottom">
+                  <p class="place-remark-name">— sarah davis</p>
+                  <img src="./images57/b4.svg" alt="" class="star-svg">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="place-remark-dot"></div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    new Swiper(".place-remark-slide", {
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      navigation: {
+        nextEl: ".place-remark-arraw-next",
+        prevEl: ".place-remark-arraw-prev",
+      },
+      pagination: {
+        el: ".place-remark-dot",
+        clickable: true,
+      },
+    })
+  </script>
+  <div class="place-pay" style="display: none;">
+    <div class="container">
+      <h3 class="place-pay-title">Beauty won't wait.</h3>
+      <p class="place-pay-p">Split your payment into 3 interest-free instalments.</p>
+      <div class="place-pay-img-bg">
+        <img src="./images57/c1.jpg" alt="" class="place-pay-img">
+        <div class="place-pay-item">
+          <img src="./images57/c2.svg" alt="" class="icon-img">
+        </div>
+        <div class="place-pay-item">
+          <img src="./images57/c2.svg" alt="" class="icon-img">
+        </div>
+        <div class="place-pay-item">
+          <img src="./images57/c2.svg" alt="" class="icon-img">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

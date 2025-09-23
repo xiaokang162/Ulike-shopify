@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/gp.css" />
+  <script src="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.aio.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="member-banner">
+    <picture>
+      <source srcset="./images51/banner1.jpg" media="(max-width: 991px)">
+      <img class="img" src="./images51/banner.jpg">
+    </picture>
+    <div class="member-banner-cont">
+      <div class="container">
+        <div class="member-banner-text">
+          <h3 class="member-banner-title">Join ULike Membership</h3>
+          <p class="member-banner-text-p">Join ULike Membership and enjoy exclusive benefits</p>
+          <div class="member-banner-form">
+            <div class="member-banner-form-item member-email-box">
+              <input type="text" placeholder="Enter your e-mail" class="member-banner-input" />
+              <div class="member-banner-msg">Please enter a valid email address</div>
+            </div>
+            <div class="member-banner-form-item member-verify-box">
+              <input type="number" placeholder="Verification Code" class="member-banner-input" />
+              <div class="member-banner-Verify" onclick="getVerifyCode()">Verify</div>
+              <div class="member-banner-msg">The code entered is invalid</div>
+            </div>
+            <div class="member-banner-form-item" style="display: none;">
+              <div class="member-banner-form-g">
+                <div class="member-banner-form-checkbox">
+                  <input type="checkbox" class="member-banner-checkbox" />
+                  <span></span>
+                </div>
+                <div class="member-banner-form-text">By clicking the box you agree to Ulike's Terms of Use and Privacy
+                  Policy.</div>
+              </div>
+            </div>
+            <div class="member-banner-form-btn" onclick="handleRequest()">
+              Quick Login
+            </div>
+          </div>
+        </div>
+        <div class="member-banner-success">
+          <img src="./images51/bg1.png" alt="" class="su-bg">
+          <div class="member-banner-success-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="47" height="46" viewBox="0 0 47 46" fill="none">
+              <path
+                d="M45.345 22.8088C45.345 34.4456 35.6116 43.9627 23.5 43.9627C11.3884 43.9627 1.65493 34.4456 1.65493 22.8088C1.65493 11.1721 11.3884 1.65493 23.5 1.65493C35.6116 1.65493 45.345 11.1721 45.345 22.8088Z"
+                stroke="#E0004D" stroke-width="3.30986" />
+              <path d="M14.2778 23.5628L20.0462 28.7906L31.7975 16.5884" stroke="#E0004D" stroke-width="3.30986"
+                stroke-linecap="round" />
+            </svg>
+            <div class="member-banner-success-h3">Congratulations!</div>
+            <div class="member-banner-success-p">Congratulations! Your account has been successfully registered.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function request(url, method = 'GET', data = {}, headers = {}, timeout = 10000) {
+      const controller = new AbortController();
+      const signal = controller.signal;
+
+      const options = {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...headers,
+        },
+        signal,
+        mode: 'cors'
+      };
+
+      if (method.toUpperCase() === 'GET') {
+        const query = new URLSearchParams(data).toString();
+        url += query ? `?${query}` : '';
+      } else {
+        options.body = JSON.stringify(data);
+      }
+
+      // 设置超时
+      const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+      return fetch(url, options)
+        .then(async (response) => {
+          clearTimeout(timeoutId);
+          if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+          }
+          const result = await response.json();
+          return result;
+        })
+        .catch((error) => {
+          if (error.name === 'AbortError') {
+            throw new Error('Request timeout');
+          }
+          throw error;
+        });
+    }
+
+    // 邮箱校验
+    function isValidEmail(email) {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/;
+      return emailRegex.test(email);
+    }
+
+    // 倒计时函数
+    function startCountdown(button) {
+      countdown = 60;
+      button.disabled = true;
+      button.textContent = `${countdown}`;
+      button.setAttribute('is-countdown', 'true');
+      timer = setInterval(() => {
+        countdown--;
+        button.textContent = `${countdown}`;
+
+        if (countdown <= 0) {
+          clearInterval(timer);
+          button.disabled = false;
+          button.textContent = 'Verify';
+          countdown = 60; // 重置倒计时
+          button.removeAttribute('is-countdown');
+        }
+      }, 1000);
+    }
+
+    // 获取验证码
+    function getVerifyCode() {
+      const emailInput = document.querySelector('.member-email-box input');
+      const resultElement = document.querySelector('.member-email-box .member-banner-msg');
+      const button = document.querySelector('.member-verify-box .member-banner-Verify');
+      const email = emailInput.value.trim();
+
+      if (button.getAttribute('is-countdown') === 'true') return;
+      // 校验邮箱
+      if (!email) {
+        resultElement.textContent = 'Please enter a valid email address';
+        resultElement.style.display = 'block';
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        resultElement.textContent = 'Please enter a valid email address';
+        resultElement.style.display = 'block';
+        return;
+      }
+
+      resultElement.style.display = 'none';
+
+      // 验证码请求
+      request('http://api.myulike.test/user/sendCode', 'POST', {
+        "siteCode": "UK",
+        "since": "USER_LOGIN_WITH_EMAIL",
+        "userEmail": email
+      })
+        .then((res) => {
+          if (res.code === 0) {
+            startCountdown(button);
+          }
+        })
+        .catch(error => {
+          resultElement.textContent = error.message;
+          resultElement.style.display = 'block';
+          button.disabled = false;
+          button.textContent = 'Verify';
+        });
+    }
+
+    // 提交
+    function handleRequest(event) {
+      const emailInput = document.querySelector('.member-email-box input');
+      const resultElement = document.querySelector('.member-email-box .member-banner-msg');
+      const verifyInput = document.querySelector('.member-verify-box input');
+      const verifyElement = document.querySelector('.member-verify-box .member-banner-msg');
+      const btn = document.querySelector('.member-banner-form-btn');
+      const email = emailInput.value.trim();
+      const verifyCode = verifyInput.value.trim();
+      if (btn.getAttribute('is-login') === 'true') return;
+
+      // 校验邮箱
+      if (!email) {
+        resultElement.textContent = 'Please enter a valid email address';
+        resultElement.style.display = 'block';
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        resultElement.textContent = 'Please enter a valid email address';
+        resultElement.style.display = 'block';
+        return;
+      }
+
+      if (!verifyCode) {
+        verifyElement.textContent = 'The code entered is invalid';
+        verifyElement.style.display = 'block';
+        return;
+      }
+
+      resultElement.style.display = 'none';
+      verifyElement.style.display = 'none';
+
+      btn.setAttribute('is-login', 'true');
+      // 发起请求
+      request('http://api.myulike.test/user/login', 'POST', {
+        "siteCode": "UK",
+        "userEmail": email,
+        "since": "VIP_USER_LOGIN_WITH_EMAIL",
+        "verifyCode": verifyCode,
+        "returnUrl": ''
+      })
+        .then(data => {
+          btn.removeAttribute('is-login');
+          if (data.code === 0) {
+            document.querySelector('.member-banner-text').style.display = 'none';
+            document.querySelector('.member-banner-success').style.display = 'block';
+            setTimeout(() => {
+              window.location.href = data.data.loginUrl;
+            }, 3 * 1000)
+          } else {
+            verifyElement.textContent = data.message;
+            verifyElement.style.display = 'block';
+          }
+        })
+        .catch(error => {
+          btn.removeAttribute('is-login');
+        });
+    }
+
+  </script>
+  <div class="member-tab">
+    <div class="container">
+      <div class="member-tab-cont">
+        <div class="member-tab-list">
+          <a href="" class="member-tab-item">Join Now</a>
+          <a href="" class="member-tab-item">Benefits</a>
+          <a href="" class="member-tab-item">How it Works</a>
+        </div>
+        <a href="" class="member-tab-btn">Quick Login</a>
+      </div>
+    </div>
+  </div>
+  <div class="member-benefits">
+    <div class="container">
+      <h3 class="member-benefits-title">Member Benefits</h3>
+      <div class="member-benefits-cont">
+        <div class="member-benefits-item member-benefits-left">
+          <picture>
+            <source srcset="./images51/a1-1.png" media="(max-width: 991px)">
+            <img class="img" src="./images51/a1.png">
+          </picture>
+          <div class="member-benefits-text">
+            <h4 class="member-benefits-h4">Extra £20 OFF Your First Order</h4>
+            <p class="member-benefits-p">Up to 40% OFF</p>
+          </div>
+        </div>
+        <div class="member-benefits-right">
+          <div class="member-benefits-item">
+            <picture>
+              <source srcset="./images51/a2.png" media="(max-width: 991px)">
+              <img class="img" src="./images51/a2.png">
+            </picture>
+            <div class="member-benefits-text">
+              <h4 class="member-benefits-h4">120-Day Money <br /> Back Guarantee</h4>
+            </div>
+          </div>
+          <div class="member-benefits-item">
+            <picture>
+              <source srcset="./images51/a3.png" media="(max-width: 991px)">
+              <img class="img" src="./images51/a3.png">
+            </picture>
+            <div class="member-benefits-text">
+              <h4 class="member-benefits-h4">FREE Express Shipping</h4>
+            </div>
+          </div>
+          <div class="member-benefits-item">
+            <picture>
+              <source srcset="./images51/a4.png" media="(max-width: 991px)">
+              <img class="img" src="./images51/a4.png">
+            </picture>
+            <div class="member-benefits-text">
+              <h4 class="member-benefits-h4">Special Birthday Gift</h4>
+              <p class="member-benefits-p">Coming soon!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <link rel="stylesheet" href="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.css">
+  <script src="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.aio.min.js"></script>
+  <div class="register-account">
+    <div class="container">
+      <h3 class="register-account-title">How to Register Your Account</h3>
+      <div class="register-account-cont">
+        <div class="register-account-list swiper-wrapper">
+          <div class="register-account-item swiper-slide">
+            <img src="./images51/b1.jpg" alt="" class="img">
+            <div class="register-account-text">
+              <div class="register-account-left">Step 1</div>
+              <div class="register-account-right">
+                <h4 class="register-account-h4">Sign Up</h4>
+                <p class="register-account-p">Create your Ulike account and you'll be taken straight to your user
+                  centre.</p>
+              </div>
+            </div>
+          </div>
+          <div class="register-account-item swiper-slide">
+            <img src="./images51/b1.jpg" alt="" class="img">
+            <div class="register-account-text">
+              <div class="register-account-left">Step 2</div>
+              <div class="register-account-right">
+                <h4 class="register-account-h4">Sign Up</h4>
+                <p class="register-account-p">Create your Ulike account and you'll be taken straight to your user
+                  centre.</p>
+              </div>
+            </div>
+          </div>
+          <div class="register-account-item swiper-slide">
+            <img src="./images51/b1.jpg" alt="" class="img">
+            <div class="register-account-text">
+              <div class="register-account-left">Step 3</div>
+              <div class="register-account-right">
+                <h4 class="register-account-h4">Sign Up</h4>
+                <p class="register-account-p">Create your Ulike account and you'll be taken straight to your user
+                  centre.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let swiper = new Swiper(".register-account-cont", {
+      slidesPerView: "auto",
+      spaceBetween: 15,
+      // pagination: {
+      //   el: ".experts-new-dot",
+      //   clickable: true,
+      // },
+      breakpoints: {
+        991: {
+          spaceBetween: 25
+        },
+      }
+    });
+  </script>
+</body>
+
+</html>

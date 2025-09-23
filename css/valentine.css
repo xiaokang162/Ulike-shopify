@@ -1,0 +1,599 @@
+.container {
+  padding: 0 40px;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+.valentine-gifts {
+  overflow: hidden;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+@media (min-width: 1600px) {
+  .valentine-gifts .container {
+    max-width: calc(100% - 40px);
+  }
+}
+
+.valentine-gifts .valentine-gifts-list {
+  display: flex;
+}
+
+.valentine-gifts .valentine-gifts-item {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 30px 140px 30px 70px;
+  position: relative;
+}
+
+.valentine-gifts .valentine-gifts-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50vw;
+  height: 100%;
+  background: linear-gradient(253deg, #8c606f 18.07%, #f0edee 77.06%);
+  opacity: 0.5;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.valentine-gifts .valentine-gifts-item:last-child {
+  padding: 30px 70px 30px 140px;
+  border-left: #000 2px solid;
+}
+
+.valentine-gifts .valentine-gifts-item:last-child::before {
+  left: 0;
+  right: auto;
+}
+
+.valentine-gifts .valentine-gifts-item-img {
+  width: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.valentine-gifts .valentine-gifts-item-text {
+  position: relative;
+  z-index: 1;
+}
+
+.valentine-gifts .valentine-gifts-item-h3 {
+  font-size: 40px;
+  margin: 0;
+  font-weight: normal;
+  line-height: 1;
+  font-family: var(--heading-font-family);
+}
+
+.valentine-gifts .valentine-gifts-item-p {
+  font-size: 20px;
+  color: #000;
+  line-height: 1.1;
+  margin-top: 15px;
+}
+
+@media (max-width: 1600px) {
+  .valentine-gifts .valentine-gifts-item {
+    padding: 30px;
+    padding-left: 0;
+  }
+  .valentine-gifts .valentine-gifts-item:last-child {
+    padding: 30px;
+    padding-right: 0;
+  }
+}
+@media (max-width: 1200px) {
+  .valentine-gifts .valentine-gifts-item-h3 {
+    font-size: 30px;
+  }
+  .valentine-gifts .valentine-gifts-item-p {
+    font-size: 16px;
+  }
+  .valentine-gifts .valentine-gifts-item {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .valentine-gifts .valentine-gifts-list {
+    flex-direction: column;
+  }
+  .valentine-gifts .valentine-gifts-item {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    padding: 30px 0;
+    gap: 10px;
+  }
+  .valentine-gifts .valentine-gifts-item:last-child {
+    border-left: 0;
+    position: relative;
+    z-index: 2;
+    padding-left: 0;
+  }
+  .valentine-gifts .valentine-gifts-item:last-child::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 2px;
+    background: #000;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+  .valentine-gifts .valentine-gifts-item::before {
+    width: 100vw;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+  .valentine-gifts .valentine-gifts-item:last-child::before {
+    left: 50%;
+  }
+  .valentine-gifts .valentine-gifts-item-h3 {
+    font-size: 28px;
+  }
+  .valentine-gifts .valentine-gifts-item-p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+.valentine-guide {
+  padding: 80px 0;
+}
+
+.valentine-guide .valentine-guide-title {
+  font-size: 60px;
+  color: #000;
+  font-weight: normal;
+  margin: 0;
+  font-family: var(--heading-font-family);
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.valentine-guide .valentine-guide-list {
+  display: flex;
+  gap: 66px;
+}
+
+.valentine-guide .valentine-guide-item {
+  width: calc(33.333% - 44px);
+  border-radius: 10px;
+  border: 2px solid #000;
+  padding: 30px 15px 20px 15px;
+}
+
+.valentine-guide .valentine-guide-item-h4 {
+  font-size: 40px;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.valentine-guide .valentine-guide-item-p {
+  font-size: 20px;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.valentine-guide .valentine-guide-item-img {
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.valentine-guide .valentine-guide-item-img .img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.valentine-guide .valentine-guide-item-pos {
+  position: absolute;
+  z-index: 2;
+  width: calc(100% - 18px);
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  gap: 15px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.valentine-guide .valentine-guide-pos-img {
+  width: 110px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px 15px;
+}
+.valentine-guide .img-pos {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.valentine-guide .valentine-guide-pos-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  padding-right: 15px;
+}
+
+.valentine-guide .valentine-guide-pos-text-left {
+  max-width: 120px;
+}
+
+.valentine-guide .valentine-guide-pos-h5 {
+  font-size: 16px;
+  color: #000;
+  font-family: var(--heading-font-family);
+  line-height: 1;
+  margin: 0;
+}
+
+.valentine-guide .valentine-guide-pos-p {
+  font-size: 12px;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.valentine-guide .valentine-guide-pos-btn {
+  height: 36px;
+  font-size: 14px;
+  padding: 0 15px;
+  background: #000;
+  color: #fff;
+  border-radius: 36px;
+  border: 1.5px solid #000;
+  cursor: pointer;
+}
+
+.valentine-guide .valentine-guide-pos-btn .btn-txt::before {
+  color: #000;
+}
+
+@media (max-width: 1600px) {
+  .valentine-guide .valentine-guide-title {
+    margin-bottom: 50px;
+  }
+  .valentine-guide .valentine-guide-list {
+    gap: 30px;
+  }
+  .valentine-guide .valentine-guide-item {
+    width: calc(33.333% - 20px);
+  }
+  .valentine-guide .valentine-guide-item-h4 {
+    font-size: 30px;
+  }
+  .valentine-guide .valentine-guide-item-p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .valentine-guide .valentine-guide-pos-img {
+    width: 90px;
+  }
+  .valentine-guide .valentine-guide-item-pos {
+    gap: 10px;
+  }
+  .valentine-guide .valentine-guide-pos-text {
+    gap: 10px;
+  }
+  .valentine-guide .valentine-guide-pos-btn {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 0 10px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .valentine-guide .valentine-guide-pos-h5 {
+    font-size: 14px;
+  }
+  .valentine-guide .valentine-guide-pos-img {
+    width: 70px;
+  }
+}
+
+@media (max-width: 991px) {
+  .valentine-guide {
+    padding: 50px 0;
+  }
+  .valentine-guide .valentine-guide-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  .valentine-guide .valentine-guide-list {
+    flex-direction: column;
+  }
+  .valentine-guide .valentine-guide-item {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .valentine-guide .valentine-guide-item-h4 {
+    font-size: 22px;
+    margin-bottom: 5px;
+  }
+  .valentine-guide .valentine-guide-item-p {
+    font-size: 14px;
+  }
+  .valentine-guide .valentine-guide-pos-img {
+    padding: 8px;
+  }
+}
+
+.valentine-subscribers {
+  background: linear-gradient(270deg, #c5afb7 23.5%, #f7f6f6 76.5%);
+  padding: 90px 0;
+  overflow: hidden;
+}
+
+.valentine-subscribers .valentine-subscribers-cont {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.valentine-subscribers .valentine-subscribers-w {
+  width: calc(50% - 15px);
+}
+
+.valentine-subscribers .valentine-subscribers-h3 {
+  font-size: 60px;
+  color: #000;
+  line-height: 1;
+  margin: 0;
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+}
+
+.valentine-subscribers .valentine-subscribers-p {
+  font-size: 18px;
+  color: #000;
+  line-height: 1.2;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.valentine-subscribers .valentine-subscribers-btn {
+  width: 256px;
+  height: 50px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(180deg, #e0004d -25%, #ff7595 125%) padding-box,
+    linear-gradient(180deg, #e0004d -25%, #ff7595 125%) border-box;
+  margin-top: 30px;
+}
+
+.valentine-subscribers .valentine-subscribers-btn .btn-txt::before {
+  color: #e0004d;
+}
+
+.valentine-subscribers .valentine-subscribers-slide {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 30px;
+  font-size: 16px;
+  color: #000;
+  line-height: 20px;
+  margin-top: 25px;
+  position: relative;
+}
+
+.valentine-subscribers .valentine-subscribers-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 25%,
+    rgb(0, 0, 0) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 0;
+}
+
+.valentine-subscribers .valentine-subscribers-slide svg {
+  width: 18px;
+  height: auto;
+  display: block;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.valentine-subscribers .valentine-subscribers-slide-cont {
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.valentine-subscribers .valentine-subscribers-slide-item {
+  height: 20px;
+}
+
+.valentine-subscribers .valentine-subscribers-right {
+  position: relative;
+}
+
+.valentine-subscribers .dh-img {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  animation: dh-img-move 2s linear infinite;
+}
+
+@keyframes dh-img-move {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-15px);
+  }
+}
+
+.valentine-subscribers .valentine-subscribers-right-cont {
+  width: calc(50vw - 10px);
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgb(0, 0, 0) 10%,
+    rgb(0, 0, 0) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.valentine-subscribers .valentine-subscribers-right-list {
+  display: flex;
+}
+
+.valentine-subscribers .valentine-subscribers-right-item {
+  width: 12.34vw;
+  min-width: 220px;
+  flex-shrink: 0;
+  border: 2px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #eae3e5 -5%, #fff 105%);
+  padding: 22px 19px 0 19px;
+}
+
+.valentine-subscribers .valentine-subscribers-right-h3 {
+  font-size: 20px;
+  color: #000;
+  line-height: 1.2;
+  font-family: var(--heading-font-family);
+  text-align: center;
+  margin: 0;
+}
+
+.valentine-subscribers .valentine-subscribers-right-img {
+  position: relative;
+  padding-top: 90%;
+  margin: 22px 0 25px 0;
+}
+
+.valentine-subscribers .r-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.valentine-subscribers .valentine-subscribers-right-p {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #c5afb7 -5%, #f0edee 105%);
+  height: 35px;
+  border-radius: 10px 10px 0 0;
+  font-size: 20px;
+  color: #000;
+}
+
+.valentine-subscribers .valentine-subscribers-right-cont .swiper-wrapper {
+  transition-timing-function: linear;
+}
+
+@media (max-width: 1600px) {
+  .valentine-subscribers .dh-img {
+    width: 80px;
+  }
+}
+
+@media (max-width: 991px) {
+  .valentine-subscribers {
+    padding: 50px 0;
+  }
+  .valentine-subscribers .valentine-subscribers-cont {
+    flex-direction: column-reverse;
+  }
+  .valentine-subscribers .valentine-subscribers-h3 {
+    font-size: 28px;
+  }
+  .valentine-subscribers .valentine-subscribers-p {
+    font-size: 14px;
+  }
+  .valentine-subscribers .valentine-subscribers-btn {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  .valentine-subscribers .valentine-subscribers-right-item {
+    min-width: 160px;
+  }
+  .valentine-subscribers .valentine-subscribers-w {
+    width: 100%;
+    text-align: center;
+  }
+  .valentine-subscribers .valentine-subscribers-right-cont {
+    width: 100vw;
+    margin-left: -24px;
+  }
+  .valentine-subscribers .dh-img {
+    display: none;
+  }
+  .valentine-subscribers .valentine-subscribers-slide {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .valentine-subscribers .valentine-subscribers-right-h3 {
+    font-size: 16px;
+  }
+  .valentine-subscribers .valentine-subscribers-right-p {
+    font-size: 16px;
+    width: 100%;
+  }
+  .valentine-subscribers .valentine-subscribers-right-img {
+    margin: 15px 0;
+  }
+}

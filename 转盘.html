@@ -1,0 +1,1944 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>转盘</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .yxj-box {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      width: 40px;
+      height: 40px;
+      background: #AFA0E8;
+      z-index: 999999;
+
+    }
+
+    .subscribe-module {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, .6);
+      z-index: 99999;
+      --origin-x: 0%;
+      --origin-y: 0%;
+      --clip-path: 150%;
+      overflow: hidden;
+      clip-path: circle(var(--clip-path) at var(--origin-x) var(--origin-y));
+      display: none;
+    }
+
+    .is-close {
+      z-index: -1;
+    }
+
+
+    .subscribe-module .subscribe-module-cont {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 980px;
+      border-radius: 20px;
+      padding: 60px;
+      background: linear-gradient(180deg, #EFDDC3 0%, #FFF 100%);
+    }
+
+    .subscribe-module .subscribe-module-close {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      z-index: 2;
+      cursor: pointer;
+      width: 40px;
+      transition: all .4s ease;
+    }
+
+    .subscribe-module .subscribe-module-close:hover {
+      transform: rotate(180deg);
+    }
+
+    .subscribe-module .subscribe-module-close svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .subscribe-module .subscribe-module-gs {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      border-radius: 20px;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .subscribe-module .subscribe-module-gs .gs-img {
+      width: 120%;
+      position: absolute;
+      left: 28%;
+      top: 35%;
+      transform: translate(-50%, -50%);
+      max-width: none;
+      animation: rotateBg 25s infinite linear;
+    }
+
+    @keyframes rotateBg {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .subscribe-module .tray-subscribe {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      margin-top: -11%;
+    }
+
+    .subscribe-module .tray-subscribe .tray {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: rotate(180deg);
+      padding: 20px;
+    }
+
+    .subscribe-module .tray-subscribe .tray img {
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .subscribe-module .tray-subscribe .tray-main {
+      width: 100%;
+      padding-top: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      transform: rotate(60deg);
+      transition: all 8s cubic-bezier(0.46, 0.03, 0, 0.96);
+    }
+
+    .subscribe-module .tray-subscribe .tray-pointer {
+      width: 80px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(-1, -1);
+      z-index: 9;
+    }
+
+    .subscribe-module .tray-subscribe .tray-part {
+      height: 100%;
+      width: 50%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform-origin: left center;
+
+    }
+
+    .subscribe-module .tray-subscribe .tray-bg {
+      width: 100%;
+      height: 100%;
+    }
+
+
+    .subscribe-module .tray-subscribe .tray-prize {
+      transform: translate(0, -50%);
+      width: 100%;
+      height: auto;
+      text-align: center;
+      color: #fff;
+      font-size: 16px;
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .subscribe-module .tray-subscribe .tray-prize-cont {
+      transform: rotate(90deg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .subscribe-module .tray-subscribe .tray-prize-cont .yhq-img {
+      width: auto;
+      height: 50px;
+      display: block;
+      margin: 0 auto;
+      transform: rotate(90deg);
+      position: relative;
+      z-index: 1;
+
+    }
+
+    .subscribe-module .tray-subscribe .tray-prize-cont .p-img {
+      width: 40px;
+      display: block;
+      margin: 0 auto;
+
+    }
+
+    .subscribe-module .tray-subscribe .yhq-cont .tray-prize-text {
+      position: absolute;
+      top: 73%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      z-index: 2;
+      color: #fff;
+      font-size: 16px;
+      line-height: 1;
+      font-family: var(--heading-font-family);
+    }
+
+    .subscribe-module .tray-subscribe .yhq-cont .tray-prize-text .span {
+      font-size: 20px;
+    }
+
+
+    .subscribe-module .tray-subscribe .k-img {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .subscribe-module .tray-subscribe .dg-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      filter: drop-shadow(0 0px 5px rgba(255, 255, 255, 1));
+      animation: twinkle 2s infinite ease-in-out;
+    }
+
+    .subscribe-module .tray-subscribe .dg-img1 {
+      animation: twinkle 2s infinite ease-in-out 1s;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .subscribe-module .tray-subscribe .tray-dz {
+      width: 92%;
+      margin: 0 auto;
+      margin-top: -6.5%;
+    }
+
+    .subscribe-module .subscribe-module-text {
+      width: 44%;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subscribe-module .subscribe-module-text-title {
+      color: #000;
+      font-size: 35px;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+    }
+
+    .subscribe-module .subscribe-module-slide {
+      height: 26px;
+      position: relative;
+      color: #000;
+      text-align: center;
+      font-size: 14px;
+      line-height: 26px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .subscribe-module .subscribe-module-slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      mask-image: linear-gradient(to right,
+          rgba(0, 0, 0, 0) 0%,
+          rgb(0, 0, 0) 25%,
+          rgb(0, 0, 0) 75%,
+          rgba(0, 0, 0, 0) 100%);
+      z-index: 0;
+    }
+
+    .subscribe-module-slide-list {
+      transition: transform 0.5s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subscribe-module .subscribe-module-slide span {
+      color: #E0004D;
+    }
+
+    .subscribe-module .subscribe-module-from {
+      max-width: 348px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    .subscribe-module .subscribe-module-input {
+      border-radius: 20px;
+      border: 1px solid #000;
+      background: #FFF;
+      width: 100%;
+      height: 40px;
+      padding: 0 20px;
+      font-size: 16px;
+      outline: 0;
+    }
+
+    .subscribe-module .subscribe-module-input::placeholder {
+      color: #BDBDBD;
+    }
+
+    .subscribe-module .report-cont .subscribe-module-input {
+      border-color: #e88781;
+      animation: shakeInput .3s ease-in-out 2;
+      background: #ffd2e1;
+    }
+
+    .subscribe-module .subscribe-module-inp-msg {
+      margin-top: 6px;
+      font-size: 14px;
+      line-height: 1;
+      color: #000;
+      display: none;
+    }
+
+    .subscribe-module .subscribe-module-inp-msg p {
+      margin: 0;
+      gap: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .subscribe-module .subscribe-module-inp-msg .span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      color: #fff;
+      background: #E0004D;
+      zoom: .8;
+    }
+
+    @keyframes shakeInput {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-10px);
+      }
+
+      50% {
+        transform: translateX(10px);
+      }
+
+      75% {
+        transform: translateX(-10px);
+      }
+    }
+
+    .subscribe-module .subscribe-module-btn {
+      font-size: 16px;
+      color: #fff;
+      font-family: var(--heading-font-family);
+      height: 40px;
+      border-radius: 20px;
+      background: linear-gradient(0deg, #FF7595 0%, #E0004D 100%);
+      margin-top: 14px;
+      cursor: pointer;
+    }
+
+    .subscribe-module .subscribe-module-btn::after {
+      background: #000;
+    }
+
+    .subscribe-module .subscribe-module-text-tips {
+      color: #7D7C82;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.2;
+      margin-top: 16px;
+    }
+
+    .subscribe-module .subscribe-module-text-tips a {
+      text-decoration: underline;
+    }
+
+    .subscribe-module .subscribe-module-text-cont {
+      transition: opacity .3s ease;
+    }
+
+    @media (min-width:992px) {
+      .hide-text .subscribe-module-text-cont {
+        opacity: 0;
+      }
+
+      .hide-text .subscribe-module-text {
+        animation: widthFadeOut .4s linear .3s forwards;
+      }
+
+      @keyframes widthFadeOut {
+        from {
+          width: 44%;
+        }
+
+        to {
+          width: 0%;
+        }
+      }
+
+      .hide-text .subscribe-module-cont {
+        animation: widthFadeOutCont .4s linear .3s forwards;
+      }
+
+      @keyframes widthFadeOutCont {
+        from {
+          gap: 60px;
+          max-width: 980px;
+        }
+
+        to {
+          gap: 0;
+          max-width: 746px;
+        }
+      }
+
+      .hide-text .tray-subscribe {
+        animation: topAdd .4s linear .3s forwards;
+      }
+
+      @keyframes topAdd {
+        from {
+          margin-top: -11%;
+        }
+
+        to {
+          margin-top: -25%;
+        }
+      }
+
+      .hide-text .tray-subscribe .tray-pointer {
+        width: 120px;
+        transition: all .4s ease .3s;
+      }
+
+      .hide-text .tray-subscribe .tray-prize {
+        font-size: 22px;
+        transition: all .4s ease .3s;
+      }
+
+      .hide-text .tray-subscribe .tray-prize-cont .p-img {
+        width: 60px;
+        transition: all .4s ease .3s;
+      }
+
+      .hide-text .tray-subscribe .tray-prize-cont .yhq-img {
+        height: 70px;
+        transition: all .4s ease .3s;
+      }
+
+      .hide-text .tray-subscribe .yhq-cont .tray-prize-text {
+        font-size: 22px;
+        transition: all .4s ease .3s;
+      }
+
+      .hide-text .tray-subscribe .yhq-cont .tray-prize-text .span {
+        font-size: 30px;
+        transition: all .4s ease .3s;
+      }
+
+      .hide-text .subscribe-module-gs .gs-img {
+        left: 50%;
+        width: 160%;
+        transition: all .4s ease .3s;
+      }
+    }
+
+    .dispatch-cont .tray-subscribe,
+    .dispatch-cont .subscribe-module-text {
+      display: none;
+    }
+
+    .dispatch-cont .subscribe-module-gs .gs-img {
+      left: 50%;
+      top: 50%;
+    }
+
+    .dispatch-cont .subscribe-module-cont {
+      max-width: 580px;
+      padding: 60px 30px 40px 30px;
+    }
+
+    .subscribe-module .subscribe-module-dispatch {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      display: none;
+    }
+
+    .dispatch-cont .subscribe-module-dispatch {
+      display: block;
+    }
+
+    .subscribe-module .dispatch-title {
+      color: #000;
+      text-align: center;
+      font-size: 30px;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+      margin: 0;
+      font-weight: normal;
+    }
+
+    .subscribe-module .dispatch-p {
+      color: #000;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.2;
+      max-width: 368px;
+      margin: 0 auto;
+      margin-top: 16px;
+    }
+
+    .subscribe-module .dispatch-img {
+      max-width: 300px;
+      margin: 0 auto;
+      margin-top: 35px;
+      position: relative;
+    }
+
+    .subscribe-module .dispatch-img svg {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .subscribe-module .dispatch-yhq-txt {
+      position: absolute;
+      top: 50%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: #fff;
+      font-size: 38px;
+      line-height: 1;
+      text-align: center;
+      font-family: var(--heading-font-family);
+    }
+
+    .subscribe-module .dispatch-yhq-txt span {
+      font-size: 64px;
+    }
+
+    .subscribe-module .dispatch-product {
+      border-radius: 10px;
+      background: #FFF;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-top: 35px;
+    }
+
+    .subscribe-module .dispatch-product-img {
+      width: 38.8%;
+      flex-shrink: 0;
+    }
+
+    .subscribe-module .dispatch-product-img img {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .subscribe-module .dispatch-product-title {
+      color: #000;
+      font-size: 20px;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .subscribe-module .dispatch-product-price {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    .subscribe-module .n-price {
+      color: #E0004D;
+      font-size: 18px;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+    }
+
+    .subscribe-module .d-price {
+      color: #CBCBCB;
+      font-size: 15px;
+      line-height: 1.2;
+      text-decoration: line-through;
+    }
+
+    .subscribe-module .dispatch-product-p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.2;
+      margin: 0;
+      margin-top: 8px;
+    }
+
+    .subscribe-module .dispatch-product-btn {
+      width: 160px;
+      height: 36px;
+      border-radius: 18px;
+      background: #E0004D;
+      color: #FFF;
+      font-size: 16px;
+      font-family: var(--heading-font-family);
+      cursor: pointer;
+      margin-top: 22px;
+    }
+
+    .subscribe-module .dispatch-product-btn::after {
+      background: #000;
+    }
+
+    @media (max-width:991px) {
+
+      .subscribe-module .subscribe-module-cont {
+        flex-direction: column;
+        gap: 15px;
+        max-width: 500px;
+        padding: 30px;
+        border-radius: 10px;
+        top: 60%;
+        transition: gap 0.4s ease;
+      }
+
+      .hide-text .subscribe-module-cont {
+        gap: 0;
+      }
+
+      .subscribe-module .subscribe-module-close {
+        width: 30px;
+        top: 10px;
+        right: 10px;
+      }
+
+      .subscribe-module .subscribe-module-gs .gs-img {
+        left: 50%;
+        top: 50%;
+      }
+
+      .subscribe-module .tray-subscribe {
+        margin-top: -77%;
+        padding: 0 10px;
+        transition: margin-top 0.4s ease;
+      }
+
+      .hide-text .tray-subscribe {
+        margin-top: -30%;
+      }
+
+
+      .subscribe-module .tray-subscribe .tray {
+        padding: 8px;
+      }
+
+      .subscribe-module .subscribe-module-text {
+        width: 100%;
+        max-height: 500px;
+        transition: max-height 0.4s ease;
+      }
+
+      .hide-text .subscribe-module-text {
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      .subscribe-module .subscribe-module-from {
+        max-width: none;
+        margin-top: 15px;
+      }
+
+      .subscribe-module .subscribe-module-text-title {
+        font-size: 25px;
+      }
+
+      .subscribe-module .subscribe-module-slide {
+        font-size: 12px;
+      }
+
+      .subscribe-module .subscribe-module-input {
+        height: 35px;
+        padding: 0 15px;
+        font-size: 14px;
+      }
+
+      .subscribe-module .subscribe-module-btn {
+        font-size: 14px;
+        height: 35px;
+      }
+
+      .subscribe-module .subscribe-module-text-tips {
+        margin-top: 10px;
+      }
+
+      .subscribe-module .tray-subscribe .tray-pointer {
+        width: 50px;
+      }
+
+      .subscribe-module .tray-subscribe .tray-prize {
+        font-size: 14px;
+        left: 6%;
+      }
+
+      .subscribe-module .tray-subscribe .tray-prize-cont .p-img {
+        width: 30px;
+      }
+
+      .subscribe-module .tray-subscribe .tray-prize-cont .yhq-img {
+        height: 33px;
+      }
+
+      .subscribe-module .tray-subscribe .yhq-cont .tray-prize-text {
+        font-size: 13px;
+      }
+
+      .subscribe-module .tray-subscribe .yhq-cont .tray-prize-text .span {
+        font-size: 15px;
+      }
+
+      .dispatch-cont .subscribe-module-cont {
+        padding: 20px;
+        padding-top: 40px;
+        top: 50%;
+      }
+
+      .subscribe-module .dispatch-title {
+        font-size: 20px;
+      }
+
+      .subscribe-module .dispatch-p {
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      .subscribe-module .dispatch-img {
+        margin-top: 25px;
+        max-width: 220px;
+      }
+
+      .subscribe-module .dispatch-yhq-txt {
+        font-size: 28px;
+      }
+
+      .subscribe-module .dispatch-yhq-txt span {
+        font-size: 45px;
+      }
+
+      .subscribe-module .dispatch-product {
+        gap: 10px;
+        margin-top: 25px;
+      }
+
+      .subscribe-module .dispatch-product-title {
+        font-size: 14px;
+      }
+
+      .subscribe-module .n-price {
+        font-size: 14px;
+      }
+
+      .subscribe-module .d-price {
+        font-size: 12px;
+      }
+
+      .subscribe-module .dispatch-product-p {
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      .subscribe-module .dispatch-product-btn {
+        width: 100%;
+        height: 30px;
+        margin-top: 15px;
+        font-size: 12px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <style>
+    .open-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 35px;
+      border: 1px solid #000;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 15px;
+      transition: all .4s ease;
+    }
+
+    .open-btn:hover {
+      background: #000;
+      color: #fff;
+    }
+  </style>
+  <button class="open-btn" onclick="ulikeOpenSubscribe()">
+    open
+  </button>
+  <div class="subscribe-module">
+    <div class="subscribe-module-cont">
+      <div class="subscribe-module-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="39" height="39" viewBox="0 0 39 39" fill="none">
+          <path
+            d="M19.5004 38C23.1593 38 26.7361 36.915 29.7784 34.8822C32.8207 32.8494 35.1919 29.9601 36.5921 26.5796C37.9923 23.1992 38.3587 19.4795 37.6449 15.8908C36.9311 12.3022 35.1691 9.0058 32.5818 6.41853C29.9946 3.83126 26.6982 2.06931 23.1095 1.35548C19.5209 0.641654 15.8012 1.00802 12.4207 2.40824C9.04029 3.80846 6.15098 6.17965 4.11818 9.22196C2.08537 12.2643 1.00037 15.841 1.00037 19.5C1.00037 24.4065 2.94947 29.1121 6.41889 32.5815C9.88831 36.0509 14.5939 38 19.5004 38Z"
+            stroke="#7D7C82" stroke-miterlimit="10" />
+          <path d="M25.0004 14L14.0004 25" stroke="#7D7C82" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M14.0004 14L25.0004 25" stroke="#7D7C82" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="subscribe-module-gs">
+        <img src="./images55/gs.png" alt="" class="gs-img">
+      </div>
+      <!-- 转盘 -->
+      <div class="tray-subscribe">
+        <div class="tray">
+          <img src="./images55/k.png" alt="" class="k-img">
+          <img src="./images55/dg.png" alt="" class="dg-img">
+          <img src="./images55/dg1.png" alt="" class="dg-img dg-img1">
+          <!-- 大转盘抽奖 -->
+          <div class="tray-main">
+            <div class="tray-part" style="display: none;">
+              <div class="tray-bg"></div>
+              <div class="tray-prize"></div>
+            </div>
+          </div>
+          <!-- 箭头 -->
+          <div class="tray-pointer">
+            <img src="./images55/jt.png" alt="" class="jt-img">
+          </div>
+        </div>
+        <div class="tray-dz">
+          <img src="./images55/dz.png" alt="" class="dz-img">
+        </div>
+      </div>
+      <!-- 右侧文字 -->
+      <div class="subscribe-module-text">
+        <div class="subscribe-module-text-cont">
+          <div class="subscribe-module-text-title">Win Air 10 or $200 OFF</div>
+          <div class="subscribe-module-slide">
+            <div class="subscribe-module-slide-list">
+            </div>
+          </div>
+          <div class="subscribe-module-from">
+            <input type="email" class="subscribe-module-input" placeholder="Enter your email">
+            <div class="subscribe-module-inp-msg">
+              <p><span class="span">!</span> <span class="text">Please enter your email to participate</span> </p>
+            </div>
+            <div class="subscribe-module-btn btn-diy">
+              <div class="btn-txt" text="SPIN NOW">
+                <span>SPIN NOW</span>
+              </div>
+            </div>
+          </div>
+          <div class="subscribe-module-text-tips">
+            By entering your email, you agree to our T&C and <a href="">Privacy Policy</a>.
+          </div>
+        </div>
+      </div>
+      <!-- 结果 -->
+      <div class="subscribe-module-dispatch">
+        <h3 class="dispatch-title">Congratulations! You have won</h3>
+        <p class="dispatch-p">We will send the coupon code to your emai address.</p>
+        <div class="dispatch-img">
+          <svg xmlns="http://www.w3.org/2000/svg" width="208" height="92" viewBox="0 0 208 92" fill="none">
+            <path
+              d="M198 0H46C46 2.2 44.2 4 42 4C39.8 4 38 2.2 38 0H10C10 5.5 5.5 10 0 10V82C5.5 82 10 86.5 10 92H38C38 89.8 39.8 88 42 88C44.2 88 46 89.8 46 92H198C198 86.5 202.5 82 208 82V10C202.5 10 198 5.5 198 0ZM42 84C40.9 84 40 83.1 40 82C40 80.9 40.9 80 42 80C43.1 80 44 80.9 44 82C44 83.1 43.1 84 42 84ZM42 77C40.9 77 40 76.1 40 75C40 73.9 40.9 73 42 73C43.1 73 44 73.9 44 75C44 76.1 43.1 77 42 77ZM42 70C40.9 70 40 69.1 40 68C40 66.9 40.9 66 42 66C43.1 66 44 66.9 44 68C44 69.1 43.1 70 42 70ZM42 63C40.9 63 40 62.1 40 61C40 59.9 40.9 59 42 59C43.1 59 44 59.9 44 61C44 62.1 43.1 63 42 63ZM42 56C40.9 56 40 55.1 40 54C40 52.9 40.9 52 42 52C43.1 52 44 52.9 44 54C44 55.1 43.1 56 42 56ZM42 49C40.9 49 40 48.1 40 47C40 45.9 40.9 45 42 45C43.1 45 44 45.9 44 47C44 48.1 43.1 49 42 49ZM42 42C40.9 42 40 41.1 40 40C40 38.9 40.9 38 42 38C43.1 38 44 38.9 44 40C44 41.1 43.1 42 42 42ZM42 35C40.9 35 40 34.1 40 33C40 31.9 40.9 31 42 31C43.1 31 44 31.9 44 33C44 34.1 43.1 35 42 35ZM42 28C40.9 28 40 27.1 40 26C40 24.9 40.9 24 42 24C43.1 24 44 24.9 44 26C44 27.1 43.1 28 42 28ZM42 21C40.9 21 40 20.1 40 19C40 17.9 40.9 17 42 17C43.1 17 44 17.9 44 19C44 20.1 43.1 21 42 21ZM42 14C40.9 14 40 13.1 40 12C40 10.9 40.9 10 42 10C43.1 10 44 10.9 44 12C44 13.1 43.1 14 42 14Z"
+              fill="url(#paint0_linear_477_1730)" />
+            <path d="M26.6 46.6001H18.1V49.9001H26.6V46.6001Z" fill="white" />
+            <path d="M26.6 52.8H14V56.1001H26.6V52.8Z" fill="white" />
+            <path d="M16.4 46.6001H14V49.9001H16.4V46.6001Z" fill="white" />
+            <path
+              d="M14.8 30.6001V34.5001L19.3 40.4001H14V43.7001H26.6V40.4001H21L26.6 33.9001V30.3H26.5L20.1 37.5001L14.8 30.6001Z"
+              fill="white" />
+            <path
+              d="M15.5 63.7001V62.5001H21.9C24 62.5001 25.2 64.2001 25.2 66.0001C25.2 67.8001 24 69.5001 21.9 69.5001H14V75.2001L15.5 74.1001V72.9001H21.8C25.5 72.9001 26.9 69.3001 26.9 66.0001C26.9 62.7001 25.4 59.1001 21.8 59.1001H14V64.8001L15.5 63.7001Z"
+              fill="white" />
+            <path
+              d="M16.2 18.8C15 20 14.3 21.9 14.4 23.8C14.4 26 15.1 27.9 16.4 29.3C17.5 30.5 19.1 31.1001 20.7 31.1001C22.3 31.1001 24.3 30.3 25.4 28.8C26.5 27.3 26.9 26 26.9 23.8C26.9 23.2 26.9 22.6001 26.8 22.1001C26.4 19.5001 24.9 17.8001 23.3 17.2001V20.0001C24.1 20.4001 25 21.7 25 23.8C25 25.9 23.2 27.6001 21.3 27.7001V16.9C19.1 16.8 17.3 17.5 16.1 18.8H16.2ZM19.6 27.6001H19.5C17.9 27.3001 16.2 26.1 16.2 23.8C16.2 21.5 18.1 20.3001 19.5 20.1001H19.6V27.6001Z"
+              fill="white" />
+            <defs>
+              <linearGradient id="paint0_linear_477_1730" x1="104" y1="92" x2="104" y2="0"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF7595" />
+                <stop offset="1" stop-color="#E0004D" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="dispatch-yhq-txt">
+            <span>$200</span>
+            OFF
+          </div>
+        </div>
+        <div class="dispatch-product">
+          <div class="dispatch-product-img">
+            <img src="./images55/p.jpg" alt="">
+          </div>
+          <div class="dispatch-product-txt">
+            <h3 class="dispatch-product-title">Ulike Air 10 Holiday Gift Set</h3>
+            <div class="dispatch-product-price">
+              <span class="n-price">$359</span>
+              <span class="d-price">$419</span>
+            </div>
+            <p class="dispatch-product-p">Lasting hair removal solution</p>
+            <div class="dispatch-product-btn btn-diy">
+              <div class="btn-txt" text="ADD TO CART">
+                <span>ADD TO CART</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="yxj-box"></div>
+  <script src="./js/confetti.js"></script>
+  <script type="text/javascript">
+    class Wheel {
+      constructor(subscribeModule) {
+        this.pathname = window.location.origin + location.pathname;
+        this.list = [];
+        this.$p = document.querySelector(subscribeModule)
+        this.main = this.$p.querySelector('.tray-main');
+        this.temp = this.$p.querySelector('.tray-part');
+        this.box = this.$p.querySelector('.tray');
+        this.rotate = 0;
+        this.isRunning = false;
+        this.perAngle = 0;
+        this.rotates = 0;
+        this.mathDeg = 30;
+        this.isShow = false;
+        this.subscripSuccessData = ''
+        this.shopCurrencySymbol = '$'
+        this.api = 'https://api.ulike.com'
+        // 活动存储对象
+        this.subscribeActFrom = {
+          resourceId: '',
+          sourceCode: '',
+          activityItem: '',
+          currentData: '',
+          colorItem: [],
+          languageMessData: '',
+          formActive: {
+            theme: 0,
+          },
+        };
+
+        this.subscribeObj = {
+          name: '',
+          userEmail: '',
+          phoneNumber: '',
+          activityId: '',
+          utmSource: '',
+          extend: {
+            utm_source: '',
+          },
+          isMarketing: false,
+        };
+        this.getInitData();
+        this.color = [
+          { color: 'linear-gradient(180deg, #F0EBFF 0.13%, rgba(255, 255, 255, 1.00) 72.68%)', },
+          { color: 'linear-gradient(235deg, rgba(224, 0, 77, 1.00) 23.06%, #FF7DAA 92.89%)' },
+          { color: 'linear-gradient(180deg, #F0EBFF 0.13%, rgba(255, 255, 255, 1.00) 72.68%)' },
+          { color: 'linear-gradient(260deg, rgba(224, 0, 77, 1.00) -1.58%, #FF7DAA 74.91%)' },
+          { color: 'linear-gradient(180deg, #F0EBFF 0.13%, rgba(255, 255, 255, 1.00) 72.68%)' },
+          { color: 'linear-gradient(109deg, #FF7DAA 15.96%, rgba(224, 0, 77, 1.00) 89.42%)' }
+        ]
+      }
+
+      getInitData() {
+        this.list = [
+          { title: 1, type: 1, color: 'linear-gradient(180deg, #F0EBFF 0.13%, rgba(255, 255, 255, 1.00) 72.68%)', img: './images55/yhq.svg', text: '$200', text1: 'OFF' },
+          { title: 3, type: 2, color: 'linear-gradient(235deg, rgba(224, 0, 77, 1.00) 23.06%, #FF7DAA 92.89%)', img: './images55/a3.png', text: 'Air 3' },
+          { title: 3, type: 1, color: 'linear-gradient(180deg, #F0EBFF 0.13%, rgba(255, 255, 255, 1.00) 72.68%)', img: './images55/yhq.svg', text: '$160', text1: 'OFF' },
+          { title: 4, type: 2, color: 'linear-gradient(260deg, rgba(224, 0, 77, 1.00) -1.58%, #FF7DAA 74.91%)', img: './images55/a10.png', text: 'Air 10' },
+          { title: 5, type: 1, color: 'linear-gradient(180deg, #F0EBFF 0.13%, rgba(255, 255, 255, 1.00) 72.68%)', img: './images55/yhq.svg', text: '$80', text1: 'OFF' },
+          { title: 6, type: 2, color: 'linear-gradient(109deg, #FF7DAA 15.96%, rgba(224, 0, 77, 1.00) 89.42%)', img: './images55/lh.png', text: 'Aloe Gel' }
+        ];
+        this.perAngle = 360 / this.list.length
+
+        this.subscripSuccessData = localStorage.getItem('subscript-success-data');
+        let _subscribeActFrom = this.getCookie('subscript-success-activeFrom');
+
+        if (
+          !this.getCookie('subscript-success') ||
+          this.subscripSuccessData == null ||
+          _subscribeActFrom == ''
+        ) {
+          // 获取活动配置信息
+          this.getActiveInitConfig();
+        } else if (this.subscripSuccessData) {
+          this.subscripSuccessData = JSON.parse(this.subscripSuccessData);
+          // 更新中奖数据
+          this.$p.classList.add('dispatch-cont')
+          this.updateSuccessDom(this.subscripSuccessData);
+        }
+
+        this.init()
+      }
+
+      // 获取中奖用户列表
+      getBenefitInfoList() {
+        this.sendApiRequest('/promotion/queryBenefitInfoList', {
+          activityId: this.subscribeObj.activityId,
+          activityType: "SUBSCRIBE_ACTIVITY",
+          includeCount: false,
+          language: "en",
+          pageNo: 1,
+          pageSize: 100,
+        })
+          .then((res) => {
+            if (res.code == 0 && res.data.length > 0) {
+              res.data.forEach((item) => {
+                this.$p.querySelector('.subscribe-module-slide-list').innerHTML += `
+                  <div class="subscribe-module-slide-item">${item.userEmail} won <span>${item.benefitName}</span></div>`
+              })
+              this.verticalCarousel()
+            } else {
+              this.$p.querySelector('.subscribe-module-slide').style.display = 'none';
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      /**
+       * 获取活动配置
+       */
+      getActiveInitConfig() {
+        let time = parseInt(new Date().getTime() / 1000);
+        this.sendApiRequest('/promotion/queryTargetInfoList', {
+          targetStatus: 'PUBLISH',
+          afterStartTime: time,
+          beforeEndTime: time,
+          targetType: 'ACTIVITY',
+          resourceType: 'SUBSCRIBE_ACTIVITY',
+        })
+          .then((res) => {
+            if (res.code == 0 && res.data.length > 0) {
+              // 判断是否多活动属性
+              const currentData = this.getCurrentActivity(res.data);
+              // 初次访问
+              // setCookie('subscript-First-Visit', currentData.resourceId, 2);
+              this.formatActiveData(currentData);
+              delete currentData.languageMessageDtoList;
+              delete currentData.targetPluginDtoList;
+              this.subscribeActFrom.currentData = currentData;
+              this.subscribeActFrom.resourceId = currentData.resourceId;
+              this.subscribeObj.activityId = this.subscribeActFrom.resourceId;
+              console.log(this.subscribeActFrom.currentData);
+
+              this.list = this.subscribeActFrom.currentData.resourceObject.activityItemDtoList;
+              this.getBenefitInfoList()
+              // 页面逻辑控制
+              this.pageControl(this.subscribeActFrom.formActive);
+              this.render();
+              this.domOnUpdate()
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            reject(err);
+          });
+      }
+
+      /**
+       * 获取当前活动信息
+       * @param {Array} data - 活动数据数组，每个元素包含活动详情及创建时间等信息
+       * @returns {Object} 当前活动对象，包含活动的详细信息
+       */
+      getCurrentActivity(data) {
+        const firstVisit = this.getCookie('subscript-First-Visit');
+        // 是否2天内参加活动过
+        if (firstVisit) {
+          let result = data.find((item) => item.resourceId === firstVisit);
+          if (result) {
+            return result;
+          }
+        }
+        let currentData = data[0];
+
+        // 判断是否为多活动状态
+        if (data.length > 1) {
+          // 初始化活动数据数组
+          let actData = [];
+
+          // 遍历活动数据
+          for (let index = 0; index < data.length; index++) {
+            const ths = data[index];
+            let actIndex = -1;
+            let _formActive = this.reverseTransform(ths.targetPluginDtoList);
+            let hideContent = false;
+
+            _formActive.urlViewArr.push({ url: 'http://localhost:5502/%E8%BD%AC%E7%9B%98.html' })
+
+            // 判断当前页面是否隐藏内容
+            _formActive.urlViewArr.forEach((item) => {
+              if (
+                this.pathname.indexOf(item.url) > -1 &&
+                this.pathname.length == item.url.length
+              ) {
+                hideContent = true;
+              }
+            });
+
+            // 计算当前活动的索引
+            if (
+              _formActive.radioView == 0 ||
+              (_formActive.radioView == 1 && hideContent) ||
+              (_formActive.radioView == 2 && !hideContent)
+            ) {
+              actIndex = index;
+            }
+
+            // 将活动信息加入活动数据数组
+            actData.push({
+              createTime: ths.createTime,
+              radioView: _formActive.radioView,
+              actIndex: actIndex,
+            });
+          }
+
+          // 根据创建时间对活动数据数组进行排序
+          actData.sort((a, b) => parseInt(a.createTime) - parseInt(b.createTime));
+
+          // 寻找符合条件的当前活动
+          let result = actData.find(
+            (item) => item.radioView === '1' && item.actIndex !== -1
+          );
+
+          // 如果没有找到符合条件的活动，则寻找radioView为0的活动
+          if (!result) {
+            result = actData.find((item) => item.radioView === '0');
+          }
+
+          // 如果找到了符合条件的活动，则设置当前活动数据
+          if (result) {
+            return data[result.actIndex];
+          } else {
+            console.error('没有符合条件的对象');
+          }
+        }
+
+        return currentData;
+      }
+
+
+      // 格式化活动数据
+      formatActiveData(data) {
+        let languageMessageDtoList = {};
+        // 获取奖品数据;
+        let _activityItem = data.resourceObject.activityItemDtoList;
+        this.subscribeActFrom.formActive = this.reverseTransform(data.targetPluginDtoList);
+        let activityItem = [];
+        for (let i = 0; i < _activityItem.length; i++) {
+          let _obj = _activityItem[i];
+          activityItem.push({
+            location: i,
+            title: _obj.itemName,
+            url: _obj.extend.prizeUrl || '',
+            itemType: _obj.itemType,
+            bgColor: this.subscribeActFrom.formActive.turntable_prize_arr[i].bg_color,
+            bg2Color: this.subscribeActFrom.formActive.turntable_prize_arr[i].bg2_color,
+            fontSize: this.subscribeActFrom.formActive.turntable_prize_arr[i].font_size,
+            mfontSize: this.subscribeActFrom.formActive.turntable_prize_arr[i].m_font_size,
+            fontColor: this.subscribeActFrom.formActive.turntable_prize_arr[i].font_color,
+            price: _obj.extend.disProductPrice,
+          });
+          this.subscribeActFrom.colorItem.push([
+            this.subscribeActFrom.formActive.turntable_prize_arr[i].bg_color,
+            this.subscribeActFrom.formActive.turntable_prize_arr[i].bg2_color,
+          ]);
+        }
+
+        this.subscribeActFrom.activityItem = activityItem;
+
+        for (let index = 0; index < data.languageMessageDtoList.length; index++) {
+          let _ths = data.languageMessageDtoList[index];
+          languageMessageDtoList[_ths.key] = _ths.value;
+        }
+        this.subscribeActFrom.languageMessData = languageMessageDtoList;
+      }
+      // 根据当前页面判断是否显示转盘
+      pageControl(formActive) {
+        // radioView 0 所有页面  1 指定页面显示  2 指定页面不展示
+        let hideContent = false;
+        // urlViewArr
+        formActive.urlViewArr.forEach((item) => {
+          if (this.pathname.indexOf(item.url) > -1 && this.pathname.length == item.url.length) {
+            hideContent = true;
+          }
+        });
+        if (
+          formActive.radioView == 0 ||
+          (formActive.radioView == 1 && hideContent) ||
+          (formActive.radioView == 2 && !hideContent)
+        ) {
+          // 自动显示弹窗
+          this.showSubscriptionPopup(formActive);
+        }
+        // 是否显示转盘点击弹窗按钮 0 是 显示  1 不显示 
+        if (formActive.teaser == '0') {
+          // this.fadeIn(document.querySelector('.teaser-app'))
+        }
+      }
+
+      /**
+       * 将经过转换的数据恢复成原始格式。
+       * @param {Array} transformedData 被转换的数据数组，其中每个元素包含name、type和value属性。
+       * @returns {Object} 恢复后的数据对象。
+       */
+      reverseTransform(transformedData) {
+        /**
+         * 递归地将转换后的数据恢复成原始格式。
+         * @param {Object} entry 转换后的数据项，包含name、type和value属性。
+         * @returns {Object} 恢复后的数据项。
+         */
+        function restore(entry) {
+          const { name, type, value } = entry;
+
+          // 根据类型恢复原始数据
+          if (type === 'array') {
+            // 恢复数组类型的原始数据
+            let arr = value.map((item) => {
+              // 递归恢复数组每个元素
+              let simplifiedObject = {};
+              item.value.forEach((innerItem) => {
+                // 恢复内层对象的原始数据
+                simplifiedObject[innerItem.name] = innerItem.value;
+              });
+              return simplifiedObject;
+            });
+            return { name, value: arr };
+          } else if (type === 'object') {
+            // 恢复对象类型的原始数据
+            return value.reduce((acc, item) => {
+              const restored = restore(item); // 递归恢复对象属性
+              acc[restored.name] = restored.value;
+              return acc;
+            }, {});
+          } else {
+            // 直接返回基本类型的原始数据
+            return {
+              name: name,
+              value: value,
+            };
+          }
+        }
+
+        // 批量恢复转换后的数据数组，并整合成单一对象
+        return transformedData
+          .map((entry) => {
+            const restored = restore(entry);
+            const result = {};
+            if (restored !== undefined) {
+              result[restored.name] = restored.value;
+            }
+            return result;
+          })
+          .reduce((acc, item) => Object.assign(acc, item), {});
+      }
+      /**
+       * 自动显示弹出框
+       * @param {活动参数} formActive
+       */
+      showSubscriptionPopup(formActive) {
+        let visTime = 'visitor-times' + this.subscribeActFrom.resourceId;
+        let visitorDay = 'visitor-day' + this.subscribeActFrom.resourceId;
+        // max-visitor-times 访客最大次数
+        // 用户进站后 秒弹出弹窗 text_in_show
+        setTimeout(() => {
+          // text_device 0 所有设备  1 pc  2 移动
+          if (
+            formActive.text_device == '0' ||
+            (!isMobile() && formActive.text_device == '1') ||
+            (isMobile() && formActive.text_device == '2')
+          ) {
+            let num = this.getCookie(visTime) ? parseInt(this.getCookie(visTime)) + 1 : 1;
+            // 限制出现次数
+            if (
+              formActive.viewObj == '1' &&
+              parseInt(formActive.text_viewNum) >= num
+            ) {
+              this.setCookie(visTime, num);
+              // commonGtmEvent('展示次数', 'subscriptPlug', '');
+              ulikeOpenSubscribe();
+            } else if (formActive.viewObj == '2' && !Boolean(this.getCookie(visitorDay))) {
+              this.setCookie(visitorDay, true, formActive.text_viewDay, true);
+              // $('#subscript-plug').show();
+              ulikeOpenSubscribe();
+              // commonGtmEvent('展示次数', 'subscriptPlug', '');
+            } else if (this.shouldDisplay()) {
+              ulikeOpenSubscribe();
+              const displayData = JSON.parse(
+                localStorage.getItem('subscript-displayData')
+              ) || { date: today, count: 0 };
+            } else {
+              // 不显示
+              console.log('不显示');
+            }
+          }
+        }, Number(formActive.text_in_show) * 1000);
+      }
+
+      shouldDisplay() {
+        let today = this.getTodayDate(); // 格式化为 YYYY-MM-DD
+        const sessionDisplayed = sessionStorage.getItem('subscript-sessionDisplayed');
+        const displayData = JSON.parse(
+          localStorage.getItem('subscript-displayData')
+        ) || { date: today, count: 0 };
+        // 检查本次会话是否已经显示过
+        if (sessionDisplayed === today) {
+          return false;
+        }
+        let maxCount = Number(this.subscribeActFrom.formActive.text_viewDayNum);
+        // 如果是同一天，检查显示次数是否已达上限
+        if (displayData.date === today && displayData.count >= maxCount) {
+          return false;
+        }
+        return true;
+      }
+
+      getTodayDate() {
+        const today = new Date();
+        return today.toISOString().split('T')[0]; // 格式化为 YYYY-MM-DD
+      }
+
+      // 获取完数据后初始化抽奖盘
+      init() {
+        this.main.addEventListener('transitionend', () => this.end());
+
+        // 监听点击事件
+        this.$p.addEventListener('click', (e) => {
+          let target = e.target
+          // 点击提交邮箱抽奖
+          const subscribeModuleBtn = target.closest('.subscribe-module-btn')
+          if (subscribeModuleBtn) {
+            // 创建一个URLSearchParams对象，用于获取URL中的查询参数
+            const urlParams = new URLSearchParams(window.location.search);
+
+            // 尝试从查询参数中获取utm_source的值，用于追踪营销活动的来源
+            let utm_source = urlParams.get('utm_source');
+
+            // 将获取到的utm_source值存储到subscribeObj对象中，以便后续使用
+            this.subscribeObj.utmSource = utm_source;
+
+            // 从页面上的订阅插件中获取用户输入的邮箱地址
+            this.subscribeObj.userEmail = this.$p.querySelector('.subscribe-module-input').value.trim();
+            if (!this.subscribeObj.userEmail) {
+              this.$p.querySelector('.subscribe-module-from').classList.add('report-cont');
+              this.$p.querySelector('.subscribe-module-inp-msg .text').innerHTML = lottery_data.email_err
+              this.fadeIn(this.$p.querySelector('.subscribe-module-inp-msg'))
+              commonGtmEvent('订阅活动-提示：填写邮箱不正确', 'subscribe', '1');
+              commonGtmEvent('错误信息-邮箱为空', 'subscribe', '1');
+              return;
+            }
+
+            if (!this.validateEmail(this.subscribeObj.userEmail)) {
+              // alert('请输入正确的邮箱地址');
+              this.$p.querySelector('.subscribe-module-from').classList.add('report-cont');
+              this.$p.querySelector('.subscribe-module-inp-msg .text').innerHTML = this.subscribeActFrom.languageMessData.participate_email_err
+              this.fadeIn(this.$p.querySelector('.subscribe-module-inp-msg'))
+              commonGtmEvent('提示：填写邮箱不正确', 'subscribe', this.subscribeObj.userEmail);
+              commonGtmEvent('错误信息:' + this.subscribeObj.userEmail, 'subscribe', '1');
+              return;
+            }
+
+            this.getDispatch()
+            return
+          }
+
+          // 点击关闭
+          const subscribeModuleClose = target.closest('.subscribe-module-close')
+          if (subscribeModuleClose) {
+            const targetRect = document.querySelector('.yxj-box').getBoundingClientRect();
+            const deltaX = targetRect.left + 20;
+            const deltaY = targetRect.top + 20;
+            this.$p.style.setProperty('--origin-x', `${deltaX}px`);
+            this.$p.style.setProperty('--origin-y', `${deltaY}px`);
+            this.animateValue({
+              start: 0,
+              end: 150,
+              duration: 600, // 动画时长为 2000 毫秒
+              onUpdate: (value) => {
+                // console.log(value); // 每帧更新时调用，输出当前值
+                // 你可以在这里更新元素的样式，例如：element.style.opacity = value;
+                this.$p.style.setProperty('--clip-path', `${150 - value}%`);
+                this.$p.style.setProperty('opacity', `${1 - value / 150}`)
+              },
+              onComplete: () => {
+                this.closeScratch()
+              }
+            });
+          }
+
+          // 点击加入购物车
+          const dispatchProductBtn = target.closest('.dispatch-product-btn')
+          if (dispatchProductBtn) {
+            let productId = dispatchProductBtn.getAttribute('pid')
+            let code = dispatchProductBtn.getAttribute('code')
+
+            // 按钮加载动画开启
+            this.btnShowLoading(this.$p.querySelector('.dispatch-product-btn'))
+            addToCartPromise(productId, null, {}, code).then(cartData => {
+              // Handle success, e.g., update UI
+              this.btnShowLoading(this.$p.querySelector('.dispatch-product-btn'), false)
+            })
+              .catch(error => {
+                // Handle error, e.g., show error message
+                this.btnShowLoading(this.$p.querySelector('.dispatch-product-btn'), false)
+              });
+
+            return
+          }
+        })
+        // 监听输入框按键事件
+        this.$p.querySelector('.subscribe-module-input').addEventListener('keyup', (e) => {
+          this.$p.querySelector('.subscribe-module-from').classList.remove('report-cont');
+          this.fadeOut(this.$p.querySelector('.subscribe-module-inp-msg'))
+        })
+        window.ulikeOpenSubscribe = () => {
+          this.open()
+        }
+      }
+
+      // 提交邮箱获取结果
+      async getDispatch() {
+        // 按钮加载动画开启
+        this.btnShowLoading(this.$p.querySelector('.subscribe-module-btn'))
+        try {
+          let resData = await this.sendApiRequest('/promotion/sendBenefit', this.subscribeObj);
+          if (resData.code === 0) {
+            let data = resData.data; // Correct reference to resData.data
+            // Add winning titles and prize URL
+            Object.assign(data, {
+              winning_title: this.subscribeActFrom.languageMessData.winning_title,
+              winning_sub_title: this.subscribeActFrom.languageMessData.winning_sub_title,
+              winning_code_title:
+                this.subscribeActFrom.languageMessData.winning_code_title,
+              prizeUrl: resData.url,
+            });
+
+            // Query variant details
+            let variantRes = await this.sendApiRequest('/promotion/queryVariant', {
+              variantId: data.extend.participantId,
+            });
+            // 按钮加载动画关闭
+            this.btnShowLoading(this.$p.querySelector('.subscribe-module-btn'), false)
+            if (variantRes.code === 0) {
+              let variantData = variantRes.data;
+              let dIndex = this.list.findIndex(item => item.itemName == data.benefitName)
+              console.log('dIndex', dIndex);
+
+              if (dIndex == -1) return
+
+              // 请求成功抽奖
+              this.$p.querySelector('.subscribe-module-input').value = '';
+              this.$p.classList.add('hide-text')
+
+              setTimeout(() => {
+                this.start(dIndex)
+              }, 800);
+
+              Object.assign(data, {
+                award_info: this.subscribeActFrom.formActive.award_info,
+                userEmail: this.subscribeObj.userEmail,
+                variantData,
+              });
+              let itemsWithPrice = this.subscribeActFrom.activityItem.filter(
+                (item) => item.price
+              );
+              data.dis_price = itemsWithPrice[0].price;
+              commonGtmEvent('订阅活动-进入领奖成功弹窗', 'subscribe', 'turntable');
+
+              this.updateSuccessDom(data);
+
+              // Set cookies and local storage
+              this.setCookie('subscript-success', true, 2, true);
+              localStorage.setItem('subscript-success-data', JSON.stringify(data));
+              this.setCookie('subscript-isSubscribe', true, 30, true);
+              this.setCookie(
+                'subscript-success-activeFrom',
+                this.subscribeActFrom.formActive.theme,
+                2,
+                true
+              );
+            }
+          } else if (
+            resData.code === 99998 &&
+            resData.message === 'participate_email_repeat_err'
+          ) {
+            commonGtmEvent(
+              '订阅活动-提示：每个邮箱只能转一次',
+              'subscribe',
+              'turntable'
+            );
+            this.$p.querySelector('.subscribe-module-from').classList.add('report-cont');
+            this.$p.querySelector('.subscribe-module-inp-msg .text').innerHTML = this.subscribeActFrom.languageMessData[resData.message]
+            this.fadeIn(this.$p.querySelector('.subscribe-module-inp-msg'))
+          } else {
+            // Handle other system errors
+            this.$p.querySelector('.subscribe-module-from').classList.add('report-cont');
+            this.$p.querySelector('.subscribe-module-inp-msg .text').innerHTML = lottery_data.system_err
+            this.fadeIn(this.$p.querySelector('.subscribe-module-inp-msg'))
+          }
+
+        } catch (err) {
+          // 按钮加载动画关闭
+          this.btnShowLoading(this.$p.querySelector('.subscribe-module-btn'), false)
+        }
+
+      }
+
+      // 更新结果页产品信息
+      updateSuccessDom(data) {
+        // 获取活动名称
+        var actName = data.benefitName;
+        this.subscribeObj.userEmail = data.userEmail;
+        // 结果页
+        this.$p.querySelector('.dispatch-title').innerHTML = data.winning_title
+        this.$p.querySelector('.dispatch-p').innerHTML = data.winning_sub_title
+        // 处理商品折扣情况
+        this.$p.querySelector('.dispatch-product-img img').setAttribute('src', data.variantData.imageUrl);
+        this.$p.querySelector('.dispatch-product-title').innerHTML = this.getValueByKey(data.variantData.metaFields, 'variant_title')
+
+        if (data.dis_price) {
+          this.$p.querySelector('.dispatch-product-price').innerHTML = `
+            <span class="n-price">${this.shopCurrencySymbol}${data.dis_price}</span>
+            <span class="d-price">${this.shopCurrencySymbol}${data.variantData.price.amount}</span>`;
+        } else {
+          this.$p.querySelector('.dispatch-product-price').innerHTML = `
+            <span class="n-price">${this.shopCurrencySymbol}${getValueByKey(
+            data.variantData.metaFields,
+            'page_price'
+          )}</span>
+            <span class="d-price">${this.shopCurrencySymbol}${data.variantData.price.amount}</span>`;
+        }
+
+        this.$p.querySelector('.dispatch-product-btn').setAttribute('pid', data.variantData.variantId);
+        this.$p.querySelector('.dispatch-product-btn').setAttribute('code', data.resourceId);
+
+        // 折扣名称
+        this.$p.querySelector('.dispatch-yhq-txt span').innerHTML = actName
+
+        // 设置中奖完成的图片，并隐藏抽奖弹窗，显示结果页面
+        let floatingUrl =
+          'https://cdn.shopify.com/s/files/1/0656/9079/6273/files/Frame_457393925.svg?v=1715667081';
+        if (data.extend.floatingUrl) {
+          floatingUrl = data.extend.floatingUrl;
+        }
+        document.querySelector('.teaser-image')?.setAttribute('src', floatingUrl);
+      }
+
+      getValueByKey(data, targetKey) {
+        const item = data.find((element) => element.key === targetKey);
+        return item ? item.value : null; // 如果找到返回 value，否则返回 null
+      }
+
+      // 请求API接口
+      sendApiRequest(url, data) {
+        const controller = new AbortController();
+        const signal = controller.signal;
+        data.siteCode = 'US' // Ensure the site code is set to 'US'
+        // data.language = window.Shopify.locale
+        // Set up the AJAX settings
+        let urlLink = this.api + url;
+
+        let settings = {
+          method: 'POST', // POST is used as the request method
+          headers: {
+            'Content-Type': 'application/json', // Request payload is in JSON format
+          },
+          body: JSON.stringify(data), // Convert data object to JSON string
+          signal,
+          mode: 'cors',
+          credentials: 'include'
+        }
+
+        // Return a new Promise
+        return new Promise((resolve, reject) => {
+          fetch(urlLink, settings)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json(); // 解析 JSON 响应
+            })
+            .then(data => resolve(data)) // 解析后的数据传递给 `resolve`
+            .catch(error => {
+              console.error('Error during API call:', error);
+              reject(error); // 发生错误时 `reject`
+            });
+        })
+      }
+
+      // 按钮添加loding效果
+      btnShowLoading($el, isShow = true) {
+        if (isShow) {
+          $el.classList.add("loading-btn-cus");
+          const loadingSpan = document.createElement("span");
+          loadingSpan.className = "loading-span";
+          $el.appendChild(loadingSpan);
+        } else {
+          $el.classList.remove("loading-btn-cus");
+          const loadingSpan = $el.querySelector(".loading-span");
+          if (loadingSpan) {
+            loadingSpan.remove();
+          }
+        }
+      }
+
+
+      // 初始化抽奖盘右侧text
+      domOnUpdate() {
+        // 参与页
+        this.$p.querySelector('.subscribe-module-text-title').innerHTML = this.subscribeActFrom.languageMessData['participate_main_title']
+        this.$p.querySelector('.subscribe-module-btn span').innerHTML = this.subscribeActFrom.languageMessData['btn_title']
+        this.$p.querySelector('.subscribe-module-btn .btn-txt').setAttribute('text', this.subscribeActFrom.languageMessData['btn_title'])
+        this.$p.querySelector('.subscribe-module-text-tips').innerHTML = this.subscribeActFrom.languageMessData['participate_desc']
+      }
+      // 填充装盘数据
+
+      render() {
+        this.list.forEach((item, i) => {
+          let newNode = this.temp.cloneNode(true);
+          newNode.style.display = 'block';
+          newNode.style.transform = `rotateZ(${this.perAngle * i + this.perAngle / 2}deg)`;
+          newNode.querySelector('.tray-bg').style.background = this.color[i].color;
+
+          if (this.list.length > 2) {
+            let p = this.perAngle / 2;
+            let d = Math.tan(p * Math.PI / 180) * 100;
+            let x = (100 - d) / 2;
+            newNode.style.clipPath = `polygon(0% 50%, 100% ${x}%, 100% ${100 - x}%)`;
+          }
+
+          newNode.querySelector('.tray-prize').innerHTML = item.itemType === "COUPON" ?
+            `<div class="tray-prize-cont yhq-cont">
+              <img src="https://cdn.shopify.com/s/files/1/0656/9079/6273/files/yhq.svg" alt="" class="yhq-img">
+              <div class="tray-prize-text"><div class="span">${item.itemName}</div> OFF </div>
+            </div>` :
+            `<div class="tray-prize-cont">
+              <div class="tray-prize-text">${item.itemName}</div>
+              <img src="${item.extend.prizeUrl}" alt="" class="p-img">
+            </div>`;
+
+          this.main.appendChild(newNode);
+        });
+      }
+
+      // 打开弹窗
+      open() {
+        if (this.isShow) return;
+        this.isShow = true;
+        // if (this.isOpen()) {
+        if (this.$p.classList.contains('is-close')) {
+          this.$p.classList.remove('is-close')
+          this.animateValue({
+            start: 150,
+            end: 0,
+            duration: 1000, // 动画时长为 600 毫秒
+            onUpdate: (value) => {
+              this.$p.style.setProperty('display', 'block')
+              this.$p.style.setProperty('--clip-path', `${150 - value}%`);
+              this.$p.style.setProperty('--origin-x', `${value}%`)
+              this.$p.style.setProperty('--origin-y', `${value}%`)
+            },
+            onComplete: () => {
+
+            }
+          });
+        } else {
+          this.fadeIn(this.$p, null, 500)
+        }
+        // } else {
+        //   this.fadeIn(this.$p, null, 500)
+        //   this.isOpen('isOpen')
+        // }
+
+      }
+
+
+      isOpen(param) {
+        let isOpen = sessionStorage.getItem('isOpenScratchUlike');
+        if (param) {
+          sessionStorage.setItem('isOpenScratchUlike', param);
+        }
+        return isOpen;
+      }
+
+      // 关闭转盘弹窗
+      closeScratch() {
+        this.isShow = false;
+        this.$p.style.setProperty('opacity', '1')
+        this.$p.classList.add('is-close')
+      }
+
+      // 转盘转动
+      start(num) {
+        if (this.isRunning) return;
+        this.isRunning = true;
+        this.rotate += 360 * 7;
+        let getPrizeIndex = num + 1; //(Math.floor(Math.random() * 6) + 1) - 1;//Math.floor(Math.random() * 6) + 1 ==>1-6
+        this.mathDeg = Math.floor(Math.random() * (60 - 30 + 1)) + 30
+        this.rotates = this.rotate + (180 - this.perAngle) / 2 - this.perAngle * getPrizeIndex + this.mathDeg + 60;
+        this.main.style.transition = 'all 3s ease';
+        this.main.style.transform = `rotateZ(${this.rotates}deg)`;
+      }
+
+      // 转盘结束转动
+      end() {
+        if (!this.isRunning) return
+        this.isRunning = false;
+        let d = this.rotates - this.mathDeg + 10
+        this.main.style.transform = 'rotateZ(' + d + 'deg)';
+        this.main.style.transition = 'all 3s ease';
+        setTimeout(() => {
+          this.connectTest()
+        }, 3000);
+
+        setTimeout(() => {
+          this.fadeOut(this.$p.querySelector('.subscribe-module-cont'), () => {
+            this.$p.classList.add('dispatch-cont')
+            this.$p.classList.remove('hide-text')
+            this.fadeIn(this.$p.querySelector('.subscribe-module-cont'), null, 800)
+          }, 300)
+        }, 3500);
+      }
+
+      // 校验邮箱
+      validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      }
+
+      // js根据时间计算动画
+      animateValue({ start, end, duration, onUpdate, onComplete }) {
+        const startTime = performance.now(); // 获取动画开始的时间
+        function step(currentTime) {
+          // 计算已经过去的时间
+          const elapsedTime = currentTime - startTime;
+
+          // 计算动画进度，限制在 [0, 1] 之间
+          const progress = Math.min(elapsedTime / duration, 1);
+          // 计算当前值
+          const currentValue = start + (end - start) * progress;
+          // 调用 onUpdate 回调，传入当前值
+          onUpdate(currentValue);
+          // 如果动画还未完成，继续下一帧
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            // 动画完成，调用 onComplete 回调（如果提供了）
+            if (onComplete) onComplete();
+          }
+        }
+        // 启动动画
+        requestAnimationFrame(step);
+      }
+
+      // 中奖用户轮播
+      verticalCarousel(delay = 1200, speed = 500) {
+        const ul = this.$p.querySelector(".subscribe-module-slide-list");
+        const items = ul.querySelectorAll(".subscribe-module-slide-item");
+        const itemHeight = 26;
+
+        function moveSlide() {
+          ul.style.transform = `translateY(-${itemHeight}px)`;
+          ul.style.transition = `transform ${speed}ms ease-in-out`;
+
+          setTimeout(() => {
+            ul.appendChild(ul.firstElementChild);
+            ul.style.transition = "none";
+            ul.style.transform = "translateY(0)";
+          }, speed);
+        }
+
+        setInterval(moveSlide, delay);
+      }
+
+      // 礼花效果
+      connectTest() {
+        moduleUlike.exports({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.5 },
+          colors: ['F5D290', 'FEEFCF', 'F0C37C'],
+          disableForReducedMotion: true, // 优化低性能设备
+        });
+      }
+
+      // dom显示
+      fadeIn(element, callback = null, duration = 400) {
+        if (window.getComputedStyle(element).display === 'none') {
+          element.style.display = 'block'; // 先显示元素
+          element.style.opacity = 0; // 设为透明
+        }
+
+        let startTime = performance.now();
+
+        function animate(currentTime) {
+          let elapsedTime = currentTime - startTime;
+          let progress = elapsedTime / duration;
+
+          if (progress >= 1) {
+            element.style.opacity = 1; // 透明度设为 1
+            if (callback) callback(); // 调用回调函数
+          } else {
+            element.style.opacity = progress;
+            requestAnimationFrame(animate);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      // dom隐藏
+      fadeOut(element, callback = null, duration = 400) {
+        let startTime = performance.now();
+
+        function animate(currentTime) {
+          let elapsedTime = currentTime - startTime;
+          let progress = elapsedTime / duration;
+
+          if (progress >= 1) {
+            element.style.opacity = 0;
+            element.style.display = 'none'; // 完全隐藏
+            if (callback) callback(); // 调用回调函数
+          } else {
+            element.style.opacity = 1 - progress;
+            requestAnimationFrame(animate);
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      // 获取cookie值
+      getCookie(name) {
+        const cookieName = name + '=';
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i].trim();
+          if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+          }
+        }
+        return '';
+      }
+
+      /**
+       * 设置cookie
+       */
+      setCookie(cookieName, cookieValue, daysToExpire, endOfDay = false) {
+        var expires = '';
+        if (daysToExpire) {
+          var date = new Date();
+          date.setTime(date.getTime() + daysToExpire * 24 * 60 * 60 * 1000);
+          if (endOfDay) {
+            date.setHours('00', '00', '00', '000'); // 设置为那天的第一秒
+          }
+          expires = '; expires=' + date.toUTCString();
+        }
+        document.cookie = cookieName + '=' + cookieValue + expires + '; path=/';
+      }
+
+    }
+
+    const wheel = new Wheel('.subscribe-module');
+
+
+
+  </script>
+</body>
+
+</html>

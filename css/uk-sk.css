@@ -1,0 +1,612 @@
+.container {
+  max-width: 1600px;
+  padding: 0 40px;
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 24px;
+  }
+}
+
+.summer-brief {
+  padding: 200px 0 105px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.summer-brief::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -92%);
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+}
+
+.summer-brief .summer-brief-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.summer-brief .container {
+  position: relative;
+  z-index: 1;
+}
+
+.summer-brief .summer-brief-title {
+  font-size: 60px;
+  color: #000;
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 70px;
+}
+
+.summer-brief .summer-brief-list {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 69px;
+}
+
+.summer-brief .summer-brief-item {
+  width: calc(33.333% - 46px);
+  padding-top: 36px;
+  position: relative;
+}
+
+.summer-brief .summer-brief-item:nth-child(2) {
+  padding-top: 0;
+}
+
+.summer-brief .summer-brief-item .img {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  border-radius: 0 0 50% 50%;
+  display: block;
+}
+
+.summer-brief .summer-brief-item-title {
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: normal;
+  margin: 0;
+  position: absolute;
+  top: 66px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 0 10px;
+  z-index: 1;
+}
+
+.summer-brief .summer-brief-item:nth-child(2) .summer-brief-item-title {
+  top: 30px;
+}
+
+.summer-brief .summer-brief-arraws {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .summer-brief .summer-brief-list {
+    gap: 45px;
+  }
+  .summer-brief .summer-brief-item {
+    width: calc(33.333% - 30px);
+  }
+
+  .summer-brief .summer-brief-title {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 991px) {
+  .summer-brief {
+    padding: 50px 0;
+  }
+  .summer-brief::before {
+    display: none;
+  }
+
+  .summer-brief .summer-brief-swiper {
+    width: 65%;
+    margin: auto;
+  }
+
+  .summer-brief .summer-brief-list {
+    gap: 0px;
+  }
+
+  .summer-brief .summer-brief-item {
+    width: 100%;
+    flex-shrink: 0;
+    padding-top: 25px;
+  }
+
+  .summer-brief .summer-brief-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .summer-brief .summer-brief-item-title {
+    font-size: 20px;
+    top: 45px;
+  }
+
+  .summer-brief .summer-brief-item:nth-child(2) {
+    padding-top: 25px;
+  }
+
+  .summer-brief .summer-brief-item:nth-child(2) .summer-brief-item-title {
+    top: 45px;
+  }
+
+  .summer-brief .swiper-slide-active {
+    padding-top: 0;
+  }
+
+  .summer-brief .swiper-slide-active .summer-brief-item-title {
+    top: 25px;
+  }
+
+  .summer-brief .summer-brief-arraws {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+  }
+
+  .summer-brief .summer-brief-arraw {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1.5px solid #000;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .summer-brief .summer-brief-arraw::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-top: 1.5px solid #000;
+    border-right: 1.5px solid #000;
+    margin-left: -3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .summer-brief .summer-brief-prev {
+    transform: rotate(180deg);
+  }
+}
+
+.summer-join {
+  padding: 70px 0 90px 0;
+}
+
+.summer-join .summer-join-title {
+  color: #000;
+  font-size: 60px;
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+  text-align: center;
+  margin: 0;
+  margin-bottom: 70px;
+  line-height: 1.2;
+}
+
+.summer-join .summer-join-list {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  --w-num: 0;
+  --w-b: 0;
+}
+
+.summer-join .summer-join-item {
+  position: relative;
+  text-align: center;
+}
+
+.summer-join .summer-join-time {
+  color: #000;
+  font-size: 18px;
+  font-family: var(--heading-font-family);
+  line-height: 1.2;
+}
+
+.summer-join .active .summer-join-time {
+  color: #e0004d;
+}
+
+.summer-join .summer-join-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  color: #9b9b9b;
+  position: relative;
+}
+
+.summer-join .summer-join-icon svg {
+  position: relative;
+  z-index: 2;
+}
+
+.summer-join .summer-join-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: calc(var(--w-num) * 1px);
+  height: 3px;
+  background: #f3f3f3;
+  z-index: -1;
+}
+
+.summer-join .summer-join-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: calc(var(--w-num) * var(--w-b) * 1px);
+  height: 3px;
+  background: #e0004d;
+  z-index: 0;
+}
+
+.summer-join .summer-join-item:last-child .summer-join-icon::before,
+.summer-join .summer-join-item:last-child .summer-join-icon::after {
+  display: none;
+}
+
+.summer-join .active .summer-join-icon {
+  background: linear-gradient(180deg, rgba(222, 245, 255, 1) -25%, #fff 125%);
+  color: #e0004d;
+}
+
+.summer-join .summer-join-sub {
+  color: #000;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+}
+
+.summer-join .summer-join-sub p {
+  margin: 0;
+}
+
+.summer-join .summer-join-cont {
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-top: 90px;
+}
+
+.summer-join .summer-join-cont-item {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
+
+.summer-join .summer-join-cont-item.active {
+  display: block;
+}
+
+.summer-join .summer-join-gb {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.summer-join .summer-join-t {
+  position: relative;
+  z-index: 1;
+  padding: 50px 65px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.summer-join .summer-join-img {
+  width: 188px;
+  border-radius: 50%;
+}
+
+.summer-join .summer-join-text {
+  flex: 1;
+}
+
+.summer-join .summer-join-name {
+  color: #000;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: normal;
+  margin: 0;
+}
+
+.summer-join .summer-join-info {
+  color: #000;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0;
+  margin-top: 14px;
+}
+
+.summer-join .summer-join-btn {
+  width: 170px;
+  height: 42px;
+  background: #000;
+  border: 1.5px solid #000;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  margin-top: 22px;
+}
+
+.summer-join .summer-join-btn .btn-txt::before {
+  color: #000;
+}
+
+@media (max-width: 991px) {
+  .summer-join {
+    padding: 50px 0;
+  }
+  .summer-join .summer-join-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+  .summer-join .summer-join-time {
+    font-size: 16px;
+  }
+  .summer-join .summer-join-icon {
+    width: 50px;
+    height: 50px;
+    margin: 5px auto;
+  }
+  .summer-join .summer-join-icon svg {
+    display: block;
+    width: 23px;
+    height: auto;
+  }
+  .summer-join .summer-join-sub {
+    font-size: 12px;
+    zoom: 0.9;
+  }
+  .summer-join .summer-join-icon::before,
+  .summer-join .summer-join-icon::after {
+    height: 2px;
+  }
+
+  .summer-join .summer-join-cont {
+    margin-top: 40px;
+  }
+
+  .summer-join .summer-join-t {
+    padding: 30px;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .summer-join .summer-join-img {
+    width: 100px;
+  }
+  .summer-join .summer-join-name {
+    font-size: 20px;
+  }
+  .summer-join .summer-join-info {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .summer-join .summer-join-btn {
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
+
+.summer-subscribe {
+  padding: 180px 0 135px 0;
+}
+
+.summer-subscribe .summer-subscribe-cont {
+  position: relative;
+}
+
+.summer-subscribe .summer-subscribe-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.summer-subscribe .summer-subscribe-text {
+  position: relative;
+  z-index: 1;
+  padding: 65px 100px;
+}
+
+.summer-subscribe .summer-subscribe-text .img {
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 60px;
+}
+
+.summer-subscribe .summer-subscribe-title {
+  color: #000;
+  font-size: 50px;
+  line-height: 1.2;
+  font-family: var(--heading-font-family);
+  font-weight: normal;
+  margin: 0;
+}
+
+.summer-subscribe .summer-subscribe-from {
+  width: 40%;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.summer-subscribe .summer-subscribe-info {
+  color: #000;
+  font-size: 25px;
+  line-height: 1.2;
+  margin-top: 7px;
+}
+
+.summer-subscribe .summer-subscribe-info p {
+  margin: 0;
+}
+
+.summer-subscribe .summer-subscribe-info strong {
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+}
+
+.summer-subscribe .summer-subscribe-input {
+  padding: 7px;
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summer-subscribe .summer-subscribe-btn {
+  width: 180px;
+  height: 50px;
+  border-radius: 5px;
+  background: #e0004d;
+  color: #fff;
+  border: 1.5px solid #e0004d;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.summer-subscribe .summer-subscribe-btn .btn-txt::before {
+  color: #e0004d;
+}
+
+.summer-subscribe .summer-subscribe-input input {
+  flex: 1;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.2;
+  border: 0;
+  outline: 0;
+  background: none;
+  padding-left: 10px;
+}
+
+.summer-subscribe .summer-subscribe-input input::placeholder {
+  color: #717171;
+}
+
+.summer-subscribe .summer-subscribe-msg {
+  color: #000;
+  font-size: 16px;
+  line-height: 1.2;
+  margin-top: 14px;
+}
+
+@media (max-width: 1600px) {
+  .summer-subscribe .summer-subscribe-title {
+    font-size: 40px;
+  }
+  .summer-subscribe .summer-subscribe-info {
+    font-size: 18px;
+  }
+  .summer-subscribe .summer-subscribe-btn {
+    font-size: 16px;
+    height: 42px;
+  }
+  .summer-subscribe .summer-subscribe-msg {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1300px) {
+  .summer-subscribe .summer-subscribe-text {
+    padding: 65px 40px;
+  }
+  .summer-subscribe .summer-subscribe-text .img {
+    left: 40px;
+  }
+}
+
+@media (max-width: 991px) {
+  .summer-subscribe {
+    padding: 50px 0;
+  }
+  .summer-subscribe .summer-subscribe-text .img {
+    position: relative;
+    width: calc(100% + 40px);
+    left: -20px;
+  }
+  .summer-subscribe .summer-subscribe-text {
+    padding: 30px 20px 0 20px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .summer-subscribe .summer-subscribe-from {
+    width: 100%;
+  }
+  .summer-subscribe .summer-subscribe-title {
+    font-size: 28px;
+  }
+  .summer-subscribe .summer-subscribe-btn {
+    font-size: 14px;
+    width: 140px;
+  }
+  .summer-subscribe .summer-subscribe-input input {
+    font-size: 12px;
+  }
+}

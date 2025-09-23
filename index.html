@@ -3616,5 +3616,74 @@
     </div>
   </body>
   <script src="./js/theme.js"></script>
-  <script src="./js/script.js"></script>
+  <!-- <script src="./js/script.js"></script> -->
+   <script>
+    (function() {
+      // 定义IntersectionObserver的选项
+      const intersectionOptions = {
+        root: null, // 视口为浏览器窗口
+        rootMargin: '0px 0px 0px 0px', // 下方多100px的视口区域
+        threshold: 0 // 只要元素出现在视口中就触发回调
+      };
+
+      // 定义IntersectionObserver回调函数
+      function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            observer.unobserve(entry.target); // 触发一次后停止观察
+          }
+        });
+      }
+
+      // 创建IntersectionObserver实例
+      const intersectionObserver = new IntersectionObserver(handleIntersection, intersectionOptions);
+
+      // 初始观察页面上已有的元素
+      function observeInitialElements() {
+        const animateElements = document.querySelectorAll('.to-left,.to-edge,.to-top,.slide-to-left,.to-opacity,.to-top1,.text-top,.text-top-btn,.slide-to-left-white,.line-top');
+        animateElements.forEach(element => {
+          intersectionObserver.observe(element);
+        });
+      }
+
+      // 递归观察新添加的节点及其子节点
+      function observeNewElement(element) {
+        if (element.nodeType === 1 && element.matches('.to-left,.to-edge,.to-top,.slide-to-left,.to-opacity,.to-top1,.text-top,.text-top-btn,.slide-to-left-white,.line-top')) {
+          intersectionObserver.observe(element);
+        }
+
+        element.querySelectorAll('.to-left,.to-edge,.to-top,.slide-to-left,.to-opacity,.to-top1,.text-top,.text-top-btn,.slide-to-left-white,.line-top').forEach(child => {
+          intersectionObserver.observe(child);
+        });
+      }
+
+      // 定义MutationObserver回调函数，用于检测新添加的元素
+      function handleMutations(mutationsList) {
+        mutationsList.forEach(mutation => {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            mutation.addedNodes.forEach(node => {
+              observeNewElement(node);
+            });
+          }
+        });
+      }
+
+      // 创建MutationObserver实例
+      const mutationObserver = new MutationObserver(handleMutations);
+
+      // 配置MutationObserver，监听DOM变化
+      const mutationOptions = {
+        childList: true, // 监听直接子节点的添加或删除
+        subtree: true // 监听整个子树中节点的变化
+      };
+
+      // 页面加载时观察已有元素并启动MutationObserver
+      window.addEventListener('DOMContentLoaded', () => {
+        observeInitialElements();
+        mutationObserver.observe(document.body, mutationOptions);
+      });
+    })();
+
+   </script>
 </html>

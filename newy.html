@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/ny.css" />
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="new-year-banner">
+    <picture>
+      <source srcset="./images48/bg1.jpg" media="(max-width: 991px)">
+      <img class="img-bg" src="./images48/bg.jpg">
+    </picture>
+    <picture>
+      <source srcset="./images48/a1-m.png" media="(max-width: 991px)">
+      <img class="img-r" src="./images48/a1.png">
+    </picture>
+    <div class="new-year-banner-content">
+      <div class="container">
+        <div class="new-year-banner-txt">
+          <img src="./images48/a2.png" class="img-txt" alt="">
+          <div class="new-year-banner-p">
+            This holiday season, find the gift of getting smooth and ready to glow with Ulike IPL!
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="stage-container">
+      <canvas id="trails-canvas"></canvas>
+      <canvas id="main-canvas"></canvas>
+    </div>
+  </div>
+  <div class="new-year-coupon">
+    <div class="container">
+      <h3 class="new-year-coupon-h3">Hurry up, price goes up soon! </h3>
+      <div class="new-year-coupon-list">
+        <div class="new-year-coupon-item">
+          <div class="new-year-coupon-ov">
+            <span class="mask-span"></span>
+            <div class="new-year-coupon-cont">
+              <div class="new-year-coupon-num">
+                <strong>$130</strong>
+                OFF
+              </div>
+              <div class="new-year-coupon-p">DISCOUNT COUPON</div>
+            </div>
+          </div>
+
+          <div class="new-year-coupon-progress">
+            <div class="new-year-coupon-progress-span">
+              <span class="new-year-coupon-progress-left">ONLY 10 LEFT!</span>
+              <span class="new-year-coupon-progress-right">80%</span>
+            </div>
+          </div>
+          <div class="new-year-coupon-bottom">
+            <div class="new-year-coupon-btn btn-diy">
+              <div class="btn-txt" text="COPY CODE">
+                <span>COPY CODE</span>
+              </div>
+            </div>
+            <div class="new-year-coupon-msg">For Ulike Air 10 Products Only</div>
+          </div>
+        </div>
+        <div class="new-year-coupon-item wait-coupon">
+          <div class="new-year-coupon-ov">
+            <span class="mask-span"></span>
+            <div class="new-year-coupon-cont">
+              <div class="new-year-coupon-num">
+                <strong>$130</strong>
+                OFF
+              </div>
+              <div class="new-year-coupon-p">DISCOUNT COUPON</div>
+            </div>
+          </div>
+
+          <div class="new-year-coupon-progress">
+            <div class="new-year-coupon-progress-span">
+              <span class="new-year-coupon-progress-left">ONLY 10 LEFT!</span>
+              <span class="new-year-coupon-progress-right">80%</span>
+            </div>
+          </div>
+          <div class="new-year-coupon-bottom">
+            <div class="new-year-coupon-btn btn-diy">
+              <div class="btn-txt" text="COPY CODE">
+                <span>COPY CODE</span>
+              </div>
+            </div>
+            <div class="new-year-coupon-msg">For Ulike Air 10 Products Only</div>
+          </div>
+        </div>
+        <div class="new-year-coupon-item end-coupon">
+          <div class="new-year-coupon-ov">
+            <span class="mask-span"></span>
+            <div class="new-year-coupon-cont">
+              <div class="new-year-coupon-num">
+                <strong>$130</strong>
+                OFF
+              </div>
+              <div class="new-year-coupon-p">DISCOUNT COUPON</div>
+            </div>
+          </div>
+
+          <div class="new-year-coupon-progress">
+            <div class="new-year-coupon-progress-span">
+              <span class="new-year-coupon-progress-left">ONLY 10 LEFT!</span>
+              <span class="new-year-coupon-progress-right">80%</span>
+            </div>
+          </div>
+          <div class="new-year-coupon-bottom">
+            <div class="new-year-coupon-btn btn-diy">
+              <div class="btn-txt" text="COPY CODE">
+                <span>COPY CODE</span>
+              </div>
+            </div>
+            <div class="new-year-coupon-msg">For Ulike Air 10 Products Only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.querySelectorAll('.new-year-coupon .new-year-coupon-btn').forEach(function (item) {
+      item.addEventListener('click', function () {
+        copyCodeFun(item.getAttribute('data-code'), () => {
+          createMessage('{{ section.settings.copy_s }}', 1000);
+        })
+      })
+    })
+
+  </script>
+</body>
+<script src="./js/pen.js"></script>
+
+</html>

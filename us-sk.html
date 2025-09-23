@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./test/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/uk-sk.css" />
+  <script src="./test/js/swiper.min.js"></script>
+</head>
+
+<body>
+  <div class="summer-brief">
+    <picture>
+      <source srcset="./images64/a1.jpg" media="(max-width: 991px)">
+      <img src="./images64/a1.jpg" alt="" class="summer-brief-bg">
+    </picture>
+    <div class="container">
+      <h3 class="summer-brief-title">Cool off, vibe out! </h3>
+      <div class="summer-brief-swiper">
+        <div class="summer-brief-list swiper-wrapper">
+          <div class="summer-brief-item swiper-slide">
+            <h3 class="summer-brief-item-title">Win free<br />
+              Ulike device</h3>
+            <img src="images64/a2.jpg" alt="" class="img">
+          </div>
+          <div class="summer-brief-item swiper-slide">
+            <h3 class="summer-brief-item-title">Win free<br />
+              Ulike device</h3>
+            <img src="images64/a2.jpg" alt="" class="img">
+          </div>
+          <div class="summer-brief-item swiper-slide">
+            <h3 class="summer-brief-item-title">Win free<br />
+              Ulike device</h3>
+            <img src="images64/a2.jpg" alt="" class="img">
+          </div>
+        </div>
+      </div>
+      <div class="summer-brief-arraws">
+        <div class="summer-brief-arraw summer-brief-prev"></div>
+        <div class="summer-brief-arraw summer-brief-next"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    if (window.innerWidth < 991) {
+      var productSwiper = new Swiper(".summer-brief-swiper", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        loop: true,
+        // 居中
+        centeredSlides: true,
+        // 左右箭头
+        navigation: {
+          nextEl: ".summer-brief-next",
+          prevEl: ".summer-brief-prev",
+        },
+
+      });
+    }
+  </script>
+  <div class="summer-join">
+    <div class="container">
+      <h3 class="summer-join-title">Join our One day owner! </h3>
+      <div class="summer-join-list">
+        <div class="summer-join-item" data-time="2025-06-15">
+          <div class="summer-join-time">June 19</div>
+          <div class="summer-join-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.36987 34C1.74148 33.9981 1.13949 33.747 0.696077 33.3018C0.252668 32.8565 0.00408721 32.2534 0.00488473 31.625V14.1399V4.85791C0.00435287 4.22924 0.2533 3.62619 0.697084 3.18091C1.14087 2.73562 1.74322 2.4845 2.37189 2.48291H9.57688V0H9.77689C10.0686 0 10.3484 0.115976 10.5547 0.322266C10.761 0.528556 10.8769 0.80836 10.8769 1.1001V2.48511H23.1489V1.1001C23.1489 0.809396 23.2639 0.530337 23.4689 0.324219C23.6739 0.1181 23.9522 0.00158564 24.2429 0H24.4429V2.48193H31.6369C32.2655 2.48352 32.8679 2.73465 33.3117 3.17993C33.7555 3.62522 34.0044 4.22827 34.0039 4.85693V12.844H33.9999V31.624C34.0001 32.2528 33.751 32.856 33.307 33.3013C32.8631 33.7465 32.2606 33.9974 31.6319 33.999L2.36987 34ZM1.29587 31.625C1.29534 31.9106 1.40814 32.1847 1.6095 32.3872C1.81086 32.5897 2.08432 32.704 2.36987 32.7051H31.6329C31.9185 32.7038 32.1921 32.5893 32.3937 32.387C32.5953 32.1846 32.7086 31.9107 32.7089 31.625V14.1399H1.29987L1.29587 31.625ZM1.29086 4.85693V12.844H32.6999V4.85693C32.7002 4.5712 32.587 4.29705 32.3852 4.09473C32.1834 3.8924 31.9096 3.77861 31.6239 3.77808H24.4299V8.20288H24.2299C23.9392 8.20129 23.6609 8.08478 23.4559 7.87866C23.2509 7.67254 23.1359 7.39373 23.1359 7.10303V3.77588H10.8649V7.10303C10.8649 7.39477 10.749 7.67457 10.5427 7.88086C10.3364 8.08715 10.0566 8.20288 9.76489 8.20288H9.56488V3.77808H2.35987C2.07543 3.78071 1.80356 3.89559 1.60336 4.09766C1.40317 4.29972 1.29085 4.57249 1.29086 4.85693ZM20.8629 26.0439C20.7319 26.0438 20.6023 26.0179 20.4814 25.9675C20.3605 25.9171 20.2508 25.8434 20.1585 25.7505C20.0663 25.6576 19.9933 25.5473 19.9437 25.426C19.8942 25.3048 19.8691 25.1749 19.8699 25.0439V24.7439H26.3289V25.0439C26.3297 25.1749 26.3046 25.3048 26.255 25.426C26.2055 25.5473 26.1325 25.6576 26.0402 25.7505C25.948 25.8434 25.8382 25.9171 25.7173 25.9675C25.5965 26.0179 25.4668 26.0438 25.3359 26.0439H20.8629ZM8.66287 26.0439C8.53183 26.0439 8.40209 26.0181 8.2811 25.9678C8.16011 25.9174 8.05027 25.8437 7.95789 25.7507C7.86551 25.6578 7.7924 25.5476 7.7428 25.4263C7.6932 25.305 7.6681 25.175 7.66889 25.0439V24.7439H14.1279V25.0439C14.1287 25.1749 14.1036 25.3048 14.054 25.426C14.0045 25.5473 13.9315 25.6576 13.8392 25.7505C13.747 25.8434 13.6372 25.9171 13.5164 25.9675C13.3955 26.0179 13.2658 26.0438 13.1349 26.0439H8.66287ZM20.8629 20.1841C20.7319 20.184 20.6023 20.1578 20.4814 20.1074C20.3605 20.057 20.2508 19.9833 20.1585 19.8904C20.0663 19.7975 19.9933 19.6871 19.9437 19.5659C19.8942 19.4447 19.8691 19.315 19.8699 19.1841V18.884H26.3289V19.1841C26.3297 19.315 26.3046 19.4447 26.255 19.5659C26.2055 19.6871 26.1325 19.7975 26.0402 19.8904C25.948 19.9833 25.8382 20.057 25.7173 20.1074C25.5965 20.1578 25.4668 20.184 25.3359 20.1841H20.8629ZM8.66287 20.1841C8.53183 20.1841 8.40209 20.158 8.2811 20.1077C8.16011 20.0573 8.05027 19.9836 7.95789 19.8906C7.86551 19.7977 7.7924 19.6875 7.7428 19.5662C7.6932 19.4449 7.6681 19.3151 7.66889 19.1841V18.884H14.1279V19.1841C14.1287 19.315 14.1036 19.4447 14.054 19.5659C14.0045 19.6871 13.9315 19.7975 13.8392 19.8904C13.747 19.9833 13.6372 20.057 13.5164 20.1074C13.3955 20.1578 13.2658 20.184 13.1349 20.1841H8.66287Z"
+                fill="currentColor" />
+            </svg>
+          </div>
+          <div class="summer-join-sub">Products Air 10 use and <br />introduction</div>
+        </div>
+        <div class="summer-join-item" data-time="2025-06-16">
+          <div class="summer-join-time">June 19</div>
+          <div class="summer-join-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.36987 34C1.74148 33.9981 1.13949 33.747 0.696077 33.3018C0.252668 32.8565 0.00408721 32.2534 0.00488473 31.625V14.1399V4.85791C0.00435287 4.22924 0.2533 3.62619 0.697084 3.18091C1.14087 2.73562 1.74322 2.4845 2.37189 2.48291H9.57688V0H9.77689C10.0686 0 10.3484 0.115976 10.5547 0.322266C10.761 0.528556 10.8769 0.80836 10.8769 1.1001V2.48511H23.1489V1.1001C23.1489 0.809396 23.2639 0.530337 23.4689 0.324219C23.6739 0.1181 23.9522 0.00158564 24.2429 0H24.4429V2.48193H31.6369C32.2655 2.48352 32.8679 2.73465 33.3117 3.17993C33.7555 3.62522 34.0044 4.22827 34.0039 4.85693V12.844H33.9999V31.624C34.0001 32.2528 33.751 32.856 33.307 33.3013C32.8631 33.7465 32.2606 33.9974 31.6319 33.999L2.36987 34ZM1.29587 31.625C1.29534 31.9106 1.40814 32.1847 1.6095 32.3872C1.81086 32.5897 2.08432 32.704 2.36987 32.7051H31.6329C31.9185 32.7038 32.1921 32.5893 32.3937 32.387C32.5953 32.1846 32.7086 31.9107 32.7089 31.625V14.1399H1.29987L1.29587 31.625ZM1.29086 4.85693V12.844H32.6999V4.85693C32.7002 4.5712 32.587 4.29705 32.3852 4.09473C32.1834 3.8924 31.9096 3.77861 31.6239 3.77808H24.4299V8.20288H24.2299C23.9392 8.20129 23.6609 8.08478 23.4559 7.87866C23.2509 7.67254 23.1359 7.39373 23.1359 7.10303V3.77588H10.8649V7.10303C10.8649 7.39477 10.749 7.67457 10.5427 7.88086C10.3364 8.08715 10.0566 8.20288 9.76489 8.20288H9.56488V3.77808H2.35987C2.07543 3.78071 1.80356 3.89559 1.60336 4.09766C1.40317 4.29972 1.29085 4.57249 1.29086 4.85693ZM20.8629 26.0439C20.7319 26.0438 20.6023 26.0179 20.4814 25.9675C20.3605 25.9171 20.2508 25.8434 20.1585 25.7505C20.0663 25.6576 19.9933 25.5473 19.9437 25.426C19.8942 25.3048 19.8691 25.1749 19.8699 25.0439V24.7439H26.3289V25.0439C26.3297 25.1749 26.3046 25.3048 26.255 25.426C26.2055 25.5473 26.1325 25.6576 26.0402 25.7505C25.948 25.8434 25.8382 25.9171 25.7173 25.9675C25.5965 26.0179 25.4668 26.0438 25.3359 26.0439H20.8629ZM8.66287 26.0439C8.53183 26.0439 8.40209 26.0181 8.2811 25.9678C8.16011 25.9174 8.05027 25.8437 7.95789 25.7507C7.86551 25.6578 7.7924 25.5476 7.7428 25.4263C7.6932 25.305 7.6681 25.175 7.66889 25.0439V24.7439H14.1279V25.0439C14.1287 25.1749 14.1036 25.3048 14.054 25.426C14.0045 25.5473 13.9315 25.6576 13.8392 25.7505C13.747 25.8434 13.6372 25.9171 13.5164 25.9675C13.3955 26.0179 13.2658 26.0438 13.1349 26.0439H8.66287ZM20.8629 20.1841C20.7319 20.184 20.6023 20.1578 20.4814 20.1074C20.3605 20.057 20.2508 19.9833 20.1585 19.8904C20.0663 19.7975 19.9933 19.6871 19.9437 19.5659C19.8942 19.4447 19.8691 19.315 19.8699 19.1841V18.884H26.3289V19.1841C26.3297 19.315 26.3046 19.4447 26.255 19.5659C26.2055 19.6871 26.1325 19.7975 26.0402 19.8904C25.948 19.9833 25.8382 20.057 25.7173 20.1074C25.5965 20.1578 25.4668 20.184 25.3359 20.1841H20.8629ZM8.66287 20.1841C8.53183 20.1841 8.40209 20.158 8.2811 20.1077C8.16011 20.0573 8.05027 19.9836 7.95789 19.8906C7.86551 19.7977 7.7924 19.6875 7.7428 19.5662C7.6932 19.4449 7.6681 19.3151 7.66889 19.1841V18.884H14.1279V19.1841C14.1287 19.315 14.1036 19.4447 14.054 19.5659C14.0045 19.6871 13.9315 19.7975 13.8392 19.8904C13.747 19.9833 13.6372 20.057 13.5164 20.1074C13.3955 20.1578 13.2658 20.184 13.1349 20.1841H8.66287Z"
+                fill="currentColor" />
+            </svg>
+          </div>
+          <div class="summer-join-sub">Products Air 10 use and <br />introduction</div>
+        </div>
+        <div class="summer-join-item" data-time="2025-06-22">
+          <div class="summer-join-time">June 19</div>
+          <div class="summer-join-icon">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.36987 34C1.74148 33.9981 1.13949 33.747 0.696077 33.3018C0.252668 32.8565 0.00408721 32.2534 0.00488473 31.625V14.1399V4.85791C0.00435287 4.22924 0.2533 3.62619 0.697084 3.18091C1.14087 2.73562 1.74322 2.4845 2.37189 2.48291H9.57688V0H9.77689C10.0686 0 10.3484 0.115976 10.5547 0.322266C10.761 0.528556 10.8769 0.80836 10.8769 1.1001V2.48511H23.1489V1.1001C23.1489 0.809396 23.2639 0.530337 23.4689 0.324219C23.6739 0.1181 23.9522 0.00158564 24.2429 0H24.4429V2.48193H31.6369C32.2655 2.48352 32.8679 2.73465 33.3117 3.17993C33.7555 3.62522 34.0044 4.22827 34.0039 4.85693V12.844H33.9999V31.624C34.0001 32.2528 33.751 32.856 33.307 33.3013C32.8631 33.7465 32.2606 33.9974 31.6319 33.999L2.36987 34ZM1.29587 31.625C1.29534 31.9106 1.40814 32.1847 1.6095 32.3872C1.81086 32.5897 2.08432 32.704 2.36987 32.7051H31.6329C31.9185 32.7038 32.1921 32.5893 32.3937 32.387C32.5953 32.1846 32.7086 31.9107 32.7089 31.625V14.1399H1.29987L1.29587 31.625ZM1.29086 4.85693V12.844H32.6999V4.85693C32.7002 4.5712 32.587 4.29705 32.3852 4.09473C32.1834 3.8924 31.9096 3.77861 31.6239 3.77808H24.4299V8.20288H24.2299C23.9392 8.20129 23.6609 8.08478 23.4559 7.87866C23.2509 7.67254 23.1359 7.39373 23.1359 7.10303V3.77588H10.8649V7.10303C10.8649 7.39477 10.749 7.67457 10.5427 7.88086C10.3364 8.08715 10.0566 8.20288 9.76489 8.20288H9.56488V3.77808H2.35987C2.07543 3.78071 1.80356 3.89559 1.60336 4.09766C1.40317 4.29972 1.29085 4.57249 1.29086 4.85693ZM20.8629 26.0439C20.7319 26.0438 20.6023 26.0179 20.4814 25.9675C20.3605 25.9171 20.2508 25.8434 20.1585 25.7505C20.0663 25.6576 19.9933 25.5473 19.9437 25.426C19.8942 25.3048 19.8691 25.1749 19.8699 25.0439V24.7439H26.3289V25.0439C26.3297 25.1749 26.3046 25.3048 26.255 25.426C26.2055 25.5473 26.1325 25.6576 26.0402 25.7505C25.948 25.8434 25.8382 25.9171 25.7173 25.9675C25.5965 26.0179 25.4668 26.0438 25.3359 26.0439H20.8629ZM8.66287 26.0439C8.53183 26.0439 8.40209 26.0181 8.2811 25.9678C8.16011 25.9174 8.05027 25.8437 7.95789 25.7507C7.86551 25.6578 7.7924 25.5476 7.7428 25.4263C7.6932 25.305 7.6681 25.175 7.66889 25.0439V24.7439H14.1279V25.0439C14.1287 25.1749 14.1036 25.3048 14.054 25.426C14.0045 25.5473 13.9315 25.6576 13.8392 25.7505C13.747 25.8434 13.6372 25.9171 13.5164 25.9675C13.3955 26.0179 13.2658 26.0438 13.1349 26.0439H8.66287ZM20.8629 20.1841C20.7319 20.184 20.6023 20.1578 20.4814 20.1074C20.3605 20.057 20.2508 19.9833 20.1585 19.8904C20.0663 19.7975 19.9933 19.6871 19.9437 19.5659C19.8942 19.4447 19.8691 19.315 19.8699 19.1841V18.884H26.3289V19.1841C26.3297 19.315 26.3046 19.4447 26.255 19.5659C26.2055 19.6871 26.1325 19.7975 26.0402 19.8904C25.948 19.9833 25.8382 20.057 25.7173 20.1074C25.5965 20.1578 25.4668 20.184 25.3359 20.1841H20.8629ZM8.66287 20.1841C8.53183 20.1841 8.40209 20.158 8.2811 20.1077C8.16011 20.0573 8.05027 19.9836 7.95789 19.8906C7.86551 19.7977 7.7924 19.6875 7.7428 19.5662C7.6932 19.4449 7.6681 19.3151 7.66889 19.1841V18.884H14.1279V19.1841C14.1287 19.315 14.1036 19.4447 14.054 19.5659C14.0045 19.6871 13.9315 19.7975 13.8392 19.8904C13.747 19.9833 13.6372 20.057 13.5164 20.1074C13.3955 20.1578 13.2658 20.184 13.1349 20.1841H8.66287Z"
+                fill="currentColor" />
+            </svg>
+          </div>
+          <div class="summer-join-sub">Products Air 10 use and <br />introduction</div>
+        </div>
+      </div>
+      <div class="summer-join-cont">
+        <div class="summer-join-cont-item">
+          <picture>
+            <source srcset="./images64/b1.jpg" media="(max-width: 991px)">
+            <img src="./images64/b1.jpg" alt="" class="summer-join-gb">
+          </picture>
+          <div class="summer-join-t">
+            <img src="./images64/b2.jpg" alt="" class="summer-join-img">
+            <div class="summer-join-text">
+              <h3 class="summer-join-name">Nashlie Jane</h3>
+              <p class="summer-join-info">The owner of the shop will introduce the Ulike brand and products to us, for
+                which we have prepared a variety of afternoon tea and drinks.</p>
+              <a href="" class="summer-join-btn btn-diy">
+                <div class="btn-txt" text="View Live Stream">
+                  <span>View Live Stream</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="summer-join-cont-item">
+          <picture>
+            <source srcset="./images64/b1.jpg" media="(max-width: 991px)">
+            <img src="./images64/b1.jpg" alt="" class="summer-join-gb">
+          </picture>
+          <div class="summer-join-t">
+            <img src="./images64/b2.jpg" alt="" class="summer-join-img">
+            <div class="summer-join-text">
+              <h3 class="summer-join-name">Nashlie Jane</h3>
+              <p class="summer-join-info">The owner of the shop will introduce the Ulike brand and products to us, for
+                which we have prepared a variety of afternoon tea and drinks.</p>
+              <a href="" class="summer-join-btn btn-diy">
+                <div class="btn-txt" text="View Live Stream">
+                  <span>View Live Stream</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="summer-join-cont-item">
+          <picture>
+            <source srcset="./images64/b1.jpg" media="(max-width: 991px)">
+            <img src="./images64/b1.jpg" alt="" class="summer-join-gb">
+          </picture>
+          <div class="summer-join-t">
+            <img src="./images64/b2.jpg" alt="" class="summer-join-img">
+            <div class="summer-join-text">
+              <h3 class="summer-join-name">Nashlie Jane</h3>
+              <p class="summer-join-info">The owner of the shop will introduce the Ulike brand and products to us, for
+                which we have prepared a variety of afternoon tea and drinks.</p>
+              <a href="" class="summer-join-btn btn-diy">
+                <div class="btn-txt" text="View Live Stream">
+                  <span>View Live Stream</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function trackIconDistanceOnResize() {
+      const updateDistance = () => {
+        const container = document.querySelector('.summer-join');
+        if (!container) return;
+
+        const icons = container.querySelectorAll('.summer-join-icon');
+        if (icons.length < 2) return;
+
+        const rect1 = icons[0].getBoundingClientRect();
+        const rect2 = icons[1].getBoundingClientRect();
+        container.querySelector('.summer-join-list').style.setProperty('--w-num', `${Math.abs(rect2.left - rect1.left)}`);
+      };
+
+      window.addEventListener('resize', updateDistance);
+      updateDistance();
+    }
+    trackIconDistanceOnResize();
+
+    function updateSummerJoinItems() {
+      const items = Array.from(document.querySelectorAll('.summer-join .summer-join-item'));
+      const contItems = Array.from(document.querySelectorAll('.summer-join .summer-join-cont-item'));
+      const now = new Date();
+
+      items.forEach(item => {
+        item.classList.remove('active');
+        item.style.setProperty('--w-b', '0');
+      });
+      contItems.forEach(item => item.classList.remove('active'));
+
+      let lastActiveIndex = -1;
+
+      items.forEach((item, index) => {
+        const time = new Date(item.dataset.time);
+        if (time <= now) {
+          item.classList.add('active');
+          lastActiveIndex = index;
+        }
+      });
+
+      for (let i = 0; i < items.length - 1; i++) {
+        const itemA = items[i];
+        const itemB = items[i + 1];
+        const timeA = new Date(itemA.dataset.time);
+        const timeB = new Date(itemB.dataset.time);
+
+        const aIsActive = itemA.classList.contains('active');
+        const bIsActive = itemB.classList.contains('active');
+
+        if (aIsActive && bIsActive) {
+          itemA.style.setProperty('--w-b', '1');
+          if (now >= timeA && now < timeB) {
+            const percent = ((now - timeA) / (timeB - timeA));
+            itemB.style.setProperty('--w-b', `${percent.toFixed(2)}`);
+          }
+        } else if (aIsActive && !bIsActive && now >= timeA && now < timeB) {
+          const percent = ((now - timeA) / (timeB - timeA));
+          itemA.style.setProperty('--w-b', `${percent.toFixed(2)}`);
+        }
+      }
+
+      if (lastActiveIndex !== -1 && contItems[lastActiveIndex]) {
+        contItems[lastActiveIndex].classList.add('active');
+      }
+    }
+
+    // updateSummerJoinItems();
+    function startSummerJoinAutoPlay(interval = 3000, stepTime = 30) {
+      const items = Array.from(document.querySelectorAll('.summer-join .summer-join-item'));
+      const contItems = Array.from(document.querySelectorAll('.summer-join .summer-join-cont-item'));
+
+      let currentIndex = 0;
+      let progress = 0;
+      let progressTimer = null;
+
+      function resetAll() {
+        items.forEach(item => {
+          item.classList.remove('active');
+          item.style.setProperty('--w-b', '0');
+        });
+        contItems.forEach(item => item.classList.remove('active'));
+      }
+
+      function setProgress(index, value) {
+        const clamped = Math.min(100, Math.max(0, value));
+        items[index].style.setProperty('--w-b', `${clamped / 100}`);
+      }
+
+      function animateProgress(index) {
+        clearInterval(progressTimer);
+        progress = 0;
+        setProgress(index, 0);
+
+        progressTimer = setInterval(() => {
+          progress += (stepTime / interval) * 100;
+          setProgress(index, progress);
+
+          if (progress >= 100) {
+            clearInterval(progressTimer);
+            currentIndex = (index + 1) % items.length;
+            activateIndex(currentIndex); // 自动轮播下一项
+          }
+        }, stepTime);
+      }
+
+      function activateIndex(index) {
+        resetAll();
+
+        // 设置当前激活项
+        if (items[index]) items[index].classList.add('active');
+        if (contItems[index]) contItems[index].classList.add('active');
+
+        animateProgress(index); // 播放当前项进度条动画
+      }
+
+      // 点击事件切换
+      items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          clearInterval(progressTimer); // 清除旧动画
+          currentIndex = index;
+          activateIndex(index); // 切换到点击项并重新动画
+        });
+      });
+
+      // 启动
+      activateIndex(currentIndex);
+    }
+    startSummerJoinAutoPlay()
+
+  </script>
+  <div class="summer-subscribe">
+    <div class="container">
+      <div class="summer-subscribe-cont">
+
+        <picture>
+          <source srcset="./images64/c1.jpg" media="(max-width: 991px)">
+          <img class="summer-subscribe-bg" src="./images64/c1.jpg">
+        </picture>
+        <div class="summer-subscribe-text">
+          <img src="./images64/c2.png" class="img" alt="">
+          <div class="summer-subscribe-from">
+            <h3 class="summer-subscribe-title">Don't Sleep on us!</h3>
+            <div class="summer-subscribe-info">Set that reminder because we're in
+              town for 5 days!</div>
+            <div class="summer-subscribe-input">
+              <input type="text" placeholder="Enter your email address">
+              <div class="summer-subscribe-btn btn-diy">
+                <div class="btn-txt" text="Subscribe Now">
+                  <span>Subscribe Now</span>
+                </div>
+              </div>
+            </div>
+            <p class="summer-subscribe-msg">By entering your email, you agree to receive the latest product offers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

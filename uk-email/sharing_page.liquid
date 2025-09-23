@@ -1,0 +1,344 @@
+<div data-sticky-container>
+  <div
+    class="sticky top-bar"
+    id="le-menu"
+    data-sticky
+    data-sticky-on="small"
+    data-margin-top="0"
+    data-check-every="0">
+    <div class="grid-container fluid">
+      <div class="grid-x">
+        <div class="medium-12 cell">
+          <div class="grid-x">
+            <div class="auto cell align-self-bottom">
+              <ul class="menu horizontal align-right">
+                <li>
+                  <a class="float-left" style="text-underline-offset: 4px;">{{ 'common.page_navigation.portal_invite_link' | t }}</a>
+                </li>
+                <li>
+                  <a
+                    href="{{ advocate.portal.rewards_page_url }}"
+                    class="float-left"
+                    style="text-decoration:none">{{ 'common.page_navigation.portal_rewards_link' | t }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% assign count_earned = 0 %}
+
+  {% for rwd in rewards %}
+    {% if rwd.status != 'will_not_charge' and rwd.status != 'will_not_payout' %}
+      {% assign count_earned = count_earned | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="mt-md align-center">
+    {% if settings.logo_image and settings.logo_image != "" %}
+      <img class="logo_image_fixed_top_bar" src="{{ settings.logo_image }}" />
+    {% else %}
+      <h3 class="mb-md shop-name">
+        {{ campaign.shop_name }}
+      </h3>
+    {% endif %}
+  </div>
+  <div data-alert class="copied-toast-overlay">
+    {{ "page.sharing.copy_success" | t }}
+  </div>
+  {% if settings.banner_image and settings.banner_image != "" and settings.remove_banner_from %}
+    {% unless settings.remove_banner_from contains 'Share Page' %}
+      <div class="grid-x align-center">
+        <div class="mb-md small-12 medium-8 large-5 cell">
+          <img
+            alt="banner_image"
+            class="banner_image"
+            src="{{ settings.banner_image }}" />
+        </div>
+      </div>
+    {% endunless %}
+  {% endif %}
+  <div class="grid-x align-center">
+    <div class="small-10 medium-7 cell header-container">
+      <div class="share-page-header">
+        {% if campaign.state != 'paused' %}
+          {{ "page.sharing.header" | t }}
+        {% else %}
+          {{ "page.sharing.paused_header" | t }}
+        {% endif %}
+      </div>
+      <div class="mt-sm mb-md cell sub-header">
+        {% if campaign.state != 'paused' %}
+          {% if offer.type != 'none' %}
+            {{ "page.sharing.subtitle_offer_description" | t }}
+          {% endif %}
+          {{ "page.sharing.description" | t }}
+        {% else %}
+          {{ "page.sharing.paused_subtitle_offer_description" | t }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% if campaign.state != 'paused' %}
+    <div class="grid-x align-center mb-md">
+      <div class="small-10 medium-8 cell">
+
+        <div class="copy-button-group float-center restrict-copied-overlay-height" style="word-break:break-all;">
+
+          <div
+            class="grid-x"
+            id="copy-button"
+            data-clipboard-text="{{ referral_link.url }}">
+            <button type="button" class="button share-url-button button__copy mb-no medium-10">
+              {{ referral_link.url }}
+            </button>
+            <button class="button share-copy-button mb-no medium-2">
+              <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/copy.svg, medium]" class="share-page-icon" />
+              <span class="copy-instructions">
+                {{ "page.sharing.copy_instructions" | t }}
+              </span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+         <!-- TIER REWARD COMPONENT -->
+      <div class="small-10 medium-8 cell">
+        {% assign rewards_to_next_tier = nil %}
+        {% if reward_setup.tiers.size > 1 %}
+          <table class="tiers" align="center" style="width: 100%; margin: 20px 0; background: transparent; border: none; border-collapse: collapse; box-shadow: none; display: table;">
+            <tbody style="background: transparent; border: none;">
+            {% assign tier_count = 0 %}
+            
+
+            {% for tier in reward_setup.tiers %}
+              {% if tier.criteria == 'rewards' %}
+                {% if tier_count == 0 %}
+                  <tr>
+                {% endif %}
+                
+                <td class="tier" style="font-size: 16px; vertical-align: baseline; text-align: center; padding: 10px; background: transparent; border: none;">
+                  <div class="tier-icon">
+                    ⭐️
+                  </div>
+
+                  <div class="tier-text">
+                    {% assign current_tier = tier.minimum_threshold %}
+                    {% assign next_tier = reward_setup.tiers[forloop.index].minimum_threshold %}
+
+                    {% if next_tier %} 
+                      {% assign next_tier_minus_one = next_tier | minus: 1 %}
+                      {% if current_tier == next_tier_minus_one %}
+                        {% assign tier_range = current_tier %}
+                      {% else %}
+                        {% assign tier_range = current_tier | append: "-" | append: next_tier_minus_one %}
+                      {% endif %}
+                      
+                      {% if rewards_to_next_tier == nil and count_earned < next_tier %}
+                        {% assign rewards_to_next_tier = next_tier | minus: count_earned %}
+                      {% endif %}
+
+                    {% else %}
+                      {% assign tier_range = current_tier | append: "+" %}
+                      {% if rewards_to_next_tier == nil %}
+                        {% assign rewards_to_next_tier = 0 %}
+                      {% endif %}
+                    {% endif %}
+
+
+                    {% assign is_in_current_tier = count_earned >= current_tier %}
+                    {% assign is_below_next_tier = next_tier == nil or count_earned < next_tier %}
+
+                    <p class="{% if is_in_current_tier and is_below_next_tier %}selected-tier{% endif %}">
+                      Tier {{ forloop.index }}: {{ tier_range }} 
+                      {% if tier_range == 1 %}
+                        reward
+                      {% else %}
+                        rewards
+                      {% endif %}
+                    </p>
+
+                    <p class="{% if is_in_current_tier and is_below_next_tier %}selected-tier{% endif %}">
+                      {{ tier.description }}
+                    </p>
+                  </div>
+                </td>
+                
+                {% assign tier_count = tier_count | plus: 1 %}
+                
+                {% if tier_count == 3 or forloop.last %}
+                  </tr>
+                  {% assign tier_count = 0 %}
+                {% endif %}
+              {% endif %}  
+            {% endfor %}
+            </tbody>
+          </table>
+          <p>
+            You've earned {{ count_earned }} 
+            {% if count_earned == 1%}
+              reward.
+            {% else %}
+              rewards.
+            {% endif %}
+            {% if count_earned == 0 %}
+              Start sharing to earn rewards!
+            {% elsif rewards_to_next_tier %}
+              {{ rewards_to_next_tier }} more to move to the next tier!
+            {% else %}
+              You have reached the highest tier!
+            {% endif %}
+          </p>
+        {% endif %}
+      </div>                             
+    </div>
+    <!-- Sharing buttons' ID is important for tracking purposes -->
+
+    <div class="grid-x">
+      <div class="small-8 small-offset-2 medium-8 medium-offset-2">
+        <p class="share-page-text-social mb-sm">{{ "common.social_media_share_section.social_media_share_cta" | t }}</p>
+        <div class="grid-x grid-margin-x align-center">
+          <div id="share-facebook" class="shrink cell">
+            <a
+              class="social-links__facebook"
+              href='{{ referral_link.share_via_facebook }}'
+              target="_blank"
+              id="fb-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/facebook-icon.svg" /></a>
+          </div>
+
+          <div id="share-messenger" class="shrink cell">
+            <a
+              class="social-links__messenger show-for-medium"
+              href='{{ referral_link.share_via_messenger_desktop }}'
+              target="_blank"
+              id="messenger-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/messenger-icon.svg" /></a>
+            <a
+              class="social-links__messenger hide-for-medium"
+              href='{{ referral_link.share_via_messenger_mobile }}'
+              target="_blank"
+              id="messenger-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/messenger-icon.svg" /></a>
+          </div>
+
+          <div id="share-whatsapp" class="shrink cell">
+            <a
+              class="social-links__whatsapp show-for-medium"
+              href='{{ referral_link.share_via_whatsapp_desktop }}'
+              target="_blank"
+              id="whatsapp-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/whatsapp-icon.svg" /></a>
+            <a
+              class="social-links__whatsapp hide-for-medium"
+              href='{{ referral_link.share_via_whatsapp_mobile }}'
+              target="_blank"
+              id="whatsapp-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/whatsapp-icon.svg" /></a>
+          </div>
+
+          <div id="share-twitter" class="shrink cell">
+            <a
+              class="social-links__twitter"
+              href='{{ referral_link.share_via_twitter }}'
+              target="_blank"
+              id="tweet-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/evergreen-dev/page/twitterX-logo.png" /></a>
+          </div>
+
+          <div id="share-telegram" class="shrink cell">
+            <a
+              class="social-links__telegram show-for-medium"
+              href='{{ referral_link.share_via_telegram_desktop }}'
+              target="_blank"
+              id="telegram-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/telegram-icon.svg" /></a>
+            <a
+              class="social-links__telegram hide-for-medium"
+              href='{{ referral_link.share_via_telegram_mobile }}'
+              target="_blank"
+              id="telegram-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/telegram-icon.svg" /></a>
+          </div>
+
+          <div id="share-email" class="shrink cell">
+            <a
+              class="social-links__email"
+              href='{{ referral_link.share_via_email_mailto }}'
+              target="_blank"
+              id="email-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/email-icon.svg" /></a>
+          </div>
+
+          <div id="share-threads" class="shrink cell">
+            <a
+              class="social-links__threads show-for-medium"
+              href='{{ referral_link.share_via_threads_desktop }}'
+              target="_blank"
+              id="threads-desktop-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/threads-black-icon.svg" /></a>
+            <a
+              class="social-links__threads hide-for-medium"
+              href='{{ referral_link.share_via_threads_mobile }}'
+              target="_blank"
+              id="threads-mobile-button"><img class="social-links-logo" src="https://cdn.referralcandy.com/themes/optimized/threads-black-icon.svg" /></a>
+          </div>
+
+        </div>
+        <p class="text__subtle mt-sm mb-md">{{ "common.social_media_share_section.preview_assurance" | t }}</p>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x align-center">
+      <div class="small-10 medium-8 cell how-it-works-header-container">
+        <h1 id="how-it-works" class="how-it-works-header mt-sm">
+          {{ "common.how_it_works_section.header" | t }}
+        </h1>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x align-center mt-sm">
+      <div class="small-11 medium-8 large-5 grid-x icon-container">
+        <div class="small-4 medium-4 cell mt-xs">
+          <div class="grid-x grid-padding-x align-center">
+            <div class="small-3 medium-3 cell how-it-works-icon-background" ">
+              <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/message-circle@mobile.svg, small], [https://cdn.referralcandy.com/themes/evergreen-dev/page/message-circle.svg, medium]" class="how-it-works-icon" />
+            </div>
+          </div>
+        </div>
+        <div class="small-4 medium-4 cell mt-xs">
+          <div class="grid-x grid-padding-x align-center">
+            <div class="small-3 medium-3 cell how-it-works-icon-background">
+              <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/shopping-cart@mobile.svg, small], [https://cdn.referralcandy.com/themes/evergreen-dev/page/shopping-cart.svg, medium]" class="how-it-works-icon" />
+            </div>
+          </div>
+        </div>
+        <div class="small-4 medium-4 cell mt-xs">
+          <div class="grid-x grid-padding-x align-center">
+            <div class="small-3 medium-3 cell how-it-works-icon-background">
+              <img data-interchange="[https://cdn.referralcandy.com/themes/evergreen-dev/page/gift@mobile.svg, small], [https://cdn.referralcandy.com/themes/evergreen-dev/page/gift.svg, medium]" class="how-it-works-icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x align-center">
+      <div class="small-11 medium-8 large-5 grid-x align-center how-it-works-text">
+        <div class="small-4 medium-4 cell">
+          <p>
+            {{ "common.how_it_works_section.share_link_text" | t }}
+          </p>
+        </div>
+        <div class="small-4 medium-4 cell">
+          <p>
+            {{ "common.how_it_works_section.friend_buys_text" | t }}
+          </p>
+        </div>
+        <div class="small-4 medium-4 cell">
+          <p>
+            {{ "common.how_it_works_section.get_rewarded_text" | t }}
+          </p>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <!-- "View Rewards" CTA button when campaign is paused -->
+    <div class="grid-x align-center">
+      <div class="small-6 medium-3 cell">
+        <a href="{{ advocate.portal.rewards_page_url }}" class="button view-rewards-button">{{ "page.sharing.paused_cta_button" | t }}</a>
+      </div>
+    </div>
+  {% endif %}
+
+</div>

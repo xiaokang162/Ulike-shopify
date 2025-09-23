@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./test/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/us-christmas.css" />
+  <script src="./js/jquery.min.js"></script>
+  <script src="./test/js/swiper.min.js"></script>
+  <!-- <script src="./js/a1.js"></script> -->
+</head>
+<style>
+  .audio-box {
+    position: fixed;
+    top: 100px;
+    right: 15px;
+    z-index: 99;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+  }
+
+  .audio-box.play-tap {
+    animation: musicRotate 3s linear infinite;
+  }
+
+  .audio-box.pause-tap {
+    animation: none;
+  }
+
+  @keyframes musicRotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .audio-box svg {
+    display: block;
+    width: 100%;
+  }
+
+  .audio-box .ulike-zt {
+    display: none;
+  }
+
+  .pause-tap .ulike-zt {
+    display: block;
+  }
+
+  .pause-tap .ulike-pl {
+    display: none;
+  }
+
+  .audio-box .music-ulike {
+    position: absolute;
+    opacity: 0;
+    top: -10000px;
+    pointer-events: none;
+  }
+
+  @media (max-width: 991px) {
+    .audio-box {
+      top: 155px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>
+
+<body>
+  <script>
+    window.addEventListener("load", () => {
+      const audio = document.getElementById("music-ulike");
+      if (audio.paused) {
+      } else {
+        document.querySelector(".audio-box").classList.add("play-tap");
+        console.log("音频播放中");
+      }
+      document.querySelector('.audio-box').addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          document.querySelector(".audio-box").classList.remove("pause-tap");
+          document.querySelector(".audio-box").classList.add("play-tap")
+        } else {
+          audio.pause();
+          document.querySelector(".audio-box").classList.add("pause-tap");
+          document.querySelector(".audio-box").classList.remove("play-tap")
+        }
+      });
+    });
+  </script>
+  <div class="audio-box">
+    <audio id="music-ulike" class="music-ulike" src="./images46/chr.MP3" autoplay loop></audio>
+    <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none" class="ulike-pl">
+      <circle cx="25.5" cy="25.5" r="25.5" fill="url(#paint0_linear_211_5)" />
+      <path
+        d="M19.3117 17.5237V28.6965C18.4698 28.0734 17.3472 27.6652 16.2029 27.6652C13.2884 27.6652 11 29.9212 11 32.8218C11 35.615 13.3748 38 16.2029 38C19.1174 38 21.4059 35.7225 21.4059 32.8218V24.3348L29.9983 22.5515C31.0561 22.3366 31.8117 21.4127 31.8117 20.3384V20.1021L21.4275 22.2722V19.1782L33.9059 16.4924V27.6652C33.0639 27.0421 31.9413 26.6338 30.7971 26.6338C27.8826 26.6338 25.5941 28.9114 25.5941 31.812C25.5941 34.6052 27.9689 36.9902 30.7971 36.9902C33.7116 36.9902 36 34.7126 36 31.812V14L19.3117 17.5237ZM16.2029 35.9373C14.4326 35.9373 13.0941 34.5837 13.0941 32.8433C13.0941 31.103 14.4542 29.7493 16.2029 29.7493C17.9516 29.7493 19.3117 31.103 19.3117 32.8433C19.3117 34.5837 17.9516 35.9373 16.2029 35.9373ZM30.7539 34.906C28.9836 34.906 27.6451 33.5524 27.6451 31.812C27.6451 30.0716 29.0052 28.718 30.7539 28.718C32.5026 28.718 33.8627 30.0716 33.8627 31.812C33.8627 33.5524 32.5026 34.906 30.7539 34.906Z"
+        fill="white" />
+      <defs>
+        <linearGradient id="paint0_linear_211_5" x1="25.5" y1="63.75" x2="25.5" y2="-12.75"
+          gradientUnits="userSpaceOnUse">
+          <stop stop-color="#FF7595" />
+          <stop offset="1" stop-color="#E0004D" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none" class="ulike-zt">
+      <circle cx="25.5" cy="25.5" r="25.5" fill="url(#paint0_linear_207_24)" fill-opacity="0.44" />
+      <path
+        d="M20.9469 18.2795V27.2329C20.273 26.7275 19.3825 26.4146 18.4679 26.4146C16.1573 26.4146 14.3281 28.2438 14.3281 30.5543C14.3281 32.7927 16.2295 34.6941 18.4679 34.6941C20.7784 34.6941 22.6076 32.8649 22.6076 30.5543V23.7671L29.443 22.323C30.2854 22.1545 30.8871 21.4084 30.8871 20.5419V20.3494L22.6076 22.0823V19.6033L32.5478 17.4612V26.4146C31.8739 25.9092 30.9834 25.5963 30.0688 25.5963C27.7582 25.5963 25.9291 27.4255 25.9291 29.736C25.9291 31.9744 27.8305 33.8758 30.0688 33.8758C32.3794 33.8758 34.2086 32.0466 34.2086 29.736V15.4635L20.9469 18.2795ZM18.4679 33.0093C17.0478 33.0093 15.9888 31.9262 15.9888 30.5303C15.9888 29.1343 17.0719 28.0512 18.4679 28.0512C19.8638 28.0512 20.9469 29.1343 20.9469 30.5303C20.9469 31.9262 19.8638 33.0093 18.4679 33.0093ZM30.0688 32.191C28.6488 32.191 27.5898 31.1079 27.5898 29.7119C27.5898 28.316 28.6728 27.2329 30.0688 27.2329C31.4648 27.2329 32.5478 28.316 32.5478 29.7119C32.5478 31.1079 31.4648 32.191 30.0688 32.191Z"
+        fill="white" />
+      <path d="M39.09 34.0256L13.6055 14.4564L12.3448 16.0981L37.8294 35.6673L39.09 34.0256Z" fill="white" />
+      <path
+        d="M25.5 41C34.0604 41 41 34.0604 41 25.5C41 16.9396 34.0604 10 25.5 10C16.9396 10 10 16.9396 10 25.5C10 34.0604 16.9396 41 25.5 41Z"
+        stroke="white" stroke-width="2" stroke-miterlimit="10" />
+      <defs>
+        <linearGradient id="paint0_linear_207_24" x1="25.3505" y1="51" x2="25.6495" y2="-6.03129e-07"
+          gradientUnits="userSpaceOnUse">
+          <stop stop-color="#E8E8E8" />
+          <stop offset="1" stop-color="#656565" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <canvas id="snowCanvas" class="snowCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('snowCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 图片素材数组
+    const imageSources = [
+      './test/img/snowflake9.png', // 替换为实际图片路径
+      './test/img/snowflake10.png',
+      './test/img/snowflake11.png',
+      './test/img/snowflake12.png'
+    ];
+
+    const images = [];
+    let imagesLoaded = 0;
+
+    // 预加载图片
+    imageSources.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        imagesLoaded++;
+        if (imagesLoaded === imageSources.length) {
+          startAnimation(); // 所有图片加载完成后开始动画
+        }
+      };
+      images.push(img);
+    });
+
+    // 雪花类（基础雪花）
+    class Snowflake {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width; // 初始横坐标
+        this.y = Math.random() * -canvas.height; // 初始纵坐标
+        this.size = Math.random() * 5 + 1; // 大小随机
+        this.speedY = Math.random() * 1 + 0.1; // 垂直速度随机
+        this.speedX = Math.random() * 1 - 0.5; // 水平速度随机
+        this.opacity = Math.random() * 0.5 + 0.5; // 透明度随机
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        // 如果雪花超出屏幕，重置其位置
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+        // 设置模糊和发光效果
+        ctx.shadowBlur = this.size * 2;
+        ctx.shadowColor = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // 图片雪花类
+    class ImageSnowflake {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.size = Math.random() * 10 + 15; // 图片大小随机
+        this.speedY = Math.random() * 1 + 0.1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.opacity = Math.random() * 0.5 + 0.5;
+        this.image = images[Math.floor(Math.random() * images.length)]; // 随机选择图片
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    // 初始化两类雪花数组
+    const snowflakes = [];
+    const imageSnowflakes = [];
+
+    // 创建基础雪花和图片雪花
+    for (let i = 0; i < 60; i++) {
+      snowflakes.push(new Snowflake());
+    }
+    for (let i = 0; i < 30; i++) {
+      imageSnowflakes.push(new ImageSnowflake());
+    }
+
+    // 动画循环
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 更新并绘制基础雪花
+      snowflakes.forEach(snowflake => {
+        snowflake.update();
+        snowflake.draw();
+      });
+
+      // 更新并绘制图片雪花
+      imageSnowflakes.forEach(imageSnowflake => {
+        imageSnowflake.update();
+        imageSnowflake.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // 窗口大小调整时更新画布大小
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // 启动动画
+    function startAnimation() {
+      animate();
+    }
+  </script>
+  <div class="christmas-banner">
+    <picture>
+      <source srcset="./images46/banner-m.jpg" media="(max-width: 991px)">
+      <img src="./images46/banner.jpg" alt="" class="banner-img">
+    </picture>
+    <div class="christmas-banner-cont">
+      <div class="container">
+        <div class="christmas-banner-cont-txt">
+          <div class="christmas-banner-img">
+            <img src="./images46/b1.png" alt="" class="img">
+            <img src="./images46/b2.png" alt="" class="g-s">
+          </div>
+          <div class="christmas-banner-p">This holiday season, find the gift of getting smooth and ready to glow with
+            Ulike IPL!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="turntable-box">
+    <div class="container">
+      <div class="turntable-cont">
+        <div class="turntable-left">
+          <img src="./images46/a.png" alt="" class="img img-z">
+          <img src="./images46/a1.png" alt="" class="img img-p">
+          <img src="./images46/a2.png" alt="" class="img img-d">
+          <img src="./images46/a3.png" alt="" class="img img-s">
+          <img src="./images46/a4.png" alt="" class="img img-g">
+          <img src="./images46/a5.png" alt="" class="img img-g img-gt">
+          <img src="./images46/a6.png" alt="" class="img img-bg">
+        </div>
+        <div class="turntable-right">
+          <div class="turntable-cont-txt">
+            <div class="turntable-cont-h3">
+              Up to 50% OFF Discount
+            </div>
+            <div class="turntable-cont-sub">Use your discount code by December 22nd. </div>
+            <div class="turntable-cont-btn btn-diy">
+              <div class="btn-txt" text="Spin to win">
+                <span>Spin to win</span>
+              </div>
+            </div>
+            <div class="turntable-cont-p">*Limited to one spin per person. </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .u-shape {
+      position: relative;
+      width: 500px;
+      height: 471px;
+      clip-path: url(#u-shape-clip);
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .u-shape img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .u-shape svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      display: block;
+    }
+  </style>
+  <div class="a">
+    <div class="u-shape">
+      <img src="images46/banner-m.jpg" alt="U Shape Image" />
+    </div>
+  </div>
+
+  <svg width="0" height="0">
+    <clipPath id="u-shape-clip" clipPathUnits="objectBoundingBox">
+      <path d="M 0,0 H 1 V 0.55 A 0.5,0.5 0 0,1 0.5,1 A 0.5,0.45 0 0,1 0,0.55 Z" />
+    </clipPath>
+  </svg>
+</body>
+
+</html>

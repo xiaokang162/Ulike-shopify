@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #myVideo {
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <video id="myVideo" src="../images5/video.mp4"></video>
+</body>
+<script>
+  function simulateVideoProgress(videoElement, targetPercent, duration, loop = false) {
+    // 确保视频元数据已加载
+    if (isNaN(videoElement.duration) || videoElement.duration === Infinity) {
+      videoElement.addEventListener('loadedmetadata', () => {
+        simulateVideoProgress(videoElement, targetPercent, duration, loop);
+      }, { once: true });
+      return;
+    }
+
+
+    // 确保 targetPercent 在 0 到 100 之间
+    targetPercent = Math.max(0, Math.min(100, targetPercent));
+    const targetTime = (targetPercent / 100) * videoElement.duration;
+    const startTime = videoElement.currentTime;
+    const stepTime = 50; // 每 50ms 更新一次
+    const steps = duration / stepTime; // 更新次数
+    const timeIncrement = (targetTime - startTime) / steps;
+
+    let currentStep = 0;
+
+    // 清除现有定时器，防止重复
+    if (videoElement.simulationInterval) clearInterval(videoElement.simulationInterval);
+
+    // 模拟播放效果
+    videoElement.simulationInterval = setInterval(() => {
+      if (currentStep >= steps) {
+        videoElement.currentTime = targetTime;
+        clearInterval(videoElement.simulationInterval);
+
+        // 如果设置了循环，则重新开始模拟播放
+        if (loop) {
+          videoElement.currentTime = 0; // 重置进度到开头
+          simulateVideoProgress(videoElement, targetPercent, duration, loop);
+        }
+        return;
+      }
+
+      // 更新进度
+      videoElement.currentTime += timeIncrement;
+      currentStep++;
+    }, stepTime);
+  }
+
+  // 使用示例
+  const video = document.getElementById("myVideo");
+  simulateVideoProgress(video, 100, 5000, true); // 在 5 秒内将视频进度条推进到 100%，并循环
+
+
+
+</script>
+
+</html>

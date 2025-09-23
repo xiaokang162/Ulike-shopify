@@ -690,7 +690,7 @@
               <div class="u-story-group-arraw-item"></div>
             </div>
           </div>
-          
+
           <div class="u-story-group-box">
             <div class="u-story-group-list">
               <div class="u-story-group-item">
@@ -754,104 +754,104 @@
     </div>
   </div>
 
-<script>
-  function uStoryGroupSlider(name){
-    let $p=$(name)
-    let $list = $p.find('.u-story-group-list')
-    let $box = $p.find('.u-story-group-box')
-    let $bottomArrow = $p.find('.u-story-group-arraw')
-    let length = $list.find('.u-story-group-item').length
-    let itemHeight = $list.find('.u-story-group-item')[0].offsetHeight
-    let index = -2 //[0,-length-2]
-    let isLeftBtn = 1 //0左 1右
-    let timer = null
-    let timers = null
-    let dateTb = 0
-    let dateTs = 0
-    if(length<4) return
-    $box.css({'height': (itemHeight + 30)*3 - 30+'px'})
-    $list.html(
-    $list.find('.u-story-group-item')[length-2].outerHTML+
-    $list.find('.u-story-group-item')[length-1].outerHTML+
-    $list.html()+
-    $list.find('.u-story-group-item')[0].outerHTML+
-    $list.find('.u-story-group-item')[1].outerHTML)
-    skewTransform(true)
-    $p.find('.u-story-group-arraw-item').click(function() {
-      let sIndex = $(this).index()
-      if(+new Date() - dateTb<600) return
-      dateTb = +new Date()
-      isLeftBtn = sIndex
-      index += sIndex ? -1 : 1
-      clearInterval(timer)
-      changeLeft()
-      timer = setInterval(() => {
-        isLeftBtn = 1
-        index--
+  <script>
+    function uStoryGroupSlider(name) {
+      let $p = $(name)
+      let $list = $p.find('.u-story-group-list')
+      let $box = $p.find('.u-story-group-box')
+      let $bottomArrow = $p.find('.u-story-group-arraw')
+      let length = $list.find('.u-story-group-item').length
+      let itemHeight = $list.find('.u-story-group-item')[0].offsetHeight
+      let index = -2 //[0,-length-2]
+      let isLeftBtn = 1 //0左 1右
+      let timer = null
+      let timers = null
+      let dateTb = 0
+      let dateTs = 0
+      if (length < 4) return
+      $box.css({ 'height': (itemHeight + 30) * 3 - 30 + 'px' })
+      $list.html(
+        $list.find('.u-story-group-item')[length - 2].outerHTML +
+        $list.find('.u-story-group-item')[length - 1].outerHTML +
+        $list.html() +
+        $list.find('.u-story-group-item')[0].outerHTML +
+        $list.find('.u-story-group-item')[1].outerHTML)
+      skewTransform(true)
+      $p.find('.u-story-group-arraw-item').click(function () {
+        let sIndex = $(this).index()
+        if (+new Date() - dateTb < 600) return
+        dateTb = +new Date()
+        isLeftBtn = sIndex
+        index += sIndex ? -1 : 1
+        clearInterval(timer)
         changeLeft()
-      }, 5000);
-    })
-    function skewTransform(auto,tIndex = index){
-      let translateY = (itemHeight + 30) * tIndex
-      if(auto){
-        $list.css({
-          'transform': 'translateY(' + translateY  + 'px)',
-          'transition': ' all 0s ease'
-        })
-      }else{
-        $list.css({
-          'transform': 'translateY(' + translateY + 'px)',
-          'transition': ' all .6s ease'
-        })
+        timer = setInterval(() => {
+          isLeftBtn = 1
+          index--
+          changeLeft()
+        }, 5000);
+      })
+      function skewTransform(auto, tIndex = index) {
+        let translateY = (itemHeight + 30) * tIndex
+        if (auto) {
+          $list.css({
+            'transform': 'translateY(' + translateY + 'px)',
+            'transition': ' all 0s ease'
+          })
+        } else {
+          $list.css({
+            'transform': 'translateY(' + translateY + 'px)',
+            'transition': ' all .6s ease'
+          })
+        }
       }
-    }
-    function changeLeft() {
-      if(isLeftBtn && index == (-length-2)){
-          skewTransform(true,-1)
+      function changeLeft() {
+        if (isLeftBtn && index == (-length - 2)) {
+          skewTransform(true, -1)
           index = -2
-      }
+        }
 
-      if(!isLeftBtn && index == 0){
-          skewTransform(true,-length-1)
+        if (!isLeftBtn && index == 0) {
+          skewTransform(true, -length - 1)
           index = -length
-      }
-      setTimeout(() => {
+        }
+        setTimeout(() => {
           skewTransform()
-      }, 10);
-    }
+        }, 10);
+      }
 
-    clearInterval(timer)
-    timer = setInterval(() => {
-      isLeftBtn = 1
-      index--
-      changeLeft()
-    }, 5000);
-    $list.hover(function(){
-      clearInterval(timer)
-    },function(){
       clearInterval(timer)
       timer = setInterval(() => {
         isLeftBtn = 1
         index--
         changeLeft()
       }, 5000);
-    }) 
-  }
-
-  window.addEventListener('load', function () {
-    if(window.innerWidth>991){
-      uStoryGroupSlider('.u-story-group')
+      $list.hover(function () {
+        clearInterval(timer)
+      }, function () {
+        clearInterval(timer)
+        timer = setInterval(() => {
+          isLeftBtn = 1
+          index--
+          changeLeft()
+        }, 5000);
+      })
     }
-    $('html').on('click', '.u-story-group .u-blog-video-btn', function () {
-      $('.brand-story-popup iframe').attr('src', $(this).attr('data-src'))
-      $('.brand-story-popup').fadeIn()
+
+    window.addEventListener('load', function () {
+      if (window.innerWidth > 991) {
+        uStoryGroupSlider('.u-story-group')
+      }
+      $('html').on('click', '.u-story-group .u-blog-video-btn', function () {
+        $('.brand-story-popup iframe').attr('src', $(this).attr('data-src'))
+        $('.brand-story-popup').fadeIn()
+      })
+      $('html').on('click', '.brand-story-popup .brand-story-popup-close', function () {
+        $('.brand-story-popup').fadeOut()
+        $('.brand-story-popup iframe').attr('src', '')
+      })
     })
-    $('html').on('click', '.brand-story-popup .brand-story-popup-close', function () {
-      $('.brand-story-popup').fadeOut()
-      $('.brand-story-popup iframe').attr('src', '')
-    })
-  })
-</script>
+  </script>
   <div class="ipl-certificates" style="--bg-img: url(../images20/f1.jpg);--bg-img-m: url(../images20/f1-m.jpg);">
     <div class="container">
       <div class="title-diy to-top">
@@ -1395,8 +1395,8 @@
         let answer = $parent.attr('data-r') || 0;
         let index = $parent.find('.check').index();
         let pIndex = $parent.attr('index');
-        if(answer==2){
-          index = index==0?1:0;
+        if (answer == 2) {
+          index = index == 0 ? 1 : 0;
         }
         $list.find('.labs-review-item[index=' + pIndex + ']').each(function () {
           let $pThis = $(this);
@@ -1523,7 +1523,8 @@
           <input type="hidden" name="contact[context]" value="">
           <div class="labs-form-input to-top" style="transition-delay: 0.2s">
             <img src="./images24/send-email.svg" alt="">
-            <input type="email" id="newsletter[footer][contact][email]" name="contact[email]" required="" placeholder="Enter your email" />
+            <input type="email" id="newsletter[footer][contact][email]" name="contact[email]" required=""
+              placeholder="Enter your email" />
             <div class="form-mark"></div>
             <button type="submit" class="labs-form-btn btn-diy">
               <div class="btn-txt" text="SUBSCRIBE">
@@ -1537,6 +1538,39 @@
   </div>
 </body>
 <script src="./js/theme.js"></script>
-<script src="./js/script.js"></script>
+<!-- <script src="./js/script.js"></script> -->
+<script>
+    (function () {
+      // 定义IntersectionObserver的选项
+      const options = {
+        root: null, // 视口为浏览器窗口
+        rootMargin: '0px 0px 0px 0px', // 下方多100px的视口区域
+        threshold: 0 // 只要元素出现在视口中就触发回调
+      };
+
+      // 定义回调函数
+      function handleIntersection(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+            observer.unobserve(entry.target); // 触发一次后停止观察
+          }
+        });
+      }
+
+      // 创建IntersectionObserver实例
+      const observer = new IntersectionObserver(handleIntersection, options);
+
+      // 监听页面加载事件
+      window.addEventListener('load', () => {
+        const animateElements = document.querySelectorAll('.to-left,.to-edge,.to-top,.slide-to-left,.to-opacity,.to-top1,.text-top,.text-top-btn,.slide-to-left-white,.line-top');
+        animateElements.forEach(element => {
+          observer.observe(element);
+        });
+      });
+    })();
+
+
+</script>
 
 </html>

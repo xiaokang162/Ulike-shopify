@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mixed Snowfall Effect</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #001d3d, #003566);
+    }
+
+    canvas {
+      display: block;
+      pointer-events: none;
+    }
+
+    .snakeSegment {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+    }
+
+    .snakeSegment img {
+      max-width: 100%;
+      display: block;
+    }
+  </style>
+  <script src="../js/jquery.min.js"></script>
+  <script src="./js/a1.js"></script>
+</head>
+
+<body>
+  <canvas id="snowCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('snowCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 图片素材数组
+    const imageSources = [
+      './img/snowflake9.png', // 替换为实际图片路径
+      './img/snowflake10.png',
+      './img/snowflake11.png',
+      './img/snowflake12.png'
+    ];
+
+    const images = [];
+    let imagesLoaded = 0;
+
+    // 预加载图片
+    imageSources.forEach(src => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        imagesLoaded++;
+        if (imagesLoaded === imageSources.length) {
+          startAnimation(); // 所有图片加载完成后开始动画
+        }
+      };
+      images.push(img);
+    });
+
+    // 雪花类（基础雪花）
+    class Snowflake {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width; // 初始横坐标
+        this.y = Math.random() * -canvas.height; // 初始纵坐标
+        this.size = Math.random() * 5 + 1; // 大小随机
+        this.speedY = Math.random() * 1 + 0.1; // 垂直速度随机
+        this.speedX = Math.random() * 1 - 0.5; // 水平速度随机
+        this.opacity = Math.random() * 0.5 + 0.5; // 透明度随机
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        // 如果雪花超出屏幕，重置其位置
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+
+        // 设置模糊和发光效果
+        ctx.shadowBlur = this.size * 2;
+        ctx.shadowColor = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // 图片雪花类
+    class ImageSnowflake {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * -canvas.height;
+        this.size = Math.random() * 10 + 15; // 图片大小随机
+        this.speedY = Math.random() * 1 + 0.1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.opacity = Math.random() * 0.5 + 0.5;
+        this.image = images[Math.floor(Math.random() * images.length)]; // 随机选择图片
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+
+        if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.drawImage(this.image, this.x, this.y, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    // 初始化两类雪花数组
+    const snowflakes = [];
+    const imageSnowflakes = [];
+
+    // 创建基础雪花和图片雪花
+    for (let i = 0; i < 60; i++) {
+      snowflakes.push(new Snowflake());
+    }
+    for (let i = 0; i < 30; i++) {
+      imageSnowflakes.push(new ImageSnowflake());
+    }
+
+    // 动画循环
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 更新并绘制基础雪花
+      snowflakes.forEach(snowflake => {
+        snowflake.update();
+        snowflake.draw();
+      });
+
+      // 更新并绘制图片雪花
+      imageSnowflakes.forEach(imageSnowflake => {
+        imageSnowflake.update();
+        imageSnowflake.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    // 窗口大小调整时更新画布大小
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // 启动动画
+    function startAnimation() {
+      animate();
+    }
+  </script>
+</body>
+
+</html>

@@ -9,9 +9,129 @@
   <link rel="stylesheet" href="./css/comm.css" />
   <link rel="stylesheet" href="./css/bts.css" />
   <script src="./js/jquery.min.js"></script>
+  <style>
+    .banner-box {
+      position: relative;
+    }
+
+    .img {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .img-a10 {
+      position: absolute;
+      width: 17.72%;
+      left: 46.5%;
+      bottom: 16%;
+      z-index: 2;
+      animation: imgam 2s linear infinite;
+    }
+
+    .img-a3 {
+      position: absolute;
+      width: 14.188%;
+      right: 15.8%;
+      bottom: 20%;
+      z-index: 2;
+      animation: imgam 2s 1s linear infinite;
+    }
+
+    @keyframes imgam {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 991px) {
+      .img-a10 {
+        width: 37.74%;
+        left: 10.5%;
+        bottom: 23%;
+      }
+
+      .img-a3 {
+        width: 28.04%;
+        right: 11.8%;
+        bottom: 24%;
+      }
+    }
+
+    .loading-p {
+      position: relative;
+      border-color: #e0004d;
+    }
+
+    .loading-p * {
+      opacity: 0;
+    }
+
+    .loading-span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 9;
+      background: #e0004d;
+      opacity: 1;
+    }
+
+    .loading-span::before {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #fff;
+      border-top-color: rgba(255, 255, 255, 0.2);
+      border-right-color: rgba(255, 255, 255, 0.2);
+      border-bottom-color: rgba(255, 255, 255, 0.2);
+      border-radius: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      animation: circle infinite 0.75s linear;
+    }
+
+    @keyframes circle {
+      0% {
+        transform: translate(-50%, -50%) rotate(0);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="banner-box">
+    <picture>
+      <source srcset="./images39/banner-m.jpg" media="(max-width: 991px)">
+      <img class="img" src="./images39/banner.png">
+    </picture>
+    <picture>
+      <source srcset="./images39/A10-m.png" media="(max-width: 991px)">
+      <img class="img-a10" src="./images39/A10.png">
+    </picture>
+    <picture>
+      <source srcset="./images39/A3-m.png" media="(max-width: 991px)">
+      <img class="img-a3" src="./images39/A3.png">
+    </picture>
+  </div>
   <div class="benefits-list">
     <div class="container">
       <div class="benefits-title">Get Exclusive Benefits</div>
@@ -169,9 +289,19 @@
     </div>
   </div>
   <script>
+    function showLoading($p, isShow = true) {
+      if (isShow) {
+        $p.addClass('loading-p')
+        $p.append('<span class="loading-span"></span>')
+      } else {
+        $p.removeClass('loading-p')
+        $p.find('.loading-span').remove()
+      }
+    }
     window.addEventListener('load', function () {
       $('.subscribe-box-btn').click(function () {
-        $('.subscribe-popup').addClass('open')
+        // $('.subscribe-popup').addClass('open')
+        showLoading($(this))
       })
       $('.subscribe-popup-close').click(function () {
         $('.subscribe-popup').removeClass('open')

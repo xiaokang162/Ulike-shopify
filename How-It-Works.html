@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/hiw.css" />
+  <script src="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.aio.min.js"></script>
+  <script src="./js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="sticky-tab">
+    <h3 class="sticky-tab-title">More than hair removal.</h3>
+    <div class="sticky-tab-list">
+      <div class="sticky-tab-item active">
+        Air 10
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+          <path d="M0.589844 6.32385L13.6768 6.32324" stroke="#756B6E" stroke-width="0.608696" />
+          <path d="M10.9375 3.58398L14.1429 6.32372L10.9375 8.99407" stroke="#756B6E" stroke-width="0.608696"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="sticky-tab-item">
+        Air 3
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+          <path d="M0.589844 6.32385L13.6768 6.32324" stroke="#756B6E" stroke-width="0.608696" />
+          <path d="M10.9375 3.58398L14.1429 6.32372L10.9375 8.99407" stroke="#756B6E" stroke-width="0.608696"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="sticky-tab-item">
+        Air 10
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+          <path d="M0.589844 6.32385L13.6768 6.32324" stroke="#756B6E" stroke-width="0.608696" />
+          <path d="M10.9375 3.58398L14.1429 6.32372L10.9375 8.99407" stroke="#756B6E" stroke-width="0.608696"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="sticky-tab-item">
+        Air 10
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12" fill="none">
+          <path d="M0.589844 6.32385L13.6768 6.32324" stroke="#756B6E" stroke-width="0.608696" />
+          <path d="M10.9375 3.58398L14.1429 6.32372L10.9375 8.99407" stroke="#756B6E" stroke-width="0.608696"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+    </div>
+    <div class="sticky-tab-product">
+      <div class="sticky-tab-product-img">
+        <div class="sticky-tab-tag">New</div>
+        <img src="./images50/h1.jpg" alt="" class="sticky-tab-img">
+      </div>
+      <div class="sticky-tab-product-info">
+        <h3 class="sticky-tab-product-title">Air 10</h3>
+        <div class="sticky-tab-product-btn">
+          SHOP NOW $329.00 USD
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    if (window.innerWidth > 1200) {
+      document.addEventListener("DOMContentLoaded", () => {
+        const stickyItems = document.querySelectorAll('.sticky-tab .sticky-tab-item');
+        window.addEventListener("scroll", () => {
+          let scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+          stickyItems.forEach((item) => {
+            if (item.getAttribute('data-id')) {
+              let rect = document.getElementById(item.getAttribute('data-id')).getBoundingClientRect();
+              let offsetTop = rect.top + window.scrollY; // 计算元素的绝对位置
+              if (scrollPosition >= offsetTop) {
+                item.classList.add("active");
+              } else {
+                item.classList.remove("active");
+              }
+            }
+          });
+        });
+      });
+      document.querySelectorAll('.sticky-tab .sticky-tab-item').forEach(button => {
+        button.addEventListener('click', () => {
+          const targetId = button.getAttribute('data-id');
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      // function handleStickyPosition(a, b) {
+      //   if (!a || !b) return;
+      //   function updatePosition() {
+      //     const rect = b.getBoundingClientRect();
+      //     const offsetTop = window.scrollY + rect.top;
+      //     const offsetLeft = window.scrollX + rect.left + 40;
+
+      //     if (window.scrollY >= offsetTop) {
+      //       a.style.position = 'fixed';
+      //       a.style.top = '85px';
+      //       a.style.left = `${offsetLeft}px`;
+      //     } else {
+      //       a.style.position = 'absolute';
+      //       a.style.top = `${offsetTop}px`;
+      //       a.style.left = `${offsetLeft}px`;
+      //     }
+      //   }
+
+      //   window.addEventListener('scroll', updatePosition);
+      //   window.addEventListener('resize', updatePosition);
+      //   updatePosition();
+      // }
+
+      function handleStickyPosition(a, b, c) {
+        if (!a || !b || !c) return;
+
+        function updatePosition() {
+          const rectB = b.getBoundingClientRect();
+          const rectC = c.getBoundingClientRect();
+          const offsetTopB = window.scrollY + rectB.top;
+          const offsetLeftB = window.scrollX + rectB.left + 40;
+          const offsetTopC = window.scrollY + rectC.top - a.offsetHeight;
+
+          if (window.scrollY >= offsetTopB && window.scrollY < offsetTopC) {
+            // 固定在顶部
+            a.style.position = 'fixed';
+            a.style.top = '85px';
+            a.style.left = `${offsetLeftB}px`;
+          } else if (window.scrollY >= offsetTopC) {
+            // 变为 absolute，跟随 c 向上滚动
+            a.style.position = 'absolute';
+            a.style.top = `${offsetTopC}px`;
+            a.style.left = `${offsetLeftB}px`;
+          } else {
+            // 初始位置
+            a.style.position = 'absolute';
+            a.style.top = `${offsetTopB}px`;
+            a.style.left = `${offsetLeftB}px`;
+          }
+          a.classList.add('show-tab');
+        }
+
+        window.addEventListener('scroll', updatePosition);
+        window.addEventListener('resize', updatePosition);
+        updatePosition();
+      }
+
+      window.addEventListener('load', function () {
+        // 使用方法
+        const a = document.querySelector('.sticky-tab');
+        const b = document.querySelector('.sticky-align-box .container');
+        const c = document.querySelector('.usage-frequency');
+        handleStickyPosition(a, b, c);
+      })
+    }
+  </script>
+  <div class="product-tab margin-left-diy sticky-align-box">
+    <div class="container">
+      <div class="product-tab-list">
+        <div class="product-tab-item active">
+          <span>Air 10</span>
+          <img src="./images50/d1.png" alt="" class="img">
+        </div>
+        <div class="product-tab-item">
+          <span>Air 3</span>
+          <img src="./images50/d1.png" alt="" class="img">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function productStickyPosition(a) {
+      if (!a || window.innerWidth > 991) return;
+      function updatePosition() {
+        const rectA = a.getBoundingClientRect();
+        const offsetTopC = window.scrollY + rectA.top;
+
+        if (window.scrollY >= offsetTopC) {
+          document.querySelector('.product-tab').style.position = 'relative';
+        } else {
+          document.querySelector('.product-tab').style.position = 'sticky';
+        }
+      }
+
+      window.addEventListener('scroll', updatePosition);
+      window.addEventListener('resize', updatePosition);
+      updatePosition();
+    }
+    window.addEventListener('load', function () {
+      productStickyPosition(document.querySelector('.help-tips'))
+    })
+
+
+    document.querySelectorAll('.product-tab .product-tab-item').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-id');
+        const targetId1 = button.getAttribute('data-id1');
+        document.querySelectorAll('.' + targetId).forEach(item => {
+          item.style.display = 'block';
+        })
+        document.querySelectorAll('.' + targetId1).forEach(item => {
+          item.style.display = 'none';
+        })
+        document.querySelectorAll('.product-tab .product-tab-item').forEach(item => {
+          item.classList.remove('active');
+        })
+        button.classList.add('active');
+      });
+    })
+  </script>
+  <div class="point-sale-new margin-left-diy">
+    <div class="container">
+      <div class="point-sale-list">
+        <div class="point-sale-item">
+          <img src="./images50/e1.svg" alt="" class="img">
+          <span>SkinSensor</span>
+        </div>
+        <div class="point-sale-item">
+          <img src="./images50/e2.svg" alt="" class="img">
+          <span>Sapphire Ice Cooling</span>
+        </div>
+        <div class="point-sale-item">
+          <img src="./images50/e3.svg" alt="" class="img">
+          <span>Dual Lights</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="use-step margin-left-diy">
+    <div class="container">
+      <h3 class="use-step-title">How to Use</h3>
+      <div class="use-step-cont">
+        <div class="use-step-jump">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M7 5.99854L12 10.9985L17 5.99854" stroke="#E0004D" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M7 10.9985L12 15.9985L17 10.9985" stroke="#E0004D" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          FAQs
+        </div>
+        <div class="use-step-tab">
+          <div class="use-step-tab-item active">STEP 1</div>
+          <div class="use-step-tab-item">STEP 2</div>
+          <div class="use-step-tab-item">STEP 3</div>
+          <div class="use-step-tab-item">STEP 4</div>
+        </div>
+        <div class="use-step-list">
+          <div class="use-step-item active">
+            <div class="use-step-item-text">
+              <div class="use-step-item-text-top">
+                <div class="use-step-item-text-tag">STEP 1</div>
+                <h4 class="use-step-item-text-title">Prep Skin</h4>
+                <p class="use-step-item-text-p">Use the included razor to shave any hairs longer than 2 mm (1/16 in) in
+                  the treatment area.</p>
+              </div>
+              <p class="use-step-item-text-sub">Safety Tip Description</p>
+            </div>
+            <div class="use-step-item-img">
+              <div class="use-step-item-img-box">
+                <img src="./images50/i1.jpg" alt="" class="use-step-item-pic">
+              </div>
+            </div>
+          </div>
+          <div class="use-step-item">
+            <div class="use-step-item-text">
+              <div class="use-step-item-text-top">
+                <div class="use-step-item-text-tag">STEP 2</div>
+                <h4 class="use-step-item-text-title">Prep Skin</h4>
+                <p class="use-step-item-text-p">Use the included razor to shave any hairs longer than 2 mm (1/16 in) in
+                  the treatment area.</p>
+              </div>
+              <p class="use-step-item-text-sub">Safety Tip Description</p>
+            </div>
+            <div class="use-step-item-img">
+              <div class="use-step-item-img-box">
+                <img src="./images50/i1.jpg" alt="" class="use-step-item-pic">
+              </div>
+            </div>
+          </div>
+          <div class="use-step-item other-step">
+            <div class="use-step-item-text">
+              <div class="use-step-item-text-top">
+                <div class="use-step-item-text-tag">STEP 3</div>
+                <h4 class="use-step-item-text-title">Select Mode</h4>
+                <div class="use-step-mode">
+                  <div class="use-step-mode-item active">
+                    <div class="use-step-mode-title">
+                      <div class="use-step-mode-title-left">
+                        <img src="./images50/i2.svg" alt="">
+                        Fast Mode
+                      </div>
+                      <div class="use-step-mode-show open"></div>
+                    </div>
+                    <p class="use-step-mode-p">Flashing every 0.5 seconds, it's ideal for maintenance treatments on
+                      larger areas and for quick touch-ups.</p>
+                    <div class="use-step-mode-img">
+                      <div class="use-step-mode-label">Fast Mode</div>
+                      <div class="use-step-mode-img-box">
+                        <img src="./images50/i2.jpg" alt="" class="use-step-mode-pic">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="use-step-mode-item">
+                    <div class="use-step-mode-title">
+                      <div class="use-step-mode-title-left">
+                        <img src="./images50/i3.svg" alt="">
+                        Normal Mode
+                      </div>
+                      <div class="use-step-mode-show"></div>
+                    </div>
+                    <p class="use-step-mode-p">
+                      The perfect balance between power and flash speed, suitable for removing finer to normal hair on
+                      most body parts.
+                    </p>
+                    <div class="use-step-mode-img">
+                      <div class="use-step-mode-label">Normal Mode</div>
+                      <div class="use-step-mode-img-box">
+                        <img src="./images50/i2.jpg" alt="" class="use-step-mode-pic">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="use-step-mode-item">
+                    <div class="use-step-mode-title">
+                      <div class="use-step-mode-title-left">
+                        <img src="./images50/i4.svg" alt="">
+                        High Mode
+                      </div>
+                      <div class="use-step-mode-show"></div>
+                    </div>
+                    <p class="use-step-mode-p">
+                      The perfect balance between power and flash speed, suitable for removing finer to normal hair on
+                      most body parts.
+                    </p>
+                    <div class="use-step-mode-img">
+                      <div class="use-step-mode-label">High Mode</div>
+                      <div class="use-step-mode-img-box">
+                        <img src="./images50/i2.jpg" alt="" class="use-step-mode-pic">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="use-step-mode-item">
+                    <div class="use-step-mode-title">
+                      <div class="use-step-mode-title-left">
+                        <img src="./images50/i5.svg" alt="">
+                        SHR Mode
+                      </div>
+                      <div class="use-step-mode-show"></div>
+                    </div>
+                    <p class="use-step-mode-p">Flashing every 0.5 seconds, it's ideal for maintenance treatments on
+                      larger areas and for quick touch-ups.</p>
+                    <div class="use-step-mode-img">
+                      <div class="use-step-mode-label">SHR Mode</div>
+                      <div class="use-step-mode-img-box">
+                        <img src="./images50/i2.jpg" alt="" class="use-step-mode-pic">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="use-step-item-text-sub">Safety Tip Description</p>
+            </div>
+          </div>
+          <div class="use-step-item">
+            <div class="use-step-item-text">
+              <div class="use-step-item-text-top">
+                <div class="use-step-item-text-tag">STEP 4</div>
+                <h4 class="use-step-item-text-title">Prep Skin</h4>
+                <p class="use-step-item-text-p">Use the included razor to shave any hairs longer than 2 mm (1/16 in) in
+                  the treatment area.</p>
+              </div>
+              <p class="use-step-item-text-sub">Safety Tip Description</p>
+            </div>
+            <div class="use-step-item-img">
+              <div class="use-step-item-img-box">
+                <img src="./images50/i1.jpg" alt="" class="use-step-item-pic">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script>
+    document.querySelector('.use-step .use-step-jump').addEventListener('click', (e) => {
+      const targetId = e.target.getAttribute('data-id');
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+    document.querySelectorAll('.use-step .use-step-tab-item').forEach((item, index) => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.use-step .use-step-tab-item').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.use-step .use-step-tab-item')[index].classList.add('active');
+        document.querySelectorAll('.use-step .use-step-item').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.use-step .use-step-item')[index].classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.use-step .use-step-mode-title').forEach(item => {
+      item.addEventListener('click', function () {
+        let parentItem = this.closest('.use-step-mode-item');
+        if (window.innerWidth < 991) {
+          this.querySelector('.use-step-mode-show').classList.toggle('open');
+        } else {
+          this.querySelector('.use-step-mode-show').classList.add('open');
+        }
+        if (parentItem) {
+          if (window.innerWidth < 991) return parentItem.classList.toggle('active');
+          parentItem.classList.add('active');
+          parentItem.parentElement.querySelectorAll('.use-step-mode-item').forEach(sibling => {
+            if (sibling !== parentItem) {
+              sibling.classList.remove('active');
+              sibling.querySelector('.use-step-mode-show').classList.remove('open');
+            }
+          });
+        }
+      });
+    });
+  </script>
+  <div class="usage-frequency margin-left-diy">
+    <div class="container">
+      <h3 class="usage-frequency-title">Usage Frequency</h3>
+      <div class="usage-frequency-cont">
+        <div class="usage-frequency-top">
+          <div class="usage-frequency-line"></div>
+          <img src="./images50/f1.png" alt="" class="usage-frequency-pic">
+        </div>
+        <div class="usage-frequency-arraws">
+          <div class="usage-frequency-arraw disable-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M23.6003 33.6395L24.1054 34.1445L25.1155 33.1344L24.6104 32.6293L19.9992 28.0181L15.6526 23.6715C15.0947 23.1136 14.1902 23.1136 13.6323 23.6715L18.9891 29.0282L23.6003 33.6395ZM11.1003 20.1293C10.8213 20.4083 10.8213 20.8605 11.1003 21.1395C11.1942 21.2334 11.3078 21.2957 11.4278 21.3264L11.4278 21.3487L11.6038 21.3487L11.6069 21.3487L12.1421 21.3487L19.4639 21.3487L26.7857 21.3487L28.5715 21.3487C29.3605 21.3487 30.0001 20.7091 30.0001 19.9201L26.7857 19.9201L13.3298 19.9201L24.6104 8.63946L25.1155 8.13438L24.1054 7.12423L23.6003 7.6293L11.1003 20.1293Z"
+                fill="#B3ADAD" />
+              <circle cx="20" cy="20.5732" r="19.2857" transform="rotate(-180 20 20.5732)" stroke="#B3ADAD"
+                stroke-width="1.42857" />
+            </svg>
+          </div>
+          <div class="usage-frequency-arraw">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M16.3997 7.50703L15.8946 7.00195L14.8845 8.01211L15.3896 8.51718L20.0008 13.1284L24.3474 17.475C24.9053 18.0329 25.8098 18.0329 26.3677 17.475V17.475L21.011 12.1183L16.3997 7.50703ZM28.8997 21.0172C29.1787 20.7382 29.1787 20.286 28.8997 20.007C28.8058 19.9131 28.6922 19.8508 28.5722 19.8201V19.7978H28.3962H28.3931H27.8579H20.5361H13.2143H11.4285C10.6395 19.7978 9.99995 20.4374 9.99995 21.2264V21.2264H13.2143H26.6702L15.3896 32.507L14.8845 33.0121L15.8946 34.0223L16.3997 33.5172L28.8997 21.0172Z"
+                fill="#B3ADAD" />
+              <circle cx="20" cy="20.5732" r="19.2857" stroke="#B3ADAD" stroke-width="1.42857" />
+            </svg>
+          </div>
+        </div>
+        <div class="usage-frequency-list">
+          <div class="usage-frequency-flex">
+            <div class="usage-frequency-item active">
+              <div class="usage-frequency-item-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                  <path
+                    d="M10.9999 19.157C8.68367 19.157 6.636 18.5364 5.18191 17.4039C3.74342 16.2836 2.85064 14.6381 2.85064 12.4789V3.84038H19.1492V12.4789C19.1492 14.6381 18.2564 16.2836 16.8179 17.4039C15.3638 18.5364 13.3161 19.157 10.9999 19.157Z"
+                    stroke="#190A0A" stroke-width="1.19932" />
+                  <path
+                    d="M11.0008 17.1285C7.70654 17.1285 5.03613 15.3651 5.03613 12.1668V5.86865H16.9654V12.1668C16.9654 15.3651 14.295 17.1285 11.0008 17.1285Z"
+                    fill="#E0004D" />
+                </svg>
+                Week 1-4
+              </div>
+              <div class="usage-frequency-item-text">
+                <h4 class="usage-frequency-h4">2-3 times per week</h4>
+                <div class="usage-frequency-p">By the end of this cycle, 93% of hair will stop growing, starting from
+                  surrounding areas, with some growth near joints or central regions.</div>
+                <img src="./images50/g1.jpg" alt="" class="img">
+                <div class="usage-frequency-p">IPL removes most hair, but some enter the growth phase, so consistent use
+                  is essential.</div>
+              </div>
+            </div>
+            <div class="usage-frequency-item">
+              <div class="usage-frequency-item-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                  <path
+                    d="M10.9999 19.157C8.68367 19.157 6.636 18.5364 5.18191 17.4039C3.74342 16.2836 2.85064 14.6381 2.85064 12.4789V3.84038H19.1492V12.4789C19.1492 14.6381 18.2564 16.2836 16.8179 17.4039C15.3638 18.5364 13.3161 19.157 10.9999 19.157Z"
+                    stroke="#190A0A" stroke-width="1.19932" />
+                  <path
+                    d="M11.0008 17.1285C7.70654 17.1285 5.03613 15.3651 5.03613 12.1668V5.86865H16.9654V12.1668C16.9654 15.3651 14.295 17.1285 11.0008 17.1285Z"
+                    fill="#E0004D" />
+                </svg>
+                Week 1-4
+              </div>
+              <div class="usage-frequency-item-text">
+                <h4 class="usage-frequency-h4">2-3 times per week</h4>
+                <div class="usage-frequency-p">By the end of this cycle, 93% of hair will stop growing, starting from
+                  surrounding areas, with some growth near joints or central regions.</div>
+                <img src="./images50/g1.jpg" alt="" class="img">
+                <div class="usage-frequency-p">IPL removes most hair, but some enter the growth phase, so consistent use
+                  is essential.</div>
+              </div>
+            </div>
+            <div class="usage-frequency-item">
+              <div class="usage-frequency-item-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                  <path
+                    d="M10.9999 19.157C8.68367 19.157 6.636 18.5364 5.18191 17.4039C3.74342 16.2836 2.85064 14.6381 2.85064 12.4789V3.84038H19.1492V12.4789C19.1492 14.6381 18.2564 16.2836 16.8179 17.4039C15.3638 18.5364 13.3161 19.157 10.9999 19.157Z"
+                    stroke="#190A0A" stroke-width="1.19932" />
+                  <path
+                    d="M11.0008 17.1285C7.70654 17.1285 5.03613 15.3651 5.03613 12.1668V5.86865H16.9654V12.1668C16.9654 15.3651 14.295 17.1285 11.0008 17.1285Z"
+                    fill="#E0004D" />
+                </svg>
+                Week 1-4
+              </div>
+              <div class="usage-frequency-item-text">
+                <h4 class="usage-frequency-h4">2-3 times per week</h4>
+                <div class="usage-frequency-p">By the end of this cycle, 93% of hair will stop growing, starting from
+                  surrounding areas, with some growth near joints or central regions.</div>
+                <img src="./images50/g1.jpg" alt="" class="img">
+                <div class="usage-frequency-p">IPL removes most hair, but some enter the growth phase, so consistent use
+                  is essential.</div>
+              </div>
+            </div>
+            <div class="usage-frequency-item">
+              <div class="usage-frequency-item-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23" viewBox="0 0 22 23" fill="none">
+                  <path
+                    d="M10.9999 19.157C8.68367 19.157 6.636 18.5364 5.18191 17.4039C3.74342 16.2836 2.85064 14.6381 2.85064 12.4789V3.84038H19.1492V12.4789C19.1492 14.6381 18.2564 16.2836 16.8179 17.4039C15.3638 18.5364 13.3161 19.157 10.9999 19.157Z"
+                    stroke="#190A0A" stroke-width="1.19932" />
+                  <path
+                    d="M11.0008 17.1285C7.70654 17.1285 5.03613 15.3651 5.03613 12.1668V5.86865H16.9654V12.1668C16.9654 15.3651 14.295 17.1285 11.0008 17.1285Z"
+                    fill="#E0004D" />
+                </svg>
+                Week 1-4
+              </div>
+              <div class="usage-frequency-item-text">
+                <h4 class="usage-frequency-h4">2-3 times per week</h4>
+                <div class="usage-frequency-p">By the end of this cycle, 93% of hair will stop growing, starting from
+                  surrounding areas, with some growth near joints or central regions.</div>
+                <img src="./images50/g1.jpg" alt="" class="img">
+                <div class="usage-frequency-p">IPL removes most hair, but some enter the growth phase, so consistent use
+                  is essential.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function usageFrequency() {
+      let $p = document.querySelector('.usage-frequency')
+      let $cont = $p.querySelector('.usage-frequency-cont')
+      let $top = $p.querySelector('.usage-frequency-top')
+      let $arraws = $p.querySelectorAll('.usage-frequency-arraw')
+      let $tags = $p.querySelectorAll('.usage-frequency-item-tag')
+      let $list = $p.querySelector('.usage-frequency-flex')
+      let $items = $p.querySelectorAll('.usage-frequency-item')
+      let index = 0
+      let pW = $cont.offsetWidth
+      let lW = 1180
+      let tf = 0
+
+
+      $arraws.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          index += i ? 1 : -1
+
+          changeItem()
+        })
+      })
+
+      $tags.forEach((item, i) => {
+        item.addEventListener('click', () => {
+          index = i
+          changeItem()
+        })
+      })
+
+
+      function addSwipeListener(element, callback) {
+        let startX = 0;
+        let endX = 0;
+
+        element.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+        });
+
+        element.addEventListener("touchmove", (e) => {
+          endX = e.touches[0].clientX;
+        });
+
+        element.addEventListener("touchend", () => {
+          const diffX = endX - startX;
+          if (Math.abs(diffX) > 15) {
+            if (diffX > 0) {
+              callback(0);
+            } else {
+              callback(1);
+            }
+          }
+        });
+      }
+
+      addSwipeListener($list, (direction) => {
+        index += direction ? 1 : -1
+        if (index < 0) return index = 0
+        if (index > $items.length - 1) return index = $items.length - 1
+        changeItem()
+      })
+
+
+
+      function changeItem() {
+        if (index == 0) {
+          $arraws[0].classList.add('disable-box')
+        } else {
+          $arraws[0].classList.remove('disable-box')
+        }
+
+        if (index == $items.length - 1) {
+          $arraws[1].classList.add('disable-box')
+        } else {
+          $arraws[1].classList.remove('disable-box')
+        }
+        $items.forEach((item, i) => {
+          if (i <= index) {
+            item.classList.add('active')
+          } else {
+            item.classList.remove('active')
+          }
+        })
+        $top.style.setProperty('--left-num', `calc(${index * 25}% + ${index * 15}px)`)
+
+        if (window.innerWidth < 1600) {
+          tf = index * (310)
+
+          if (lW - tf < pW) {
+            tf = lW - pW
+          }
+          // 设置偏移
+          $top.style.transform = `translateX(-${tf}px)`
+          $list.style.transform = `translateX(-${tf}px)`
+        }
+      }
+    }
+    usageFrequency()
+  </script>
+  <div class="help-tips margin-left-diy">
+    <div class="container">
+      <h3 class="help-tips-title">Make the most of your IPL treatments with these helpful tips:</h3>
+      <div class="help-tips-list">
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+        <div class="help-tips-item">
+          <h4 class="help-tips-item-title">Perform a patch test</h4>
+          <p class="help-tips-item-content">
+            On your initial use of a new device, test it on a small area of your skin to
+            check for sensitivity or irritation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="IPL-used margin-left-diy">
+    <div class="container">
+      <h3 class="IPL-used-title">Where IPL Devices Can Be Used?</h3>
+      <div class="IPL-used-cont">
+        <div class="IPL-used-list">
+          <div class="IPL-used-item">
+            <picture>
+              <source srcset="./images50/a3.png" media="(max-width: 991px)">
+              <img class="img" src="./images50/a3.png">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <questions-box>
+    <div class="questions-box margin-left-diy">
+      <div class="container">
+        <h3 class="questions-title">Frequently Asked Questions</h3>
+        <div class="questions-cont">
+          <div class="questions-tab">
+            <div class="questions-tab-item active" data-index="1">QUESTION CATEGORY 1</div>
+            <div class="questions-tab-item" data-index="2">QUESTION CATEGORY 2</div>
+            <div class="questions-tab-item" data-index="3">QUESTION CATEGORY 3</div>
+            <div class="questions-tab-item" data-index="4">QUESTION CATEGORY 4</div>
+          </div>
+          <div class="questions-list">
+            <div class="questions-item">
+              <div class="questions-item-top">
+                <svg xmlns="http://www.w3.org/2000/svg" class="questions-item-zm"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 1 80 80" fill="none">
+                  <mask id="mask0_303_26779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80"
+                    height="81">
+                    <path
+                      d="M79.9752 0.835938H0.0654297V35.4901C0.073241 37.4788 0.096675 39.4714 0.182599 41.4562C0.63175 51.696 3.61567 60.1422 8.99376 66.8414C13.1377 72.0081 17.9924 75.2836 23.2104 77.4517C31.3771 80.8403 39.7079 81.5149 48.1167 80.0292C53.487 79.0817 58.6894 77.1553 63.5792 73.7355C74.4331 66.1434 80.1041 53.9226 80.0025 36.2933C79.8932 16.6091 79.9752 0.835938 79.9752 0.835938Z"
+                      fill="#E0004D" />
+                  </mask>
+                  <g mask="url(#mask0_303_26779)">
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414"
+                      fill="url(#pattern0_303_26779)" />
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414" fill="#E0004D" />
+                    <text x="50%" y="50%" fill="white" font-size="48" font-family="Arial" text-anchor="middle"
+                      dominant-baseline="middle">A</text>
+                  </g>
+                </svg>
+                <div class="questions-item-top-right">
+                  <h4 class="questions-item-title">What is the best IPL device for hair removal? <span
+                      class="questions-change-c"></span></h4>
+                  <p class="questions-item-content">Users often want to know the expected timeline for visible results
+                    from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to
+                    achieve smooth, hair-free skin.</p>
+                  <div class="questions-user-z">
+                    <div class="questions-user-tag">User A</div>
+                    <div class="questions-user-z-num">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                        <path
+                          d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                          stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span>123</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="questions-user-info">
+                <div class="questions-user-info-title">Expert Reply</div>
+                <div class="questions-user-info-cont">
+                  <img src="./images50/b1.png" alt="" class="user-img">
+                  <div class="questions-user-text">
+                    <div class="questions-user-sub">Ulike Board-Certified Dermatologist</div>
+                    <div class="questions-user-name">Dr. Davin Lim</div>
+                    <p class="questions-user-txt">For optimal results, use the device once a week during the initial
+                      phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.</p>
+                    <div class="questions-user-bottom">
+                      <div class="questions-user-dz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                          <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                          <path
+                            d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                            stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>123</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="questions-item">
+              <div class="questions-item-top">
+                <svg xmlns="http://www.w3.org/2000/svg" class="questions-item-zm"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 1 80 80" fill="none">
+                  <mask id="mask0_303_26779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80"
+                    height="81">
+                    <path
+                      d="M79.9752 0.835938H0.0654297V35.4901C0.073241 37.4788 0.096675 39.4714 0.182599 41.4562C0.63175 51.696 3.61567 60.1422 8.99376 66.8414C13.1377 72.0081 17.9924 75.2836 23.2104 77.4517C31.3771 80.8403 39.7079 81.5149 48.1167 80.0292C53.487 79.0817 58.6894 77.1553 63.5792 73.7355C74.4331 66.1434 80.1041 53.9226 80.0025 36.2933C79.8932 16.6091 79.9752 0.835938 79.9752 0.835938Z"
+                      fill="#E0004D" />
+                  </mask>
+                  <g mask="url(#mask0_303_26779)">
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414"
+                      fill="url(#pattern0_303_26779)" />
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414" fill="#E0004D" />
+                    <text x="50%" y="50%" fill="white" font-size="48" font-family="Arial" text-anchor="middle"
+                      dominant-baseline="middle">A</text>
+                  </g>
+                </svg>
+                <div class="questions-item-top-right">
+                  <h4 class="questions-item-title">What is the best IPL device for hair removal? <span
+                      class="questions-change-c"></span></h4>
+                  <p class="questions-item-content">Users often want to know the expected timeline for visible results
+                    from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to
+                    achieve smooth, hair-free skin.</p>
+                  <div class="questions-user-z">
+                    <div class="questions-user-tag">User A</div>
+                    <div class="questions-user-z-num">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                        <path
+                          d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                          stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span>123</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="questions-user-info">
+                <div class="questions-user-info-title">Expert Reply</div>
+                <div class="questions-user-info-cont">
+                  <img src="./images50/b1.png" alt="" class="user-img">
+                  <div class="questions-user-text">
+                    <div class="questions-user-sub">Ulike Board-Certified Dermatologist</div>
+                    <div class="questions-user-name">Dr. Davin Lim</div>
+                    <p class="questions-user-txt">For optimal results, use the device once a week during the initial
+                      phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.</p>
+                    <div class="questions-user-bottom">
+                      <div class="questions-user-dz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                          <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                          <path
+                            d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                            stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>123</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="questions-item">
+              <div class="questions-item-top">
+                <svg xmlns="http://www.w3.org/2000/svg" class="questions-item-zm"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 1 80 80" fill="none">
+                  <mask id="mask0_303_26779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80"
+                    height="81">
+                    <path
+                      d="M79.9752 0.835938H0.0654297V35.4901C0.073241 37.4788 0.096675 39.4714 0.182599 41.4562C0.63175 51.696 3.61567 60.1422 8.99376 66.8414C13.1377 72.0081 17.9924 75.2836 23.2104 77.4517C31.3771 80.8403 39.7079 81.5149 48.1167 80.0292C53.487 79.0817 58.6894 77.1553 63.5792 73.7355C74.4331 66.1434 80.1041 53.9226 80.0025 36.2933C79.8932 16.6091 79.9752 0.835938 79.9752 0.835938Z"
+                      fill="#E0004D" />
+                  </mask>
+                  <g mask="url(#mask0_303_26779)">
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414"
+                      fill="url(#pattern0_303_26779)" />
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414" fill="#E0004D" />
+                    <text x="50%" y="50%" fill="white" font-size="48" font-family="Arial" text-anchor="middle"
+                      dominant-baseline="middle">A</text>
+                  </g>
+                </svg>
+                <div class="questions-item-top-right">
+                  <h4 class="questions-item-title">What is the best IPL device for hair removal? <span
+                      class="questions-change-c"></span></h4>
+                  <p class="questions-item-content">Users often want to know the expected timeline for visible results
+                    from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to
+                    achieve smooth, hair-free skin.</p>
+                  <div class="questions-user-z">
+                    <div class="questions-user-tag">User A</div>
+                    <div class="questions-user-z-num">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                        <path
+                          d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                          stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span>123</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="questions-user-info">
+                <div class="questions-user-info-title">Expert Reply</div>
+                <div class="questions-user-info-cont">
+                  <img src="./images50/b1.png" alt="" class="user-img">
+                  <div class="questions-user-text">
+                    <div class="questions-user-sub">Ulike Board-Certified Dermatologist</div>
+                    <div class="questions-user-name">Dr. Davin Lim</div>
+                    <p class="questions-user-txt">For optimal results, use the device once a week during the initial
+                      phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.</p>
+                    <div class="questions-user-bottom">
+                      <div class="questions-user-dz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                          <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                          <path
+                            d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                            stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>123</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="questions-item">
+              <div class="questions-item-top">
+                <svg xmlns="http://www.w3.org/2000/svg" class="questions-item-zm"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 1 80 80" fill="none">
+                  <mask id="mask0_303_26779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80"
+                    height="81">
+                    <path
+                      d="M79.9752 0.835938H0.0654297V35.4901C0.073241 37.4788 0.096675 39.4714 0.182599 41.4562C0.63175 51.696 3.61567 60.1422 8.99376 66.8414C13.1377 72.0081 17.9924 75.2836 23.2104 77.4517C31.3771 80.8403 39.7079 81.5149 48.1167 80.0292C53.487 79.0817 58.6894 77.1553 63.5792 73.7355C74.4331 66.1434 80.1041 53.9226 80.0025 36.2933C79.8932 16.6091 79.9752 0.835938 79.9752 0.835938Z"
+                      fill="#E0004D" />
+                  </mask>
+                  <g mask="url(#mask0_303_26779)">
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414"
+                      fill="url(#pattern0_303_26779)" />
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414" fill="#E0004D" />
+                    <text x="50%" y="50%" fill="white" font-size="48" font-family="Arial" text-anchor="middle"
+                      dominant-baseline="middle">A</text>
+                  </g>
+                </svg>
+                <div class="questions-item-top-right">
+                  <h4 class="questions-item-title">What is the best IPL device for hair removal? <span
+                      class="questions-change-c"></span></h4>
+                  <p class="questions-item-content">Users often want to know the expected timeline for visible results
+                    from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to
+                    achieve smooth, hair-free skin.</p>
+                  <div class="questions-user-z">
+                    <div class="questions-user-tag">User A</div>
+                    <div class="questions-user-z-num">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                        <path
+                          d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                          stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span>123</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="questions-user-info">
+                <div class="questions-user-info-title">Expert Reply</div>
+                <div class="questions-user-info-cont">
+                  <img src="./images50/b1.png" alt="" class="user-img">
+                  <div class="questions-user-text">
+                    <div class="questions-user-sub">Ulike Board-Certified Dermatologist</div>
+                    <div class="questions-user-name">Dr. Davin Lim</div>
+                    <p class="questions-user-txt">For optimal results, use the device once a week during the initial
+                      phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.</p>
+                    <div class="questions-user-bottom">
+                      <div class="questions-user-dz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                          <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                          <path
+                            d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                            stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>123</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="questions-item">
+              <div class="questions-item-top">
+                <svg xmlns="http://www.w3.org/2000/svg" class="questions-item-zm"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 1 80 80" fill="none">
+                  <mask id="mask0_303_26779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80"
+                    height="81">
+                    <path
+                      d="M79.9752 0.835938H0.0654297V35.4901C0.073241 37.4788 0.096675 39.4714 0.182599 41.4562C0.63175 51.696 3.61567 60.1422 8.99376 66.8414C13.1377 72.0081 17.9924 75.2836 23.2104 77.4517C31.3771 80.8403 39.7079 81.5149 48.1167 80.0292C53.487 79.0817 58.6894 77.1553 63.5792 73.7355C74.4331 66.1434 80.1041 53.9226 80.0025 36.2933C79.8932 16.6091 79.9752 0.835938 79.9752 0.835938Z"
+                      fill="#E0004D" />
+                  </mask>
+                  <g mask="url(#mask0_303_26779)">
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414"
+                      fill="url(#pattern0_303_26779)" />
+                    <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414" fill="#E0004D" />
+                    <text x="50%" y="50%" fill="white" font-size="48" font-family="Arial" text-anchor="middle"
+                      dominant-baseline="middle">A</text>
+                  </g>
+                </svg>
+                <div class="questions-item-top-right">
+                  <h4 class="questions-item-title">What is the best IPL device for hair removal? <span
+                      class="questions-change-c"></span></h4>
+                  <p class="questions-item-content">Users often want to know the expected timeline for visible results
+                    from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to
+                    achieve smooth, hair-free skin.</p>
+                  <div class="questions-user-z">
+                    <div class="questions-user-tag">User A</div>
+                    <div class="questions-user-z-num">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                        <path
+                          d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                          stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span>123</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="questions-user-info">
+                <div class="questions-user-info-title">Expert Reply</div>
+                <div class="questions-user-info-cont">
+                  <img src="./images50/b1.png" alt="" class="user-img">
+                  <div class="questions-user-text">
+                    <div class="questions-user-sub">Ulike Board-Certified Dermatologist</div>
+                    <div class="questions-user-name">Dr. Davin Lim</div>
+                    <p class="questions-user-txt">For optimal results, use the device once a week during the initial
+                      phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.</p>
+                    <div class="questions-user-bottom">
+                      <div class="questions-user-dz">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                          <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                          <path
+                            d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                            stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>123</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="questions-advisory">
+          <div class="questions-advisory-title">Still have questions?</div>
+          <p class="questions-advisory-p">Let Ulike experts help you.</p>
+          <div class="questions-advisory-btn">
+            <img src="./images50/b1.png" alt="" class="advisory-img">
+            <div class="advisory-text">Ask the Ulike Experts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </questions-box>
+  <script>
+    class askedQuestions extends HTMLElement {
+      constructor() {
+        super();
+        this.el = this
+        this.type = 1
+        this.data = [
+          {
+            id: '1',
+            type: 1,
+            tag: 'A',
+            title: "What is the best IPL device for hair removal?",
+            content: "Users often want to know the expected timeline for visible results from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to achieve smooth, hair-free skin.",
+            label: 'User A',
+            num: 123,
+            userTitle: 'Expert Reply',
+            userImg: './images50/b1.png',
+            expert: 'Ulike Board-Certified Dermatologist',
+            name: 'Dr. Davin Lim',
+            userTxt: 'For optimal results, use the device once a week during the initial phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.',
+            userDz: 123
+          },
+          {
+            id: '5',
+            type: 1,
+            tag: 'E',
+            title: "What is the best IPL device for hair removal?",
+            content: "Users often want to know the expected timeline for visible results from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to achieve smooth, hair-free skin.",
+            label: 'User E',
+            num: 123,
+            userTitle: 'Expert Reply',
+            userImg: './images50/b1.png',
+            expert: 'Ulike Board-Certified Dermatologist',
+            name: 'Dr. Davin Lim',
+            userTxt: 'For optimal results, use the device once a week during the initial phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.',
+            userDz: 123
+          },
+          {
+            id: '2',
+            type: 2,
+            tag: 'B',
+            title: "What is the best IPL device for hair removal?",
+            content: "Users often want to know the expected timeline for visible results from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to achieve smooth, hair-free skin.",
+            label: 'User B',
+            num: 123,
+            userTitle: 'Expert Reply',
+            userImg: './images50/b1.png',
+            expert: 'Ulike Board-Certified Dermatologist',
+            name: 'Dr. Davin Lim',
+            userTxt: 'For optimal results, use the device once a week during the initial phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.',
+            userDz: 123
+          },
+          {
+            id: '3',
+            type: 3,
+            tag: 'C',
+            title: "What is the best IPL device for hair removal?",
+            content: "Users often want to know the expected timeline for visible results from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to achieve smooth, hair-free skin.",
+            label: 'User C',
+            num: 123,
+            userTitle: 'Expert Reply',
+            userImg: './images50/b1.png',
+            expert: 'Ulike Board-Certified Dermatologist',
+            name: 'Dr. Davin Lim',
+            userTxt: 'For optimal results, use the device once a week during the initial phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.',
+            userDz: 123
+          },
+          {
+            id: '4',
+            type: 4,
+            tag: 'D',
+            title: "What is the best IPL device for hair removal?",
+            content: "Users often want to know the expected timeline for visible results from IPL treatments. They may ask when they will notice reduced hair growth and how long it takes to achieve smooth, hair-free skin.",
+            label: 'User D',
+            num: 123,
+            userTitle: 'Expert Reply',
+            userImg: './images50/b1.png',
+            expert: 'Ulike Board-Certified Dermatologist',
+            name: 'Dr. Davin Lim',
+            userTxt: 'For optimal results, use the device once a week during the initial phase. Once hair growth significantly reduces, switch to 1-2 times per month for maintenance.',
+            userDz: 123
+          }
+        ]
+        this.init()
+      }
+      init() {
+        let that = this
+        this.setDzData();
+        this.filters()
+
+        // 监听点击事件
+        this.el.addEventListener('click', (e) => {
+          let target = e.target
+          let questionsTab = target.closest('.questions-tab-item');
+          if (questionsTab) {
+            let type = parseInt(questionsTab.getAttribute('data-index'), 10)
+            if (this.type === type) return
+            const allItems = that.el.querySelectorAll('.questions-tab-item')
+            allItems.forEach((item) => item.classList.remove('active'))
+            questionsTab.classList.add('active')
+            this.type = type
+            this.filters()
+            return
+          }
+          // 点击questions-change-c 显示隐藏 questions-user-info
+          let questionsChangeC = target.closest('.questions-item-title');
+          if (questionsChangeC) {
+            this.el.querySelectorAll('.questions-item').forEach((item) => {
+              if (questionsChangeC.closest('.questions-item') !== item) {
+                item.classList.remove('active')
+              }
+            })
+            questionsChangeC.closest('.questions-item').classList.toggle('active')
+            return
+          }
+
+          // 处理点赞或取消
+          const likeButton = target.closest('.questions-user-z-num')
+          const likeButton1 = target.closest('.questions-user-dz')
+          if (likeButton || likeButton1) {
+            let thisItem = likeButton || likeButton1
+            const parentItem = thisItem.closest('.questions-item')
+            if (!parentItem) return
+            const id = parentItem.getAttribute('data-id')
+            let dzItem = that.setDzData(true, id, true, likeButton ? 'num' : 'userDz') // 获取点赞数据 和 执行了点赞缓存数据更新(第三个参数为true)
+            const span = thisItem.querySelector('span')
+
+            if (!dzItem[likeButton ? 'isDz' : 'isDz1']) {
+              thisItem.classList.remove('active')
+            } else {
+              thisItem.classList.add('active')
+            }
+
+            if (span) {
+              span.textContent = dzItem[likeButton ? 'num' : 'num1']
+            }
+            return // 防止继续执行后面的代码
+          }
+
+          // 点击弹出客服
+          const questionsKf = target.closest('.questions-advisory-btn')
+          if (questionsKf) {
+
+            return
+          }
+        })
+      }
+
+      // 初始设置点赞数据
+      setDzData(isGetItem = false, id, isDzTap = false, type) {
+        const dzList = localStorage.getItem('dzListHs')
+          ? JSON.parse(localStorage.getItem('dzListHs'))
+          : []
+        if (isGetItem) {
+          // 根据id获取点赞数据
+          const dzIndex = dzList.findIndex((dz) => dz.id === id)
+          if (isDzTap) {
+            // 执行点赞数据更新
+            if (type === 'num') {
+              dzList[dzIndex].num =
+                dzList[dzIndex].num > dzList[dzIndex].randomNum
+                  ? dzList[dzIndex].num + (dzList[dzIndex].isDz ? -1 : 1)
+                  : dzList[dzIndex].randomNum + (dzList[dzIndex].isDz ? -1 : 1)
+              dzList[dzIndex].isDz = !dzList[dzIndex].isDz
+              if (
+                !dzList[dzIndex].isDz &&
+                dzList[dzIndex].randomNum < dzList[dzIndex].num
+              ) {
+                dzList[dzIndex].randomNum = dzList[dzIndex].num
+              }
+            } else {
+              dzList[dzIndex].num1 =
+                dzList[dzIndex].num1 > dzList[dzIndex].randomNum1
+                  ? dzList[dzIndex].num1 + (dzList[dzIndex].isDz1 ? -1 : 1)
+                  : dzList[dzIndex].randomNum1 + (dzList[dzIndex].isDz1 ? -1 : 1)
+              dzList[dzIndex].isDz1 = !dzList[dzIndex].isDz1
+              if (
+                !dzList[dzIndex].isDz1 &&
+                dzList[dzIndex].randomNum1 < dzList[dzIndex].num1
+              ) {
+                dzList[dzIndex].randomNum1 = dzList[dzIndex].num1
+              }
+            }
+
+            localStorage.setItem('dzListHs', JSON.stringify(dzList))
+            return { ...dzList[dzIndex] }
+          }
+          if (dzIndex !== -1) {
+            return { ...dzList[dzIndex] }
+          } else {
+            return { oldNum: 0, num: 0, isDz: false, oldNum1: 0, num1: 0, isDz1: false }
+          }
+        } else {
+          this.data.forEach((item) => {
+            const dzIndex = dzList.findIndex((dz) => dz.id === item.id)
+
+            // 有缓存更新缓存点赞数据
+            if (dzIndex !== -1) {
+              // 判断初始数据和缓存点赞oldNum是否一致，不一致则更新缓存数据
+              if (dzList[dzIndex].oldNum !== item.num) {
+
+                dzList[dzIndex].num = item.num || 0
+                dzList[dzIndex].oldNum = item.num || 0
+                dzList[dzIndex].randomNum = item.num || 0
+                dzList[dzIndex].isDz = dzList[dzIndex].isDz || false
+              } else {
+                // 点赞数据和缓存点赞oldNum一致，则增加点赞数量
+                dzList[dzIndex].num = this.addDzNum(dzList[dzIndex].num || 0)
+                dzList[dzIndex].oldNum = item.num || 0
+                dzList[dzIndex].randomNum = this.addDzNum(dzList[dzIndex].randomNum || 0)
+                dzList[dzIndex].isDz = dzList[dzIndex].isDz || false
+              }
+              if (dzList[dzIndex].oldNum1 !== item.userDz) {
+                dzList[dzIndex].num1 = item.userDz || 0
+                dzList[dzIndex].oldNum1 = item.userDz || 0
+                dzList[dzIndex].randomNum1 = item.userDz || 0
+                dzList[dzIndex].isDz1 = dzList[dzIndex].isDz1 || false
+              } else {
+                // 点赞数据和缓存点赞oldNum一致，则增加点赞数量
+                dzList[dzIndex].num1 = this.addDzNum(dzList[dzIndex].num1 || 0)
+                dzList[dzIndex].oldNum1 = item.userDz || 0
+                dzList[dzIndex].randomNum1 = this.addDzNum(dzList[dzIndex].randomNum1 || 0)
+                dzList[dzIndex].isDz1 = dzList[dzIndex].isDz1 || false
+              }
+            } else {
+              // 没有缓存，则新增点赞数据
+              dzList.push({
+                id: item.id,
+                num: item.num || 0,
+                oldNum: item.num || 0,
+                randomNum: item.num || 0,
+                isDz: false,
+                num1: item.userDz || 0,
+                oldNum1: item.userDz || 0,
+                randomNum1: item.userDz || 0,
+                isDz1: false,
+              })
+            }
+          })
+        }
+        localStorage.setItem('dzListHs', JSON.stringify(dzList))
+      }
+
+      // 随机返回范围内的数字
+      getRandomArbitrary(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min
+      }
+
+      // 增加点赞数量
+      addDzNum(num) {
+        // 刷新概率百分之20增加点赞数量
+        return this.getRandomArbitrary(0, 10) > 2
+          ? num + this.getRandomArbitrary(1, 3)
+          : num
+      }
+      filters() {
+        let list = this.data.filter(item => item.type === this.type)
+        this.buildHtml(list)
+      }
+
+      buildHtml(list) {
+        let html = ``
+        list.forEach(item => {
+          let dzItem = this.setDzData(true, item.id)
+          html += `
+            <div class="questions-item" data-id="${item.id}">
+            <div class="questions-item-top">
+              <svg xmlns="http://www.w3.org/2000/svg" class="questions-item-zm"
+                xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 1 80 80" fill="none">
+                <mask id="mask0_303_26779" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="80"
+                  height="81">
+                  <path
+                    d="M79.9752 0.835938H0.0654297V35.4901C0.073241 37.4788 0.096675 39.4714 0.182599 41.4562C0.63175 51.696 3.61567 60.1422 8.99376 66.8414C13.1377 72.0081 17.9924 75.2836 23.2104 77.4517C31.3771 80.8403 39.7079 81.5149 48.1167 80.0292C53.487 79.0817 58.6894 77.1553 63.5792 73.7355C74.4331 66.1434 80.1041 53.9226 80.0025 36.2933C79.8932 16.6091 79.9752 0.835938 79.9752 0.835938Z"
+                    fill="#E0004D" />
+                </mask>
+                <g mask="url(#mask0_303_26779)">
+                  <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414"
+                    fill="url(#pattern0_303_26779)" />
+                  <rect x="-92.5918" y="-60.6016" width="181.138" height="162.758" rx="1.36414" fill="#E0004D" />
+                  <text x="50%" y="50%" fill="white" font-size="48" font-family="Arial" text-anchor="middle"
+                    dominant-baseline="middle">${item.tag}</text>
+                </g>
+              </svg>
+              <div class="questions-item-top-right">
+                <h4 class="questions-item-title">${item.title}<span
+                    class="questions-change-c"></span></h4>
+                <p class="questions-item-content">${item.content}</p>
+                <div class="questions-user-z">
+                  <div class="questions-user-tag">${item.label}</div>
+                  <div class="questions-user-z-num ${dzItem.isDz ? 'active' : ''}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                      <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                      <path
+                        d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                        stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span>${dzItem.isDz ? dzItem.num : (dzItem.randomNum || item.num || 0)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="questions-user-info">
+              <div class="questions-user-info-title">${item.userTitle}</div>
+              <div class="questions-user-info-cont">
+                <img src="${item.userImg}" alt="" class="user-img">
+                <div class="questions-user-text">
+                  <div class="questions-user-sub">${item.expert}</div>
+                  <div class="questions-user-name">${item.name}</div>
+                  <p class="questions-user-txt">${item.userTxt}</p>
+                  <div class="questions-user-bottom">
+                    <div class="questions-user-dz ${dzItem.isDz1 ? 'active' : ''}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+                        <circle cx="20.8633" cy="20.8359" r="19.5853" stroke="#EBEBEB" stroke-width="0.829368" />
+                        <path
+                          d="M16.9273 20.0231L20.1789 12.707C20.8257 12.707 21.446 12.964 21.9033 13.4213C22.3606 13.8787 22.6176 14.4989 22.6176 15.1457V18.3973H27.2186C27.4543 18.3947 27.6877 18.4433 27.9027 18.5398C28.1177 18.6363 28.3092 18.7784 28.4638 18.9562C28.6185 19.134 28.7326 19.3434 28.7983 19.5697C28.864 19.7961 28.8797 20.034 28.8444 20.267L27.7226 27.5831C27.6638 27.9708 27.4669 28.3241 27.1681 28.5781C26.8693 28.832 26.4889 28.9694 26.0968 28.965H16.9273M16.9273 20.0231V28.965M16.9273 20.0231H14.4886C14.0574 20.0231 13.6439 20.1944 13.339 20.4993C13.0341 20.8042 12.8628 21.2177 12.8628 21.6489V27.3392C12.8628 27.7704 13.0341 28.1839 13.339 28.4888C13.6439 28.7937 14.0574 28.965 14.4886 28.965H16.9273"
+                          stroke="#190A0A" stroke-width="0.812899" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <span> ${dzItem.isDz1 ? dzItem.num1 : (dzItem.randomNum1 || item.userDz || 0)}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`
+        })
+
+        this.el.querySelector('.questions-list').innerHTML = html
+
+      }
+
+    }
+
+    customElements.define('questions-box', askedQuestions);
+  </script>
+  <div class="tracker-box margin-left-diy">
+    <div class="container">
+      <div class="tracker-cont">
+        <div class="tracker-img">
+          <img src="./images50/c1.jpg" alt="">
+        </div>
+        <div class="tracker-text">
+          <div class="tracker-text-cont">
+            <div class="tracker-text-title">Ulike Treatment Tracker</div>
+            <p class="tracker-text-p">
+              Stay on top of sessions with a treatment schedule tailored to your hair, skin, and body areas.
+            </p>
+            <div class="tracker-btn">
+              Learn More
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Swiper with Vue 3</title>
+  <link rel="stylesheet" href="../css/comm.css" />
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="./css/swiper.min.css">
+
+  <!-- Swiper JS CDN -->
+  <script src="./js/swiper.min.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .swiper-container {
+      position: relative;
+    }
+
+    .container {
+      max-width: calc(100% - 40px);
+      padding: 0 130px;
+      margin: 0 auto;
+    }
+
+    @media (max-width:991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    body,
+    html,
+    #app {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .box {
+      padding-top: 105px;
+      background: #d2fffc;
+      text-align: center;
+
+      height: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .box-title {
+      font-size: 60px;
+      line-height: 1.2;
+      margin: 0 auto;
+      font-family: var(--heading-font-family);
+    }
+
+    .list {
+      /* display: flex;
+      gap: 50px; */
+      margin-top: 145px;
+    }
+
+    .item {
+      background: #fff;
+      width: 100%;
+      border-radius: 20px;
+      padding: 90px 60px 90px 60px;
+      font-size: 40px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    .item-title-n {
+      font-family: var(--heading-font-family);
+    }
+
+    .item-star {
+      font-size: 50px;
+      color: #e0004d;
+      margin: 20px 0;
+    }
+
+    .item-desc1 {
+      font-family: var(--heading-font-family);
+      margin-bottom: 20px;
+    }
+
+    .swiper-pagination {
+      position: relative;
+      gap: 24px;
+      margin-top: 120px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--bg-dot-color);
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--bg-dot-color-a);
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+
+    .item-c {
+      display: flex;
+      font-size: 14px;
+      gap: 5px;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .item-c input {
+      height: 35px;
+      padding: 0 10px;
+      flex: 1;
+    }
+
+    .item-title {
+      font-size: 20px;
+      margin-bottom: 5px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cont {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+      padding: 20px;
+    }
+
+    /* 滚动条整体样式 */
+    ::-webkit-scrollbar {
+      width: 12px;
+      /* 设置滚动条的宽度 */
+      height: 12px;
+      /* 设置滚动条的高度（用于水平滚动条） */
+    }
+
+    /* 滚动条轨道 */
+    ::-webkit-scrollbar-track {
+      background: #fff;
+      /* 设置滚动条轨道的背景色 */
+      border-radius: 10px;
+      /* 设置滚动条轨道的圆角 */
+    }
+
+    /* 滚动条滑块 */
+    ::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      /* 设置滚动条滑块的颜色 */
+      border-radius: 10px;
+      /* 设置滑块的圆角 */
+      border: 2px solid #f0f0f0;
+      /* 给滑块加一个边框以创建内边距效果 */
+    }
+
+    /* 滚动条滑块在悬停时的样式 */
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+      /* 悬停时改变滑块颜色 */
+    }
+
+    /* 滚动条角落样式（适用于同时有水平和垂直滚动条的情况） */
+    ::-webkit-scrollbar-corner {
+      background-color: #f0f0f0;
+      /* 设置滚动条角落的背景色 */
+    }
+
+    .left {
+      flex: 1;
+    }
+
+    .right-box {
+      width: 380px;
+      flex-shrink: 0;
+      padding: 10px 15px;
+      overflow: hidden;
+      height: 100%;
+      border: #ccc solid 1px;
+    }
+
+    .slide-box {
+      height: calc(100% - 30px);
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
+    .add-item {
+      padding: 10px 30px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .remove-span {
+      display: inline-block;
+      cursor: pointer;
+      color: red;
+    }
+
+    .cz-tab {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .cz-item {
+      flex: 1;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .cz-item.active {
+      background: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="cont">
+      <div class="left">
+        <div class="box" :style="{'width':width+'px','padding-top':`${padS}px`,'background':bgColor}">
+          <div class="box-title" :style="{'max-width':`${maxWidth}%`,'font-size':`${fontSize}px`,'color':txtColor}">
+            {{title}}</div>
+          <div class="container">
+            <!-- Swiper HTML Structure -->
+            <div class="swiper-container">
+              <div class="swiper-wrapper list" :style="{'margin-top':`${padL}px`}">
+                <div class="swiper-slide item" v-for="(item, index) in slides" :key="index"
+                  :style="{'background':`${bgColorItem}`}">
+                  <div class="item-title-n" :style="{'color':txtColor1}">{{item.title}}</div>
+                  <div class="item-star" :style="{'color':txtColor3}">{{item.star}}</div>
+                  <div class="item-desc1" :style="{'color':txtColor4}" v-if="item.desc1">{{item.desc1}}</div>
+                  <div class="item-desc" :style="{'color':txtColor2}">{{item.desc}}</div>
+                </div>
+              </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination"
+                :style="{'margin-top':`${padD}px`,'--bg-dot-color':`${dotColor}`,'--bg-dot-color-a':`${dotColorA}`}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right-box">
+        <div class="cz-tab">
+          <div class="cz-item" :class="{['active']:showIndex}" @click="showIndex = true">
+            通用设置
+          </div>
+          <div class="cz-item" :class="{['active']:!showIndex}" @click="showIndex = false">
+            轮播配置
+          </div>
+        </div>
+        <div class="cz-box" v-if="showIndex">
+          <!-- <h3>通用设置</h3> -->
+          <div class="item-c" style="margin-top: 20px;">
+            自动轮播 ：<input v-model="autoplay" type="checkbox" @change="toggleAutoplay"
+              style="width: 20px; height: 20px;flex: none;">
+          </div>
+          <div class="item-c">
+            宽度 ：{{width}}<input v-model="width" type="range" min="0" max="2000">
+          </div>
+          <p class="item-title">边距 </p>
+          <div class="item-c">
+            标题顶部距离：{{padS}}<input v-model="padS" type="range" min="0" max="200">
+          </div>
+          <div class="item-c">
+            轮播距离标题距离 ：{{padL}}<input v-model="padL" type="range" min="0" max="200">
+          </div>
+          <div class="item-c">
+            标题文字颜色 ：<input v-model="txtColor" type="color">
+          </div>
+          <div class="item-c">
+            文字颜色 ：<input v-model="txtColor1" type="color">
+          </div>
+          <div class="item-c">
+            文字颜色 ：<input v-model="txtColor4" type="color">
+          </div>
+          <div class="item-c">
+            文字颜色 ：<input v-model="txtColor2" type="color">
+          </div>
+          <div class="item-c">
+            星星颜色 ：<input v-model="txtColor3" type="color">
+          </div>
+          <div class="item-c">
+            背景颜色 ：
+            <input v-model="bgColor" type="color">
+          </div>
+          <div class="item-c">
+            轮播块背景颜色 ：
+            <input v-model="bgColorItem" type="color">
+          </div>
+          <div class="item-c">
+            标题 ：<input v-model="title" type="text">
+          </div>
+          <div class="item-c">
+            标题字号：{{fontSize}}<input v-model="fontSize" type="range" min="12" max="200">
+          </div>
+          <div class="item-c">
+            标题宽度：{{maxWidth}}%<input v-model="maxWidth" type="range" min="10" max="100">
+          </div>
+          <div class="item-c">
+            轮播点上面距离 ：{{padD}}<input v-model="padD" type="range" min="0" max="200">
+          </div>
+          <div class="item-c">
+            轮播点颜色 ：<input v-model="dotColor" type="color">
+          </div>
+          <div class="item-c">
+            轮播点选中颜色 ：<input v-model="dotColorA" type="color">
+          </div>
+        </div>
+        <div class="slide-box" v-if="!showIndex">
+          <!-- <h3>轮播管理</h3> -->
+          <template v-for="(item, index) in slides" :key="index">
+            <p class="item-title">slide{{index+1}} <span @click="removeSlide(index)" class="remove-span">删除</span></p>
+            <div class="item-c">
+              名字：<input v-model="item.title" type="text">
+            </div>
+            <div class="item-c">
+              星：<input v-model="item.star" type="text">
+            </div>
+            <div class="item-c">
+              Text：<input v-model="item.desc1" type="text">
+            </div>
+            <div class="item-c">
+              描述：<input v-model="item.desc" type="text">
+            </div>
+          </template>
+          <h5>轮播新增</h5>
+          <div class="add-item" @click="addSlide">Add Slide</div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <!-- Controls to Add and Remove Slides -->
+
+  </div>
+  <!-- Custom Script -->
+  <script>
+    // Vue 3 app setup
+    const app = Vue.createApp({
+      data() {
+        return {
+          slides: [
+            {
+              title: "Jennifer Zero",
+              star: "★★★★★",
+              desc1: "",
+              desc: "Impressed! Purchased as a gift for my daughter who has PCOS. She is thrilled with the results after only a few treatments."
+            },
+            {
+              title: "Ariana Canul",
+              star: "★★★★★",
+              desc1: "",
+              desc: "I consistent used it and had reminders on my iPhone calendar to zap underarms, belly,chin, toes/fingers… and the results are very freaking amazing!! I loved it!"
+            },
+            {
+              title: "Anum Shahzadi",
+              star: "★★★★★",
+              desc1: "",
+              desc: "Its definitely worth it , I am suffering pcos and growing more hair than ever unlike help me alot to get rid off all unwanted hair. I highly recommend still using it from 5 weeks and my thick hair feel like disappeared."
+            },
+            {
+              title: "Jennifer Zero",
+              star: "★★★★★",
+              desc1: "",
+              desc: "Impressed! Purchased as a gift for my daughter who has PCOS. She is thrilled with the results after only a few treatments."
+            },
+            {
+              title: "Jennifer Zero",
+              star: "★★★★★",
+              desc1: "",
+              desc: "Impressed! Purchased as a gift for my daughter who has PCOS. She is thrilled with the results after only a few treatments."
+            }
+          ],
+          autoplayDelay: 2500,  // 轮播时间间隔（毫秒）
+          spaceBetween: 30,      // 滑块间距（像素）
+          showIndex: true,
+          padS: 105,
+          padL: 145,
+          padD: 120,
+          width: 1200,
+          maxWidth: 100,
+          bgColor: '#d2fffc',
+          txtColor: '#000000',
+          txtColor1: '#000000',
+          txtColor2: '#000000',
+          txtColor3: '#000000',
+          txtColor4: '#000000',
+          bgColorItem: '#ffffff',
+          fontSize: '',
+          title: 'Loved by 4 Million Happy Customers',
+          dotColor: '#b7e5e2',
+          dotColorA: '#000000',
+          swiper: null,
+          autoplay: true
+        };
+      },
+      mounted() {
+        this.initSwiper();
+      },
+      methods: {
+        initSwiper() {
+          this.swiper = new Swiper('.swiper-container', {
+            autoplay: {
+              delay: this.autoplayDelay,
+              disableOnInteraction: false,
+            },
+            spaceBetween: this.spaceBetween,
+            pagination: {
+              el: '.swiper-pagination',
+            },
+            loop: false, // 启用循环模式
+          });
+        },
+        updateSwiper() {
+          this.$nextTick(() => {
+            this.swiper.update();
+          });
+        },
+        addSlide() {
+          this.slides.push({
+            title: "name",
+            star: "★★★★★",
+            desc1: "",
+            desc: "descriptions"
+          });
+          this.updateSwiper();
+        },
+        removeSlide(index) {
+          if (index > -1 && index < this.slides.length) {
+            this.slides.splice(index, 1);
+            this.updateSwiper();
+          }
+        },
+        toggleAutoplay() {
+          if (this.autoplay) {
+            this.swiper.autoplay.start();
+          } else {
+            this.swiper.autoplay.stop();
+          }
+        },
+      }
+    });
+
+    // Mount the Vue app
+    app.mount('#app');
+  </script>
+</body>
+
+</html>

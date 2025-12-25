@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <link rel="stylesheet" href="./css/ulike-reglow.css" />
+</head>
+
+<body>
+  <div class="percussive-massage">
+    <video class="percussive-massage-video-pc" src="./images31/pc.mp4" muted autoplay loop></video>
+    <div class="percussive-massage-cont">
+      <div class="container">
+        <div class="percussive-massage-flex">
+          <div class="percussive-massage-left">
+            <video class="percussive-massage-video-m" src="./images31/pc.mp4" muted autoplay loop></video>
+          </div>
+          <div class="percussive-massage-right">
+            <div class="percussive-massage-top">
+              <div>
+                <div class="percussive-massage-sub">BEHIND THE SCIENCE</div>
+                <h3 class="percussive-massage-h3">4-in-1 LED therapy, one complete solution for renewed skin.</h3>
+              </div>
+              <div class="percussive-massage-icon"></div>
+            </div>
+            <div class="percussive-massage-p">
+              <p>ReGlow delivers 4-in-1 LED therapy powered by 272 medical-grade lights—four times more coverage than
+                standard masks.</p>
+              <p>Its multi-wavelength fusion of blue, yellow, red, and infrared light penetrates all three skin layers
+                to smooth fine lines, even tone, and restore radiance.</p>
+              <p>With 360° Mirror Reflection Technology, every contour receives precise, full-face treatment for visible
+                results in just four weeks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    document.querySelector('.percussive-massage-icon')?.addEventListener('click', function () {
+      const cont = this.closest('.percussive-massage-cont');
+      if (cont) cont.classList.toggle('show');
+    });
+  </script>
+
+  <div class="skin-renewal">
+    <div class="container">
+      <div class="skin-renewal-main">
+        <img class="skin-renewal-bg" src="" />
+        <div class="skin-renewal-cont">
+
+          <div class="skin-renewal-bottom">
+            <div class="skin-renewal-t">
+              <div class="skin-renewal-text">
+                <div class="skin-renewal-text-item active">
+                  <h3 class="skin-renewal-item-h3">Firm Mode</h3>
+                  <div class="skin-renewal-tag">
+                    <div class="skin-renewal-tag-item" style="background: #FF000C; box-shadow: 0 0 10px #FF000C;"></div>
+                    <div class="skin-renewal-tag-item" style="background: #F555DB;box-shadow: 0 0 10px #F555DB;"></div>
+                  </div>
+                  <h4 class="skin-renewal-h4">Red (630nm) + Infrared (830nm)</h4>
+                  <p class="skin-renewal-item-p">Stimulates collagen to plump skin and reduce wrinkles.</p>
+                </div>
+                <div class="skin-renewal-text-item">
+                  <h3 class="skin-renewal-item-h3">Rejuvenate Mode</h3>
+                  <div class="skin-renewal-tag">
+                    <div class="skin-renewal-tag-item" style="background: #FFD200;box-shadow: 0 0 10px #FFD200;"></div>
+                    <div class="skin-renewal-tag-item" style="background: #FF000C;box-shadow: 0 0 10px #FF000C;"></div>
+                  </div>
+                  <h4 class="skin-renewal-h4">Yellow (590nm) + Red (630nm)</h4>
+                  <p class="skin-renewal-item-p">Strengthens the skin barrier for a calmer, more even complexion.</p>
+                </div>
+                <div class="skin-renewal-text-item">
+                  <h3 class="skin-renewal-item-h3">Clear Mode</h3>
+                  <div class="skin-renewal-tag">
+                    <div class="skin-renewal-tag-item" style="background: #57A4FF;box-shadow: 0 0 10px #57A4FF;"></div>
+                    <div class="skin-renewal-tag-item" style="background: #FF000C;box-shadow: 0 0 10px #FF000C;"></div>
+                    <div class="skin-renewal-tag-item" style="background: #F555DB;box-shadow: 0 0 10px #F555DB;"></div>
+                  </div>
+                  <h4 class="skin-renewal-h4">Blue (465nm) + Red (630nm) + Infrared (830nm)</h4>
+                  <p class="skin-renewal-item-p">Targets acne-causing bacteria to soothe irritation and control
+                    breakouts.
+                  </p>
+                </div>
+                <div class="skin-renewal-text-item">
+                  <h3 class="skin-renewal-item-h3">Glow Mode</h3>
+                  <div class="skin-renewal-tag">
+                    <div class="skin-renewal-tag-item" style="background: #FFD200;box-shadow: 0 0 10px #FFD200;"></div>
+                    <div class="skin-renewal-tag-item" style="background: #FF000C;box-shadow: 0 0 10px #FF000C;"></div>
+                    <div class="skin-renewal-tag-item" style="background: #F555DB;box-shadow: 0 0 10px #F555DB;"></div>
+                  </div>
+                  <h4 class="skin-renewal-h4">Yellow (590nm) + Red (630nm) + Infrared (830nm)</h4>
+                  <p class="skin-renewal-item-p">Brightens blemishes and dullness for a more radiant tone.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="skin-renewal-tab">
+            <div class="skin-renewal-tab-item active" data-src="./images59/a1.jpg" data-src1="./images59/a5.jpg">Firm
+            </div>
+            <div class="skin-renewal-tab-item" data-src="./images59/a2.jpg" data-src1="./images59/a5.jpg">Rejuvenate
+            </div>
+            <div class="skin-renewal-tab-item" data-src="./images59/a3.jpg" data-src1="./images59/a5.jpg">Clear </div>
+            <div class="skin-renewal-tab-item" data-src="./images59/a4.jpg" data-src1="./images59/a5.jpg">Glow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function skinRenewalInit(
+      tabSelector,
+      contentSelector,
+      bgSelector = null,
+      activeClass = 'active',
+      options = {}
+    ) {
+      const tabs = document.querySelectorAll(tabSelector);
+      const contents = document.querySelectorAll(contentSelector);
+      const bgElement = bgSelector ? document.querySelector(bgSelector) : null;
+
+      if (!tabs.length || !contents.length) return;
+
+      const {
+        autoPlay = true, // 是否自动播放
+        interval = 5000, // 自动切换时间间隔（毫秒）
+        resetOnClick = true // 点击后是否重置自动切换计时
+      } = options;
+
+      let currentIndex = 0;
+      let timer = null;
+
+      function setBackground(tab) {
+        if (!bgElement || !tab) return;
+        const isMobile = window.innerWidth <= 991;
+        const bgUrl = isMobile ? tab.getAttribute('data-src1') : tab.getAttribute('data-src');
+
+        if (bgUrl) {
+          const img = new Image();
+          img.src = bgUrl;
+
+          img.onload = function () {
+            bgElement.classList.add('fade-out');
+            setTimeout(() => {
+              bgElement.setAttribute('src', bgUrl);
+              bgElement.classList.remove('fade-out');
+            }, 0);
+          };
+        }
+      }
+
+      function activateTab(index) {
+        tabs.forEach(t => t.classList.remove(activeClass));
+        contents.forEach(c => c.classList.remove(activeClass));
+
+        tabs[index].classList.add(activeClass);
+        contents[index].classList.add(activeClass);
+        setBackground(tabs[index]);
+        currentIndex = index;
+      }
+
+      function nextTab() {
+        const nextIndex = (currentIndex + 1) % tabs.length;
+        activateTab(nextIndex);
+      }
+
+      function startAutoPlay() {
+        if (!autoPlay) return;
+        stopAutoPlay();
+        timer = setInterval(nextTab, interval);
+      }
+
+      function stopAutoPlay() {
+        if (timer) clearInterval(timer);
+      }
+
+      // 初始化
+      activateTab(0);
+      startAutoPlay();
+
+      // 点击事件
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          activateTab(index);
+          if (resetOnClick) startAutoPlay();
+        });
+      });
+    }
+
+    skinRenewalInit('.skin-renewal .skin-renewal-tab-item', '.skin-renewal .skin-renewal-text-item', '.skin-renewal .skin-renewal-bg', 'active', {
+      autoPlay: true,
+      interval: 4000, // 每 4 秒切换
+      resetOnClick: true // 点击后重新计时
+    });
+  </script>
+  <div class="reglow-Introduction">
+    <div class="container">
+      <div class="reglow-Introduction-cont">
+        <div class="reglow-Introduction-item">
+          <picture>
+            <source srcset="./images77/a1.png" media="(max-width: 991px)">
+            <img class="img" src="./images77/a1.png">
+          </picture>
+          <div class="reglow-Introduction-text">
+            <h3 class="reglow-Introduction-h3">Gentle Eye Protection</h3>
+          </div>
+        </div>
+        <div class="reglow-Introduction-item">
+          <picture>
+            <source srcset="./images77/a2.png" media="(max-width: 991px)">
+            <img class="img" src="./images77/a2.png">
+          </picture>
+          <div class="reglow-Introduction-text">
+            <h3 class="reglow-Introduction-h3"><strong>12</strong> Years</h3>
+            <div class="reglow-Introduction-sub">of Innovation in Light Therapy</div>
+          </div>
+        </div>
+        <div class="reglow-Introduction-item">
+          <picture>
+            <source srcset="./images77/a3.png" media="(max-width: 991px)">
+            <img class="img" src="./images77/a3.png">
+          </picture>
+          <div class="reglow-Introduction-text">
+            <div class="reglow-Introduction-p">Full coverage, nomissed spots.Exclusive light-reflection tech boosts
+              irradiance, helping light reachevery contour.</div>
+            <h3 class="reglow-Introduction-h3"><strong>77.4</strong>%</h3>
+            <div class="reglow-Introduction-sub">Better light irradiances</div>
+          </div>
+        </div>
+        <div class="reglow-Introduction-item">
+          <picture>
+            <source srcset="./images77/a5.png" media="(max-width: 991px)">
+            <img class="img" src="./images77/a4.png">
+          </picture>
+          <div class="reglow-Introduction-text">
+            <h3 class="reglow-Introduction-h3">Optimal Gap (1 cm)</h3>
+            <div class="reglow-Introduction-sub">Precisely engineered to rest 1 cm above the skin, delivering evenlight
+              distribution, helping prevent overheating, and supportingbetter hygiene.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

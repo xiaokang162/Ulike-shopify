@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ulike vs Other Brands — 比较表（精细还原）</title>
+  <style>
+    :root {
+      --accent: #e6006f;
+      --muted: #9b9b9b;
+      --left-w: 1fr;
+      --center-w: 2.4fr;
+      /* 中间更大 */
+      --right-w: 1fr;
+      --pad-x: 48px;
+      --row-gap: 26px;
+      --label-font: 18px;
+      --body-font: 15.5px;
+      --maxw: 1400px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      position: relative;
+    }
+
+    /* 主比较区：三列 grid，内有标题区域与行区域 */
+    .compare {
+      display: grid;
+      grid-template-columns: var(--left-w) var(--center-w) var(--right-w);
+      gap: 0;
+      align-items: start;
+      position: relative;
+      padding-top: 36px;
+      /* 留出产品图空间 */
+    }
+
+    /* 中间淡紫背景块（包含中间列）使用伪元素扩展渐变 */
+    .center-bg {
+      grid-column: 2 / 3;
+      background: linear-gradient(180deg, #fff 0%, #fbf0f8 35%, #f7eef6 100%);
+      position: relative;
+      z-index: 1;
+      border-left: 1px solid rgba(0, 0, 0, 0.02);
+      padding: 28px 36px 36px 36px;
+      min-height: 40px;
+    }
+
+    /* 右侧灰色卡片 */
+    .right-bg {
+      grid-column: 3 / 4;
+      background: #f5f5f5;
+      box-shadow: -12px 0 24px rgba(0, 0, 0, 0.04);
+      padding: 60px 40px 36px 40px;
+      position: relative;
+      z-index: 0;
+      min-height: 40px;
+    }
+
+    /* 左侧空白区域（labels 列） */
+    .left-col {
+      grid-column: 1 / 2;
+      padding: 64px var(--pad-x) 36px 40px;
+    }
+
+    /* 标题行（跨3列） */
+    .title-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: var(--left-w) var(--center-w) var(--right-w);
+      align-items: end;
+      margin-bottom: 8px;
+      padding: 0 var(--pad-x);
+      gap: 0;
+    }
+
+    .title-row .left {
+      font-weight: 700;
+      font-size: 20px;
+      padding-left: 4px;
+    }
+
+    .title-row .center {
+      font-weight: 900;
+      font-size: 26px;
+      color: var(--accent);
+      position: relative;
+      padding-right: 24px;
+    }
+
+    .title-row .right {
+      font-weight: 700;
+      font-size: 20px;
+      text-align: right;
+      padding-right: 32px;
+    }
+
+    /* 产品图：绝对定位，覆盖中间与右侧顶部，带倾斜和阴影 */
+    .device {
+      position: absolute;
+      right: calc((100% - var(--maxw))/2 + 120px);
+      /* 在容器中偏右显示 */
+      top: -18px;
+      z-index: 3;
+      pointer-events: none;
+      transform: rotate(-12deg);
+      filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.14));
+    }
+
+    .device img {
+      width: 320px;
+      max-width: 28vw;
+      display: block;
+    }
+
+    /* 行容器：使用 grid，确保每行三列严格对齐 */
+    .rows {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: var(--left-w) var(--center-w) var(--right-w);
+      align-items: start;
+      gap: 0;
+      padding: 0 var(--pad-x);
+    }
+
+    /* 单行样式：每个逻辑单元的样式（左中右分别）*/
+    .label {
+      padding: calc(var(--row-gap) / 2) 12px;
+      font-size: var(--label-font);
+      color: #111;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .center-cell {
+      padding: calc(var(--row-gap) / 2) 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .right-cell {
+      padding: calc(var(--row-gap) / 2) 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    /* icon */
+    .tick {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 1;
+      min-width: 22px;
+      margin-top: 4px;
+    }
+
+    .cross {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1;
+      min-width: 22px;
+      margin-top: 4px;
+    }
+
+    /* 文本 */
+    .center-text,
+    .right-text {
+      font-size: var(--body-font);
+      line-height: 1.56;
+      color: #111;
+      word-break: break-word;
+    }
+
+    .right-text {
+      text-align: left;
+      max-width: 460px;
+    }
+
+    /* 行之间的分隔（轻线条） */
+    .rows>* {
+      /* 每个 cell */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    /* 移除最后一行下边线（三列都去掉） */
+    .rows>.end-blank {
+      border-bottom: none;
+    }
+
+    /* 在中间列内把文字放到 center-bg 区块中视觉一致 */
+    /* 把中间列的所有 center-cell 的背景放到 center-bg 的视觉内 */
+    /* 为了简洁，这里仅在结构上保证列位置正确，视觉背景由 center-bg/right-bg 提供 */
+
+    /* 响应式：窄屏改为单列堆叠，产品图居中并较小 */
+    @media (max-width:1000px) {
+      :root {
+        --pad-x: 20px;
+      }
+
+      body {
+        padding: 22px;
+      }
+
+      .compare {
+        grid-template-columns: 1fr;
+        padding-top: 0;
+      }
+
+      .title-row {
+        grid-template-columns: 1fr;
+        padding: 0 var(--pad-x);
+      }
+
+      .left-col,
+      .center-bg,
+      .right-bg {
+        grid-column: 1 / -1;
+        padding: 18px var(--pad-x);
+      }
+
+      .rows {
+        grid-template-columns: 1fr;
+        padding: 0 var(--pad-x);
+      }
+
+      .device {
+        position: static;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        margin: -48px 0 12px 0;
+        filter: none;
+      }
+
+      .device img {
+        width: 220px;
+        max-width: 46%;
+      }
+
+      .right-bg {
+        box-shadow: none;
+        margin-top: 8px;
+      }
+
+      .right-cell {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width:420px) {
+      .device img {
+        width: 180px;
+      }
+
+      :root {
+        --pad-x: 12px;
+        --label-font: 16px;
+        --body-font: 14px;
+        --row-gap: 20px;
+      }
+
+      .title-row .center {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="compare" role="table" aria-label="Ulike vs Other Brands">
+      <!-- 设备图（绝对） -->
+      <div class="device" aria-hidden="true">
+        <img src="https://cdn.shopify.com/s/files/1/0744/9333/8176/files/ulike-device.png?v=1699870000"
+          alt="Ulike device">
+      </div>
+
+      <!-- 标题 -->
+      <div class="title-row" role="row">
+        <div class="left">Dimension</div>
+        <div class="center">Ulike</div>
+        <div class="right">Other Brands</div>
+      </div>
+
+      <!-- 左侧空列（只是占位，用于留白） -->
+      <div class="left-col" aria-hidden="true"></div>
+
+      <!-- 中间背景块 -->
+      <div class="center-bg" aria-hidden="true"></div>
+
+      <!-- 右侧背景块 -->
+      <div class="right-bg" aria-hidden="true"></div>
+
+      <!-- rows（每三列一致对齐） -->
+      <div class="rows" role="rowgroup">
+        <!-- Row 1 -->
+        <div class="label">Higher energy at the highest level</div>
+        <div class="center-cell">
+          <div class="tick">✓</div>
+          <div class="center-text">16.5 J</div>
+        </div>
+        <div class="right-cell">
+          <div class="cross">✕</div>
+          <div class="right-text">Lower</div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="label">Flash</div>
+        <div class="center-cell">
+          <div class="tick">✓</div>
+          <div class="center-text">0.7s per flash with smart continuous flashing; full-body hair removal with a single
+            press, no repeated clicking needed</div>
+        </div>
+        <div class="right-cell">
+          <div class="cross">✕</div>
+          <div class="right-text">slower Requires continuous pressing</div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="label">Lower epidermal temperature</div>
+        <div class="center-cell">
+          <div class="tick">✓</div>
+          <div class="center-text">After 30 minutes of continuous use: 20 °C</div>
+        </div>
+        <div class="right-cell">
+          <div class="cross">✕</div>
+          <div class="right-text">Higher Temperature</div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="label">Light outlet shape</div>
+        <div class="center-cell">
+          <div class="tick">✓</div>
+          <div class="center-text">flat surface: deeper follicle penetration and improved hygiene</div>
+        </div>
+        <div class="right-cell">
+          <div class="cross">✕</div>
+          <div class="right-text">concave surface: Difficult to clean, increases the risk of bacterial growth and
+            folliculitis.</div>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="label">Ineffective area</div>
+        <div class="center-cell">
+          <div class="tick">✓</div>
+          <div class="center-text">Ultra-narrow frame maximises the effective treatment area (3.3 cm²)</div>
+        </div>
+        <div class="right-cell">
+          <div class="cross">✕</div>
+          <div class="right-text">Larger</div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="label">Device Weight</div>
+        <div class="center-cell">
+          <div class="tick">✓</div>
+          <div class="center-text">271 g</div>
+        </div>
+        <div class="right-cell">
+          <div class="cross">✕</div>
+          <div class="right-text">Heavier</div>
+        </div>
+
+        <!-- 用一个空格单元去掉最后一行下边线 -->
+        <div class="end-blank" style="border-bottom:none"></div>
+        <div class="end-blank" style="border-bottom:none"></div>
+        <div class="end-blank" style="border-bottom:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 设备图加载容错
+    document.querySelectorAll('.device img').forEach(img => {
+      img.onerror = () => img.style.display = 'none';
+    });
+
+  </script>
+</body>
+
+</html>

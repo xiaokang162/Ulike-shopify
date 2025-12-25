@@ -1,0 +1,17 @@
+/* Extracted .lTop-canvas styles from dx.html */
+.lTop-canvas {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+/* keep a rule to ensure canvas inside fills the container if scripts rely on it */
+.lTop-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

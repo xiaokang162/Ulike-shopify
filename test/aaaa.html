@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不规则网格布局</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-gap: 20px 40px;
+      align-items: start;
+    }
+
+    .box {
+      border: 3px solid #ff5c5c;
+      border-radius: 6px;
+      background: #2b2b2b;
+    }
+
+    /* 左列 */
+    .box:nth-child(1) {
+      width: 160px;
+      height: 250px;
+    }
+
+    .box:nth-child(4) {
+      width: 160px;
+      height: 100px;
+    }
+
+    /* 中间列 */
+    .box:nth-child(2) {
+      width: 200px;
+      height: 160px;
+      margin-top: 0;
+    }
+
+    .box:nth-child(5) {
+      width: 200px;
+      height: 180px;
+
+      /* 关键：往上顶 */
+    }
+
+    /* 右列 */
+    .box:nth-child(3) {
+      width: 160px;
+      height: 250px;
+    }
+
+    .box:nth-child(6) {
+      width: 160px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+</body>
+
+</html>

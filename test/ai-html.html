@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More to help Layout</title>
+  <style>
+    /* 1. 基础重置与字体设置 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f9f9f9;
+      /* 整体背景色 */
+      color: #111;
+    }
+
+    /* 2. 主容器 */
+    .help-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 50px;
+      letter-spacing: -0.5px;
+    }
+
+    /* 3. 网格布局 (核心部分) */
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      /* 居中排列 */
+      gap: 40px;
+      /* 卡片之间的间距 */
+      flex-wrap: wrap;
+      /* 允许换行 */
+    }
+
+    /* 4. 单个卡片样式 */
+    .feature-card {
+      flex: 1;
+      /* 让每个卡片均分宽度 */
+      min-width: 280px;
+      /* 防止卡片变得太窄 */
+      max-width: 350px;
+      /* 限制最大宽度 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    /* 图标区域 (演示用) */
+    .icon-box {
+      height: 60px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 为了演示，这里用文字模拟图标，您可以替换为 <img src="..." /> */
+    .icon-placeholder {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #555;
+      margin-bottom: 25px;
+      max-width: 300px;
+      /* 限制文字宽度以匹配设计 */
+    }
+
+    /* 5. 按钮样式 */
+    .btn {
+      display: inline-block;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 24px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: opacity 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
+    }
+
+    /* 6. 移动端适配 (响应式) */
+    @media (max-width: 768px) {
+      .features-grid {
+        flex-direction: column;
+        /* 变为竖向排列 */
+        align-items: center;
+      }
+
+      .feature-card {
+        width: 100%;
+        /* 占满宽度 */
+        max-width: 100%;
+        margin-bottom: 40px;
+        /* 移动端每个项目之间的垂直间距 */
+        border-bottom: 1px solid #eee;
+        /* 可选：移动端加个分割线 */
+        padding-bottom: 30px;
+      }
+
+      .feature-card:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="help-section">
+    <h2 class="section-title">More to help.</h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="icon-box">
+          <span class="icon-placeholder">✅ HSA | FSA</span>
+        </div>
+        <h3 class="card-title">Pay with HSA/FSA</h3>
+        <p class="card-desc">Get medical approval and pay with HSA/FSA in just a few minutes.</p>
+        <a href="#" class="btn">How it works</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box">
+          <span class="icon-placeholder">🛡️ 100 DAY Back</span>
+        </div>
+        <h3 class="card-title">100 Day Money-back Guarantee</h3>
+        <p class="card-desc">100-day satisfaction guarantee - full refund if you're not completely satisfied.</p>
+        <a href="#" class="btn">Return Policy</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon-box">
+          <span class="icon-placeholder">💬 1-on-1</span>
+        </div>
+        <h3 class="card-title">Virtual 1-on-1 Consultation</h3>
+        <p class="card-desc">Talk with our experts for tailored advice on choosing and using Ulike devices.</p>
+        <a href="#" class="btn">Book Now</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+
+</html>

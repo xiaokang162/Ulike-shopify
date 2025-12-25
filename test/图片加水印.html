@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高清无损图片水印工具 (多格式版)</title>
+  <style>
+    :root {
+      --primary-color: #007AFF;
+      --bg-color: #f5f5f7;
+      --panel-bg: #ffffff;
+      --border-color: #e1e1e1;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 左侧控制面板 */
+    .sidebar {
+      width: 320px;
+      background: var(--panel-bg);
+      border-right: 1px solid var(--border-color);
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .control-group {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 15px;
+    }
+
+    .control-group h3 {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-row {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    input[type="text"],
+    input[type="color"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background: #fff;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s;
+      text-align: center;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .btn.secondary {
+      background-color: #e1e1e1;
+      color: #333;
+    }
+
+    .btn.secondary:hover {
+      background-color: #d1d1d1;
+    }
+
+    /* 标签页切换 */
+    .tabs {
+      display: flex;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--primary-color);
+    }
+
+    .tab {
+      flex: 1;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 13px;
+      background: #fff;
+      color: var(--primary-color);
+    }
+
+    .tab.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* 右侧预览区域 */
+    .preview-area {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+        linear-gradient(-45deg, #ccc 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ccc 75%),
+        linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+
+    canvas {
+      max-width: 100%;
+      max-height: 100%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      object-fit: contain;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    /* 导出区域样式 */
+    .export-section {
+      margin-top: auto;
+      border-top: 1px solid var(--border-color);
+      padding-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sidebar">
+    <button class="btn" onclick="document.getElementById('fileInput').click()">📂 上传原图</button>
+    <input type="file" id="fileInput" accept="image/*">
+
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('text')">文字水印</div>
+      <div class="tab" onclick="switchTab('image')">图片水印</div>
+    </div>
+
+    <div id="textControls" class="control-group">
+      <h3>文字设置</h3>
+      <div class="input-row">
+        <label>水印内容</label>
+        <input type="text" id="watermarkText" value="Watermark © 2025">
+      </div>
+      <div class="input-row">
+        <label>字体大小 (px)</label>
+        <input type="range" id="fontSize" min="10" max="500" value="80">
+      </div>
+      <div class="input-row">
+        <label>文字颜色</label>
+        <input type="color" id="fontColor" value="#ffffff">
+      </div>
+    </div>
+
+    <div id="imageControls" class="control-group hidden">
+      <h3>图片水印设置</h3>
+      <button class="btn secondary" onclick="document.getElementById('watermarkImageInput').click()">上传水印图</button>
+      <input type="file" id="watermarkImageInput" accept="image/*" style="display:none">
+      <div class="input-row">
+        <label>缩放比例</label>
+        <input type="range" id="imgScale" min="0.1" max="5.0" step="0.1" value="1.0">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <h3>通用布局</h3>
+      <div class="input-row">
+        <label>透明度 (0-1)</label>
+        <input type="range" id="opacity" min="0.0" max="1.0" step="0.01" value="0.5">
+      </div>
+      <div class="input-row">
+        <label>旋转角度</label>
+        <input type="range" id="rotate" min="-180" max="180" value="-30">
+      </div>
+
+      <div class="input-row">
+        <label>模式: <span id="modeLabel">平铺</span></label>
+        <select id="layoutMode">
+          <option value="tiled">全屏平铺 (数量由间距控制)</option>
+          <option value="single">单个居中/自定义</option>
+        </select>
+      </div>
+
+      <div id="tiledSettings">
+        <div class="input-row">
+          <label>水平间距 (Gap X)</label>
+          <input type="range" id="gapX" min="0" max="1000" value="300">
+        </div>
+        <div class="input-row">
+          <label>垂直间距 (Gap Y)</label>
+          <input type="range" id="gapY" min="0" max="1000" value="300">
+        </div>
+      </div>
+
+      <div id="singleSettings" class="hidden">
+        <div class="input-row">
+          <label>X 轴位置 (%)</label>
+          <input type="range" id="posX" min="0" max="100" value="50">
+        </div>
+        <div class="input-row">
+          <label>Y 轴位置 (%)</label>
+          <input type="range" id="posY" min="0" max="100" value="50">
+        </div>
+      </div>
+    </div>
+
+    <div class="export-section">
+      <div class="input-row">
+        <label>导出格式</label>
+        <select id="exportFormat">
+          <option value="image/png">PNG (无损/默认)</option>
+          <option value="image/jpeg">JPG (体积小/适合照片)</option>
+          <option value="image/webp">WebP (高压缩比)</option>
+        </select>
+      </div>
+      <button class="btn" style="background-color: #28a745;" onclick="downloadImage()">⬇️ 导出高清原图</button>
+    </div>
+  </div>
+
+  <div class="preview-area">
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    // 状态管理
+    const state = {
+      mainImage: null,
+      wmImage: null,
+      mode: 'text', // 'text' or 'image'
+      text: 'Watermark © 2025',
+      fontSize: 80,
+      color: '#ffffff',
+      imgScale: 1.0,
+      opacity: 0.5,
+      rotate: -30,
+      layout: 'tiled', // 'tiled' or 'single'
+      gapX: 300,
+      gapY: 300,
+      posX: 50,
+      posY: 50
+    };
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // 初始化绑定事件
+    function init() {
+      // 输入监听
+      document.getElementById('fileInput').addEventListener('change', handleMainImage);
+      document.getElementById('watermarkImageInput').addEventListener('change', handleWmImage);
+
+      // 文本监听
+      bindInput('watermarkText', 'text');
+      bindInput('fontSize', 'fontSize', true);
+      bindInput('fontColor', 'color');
+
+      // 图片水印监听
+      bindInput('imgScale', 'imgScale', true);
+
+      // 通用监听
+      bindInput('opacity', 'opacity', true);
+      bindInput('rotate', 'rotate', true);
+      bindInput('gapX', 'gapX', true);
+      bindInput('gapY', 'gapY', true);
+      bindInput('posX', 'posX', true);
+      bindInput('posY', 'posY', true);
+
+      document.getElementById('layoutMode').addEventListener('change', (e) => {
+        state.layout = e.target.value;
+        toggleLayoutSettings();
+        draw();
+      });
+
+      // 初始绘制提示
+      ctx.font = "30px Arial";
+      ctx.fillText("请先在左侧上传原图", 50, 50);
+    }
+
+    // 绑定输入框到状态
+    function bindInput(id, key, isNumber = false) {
+      const el = document.getElementById(id);
+      el.addEventListener('input', (e) => {
+        state[key] = isNumber ? parseFloat(e.target.value) : e.target.value;
+        draw();
+      });
+    }
+
+    // 切换 Tab
+    window.switchTab = function (type) {
+      state.mode = type;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (type === 'text') {
+        document.getElementById('textControls').classList.remove('hidden');
+        document.getElementById('imageControls').classList.add('hidden');
+      } else {
+        document.getElementById('textControls').classList.add('hidden');
+        document.getElementById('imageControls').classList.remove('hidden');
+      }
+      draw();
+    }
+
+    // 切换布局设置显示
+    function toggleLayoutSettings() {
+      if (state.layout === 'tiled') {
+        document.getElementById('tiledSettings').classList.remove('hidden');
+        document.getElementById('singleSettings').classList.add('hidden');
+        document.getElementById('modeLabel').innerText = "平铺";
+      } else {
+        document.getElementById('tiledSettings').classList.add('hidden');
+        document.getElementById('singleSettings').classList.remove('hidden');
+        document.getElementById('modeLabel').innerText = "单个";
+      }
+    }
+
+    // 处理主图上传
+    function handleMainImage(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          state.mainImage = img;
+          // 设置画布尺寸为原图真实尺寸（关键点：不压缩）
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          draw();
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 处理水印图片上传
+    function handleWmImage(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          state.wmImage = img;
+          draw();
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 核心绘制函数
+    function draw() {
+      if (!state.mainImage) return;
+
+      // 1. 清空并绘制原图
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1.0;
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // 重置变换
+      ctx.drawImage(state.mainImage, 0, 0);
+
+      // 准备水印参数
+      ctx.globalAlpha = state.opacity;
+      const w = canvas.width;
+      const h = canvas.height;
+
+      if (state.layout === 'single') {
+        drawOneWatermark(w * (state.posX / 100), h * (state.posY / 100));
+      } else {
+        // 平铺逻辑：从中心向四周扩散绘制
+
+        // 计算间距
+        let stepX = state.gapX + (state.mode === 'text' ? state.fontSize * state.text.length : (state.wmImage ? state.wmImage.width * state.imgScale : 100));
+        let stepY = state.gapY + (state.mode === 'text' ? state.fontSize : (state.wmImage ? state.wmImage.height * state.imgScale : 100));
+
+        // 防止间距过小导致死循环/卡顿
+        stepX = Math.max(stepX, 50);
+        stepY = Math.max(stepY, 50);
+
+        // 简单的全屏覆盖循环
+        for (let x = 0; x < w; x += stepX) {
+          for (let y = 0; y < h; y += stepY) {
+            // 稍微错位让平铺更好看
+            let renderX = x;
+            if ((y / stepY) % 2 === 1) renderX += stepX / 2;
+            drawOneWatermark(renderX % w, y);
+            // 补全右侧边缘
+            if (renderX % w < stepX) drawOneWatermark((renderX % w) + w, y);
+          }
+        }
+      }
+    }
+
+    function drawOneWatermark(x, y) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(state.rotate * Math.PI / 180);
+
+      if (state.mode === 'text') {
+        ctx.font = `bold ${state.fontSize}px Arial`;
+        ctx.fillStyle = state.color; // 已修复变量名
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(state.text, 0, 0);
+      } else if (state.mode === 'image' && state.wmImage) {
+        const drawW = state.wmImage.width * state.imgScale;
+        const drawH = state.wmImage.height * state.imgScale;
+        ctx.drawImage(state.wmImage, -drawW / 2, -drawH / 2, drawW, drawH);
+      }
+      ctx.restore();
+    }
+
+    // 导出功能（支持多格式）
+    window.downloadImage = function () {
+      if (!state.mainImage) {
+        alert("请先上传原图！");
+        return;
+      }
+
+      // 获取选择的格式
+      const format = document.getElementById('exportFormat').value;
+      let ext = 'png';
+      if (format === 'image/jpeg') ext = 'jpg';
+      if (format === 'image/webp') ext = 'webp';
+
+      const link = document.createElement('a');
+      link.download = `watermarked-image.${ext}`;
+
+      // 第二个参数 1.0 表示最高质量 (仅对 jpeg/webp 有效，png 忽略)
+      link.href = canvas.toDataURL(format, 1.0);
+      link.click();
+    }
+
+    init();
+  </script>
+</body>
+
+</html>

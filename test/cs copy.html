@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .container {
+      max-width: 1600px;
+      padding: 0 40px;
+      margin: 0 auto;
+    }
+
+    @media (max-width:991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="steps-slider">
+    <div class="container">
+      <h2 class="title">Reserve your spot.</h2>
+    </div>
+    <div class="slider-container">
+      <button class="arrow left">&lt;</button>
+
+      <div class="slides">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <img src="https://via.placeholder.com/600x360/cccccc/fff" />
+          <div class="text-box">
+            <span class="step-tag">STEP 1</span>
+            <h3>Book your consultation</h3>
+            <p>Pick your ideal time and get matched with an Expert.</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="https://via.placeholder.com/600x360/aaaaaa/fff" />
+          <div class="text-box">
+            <span class="step-tag">STEP 2</span>
+            <h3>Receive confirmation</h3>
+            <p>You’ll get an email with your booking details.</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="https://via.placeholder.com/600x360/bbbbbb/fff" />
+          <div class="text-box">
+            <span class="step-tag">STEP 3</span>
+            <h3>Start guidance, right on time</h3>
+            <p>Your expert will help you find the perfect device.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="arrow right">&gt;</button>
+    </div>
+  </div>
+
+  <style>
+    .steps-slider {
+      padding: 40px 0 80px;
+      background: #f6f7fb;
+      text-align: center;
+      font-family: sans-serif;
+    }
+
+    .steps-slider .title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 1250px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      flex: 0 0 80%;
+      margin: 0 10%;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      position: relative;
+      opacity: 0.4;
+      transform: scale(0.94);
+      transition: all .5s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .slide img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+    }
+
+    .text-box {
+      padding: 30px;
+      text-align: left;
+    }
+
+    .step-tag {
+      display: inline-block;
+      border: 1px solid #fff;
+      padding: 4px 14px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .text-box h3 {
+      margin: 10px 0 8px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .text-box p {
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .arrow.left {
+      left: 20px;
+    }
+
+    .arrow.right {
+      right: 20px;
+    }
+
+    .arrow:hover {
+      background: #e3e3e3;
+    }
+  </style>
+
+  <script>
+    let currentIndex = 0;
+
+    const slides = document.querySelectorAll(".slide");
+    const totalSlides = slides.length;
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove("active");
+      });
+      slides[currentIndex].classList.add("active");
+
+      const slidesContainer = document.querySelector(".slides");
+      slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    document.querySelector(".arrow.left").addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlides();
+    });
+
+    document.querySelector(".arrow.right").addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlides();
+    });
+
+    // 初始化
+    updateSlides();
+  </script>
+
+</body>
+
+</html>

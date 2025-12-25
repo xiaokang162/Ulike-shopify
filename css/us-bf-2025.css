@@ -1,0 +1,485 @@
+.container {
+  max-width: 1600px;
+  padding: 0 40px;
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+.bf-banner-box {
+  position: relative;
+  z-index: 1;
+}
+
+.bf-banner-box .container {
+  max-width: none;
+}
+
+.bf-banner-box .img-bg {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.bf-banner-box .img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 57.66%;
+  z-index: 3;
+}
+
+.bf-banner-box .bf-banner-cont {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 3;
+  padding: 0 20px;
+}
+
+.bf-banner-box .bf-banner-txt {
+  width: 42.7vw;
+}
+
+.bf-banner-box .bf-banner-img {
+  position: relative;
+  z-index: 1;
+}
+
+.bf-banner-box .img-icon {
+  width: 100%;
+  display: block;
+}
+
+.bf-banner-box .img-t {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  left: 0;
+  top: 0;
+}
+
+.bf-banner-box .img-s {
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.bf-banner-box .bf-banner-p {
+  width: 100%;
+  max-width: 470px;
+  font-size: 28px;
+  line-height: 1.3;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.bf-banner-box .bf-banner-p p {
+  margin: 0;
+}
+
+.bf-banner-box .bf-banner-p strong {
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+}
+
+/* 🌌 星星容器整体旋转 */
+.bf-banner-box .star-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+.bf-banner-box .star-wrap {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: rotate 250s linear infinite;
+  backface-visibility: hidden;
+}
+
+/* 🌟 单颗星星闪烁 */
+.bf-banner-box .star {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #fff;
+  backface-visibility: hidden;
+  transform: rotate(0deg) scale(0.08);
+  animation: blink 15s ease infinite alternate both;
+  z-index: 0;
+}
+
+/* 星星内部光晕层 */
+.bf-banner-box .star div {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  /* box-shadow: 0 0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 2px 9px rgba(255, 255, 255, 0.07), 0 0 2px 15px rgba(0, 0, 0, 0.4),
+    0 0 2px 16px rgba(255, 255, 255, 0.1); */
+  transform: rotate(45deg) scale(0.75);
+}
+
+/* ✴️ 四个十字光线（伪元素） */
+.bf-banner-box .star::before,
+.bf-banner-box .star::after,
+.bf-banner-box .star div::before,
+.bf-banner-box .star div::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  box-shadow: 0 0 25px white;
+  width: 10%;
+  height: 800%;
+  top: calc(50% - 400%);
+  left: 45%;
+  z-index: 1;
+}
+
+.bf-banner-box .star::before,
+.bf-banner-box .star div::before {
+  transform: rotate(90deg);
+}
+
+/* 🔵 蓝色星星光晕 */
+.bf-banner-box .star.star--blue::before,
+.bf-banner-box .star.star--blue::after,
+.bf-banner-box .star.star--blue div::before,
+.bf-banner-box .star.star--blue div::after {
+  box-shadow: 0 0 25px #0000ff;
+}
+
+/* 🔴 红色星星光晕 */
+.bf-banner-box .star.star--red::before,
+.bf-banner-box .star.star--red::after,
+.bf-banner-box .star.star--red div::before,
+.bf-banner-box .star.star--red div::after {
+  box-shadow: 0 0 25px #ff0000;
+}
+
+/* ✨ 闪烁动画 */
+@keyframes blink {
+  0% {
+    transform: rotate(0deg) scale(0.1);
+  }
+
+  4% {
+    transform: rotate(-20deg) scale(0.9);
+  }
+
+  8% {
+    transform: rotate(-40deg) scale(0.1);
+  }
+
+  50% {
+    transform: rotate(-40deg) scale(0.1);
+  }
+
+  52% {
+    transform: rotate(-50deg) scale(0.3);
+  }
+
+  54% {
+    transform: rotate(-60deg) scale(0.1);
+  }
+
+  100% {
+    transform: rotate(0deg) scale(0.1);
+  }
+}
+
+/* 🌠 容器旋转动画 */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.bf-banner-box .shoot-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  /* background: #fff; */
+  transform-origin: 100% 0;
+  opacity: 0;
+  animation: star-move 2.5s linear forwards;
+}
+
+.bf-banner-box .shoot-star::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 2px;
+  border: 1px solid #f00;
+  border-width: 1px 150px 1px 150px;
+  border-color: transparent transparent transparent #fff;
+  transform: rotate(-45deg) translate3d(1px, -1px, 0);
+  transform-origin: 0% 100%;
+  opacity: 0;
+  animation: shooting 2.5s linear forwards;
+}
+
+/* 🌠 流星滑动路径 + 渐隐效果 */
+@keyframes star-move {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(200px, -200px, 0);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    /* ✅ 尾端慢慢消失 */
+    transform: scale(1) translate3d(-200px, 200px, 0);
+  }
+}
+
+/* 🌠 尾巴的光线随主体同步淡出 */
+@keyframes shooting {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-45deg) translate(0px, 0px);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    /* ✅ 尾部同时慢慢消失 */
+    transform: scale(0.8) rotate(-45deg) translate(-5px, -5px);
+  }
+}
+
+@media (max-width: 1600px) {
+  .bf-banner-box .bf-banner-cont {
+    padding: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .bf-banner-box .bf-banner-cont {
+    top: 15%;
+    transform: translateY(0);
+  }
+  .bf-banner-box .bf-banner-txt {
+    width: 100%;
+  }
+  .bf-banner-box .bf-banner-p {
+    font-size: 20px;
+    max-width: 300px;
+  }
+  .bf-banner-box .img {
+    width: 100%;
+  }
+}
+
+.summer-join {
+  padding: 70px 0 90px 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.summer-join .img-bg {
+  position: absolute;
+  top: 0;
+  transform: translateY(-51%);
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.summer-join .container {
+  position: relative;
+  z-index: 1;
+}
+
+.summer-join .summer-join-title {
+  color: transparent;
+  font-size: 60px;
+  font-weight: normal;
+  font-family: var(--heading-font-family);
+  text-align: center;
+  margin: 0;
+  margin-bottom: 70px;
+  line-height: 1.2;
+  background: linear-gradient(
+    180deg,
+    rgba(130, 139, 148, 1) -14.39%,
+    #fff 73.85%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.summer-join .summer-join-list {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  --w-num: 0;
+  --w-b: 0;
+}
+
+.summer-join .summer-join-item {
+  position: relative;
+  text-align: center;
+}
+
+.summer-join .summer-join-time {
+  color: #fff;
+  font-size: 18px;
+  font-family: var(--heading-font-family);
+  line-height: 1.2;
+}
+
+.summer-join .active .summer-join-sub {
+  color: #fff;
+}
+
+.summer-join .summer-join-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #2b333f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+  position: relative;
+}
+
+.summer-join .summer-join-icon svg {
+  position: relative;
+  z-index: 2;
+}
+
+.summer-join .summer-join-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: calc(var(--w-num) * 1px);
+  height: 3px;
+  background: #2b333f;
+  z-index: -1;
+}
+
+.summer-join .summer-join-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  width: calc(var(--w-num) * var(--w-b) * 1px);
+  height: 3px;
+  background: #fff3e5;
+  z-index: 0;
+}
+
+.summer-join .summer-join-item:last-child .summer-join-icon::before,
+.summer-join .summer-join-item:last-child .summer-join-icon::after {
+  display: none;
+}
+
+.summer-join .active .summer-join-icon {
+  background: linear-gradient(180deg, #c60621 -25%, #440304 125%);
+}
+
+.summer-join .summer-join-sub {
+  color: #959595;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0;
+}
+
+.summer-join .summer-join-sub p {
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .summer-join {
+    padding: 50px 0;
+  }
+  .summer-join .summer-join-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+  .summer-join .summer-join-time {
+    font-size: 16px;
+  }
+  .summer-join .summer-join-icon {
+    width: 50px;
+    height: 50px;
+    margin: 5px auto;
+  }
+  .summer-join .summer-join-icon svg {
+    display: block;
+    width: 23px;
+    height: auto;
+  }
+  .summer-join .summer-join-sub {
+    font-size: 12px;
+    zoom: 0.9;
+  }
+  .summer-join .summer-join-icon::before,
+  .summer-join .summer-join-icon::after {
+    height: 2px;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: auto;
+  flex: 1;
+  border-radius: 0;
+  overflow: hidden;
+}

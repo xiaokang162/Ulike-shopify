@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./test/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <script src="//www.ulike.com/cdn/shop/t/116/assets/swiper-bundle.min.aio.min.js"></script>
+  <style>
+    .container {
+      padding: 0 40px;
+      margin: 0 auto;
+      max-width: 1600px;
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    .steps-slider {
+      padding: 60px 0 80px 0;
+      background: linear-gradient(0deg, #FFF -25%, rgba(236, 240, 247, 1.00) 125%);
+      overflow: hidden;
+    }
+
+    .steps-slider .steps-slider-h3 {
+      color: #000;
+      font-size: 40px;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+      font-weight: normal;
+      text-align: center;
+      margin: 0;
+      margin-bottom: 60px;
+    }
+
+    .steps-slider .steps-slider-list {
+      position: relative;
+      z-index: 1;
+      overflow: visible;
+      margin: 0 auto;
+    }
+
+    .steps-slider .steps-slider-cont {
+      display: flex;
+    }
+
+    .steps-slider .steps-slider-item {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      border-radius: 5px;
+      overflow: hidden;
+      opacity: .6;
+      transition: opacity .3s ease-in-out;
+      background: #000;
+    }
+
+    .steps-slider .swiper-slide-active {
+      opacity: 1;
+    }
+
+    .steps-slider .img {
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+    }
+
+    .steps-slider .steps-slider-text {
+      position: absolute;
+      width: 100%;
+      padding: 0 30px;
+      left: 0;
+      bottom: 4vw;
+      z-index: 2;
+      color: #fff;
+      text-align: center;
+    }
+
+    .steps-slider .steps-slider-tag {
+      height: 32px;
+      padding: 0 26px;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      margin: 0 auto;
+      border: 1px solid #fff;
+      border-radius: 32px;
+      color: #FFF;
+      font-size: 18px;
+      line-height: 1;
+      font-family: var(--heading-font-family);
+      margin-bottom: 10px;
+    }
+
+    .steps-slider .steps-slider-h4 {
+      color: #FFF;
+      font-size: 30px;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .steps-slider .steps-slider-p {
+      color: #FFF;
+      font-size: 16px;
+      line-height: 1.2;
+      margin-top: 8px;
+    }
+
+    .steps-slider .steps-slider-arraws {
+      width: 42.8vw;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    .steps-slider .steps-slider-arraw {
+      width: 40px;
+      height: 40px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+    }
+
+    .steps-slider .steps-slider-arraw:hover {
+      background: #eee;
+    }
+
+    .steps-slider .steps-slider-arraw::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-top: 2px solid #000;
+      border-left: 2px solid #000;
+      transform: rotate(-45deg);
+      margin-left: 4px;
+    }
+
+    .steps-slider .steps-slider-arraw:last-child {
+      transform: scale(-1, -1);
+    }
+
+    .steps-slider .steps-slider-pagination {
+      display: none;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .swiper-pagination-clickable .swiper-pagination-bullet {
+      margin: 0;
+    }
+
+    .steps-slider .swiper-pagination-bullet-active {
+      background: #000;
+    }
+
+
+    @media (max-width: 991px) {
+      .steps-slider {
+        padding: 40px 24px;
+      }
+
+      .steps-slider .steps-slider-h3 {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
+      .steps-slider .steps-slider-arraws {
+        /* width: calc(100vw - 78px); */
+        display: none;
+      }
+
+      .steps-slider .steps-slider-pagination {
+        display: flex;
+      }
+
+      .steps-slider .steps-slider-text {
+        padding: 0 20px;
+        bottom: 30px;
+      }
+
+      .steps-slider .steps-slider-tag {
+        font-size: 14px;
+        padding: 0 20px;
+      }
+
+      .steps-slider .steps-slider-h4 {
+        font-size: 22px;
+      }
+
+      .steps-slider .steps-slider-p {
+        font-size: 14px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="steps-slider">
+    <h3 class="steps-slider-h3">Reserve your spot.</h3>
+    <div class="steps-slider-list">
+      <div class="steps-slider-cont swiper-wrapper">
+        <div class="steps-slider-item swiper-slide">
+          <picture>
+            <source srcset="./images75/f5.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images75/f1.jpg">
+          </picture>
+          <div class="steps-slider-text">
+            <div class="steps-slider-tag">STEP 1</div>
+            <h4 class="steps-slider-h4">Book your consultation</h4>
+            <div class="steps-slider-p">Pick your ideal time and get matched with a Ulike Expert.</div>
+          </div>
+        </div>
+        <div class="steps-slider-item swiper-slide">
+          <picture>
+            <source srcset="./images75/f5.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images75/f1.jpg">
+          </picture>
+          <div class="steps-slider-text">
+            <div class="steps-slider-tag">STEP 1</div>
+            <h4 class="steps-slider-h4">Book your consultation</h4>
+            <div class="steps-slider-p">Pick your ideal time and get matched with a Ulike Expert.</div>
+          </div>
+        </div>
+        <div class="steps-slider-item swiper-slide">
+          <picture>
+            <source srcset="./images75/f5.jpg" media="(max-width: 991px)">
+            <img class="img" src="./images75/f1.jpg">
+          </picture>
+          <div class="steps-slider-text">
+            <div class="steps-slider-tag">STEP 1</div>
+            <h4 class="steps-slider-h4">Book your consultation</h4>
+            <div class="steps-slider-p">Pick your ideal time and get matched with a Ulike Expert.</div>
+          </div>
+        </div>
+      </div>
+      <div class="steps-slider-arraws">
+        <div class="steps-slider-arraw steps-slider-prev"></div>
+        <div class="steps-slider-arraw steps-slider-next"></div>
+      </div>
+    </div>
+    <div class="steps-slider-pagination"></div>
+  </div>
+  <script>
+    new Swiper('.steps-slider-list', {
+      slidesPerView: 1,
+      loop: true,
+      spaceBetween: 24,
+      centeredSlides: true,
+      breakpoints: {
+        992: {
+          slidesPerView: 2.2,
+          spaceBetween: 35
+        },
+      },
+      pagination: {
+        el: ".steps-slider-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".steps-slider-next",
+        prevEl: ".steps-slider-prev",
+      }
+    });
+  </script>
+</body>
+
+</html>

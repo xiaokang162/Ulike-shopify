@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .scroll-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: #f8f8f8;
+      padding: 20px 0;
+    }
+
+    .track {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .item {
+      flex: 0 0 auto;
+      /* 不缩放 */
+      width: 260px;
+      padding: 18px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      align-items: flex-end;
+
+    }
+
+    /* 0.35透明度的黑色遮罩 */
+    .item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-wrap" id="scrollWrap">
+    <div class="track" id="track">
+      <!-- 请把你的卡片放这里 -->
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div class="item">Item 3</div>
+      <div class="item">Item 4</div>
+      <div class="item">Item 5</div>
+      <div class="item">Item 6</div>
+    </div>
+  </div>
+
+
+  <script>
+    (function () {
+      const wrap = document.getElementById('scrollWrap');
+      const track = document.getElementById('track');
+
+      if (!wrap || !track) return;
+
+      let singleWidth = 0;      // 单个周期（原始内容）的宽度
+      let pos = 0;              // 当前偏移（px）
+      let speed = 100;          // px/s，依据需求修改（越大越快）
+      let paused = false;
+      let rafId = null;
+      let lastTime = 0;
+      let resizeTimer = null;
+
+      // 初始化 / 重建：测量单周期宽度，克隆内容直到足够宽
+      function build() {
+        cancelAnimationFrame(rafId);
+        // 恢复初始 DOM（把 track 内容截成原始一次）
+        // 为了简单，先取第一个 clone 的 html 作为原始内容（如果之前被多次克隆）
+        // 我们需要单次内容：可以通过把 items 暂存到 fragment 来恢复
+        const items = Array.from(track.children);
+        if (!items.length) return;
+        // create a fresh container with single copy of items
+        const frag = document.createDocumentFragment();
+        items.forEach(node => frag.appendChild(node.cloneNode(true)));
+        track.innerHTML = '';
+        track.appendChild(frag);
+
+        // 测量 singleWidth（track 此时等于单周期宽度）
+        // 需要强制回流以拿到宽度
+        singleWidth = track.scrollWidth;
+
+        // 如果单周期就已经为 0 或过小（防御）
+        if (singleWidth <= 0) return;
+
+        // 让总内容宽至少 >= wrap.clientWidth * 2（保证任意视口都有内容）
+        // 一直追加单周期内容的克隆，直到满足
+        while (track.scrollWidth < wrap.clientWidth * 2) {
+          track.innerHTML += track.innerHTML; // 翻倍追加（性能上通常 OK）
+          // safety: 防止无限循环（极端情况）
+          if (track.children.length > 5000) break;
+        }
+
+        // 启动动画
+        pos = 0;
+        lastTime = performance.now();
+        rafId = requestAnimationFrame(loop);
+      }
+
+      // 平滑循环函数，基于时间差
+      function loop(now) {
+        rafId = requestAnimationFrame(loop);
+        if (paused) {
+          lastTime = now;
+          return;
+        }
+        const dt = (now - lastTime) / 1000; // seconds
+        lastTime = now;
+
+        // 更新位置（向左移动，因此为负）
+        pos -= speed * dt;
+
+        // 当移过单周期宽度时，循环回去（使用加法避免把 pos 置 0 导致瞬间跳动）
+        // 例如：singleWidth = 1200，pos 下降到 -1250 => pos += 1200 -> -50（平滑衔接）
+        if (Math.abs(pos) >= singleWidth) {
+          // 使用模运算会更稳健（处理 dt 大导致跳过多个周期）
+          // 计算超出的部分并把它保留
+          const over = Math.abs(pos) % singleWidth;
+          pos = -(over);
+        }
+
+        // 使用 translate3d 减少抖动
+        track.style.transform = `translate3d(${pos}px, 0, 0)`;
+      }
+
+      // 悬停 / 离开暂停
+      wrap.addEventListener('pointerenter', () => { paused = true; });
+      wrap.addEventListener('pointerleave', () => { paused = false; });
+
+      // 窗口尺寸变更时重建（防抖）
+      function onResize() {
+        paused = true; // 临时暂停，防止测量时移动
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          build();
+          paused = false;
+        }, 150);
+      }
+      window.addEventListener('resize', onResize);
+
+      // 初次构建
+      build();
+
+      // 替换速度函数：暴露一个方法方便外部调速（可选）
+      window.__horizontalScroller = {
+        setSpeed(pxPerSecond) { speed = Number(pxPerSecond) || speed; },
+        pause() { paused = true; },
+        resume() { paused = false; }
+      };
+    })();
+  </script>
+
+
+
+</body>
+
+</html>

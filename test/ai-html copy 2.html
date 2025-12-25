@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More to help</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/comm.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1600px;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    .help-section {
+      padding: 60px 0 90px 0;
+      background: #F9F9F9;
+    }
+
+    .help-section .help-title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: normal;
+      line-height: 1.2;
+      font-family: var(--heading-font-family);
+      margin-bottom: 55px;
+    }
+
+    .help-section .help-list {
+      display: flex;
+      gap: 40px;
+    }
+
+    .help-section .help-item {
+      flex: 1;
+      text-align: center;
+      color: #000;
+    }
+
+    .help-section .help-icon {
+      max-width: 400px;
+      margin-bottom: 24px;
+    }
+
+    .help-section .help-heading {
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: normal;
+      font-family: var(--heading-font-family);
+      margin-bottom: 14px;
+    }
+
+    .help-section .help-desc {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .help-section .help-desc p {
+      margin: 0;
+    }
+
+    .help-section .help-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 190px;
+      height: 43px;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 4px;
+      margin: 0 auto;
+      transition: opacity 0.3s;
+    }
+
+    .help-section .help-btn:hover {
+      opacity: 0.8;
+    }
+
+    /* ===== 移动端 ===== */
+    @media (max-width: 768px) {
+      .help-section .help-section {
+        padding: 50px 0;
+      }
+
+      .help-section .help-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+      }
+
+      .help-section .help-list {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .help-section .help-icon {
+        margin-bottom: 15px;
+      }
+
+      .help-section .help-heading {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .help-section .help-desc {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .help-section .help-btn {
+        font-size: 14px;
+        width: 170px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="help-section">
+    <div class="container">
+      <h2 class="help-title">More to help.</h2>
+      <div class="help-list">
+        <div class="help-item">
+          <img src="https://via.placeholder.com/120x60?text=HSA+FSA" alt="HSA FSA" class="help-icon">
+          <h3 class="help-heading">Pay with HSA/FSA</h3>
+          <div class="help-desc">
+            Get medical approval and pay with HSA/FSA in just a few minutes.
+          </div>
+          <a href="#" class="help-btn">HOW IT WORKS</a>
+        </div>
+        <div class="help-item">
+          <img src="https://via.placeholder.com/100x100?text=100+DAY" alt="100 Day" class="help-icon">
+          <h3 class="help-heading">100 Day Money-back Guarantee</h3>
+          <div class="help-desc">
+            100-day satisfaction guarantee – full refund if you're not completely satisfied.
+          </div>
+          <a href="#" class="help-btn">RETURN POLICY</a>
+        </div>
+        <div class="help-item">
+          <img src="https://via.placeholder.com/100x100?text=1-on-1" alt="Consultation" class="help-icon">
+          <h3 class="help-heading">Virtual 1-on-1 Consultation</h3>
+          <div class="help-desc">
+            Talk with our experts for tailored advice on choosing and using Ulike devices.
+          </div>
+          <a href="#" class="help-btn">BOOK NOW</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

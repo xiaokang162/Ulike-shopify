@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PCOS Step Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --pink: #e6005c;
+      --pink2: #ff4f8b;
+      --green: #5ad4b2;
+      --gray: #e6e6e6;
+      --bg: #f7f7f7;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #222;
+    }
+
+    .wrapper {
+      max-width: 980px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      text-align: center;
+      color: #666;
+      margin-bottom: 50px;
+    }
+
+    /* ===== outer card ===== */
+    .outer-card {
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 40px;
+    }
+
+    /* ===== progress ===== */
+    .progress-wrap {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .progress-line {
+      height: 4px;
+      background: #ddd;
+      position: absolute;
+      top: 22px;
+      left: 0;
+      right: 0;
+    }
+
+    .progress-fill {
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--pink));
+      width: 0%;
+      transition: .3s;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .step {
+      position: relative;
+      background: #ccc;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    .step.active {
+      background: var(--pink);
+    }
+
+    .step.active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid var(--pink);
+    }
+
+    /* ===== inner card ===== */
+    .inner-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 40px;
+    }
+
+    /* header card */
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 22px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* form */
+    .row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      flex: 1
+    }
+
+    label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    label span {
+      color: var(--pink)
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 120px
+    }
+
+    .error {
+      font-size: 12px;
+      color: var(--pink);
+      display: none;
+      margin-top: 4px;
+    }
+
+    /* buttons */
+    .actions {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .btn {
+      min-width: 200px;
+      padding: 16px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-main {
+      background: linear-gradient(90deg, #000, #333);
+      color: #fff;
+    }
+
+    .btn-light {
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+
+    /* success */
+    .success {
+      text-align: center;
+    }
+
+    .check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color: #fff;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .code-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color: #fff;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    .step-panel {
+      display: none
+    }
+
+    .step-panel.active {
+      display: block
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <h1>Share your PCOS story. Get 30% off today.</h1>
+    <p class="sub">Verified PCOS warriors enjoy a special discount.</p>
+
+    <div class="outer-card">
+
+      <!-- progress -->
+      <div class="progress-wrap">
+        <div class="progress-line">
+          <div class="progress-fill" id="fill"></div>
+        </div>
+        <div class="steps">
+          <div class="step active">STEP 1</div>
+          <div class="step">STEP 2</div>
+          <div class="step">STEP 3</div>
+          <div class="step">STEP 4</div>
+        </div>
+      </div>
+
+      <div class="inner-card">
+
+        <!-- STEP 1 -->
+        <div class="step-panel active">
+          <div class="step-header">
+            <div class="step-icon">📝</div>
+            <div class="step-title">Enter your information</div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>First Name</label>
+              <input>
+            </div>
+            <div class="field">
+              <label>Last Name <span>*</span></label>
+              <input data-required>
+              <div class="error">Required</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Email <span>*</span></label>
+              <input data-required>
+              <div class="error">Required</div>
+            </div>
+            <div class="field">
+              <label>Phone</label>
+              <input>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-main next">NEXT</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step-panel">
+          <div class="step-header">
+            <div class="step-icon">💬</div>
+            <div class="step-title">Share your story</div>
+          </div>
+
+          <textarea data-required></textarea>
+          <div class="error">Required</div>
+
+          <div class="actions">
+            <button class="btn btn-light prev">PREVIOUS</button>
+            <button class="btn btn-main next">NEXT</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-panel">
+          <div class="step-header">
+            <div class="step-icon">📷</div>
+            <div class="step-title">Add a photo</div>
+          </div>
+
+          <input type="file" data-required>
+          <div class="error">Required</div>
+
+          <div class="actions">
+            <button class="btn btn-light prev">PREVIOUS</button>
+            <button class="btn btn-main next">SUBMIT</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="step-panel">
+          <div class="success">
+            <div class="check">✓</div>
+            <h2>Thanks for sharing your story!</h2>
+            <p>Your 30% off discount code</p>
+            <div class="code-btn">PCOS30</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const panels = document.querySelectorAll('.step-panel');
+    const steps = document.querySelectorAll('.step');
+    const fill = document.getElementById('fill');
+    let cur = 0;
+
+    function show(i) {
+      panels.forEach(p => p.classList.remove('active'));
+      steps.forEach(s => s.classList.remove('active'));
+      panels[i].classList.add('active');
+      steps[i].classList.add('active');
+      fill.style.width = (i / 3 * 100) + '%';
+    }
+
+    function validate(p) {
+      let ok = true;
+      p.querySelectorAll('[data-required]').forEach(f => {
+        const e = f.nextElementSibling;
+        if ((f.type === 'file' && !f.files.length) || !f.value.trim()) {
+          e.style.display = 'block'; ok = false;
+        } else e.style.display = 'none';
+      });
+      return ok;
+    }
+
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('next')) {
+        if (!validate(panels[cur])) return;
+        cur++; show(cur);
+      }
+      if (e.target.classList.contains('prev')) {
+        cur--; show(cur);
+      }
+    });
+  </script>
+
+</body>
+
+</html>

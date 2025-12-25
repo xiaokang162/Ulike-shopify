@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background: #000;
+    }
+
+    .gradient-text {
+      font-size: 60px;
+      font-weight: bold;
+      display: inline-block;
+      background: linear-gradient(93deg,
+          #E0004D 0%,
+          #E0004D 22%,
+          #ffffff 25%,
+          /* 光条起点 */
+          #ffffff 27%,
+          /* 光条终点 */
+          #E0004D 30%,
+          #E0004D 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      /* 关键：增加背景宽度，使光条能从左到右滑动 */
+      background-size: 200% 100%;
+      animation: shine 3s linear infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 100% 0;
+      }
+
+      100% {
+        background-position: -100% 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="gradient-text">Gradient Title</h1>
+
+
+
+
+</body>
+
+</html>

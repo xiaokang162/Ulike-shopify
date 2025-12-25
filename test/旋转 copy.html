@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starfield Effect</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* 🌌 星星容器整体旋转 */
+    .star-wrap {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      transform-style: preserve-3d;
+      animation: rotate 250s linear infinite;
+      backface-visibility: hidden;
+    }
+
+    /* 🌟 单颗星星闪烁 */
+    .star {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #b6cbd4;
+      backface-visibility: hidden;
+      transform: rotate(0deg) scale(0.08);
+      animation: blink 15s ease infinite alternate both;
+      z-index: 0;
+    }
+
+    /* 星星内部光晕层 */
+    .star div {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      backface-visibility: hidden;
+      box-shadow:
+        0 0 2px 8px rgba(0, 0, 0, 0.4),
+        0 0 2px 9px rgba(255, 255, 255, 0.07),
+        0 0 2px 15px rgba(0, 0, 0, 0.4),
+        0 0 2px 16px rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg) scale(0.75);
+    }
+
+    /* ✴️ 四个十字光线（伪元素） */
+    .star::before,
+    .star::after,
+    .star div::before,
+    .star div::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(255, 255, 255, 0.1) 100%);
+      box-shadow: 0 0 25px white;
+      width: 10%;
+      height: 800%;
+      top: calc(50% - 400%);
+      left: 45%;
+      z-index: 1;
+    }
+
+    .star::before,
+    .star div::before {
+      transform: rotate(90deg);
+    }
+
+    /* 🔵 蓝色星星光晕 */
+    .star.star--blue::before,
+    .star.star--blue::after,
+    .star.star--blue div::before,
+    .star.star--blue div::after {
+      box-shadow: 0 0 25px #0000ff;
+    }
+
+    /* 🔴 红色星星光晕 */
+    .star.star--red::before,
+    .star.star--red::after,
+    .star.star--red div::before,
+    .star.star--red div::after {
+      box-shadow: 0 0 25px #ff0000;
+    }
+
+    /* ✨ 闪烁动画 */
+    @keyframes blink {
+      0% {
+        transform: rotate(0deg) scale(0.1);
+      }
+
+      4% {
+        transform: rotate(-20deg) scale(0.9);
+      }
+
+      8% {
+        transform: rotate(-40deg) scale(0.1);
+      }
+
+      50% {
+        transform: rotate(-40deg) scale(0.1);
+      }
+
+      52% {
+        transform: rotate(-50deg) scale(0.3);
+      }
+
+      54% {
+        transform: rotate(-60deg) scale(0.1);
+      }
+
+      100% {
+        transform: rotate(0deg) scale(0.1);
+      }
+    }
+
+    /* 🌠 容器旋转动画 */
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .shoot-star {
+      position: absolute;
+      top: 100px;
+      left: 400px;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      /* background: #fff; */
+      transform-origin: 100% 0;
+      opacity: 0;
+      animation: star-move 2.5s linear forwards;
+    }
+
+    .shoot-star::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 2px;
+      border: 1px solid #f00;
+      border-width: 1px 150px 1px 150px;
+      border-color: transparent transparent transparent #fff;
+      transform: rotate(-45deg) translate3d(1px, -1px, 0);
+      transform-origin: 0% 100%;
+      opacity: 0;
+      animation: shooting 2.5s linear forwards;
+    }
+
+    /* 🌠 流星滑动路径 + 渐隐效果 */
+    @keyframes star-move {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) translate3d(200px, -200px, 0);
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        /* ✅ 尾端慢慢消失 */
+        transform: scale(1) translate3d(-200px, 200px, 0);
+      }
+    }
+
+    /* 🌠 尾巴的光线随主体同步淡出 */
+    @keyframes shooting {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-45deg) translate(0px, 0px);
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        /* ✅ 尾部同时慢慢消失 */
+        transform: scale(0.8) rotate(-45deg) translate(-5px, -5px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="star-sky">
+  </div>
+  <script>
+
+    function initStarSky(options = {}) {
+      const STAR_COUNT = options.starCount || 280;
+      const SHOOT_INTERVAL_MIN = options.shootIntervalMin || 1000;
+      const SHOOT_INTERVAL_MAX = options.shootIntervalMax || 4000;
+
+      const sky = document.querySelector('.star-sky');
+      if (!sky) return console.warn('❌ 未找到 .star-sky 元素');
+
+      let wrap = sky.querySelector('.star-wrap');
+      if (!wrap) {
+        wrap = document.createElement('div');
+        wrap.className = 'star-wrap';
+        sky.appendChild(wrap);
+      }
+
+      // 🌟 创建星星
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        if (i % 8 === 0) star.classList.add('star--red');
+        else if (i % 10 === 6) star.classList.add('star--blue');
+        const inner = document.createElement('div');
+        star.appendChild(inner);
+        const size = (Math.random() * 2 + 7).toFixed(2) + 'px';
+        star.style.width = size;
+        star.style.height = size;
+        star.style.top = (Math.random() * 100).toFixed(2) + '%';
+        star.style.left = (Math.random() * 100).toFixed(2) + '%';
+        star.style.opacity = (Math.random() * 0.5 + 0.5).toFixed(2);
+        star.style.animationDelay = (Math.random() * 100).toFixed(2) + 's';
+        wrap.appendChild(star);
+      }
+
+      // ☄️ 创建流星
+      function createShootStar() {
+        const shootStar = document.createElement('div');
+        shootStar.classList.add('shoot-star');
+        // shootStar.style.top = (Math.random() * 40).toFixed(2) + '%';
+        shootStar.style.left = (Math.random() * 100).toFixed(2) + '%';
+        sky.appendChild(shootStar);
+        shootStar.addEventListener('animationend', () => shootStar.remove());
+      }
+
+      // ☄️ 随机间隔循环生成流星
+      let shootingTimer = null;
+
+      function startRandomShooting() {
+        if (document.hidden) return; // 页面不可见时暂停
+        const delay =
+          Math.random() * (SHOOT_INTERVAL_MAX - SHOOT_INTERVAL_MIN) +
+          SHOOT_INTERVAL_MIN;
+        shootingTimer = setTimeout(() => {
+          createShootStar();
+          startRandomShooting(); // 循环
+        }, delay);
+      }
+
+      // 页面可见状态变化时控制流星生成
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+          // 页面切回前台，继续生成流星
+          startRandomShooting();
+        } else {
+          // 页面隐藏时停止
+          if (shootingTimer) clearTimeout(shootingTimer);
+        }
+      });
+
+      // 启动循环
+      startRandomShooting();
+    }
+
+    // 调用
+    initStarSky({
+      starCount: 480,
+      shootIntervalMin: 1000,
+      shootIntervalMax: 4000
+    });
+
+  </script>
+</body>
+
+</html>

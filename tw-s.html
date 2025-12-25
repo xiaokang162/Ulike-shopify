@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學生專屬美膚優惠</title>
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/comm.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", "Noto Sans TC", sans-serif;
+      background: #fff;
+    }
+
+    .container {
+      padding: 0 40px;
+      margin: 0 auto;
+      max-width: 1600px;
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    .promo-wrap {
+      margin: auto;
+      padding: 80px 0;
+    }
+
+    .promo-wrap .promo-header {
+      text-align: center;
+      margin-bottom: 56px;
+      color: #190A0A;
+    }
+
+    .promo-wrap .promo-header h3 {
+      font-size: 48px;
+      font-weight: normal;
+      font-family: var(--heading-font-family);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .promo-wrap .promo-header .sub {
+      margin: 0;
+      margin-top: 16px;
+      font-size: 24px;
+      font-family: var(--heading-font-family);
+      line-height: 1.2;
+    }
+
+    .promo-wrap .promo-list {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .promo-wrap .promo-item {
+      flex: 1;
+      background: #F5F5F5;
+    }
+
+    .promo-wrap .promo-img {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .promo-wrap .promo-img::before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-wrap .promo-img img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      position: absolute;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .promo-wrap .promo-info {
+      padding: 24px;
+    }
+
+    .promo-wrap .promo-info h4 {
+      font-size: 18px;
+      font-weight: normal;
+      margin: 0 0 10px 0;
+      line-height: 1.3;
+      font-family: var(--heading-font-family);
+    }
+
+    .promo-wrap .price-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .promo-wrap .badge {
+      background: #e60066;
+      color: #fff;
+      font-size: 16px;
+      padding: 0 6px;
+      font-family: var(--heading-font-family);
+      display: flex;
+      align-items: center;
+    }
+
+    .promo-wrap .price {
+      font-size: 12px;
+      color: #4E4E4E;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.2;
+    }
+
+    .promo-wrap .price span {
+      color: #000;
+      font-size: 18px;
+      font-family: var(--heading-font-family);
+    }
+
+    @media (max-width: 1300px) {
+      .promo-wrap .promo-list {
+        gap: 20px;
+      }
+
+      .promo-wrap .promo-info h4 {
+        font-size: 16px;
+      }
+
+      .promo-wrap .badge {
+        font-size: 14px;
+      }
+
+      .promo-wrap .price span {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      .promo-wrap {
+        padding: 50px 0;
+      }
+
+      .promo-wrap .promo-header {
+        margin-bottom: 20px;
+      }
+
+      .promo-wrap .promo-header h3 {
+        font-size: 28px;
+      }
+
+      .promo-wrap .promo-header .sub {
+        font-size: 14px;
+        margin-top: 8px;
+      }
+
+      .promo-wrap .promo-list {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .promo-wrap .promo-item {
+        flex: none;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      .promo-wrap .promo-img {
+        width: 114px;
+      }
+
+      .promo-wrap .promo-info {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="promo-wrap">
+      <div class="promo-header">
+        <h3>學生專屬美膚優惠</h3>
+        <p class="sub">UP TO $1600 OFF</p>
+      </div>
+
+      <div class="promo-list">
+
+        <div class="promo-item">
+          <div class="promo-img">
+            <img src="img/product1.jpg" alt="">
+          </div>
+          <div class="promo-info">
+            <h4>Ulike Air 10 家用脫毛儀</h4>
+            <div class="price-line">
+              <div class="badge">$1100 OFF</div>
+              <div class="price">折後價 <span>$2499</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-item">
+          <div class="promo-img">
+            <img src="img/product2.jpg" alt="">
+          </div>
+          <div class="promo-info">
+            <h4>Ulike Swift 7 家用脫毛儀</h4>
+            <div class="price-line">
+              <div class="badge">$1100 OFF</div>
+              <div class="price">折後價 <span>$2499</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-item">
+          <div class="promo-img">
+            <img src="img/product3.jpg" alt="">
+          </div>
+          <div class="promo-info">
+            <h4>Ulike白皇后LED美容面膜儀</h4>
+            <div class="price-line">
+              <div class="badge">$1100 OFF</div>
+              <div class="price">折後價 <span>$2499</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-item">
+          <div class="promo-img">
+            <img src="img/product4.jpg" alt="">
+          </div>
+          <div class="promo-info">
+            <h4>Ulike 超光炮 Pro 美容儀</h4>
+            <div class="price-line">
+              <div class="badge">$1100 OFF</div>
+              <div class="price">折後價 <span>$2499</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

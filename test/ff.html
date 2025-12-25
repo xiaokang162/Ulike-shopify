@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+  </div>
+
+  <style>
+    body {
+      background: #bbb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+      width: 80%;
+      max-width: 1000px;
+    }
+
+    /* 桌面布局 */
+    .item1 {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    .item2 {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+    }
+
+    .item3 {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+    }
+
+    .item4 {
+      grid-column: 3 / 4;
+      grid-row: 1 / 3;
+    }
+
+    .item {
+      border: 3px solid red;
+      border-radius: 8px;
+      color: red;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 🔸移动端布局 (两列 + 底部一列) */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto;
+      }
+
+      .item1 {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+      }
+
+      .item3 {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+      }
+
+      .item2 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .item4 {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+      }
+    }
+  </style>
+
+</body>
+
+</html>

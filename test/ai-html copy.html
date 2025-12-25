@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More to help Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .features {
+      padding: 60px 20px;
+      background: #fff;
+      text-align: center;
+    }
+
+    .features-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .features-list {
+      display: flex;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .feature-item img {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+
+    .feature-item h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .feature-item p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .feature-item button {
+      padding: 12px 24px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* 📱 移动端 */
+    @media (max-width: 768px) {
+      .features-list {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .feature-item {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="features">
+    <h2 class="features-title">More to help.</h2>
+
+    <div class="features-list">
+      <div class="feature-item">
+        <img src="hsa.svg" alt="HSA FSA">
+        <h3>HSA | FSA Accepted</h3>
+        <p>Get medical approval and pay with HSA/FSA in just a few minutes.</p>
+        <button>HOW IT WORKS</button>
+      </div>
+
+      <div class="feature-item">
+        <img src="guarantee.svg" alt="Money Back">
+        <h3>100 Day Money-back Guarantee</h3>
+        <p>100-day satisfaction guarantee – full refund if you're not completely satisfied.</p>
+        <button>RETURN POLICY</button>
+      </div>
+
+      <div class="feature-item">
+        <img src="consultation.svg" alt="Consultation">
+        <h3>1-on-1 Consultation</h3>
+        <p>Talk with our experts for tailored advice on choosing and using Ulike devices.</p>
+        <button>BOOK NOW</button>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

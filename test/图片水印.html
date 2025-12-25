@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>图片加水印工具（文字 + 图片）</title>
+  <style>
+    :root {
+      font-family: Arial, "Microsoft Yahei", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 18px;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 18px;
+      margin: 0 0 12px;
+    }
+
+    .wrap {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 8px;
+      padding: 12px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, .06);
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin: 8px 0 6px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .small {
+      width: 80px;
+    }
+
+    canvas {
+      width: 100%;
+      border-radius: 6px;
+      background: #eee;
+      display: block;
+    }
+
+    .controls {
+      max-height: 74vh;
+      overflow: auto;
+      padding-right: 6px;
+    }
+
+    button {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background: #0066ff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #6b7280;
+    }
+
+    .group {
+      margin-bottom: 12px;
+      border: 1px dashed #eee;
+      padding: 10px;
+      border-radius: 6px;
+      background: #fbfdff;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    input[type="color"] {
+      height: 38px;
+      padding: 0;
+      border: none;
+      background: transparent;
+    }
+
+    .flex-between {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .file-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>图片加水印工具（文字 + 图片）</h1>
+  <div class="wrap">
+    <div class="panel controls">
+      <div class="group">
+        <label>1. 选择/上传基准图片（被加水印的图片）</label>
+        <div class="file-row">
+          <input id="baseFile" type="file" accept="image/*">
+          <button id="clearBtn" class="secondary">清除</button>
+        </div>
+        <div class="hint">支持 PNG/JPEG 等。工具会以图片原始像素大小在 Canvas 中绘制以保证输出画质。</div>
+      </div>
+
+      <div class="group">
+        <label>2. 文字水印设置（支持多个）</label>
+        <label>文字内容</label>
+        <input id="wmText" type="text" placeholder="示例：© YourName">
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>字体大小 (px)</label>
+            <input id="textSize" type="number" value="48" min="6">
+          </div>
+          <div style="width:110px">
+            <label>字体</label>
+            <select id="fontFamily">
+              <option value="Arial">Arial</option>
+              <option value="Microsoft Yahei">Microsoft Yahei</option>
+              <option value="SimSun">SimSun</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Courier New">Courier New</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>颜色</label>
+            <input id="textColor" type="color" value="#ffffff">
+          </div>
+          <div style="width:120px">
+            <label>透明度</label>
+            <input id="textOpacity" type="number" min="0" max="1" step="0.05" value="0.6">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>数量（列 × 行）</label>
+            <div class="row">
+              <input id="textCols" type="number" value="1" min="1" class="small">
+              <input id="textRows" type="number" value="1" min="1" class="small">
+            </div>
+          </div>
+          <div style="width:120px">
+            <label>间距(px)</label>
+            <input id="textSpacing" type="number" value="40" min="0">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>位置</label>
+            <select id="textPosition">
+              <option value="topleft">左上</option>
+              <option value="topright">右上</option>
+              <option value="bottomleft">左下</option>
+              <option value="bottomright" selected>右下</option>
+              <option value="center">居中</option>
+              <option value="tile">平铺</option>
+            </select>
+          </div>
+          <div style="width:120px">
+            <label>旋转(°)</label>
+            <input id="textRotate" type="number" value="0" step="1">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>偏移 X(px)</label>
+            <input id="textOffsetX" type="number" value="20">
+          </div>
+          <div style="width:120px">
+            <label>偏移 Y(px)</label>
+            <input id="textOffsetY" type="number" value="20">
+          </div>
+        </div>
+
+        <div class="hint">图文都支持透明度与旋转。平铺模式会忽略列/行设置，按间距排列。</div>
+      </div>
+
+      <div class="group">
+        <label>3. 图片水印设置（上传水印图片）</label>
+        <input id="wmFile" type="file" accept="image/*">
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>尺寸（%：相对于基准图宽度）</label>
+            <input id="imgScale" type="number" value="20" min="1" max="200">
+          </div>
+          <div style="width:140px">
+            <label>透明度</label>
+            <input id="imgOpacity" type="number" value="0.6" step="0.05" min="0" max="1">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>数量（列 × 行）</label>
+            <div class="row">
+              <input id="imgCols" type="number" value="1" min="1" class="small">
+              <input id="imgRows" type="number" value="1" min="1" class="small">
+            </div>
+          </div>
+          <div style="width:120px">
+            <label>间距(px)</label>
+            <input id="imgSpacing" type="number" value="40" min="0">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>位置</label>
+            <select id="imgPosition">
+              <option value="topleft">左上</option>
+              <option value="topright">右上</option>
+              <option value="bottomleft">左下</option>
+              <option value="bottomright" selected>右下</option>
+              <option value="center">居中</option>
+              <option value="tile">平铺</option>
+            </select>
+          </div>
+          <div style="width:120px">
+            <label>旋转(°)</label>
+            <input id="imgRotate" type="number" value="0" step="1">
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:8px;">
+          <div style="flex:1">
+            <label>偏移 X(px)</label>
+            <input id="imgOffsetX" type="number" value="20">
+          </div>
+          <div style="width:120px">
+            <label>偏移 Y(px)</label>
+            <input id="imgOffsetY" type="number" value="20">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="group">
+        <label>4. 导出 / 预览</label>
+        <div class="row" style="gap:8px;">
+          <button id="renderBtn">立即预览</button>
+          <button id="downloadBtn" class="secondary">导出图片</button>
+          <select id="exportFormat" style="width:120px">
+            <option value="image/png">PNG（无损）</option>
+            <option value="image/jpeg">JPEG（有损，但可选最高质量）</option>
+          </select>
+        </div>
+        <div class="hint">导出时会使用原始图片的像素尺寸（保证画质）。JPEG 导出质量设置为 0.98。</div>
+      </div>
+
+    </div>
+
+    <div class="panel">
+      <label>预览（点击“立即预览”或更改设置自动更新）</label>
+      <div style="margin-top:8px">
+        <canvas id="previewCanvas"></canvas>
+      </div>
+      <div style="margin-top:8px" class="flex-between">
+        <div id="info" class="hint">未加载图片</div>
+        <div class="hint">Canvas 大小会等于原始图片像素，浏览器中自动缩放显示。</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+      关键思路：
+      - 使用 <canvas>，canvas.width/height = 图片原始像素 (naturalWidth/Height)，保证导出时分辨率与原图一致
+      - 先绘制基准图片，再按设置绘制文字与图片水印（使用 ctx.save()/restore() 与 ctx.globalAlpha 控制透明度）
+      - 支持多列多行（或 tile 平铺）
+      - 导出使用 canvas.toBlob(..., quality)；PNG 无质量参数，JPEG 质量接近 1
+    */
+
+    const $ = id => document.getElementById(id);
+    const canvas = $('previewCanvas');
+    const ctx = canvas.getContext('2d', { willReadFrequently: false });
+    let baseImg = new Image();
+    let baseType = 'image/png'; // default
+    let wmImg = null; // watermark image object if uploaded
+
+    // UI refs
+    const inputs = [
+      'wmText', 'textSize', 'fontFamily', 'textColor', 'textOpacity', 'textCols', 'textRows', 'textSpacing', 'textPosition', 'textRotate', 'textOffsetX', 'textOffsetY',
+      'wmFile', 'imgScale', 'imgOpacity', 'imgCols', 'imgRows', 'imgSpacing', 'imgPosition', 'imgRotate', 'imgOffsetX', 'imgOffsetY',
+      'baseFile', 'renderBtn', 'downloadBtn', 'exportFormat', 'clearBtn'
+    ].reduce((o, k) => { o[k] = $(k); return o }, {});
+
+    function setInfo(msg) { $('info').textContent = msg; }
+
+    // load base image
+    $('baseFile').addEventListener('change', e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const url = URL.createObjectURL(f);
+      baseType = f.type || 'image/png';
+      baseImg = new Image();
+      baseImg.onload = () => {
+        // setup canvas real pixel size same as image
+        canvas.width = baseImg.naturalWidth;
+        canvas.height = baseImg.naturalHeight;
+        // set visual size to fit container (handled by CSS) - we don't change canvas.style here
+        render(); // automatic preview
+        setInfo(`已加载: ${f.name} — ${baseImg.naturalWidth}×${baseImg.naturalHeight}px`);
+        URL.revokeObjectURL(url);
+      };
+      baseImg.onerror = () => {
+        alert('无法加载图片，请重试或选择其他图片。');
+        URL.revokeObjectURL(url);
+      };
+      baseImg.src = url;
+    });
+
+    // clear
+    $('clearBtn').addEventListener('click', () => {
+      baseImg = new Image();
+      wmImg = null;
+      $('baseFile').value = '';
+      $('wmFile').value = '';
+      canvas.width = 800; canvas.height = 450;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      setInfo('已清除');
+    });
+
+    // load watermark image
+    $('wmFile').addEventListener('change', e => {
+      const f = e.target.files[0];
+      if (!f) { wmImg = null; render(); return; }
+      const url = URL.createObjectURL(f);
+      const img = new Image();
+      img.onload = () => {
+        wmImg = img;
+        render();
+        URL.revokeObjectURL(url);
+      };
+      img.onerror = () => {
+        alert('水印图片加载失败');
+        URL.revokeObjectURL(url);
+      };
+      img.src = url;
+    });
+
+    // render 按钮
+    $('renderBtn').addEventListener('click', render);
+
+    // 自动短暂 debounce 更新（用户修改时自动更新）
+    let debounceTimer = null;
+    document.querySelectorAll('input,select').forEach(el => {
+      el.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(render, 300);
+      });
+    });
+
+    // 下载导出
+    $('downloadBtn').addEventListener('click', () => {
+      if (!baseImg.src) { alert('请先上传基准图片'); return; }
+      // 默认 format: 如果用户选 PNG，但 baseType is image/jpeg, still use selected format
+      const mime = $('exportFormat').value || baseType || 'image/png';
+      // if jpeg, use high quality
+      canvas.toBlob(blob => {
+        if (!blob) { alert('导出失败'); return; }
+        const a = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        a.href = url;
+        a.download = 'watermarked' + (mime === 'image/png' ? '.png' : '.jpg');
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1500);
+      }, mime, mime === 'image/jpeg' ? 0.98 : undefined);
+    });
+
+    // 主渲染函数
+    function render() {
+      if (!baseImg || !baseImg.src) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        setInfo('未加载图片');
+        return;
+      }
+      // ensure canvas size equals original pixels
+      if (canvas.width !== baseImg.naturalWidth || canvas.height !== baseImg.naturalHeight) {
+        canvas.width = baseImg.naturalWidth;
+        canvas.height = baseImg.naturalHeight;
+      }
+
+      // draw base image
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
+
+      // draw image watermark(s) if present
+      if (wmImg) {
+        drawImageWatermark();
+      }
+
+      // draw text watermark(s)
+      const text = $('wmText').value.trim();
+      if (text) {
+        drawTextWatermark(text);
+      }
+      setInfo(`预览：${canvas.width} × ${canvas.height}px`);
+    }
+
+    // 辅助：计算放置起始坐标（单个）根据位置和偏移
+    function calcStartCoords(w, h, itemW, itemH, position, offsetX = 0, offsetY = 0) {
+      let x = 0, y = 0;
+      switch (position) {
+        case 'topleft': x = offsetX; y = offsetY; break;
+        case 'topright': x = w - itemW - offsetX; y = offsetY; break;
+        case 'bottomleft': x = offsetX; y = h - itemH - offsetY; break;
+        case 'bottomright': x = w - itemW - offsetX; y = h - itemH - offsetY; break;
+        case 'center': x = (w - itemW) / 2 + offsetX; y = (h - itemH) / 2 + offsetY; break;
+        default: x = offsetX; y = offsetY;
+      }
+      return { x, y };
+    }
+
+    // draw image watermark(s)
+    function drawImageWatermark() {
+      const img = wmImg;
+      const scalePercent = parseFloat($('imgScale').value) || 20;
+      const opacity = clamp(parseFloat($('imgOpacity').value), 0, 1);
+      const cols = Math.max(1, parseInt($('imgCols').value) || 1);
+      const rows = Math.max(1, parseInt($('imgRows').value) || 1);
+      const spacing = parseFloat($('imgSpacing').value) || 40;
+      const position = $('imgPosition').value || 'bottomright';
+      const rotateDeg = parseFloat($('imgRotate').value) || 0;
+      const offsetX = parseFloat($('imgOffsetX').value) || 0;
+      const offsetY = parseFloat($('imgOffsetY').value) || 0;
+
+      // target watermark width relative to base image width
+      const targetW = canvas.width * (scalePercent / 100);
+      // keep aspect ratio
+      const aspect = img.naturalHeight / img.naturalWidth;
+      const targetH = targetW * aspect;
+
+      ctx.save();
+      ctx.globalAlpha = opacity;
+
+      if (position === 'tile') {
+        // tile across image using spacing and target sizes
+        const gapX = spacing;
+        const gapY = spacing;
+        for (let y = 0; y < canvas.height + targetH; y += targetH + gapY) {
+          for (let x = 0; x < canvas.width + targetW; x += targetW + gapX) {
+            drawImageWithRotation(img, x, y, targetW, targetH, rotateDeg);
+          }
+        }
+      } else {
+        // arrange as grid based on cols x rows in rectangle area near chosen position
+        // compute total grid size
+        const totalW = targetW * cols + spacing * Math.max(0, cols - 1);
+        const totalH = targetH * rows + spacing * Math.max(0, rows - 1);
+
+        const start = calcStartCoords(canvas.width, canvas.height, totalW, totalH, position, offsetX, offsetY);
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = start.x + c * (targetW + spacing);
+            const y = start.y + r * (targetH + spacing);
+            drawImageWithRotation(img, x, y, targetW, targetH, rotateDeg);
+          }
+        }
+      }
+      ctx.restore();
+    }
+
+    // helper: draw image with rotation around its center
+    function drawImageWithRotation(img, x, y, w, h, deg) {
+      if (w <= 0 || h <= 0) return;
+      const rad = deg * Math.PI / 180;
+      ctx.save();
+      // translate to center
+      ctx.translate(x + w / 2, y + h / 2);
+      if (rad !== 0) ctx.rotate(rad);
+      ctx.drawImage(img, -w / 2, -h / 2, w, h);
+      ctx.restore();
+    }
+
+    // draw text watermark(s)
+    function drawTextWatermark(text) {
+      const fontSize = Math.max(6, parseFloat($('textSize').value) || 48);
+      const fontFamily = $('fontFamily').value || 'Arial';
+      const color = $('textColor').value || '#ffffff';
+      const opacity = clamp(parseFloat($('textOpacity').value), 0, 1);
+      const cols = Math.max(1, parseInt($('textCols').value) || 1);
+      const rows = Math.max(1, parseInt($('textRows').value) || 1);
+      const spacing = parseFloat($('textSpacing').value) || 40;
+      const position = $('textPosition').value || 'bottomright';
+      const rotateDeg = parseFloat($('textRotate').value) || 0;
+      const offsetX = parseFloat($('textOffsetX').value) || 0;
+      const offsetY = parseFloat($('textOffsetY').value) || 0;
+
+      ctx.save();
+      ctx.globalAlpha = opacity;
+      ctx.textBaseline = 'top';
+      ctx.textAlign = 'left';
+      ctx.font = `${fontSize}px ${fontFamily}`;
+
+      // measure text (approx)
+      const metrics = ctx.measureText(text);
+      // measureText gives width; estimate height as fontSize (reasonable)
+      const textW = metrics.width;
+      const textH = fontSize;
+
+      if (position === 'tile') {
+        // tile across image using spacing and text size
+        const gapX = spacing;
+        const gapY = spacing;
+        for (let y = -textH; y < canvas.height + textH; y += textH + gapY) {
+          for (let x = -textW; x < canvas.width + textW; x += textW + gapX) {
+            drawTextWithRotation(text, x, y, rotateDeg, fontSize, fontFamily, color);
+          }
+        }
+      } else {
+        // arrange grid using cols x rows
+        const totalW = textW * cols + spacing * Math.max(0, cols - 1);
+        const totalH = textH * rows + spacing * Math.max(0, rows - 1);
+        const start = calcStartCoords(canvas.width, canvas.height, totalW, totalH, position, offsetX, offsetY);
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = start.x + c * (textW + spacing);
+            const y = start.y + r * (textH + spacing);
+            drawTextWithRotation(text, x, y, rotateDeg, fontSize, fontFamily, color);
+          }
+        }
+      }
+
+      ctx.restore();
+    }
+
+    // draw text with rotation & fill color
+    function drawTextWithRotation(text, x, y, deg, fontSize, fontFamily, color) {
+      const rad = deg * Math.PI / 180;
+      ctx.save();
+      ctx.translate(x, y);
+      if (rad !== 0) ctx.rotate(rad);
+      ctx.font = `${fontSize}px ${fontFamily}`;
+      ctx.fillStyle = color;
+      ctx.fillText(text, 0, 0);
+      ctx.restore();
+    }
+
+    function clamp(v, a, b) { return Math.max(a, Math.min(b, isNaN(v) ? 0 : v)); }
+
+    //
+    // 初始化 canvas 默认大小
+    canvas.width = 800; canvas.height = 450;
+    setInfo('请先上传基准图片');
+
+  </script>
+</body>
+
+</html>

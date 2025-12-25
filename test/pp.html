@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Card</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/comm.css" />
+  <style>
+    .container {
+      max-width: 1600px;
+      padding: 0 40px;
+    }
+
+    @media (max-width: 991px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    .product-section {
+      padding: 80px 0;
+    }
+
+    .product-section .section-title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: normal;
+      font-family: var(--heading-font-family);
+      line-height: 1.2;
+      margin-bottom: 50px;
+    }
+
+    .product-section .product-card {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 60px;
+    }
+
+    .product-section .product-image {
+      position: relative;
+      flex: 1;
+    }
+
+    .product-section .product-image img {
+      width: 100%;
+      display: block;
+    }
+
+    .product-section .product-image .icon-img-top {
+      position: absolute;
+      z-index: 3;
+      top: 20px;
+      left: 20px;
+      width: 125px;
+      font-size: 36px;
+      color: #fff;
+      font-family: var(--heading-font-family);
+      line-height: 1;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .product-section .product-image .icon-img-top span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-section .product-image .icon-img-top img {
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-section .product-info {
+      flex: 1;
+    }
+
+    .product-section .product-title {
+      font-size: 35px;
+      font-weight: normal;
+      font-family: var(--heading-font-family);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .product-section .product-subtitle {
+      font-size: 20px;
+      color: #858585;
+      line-height: 1.2;
+      margin-bottom: 13px;
+    }
+
+    .product-section .product-features ul {
+      list-style: none;
+      padding-left: 16px;
+      margin-bottom: 20px;
+    }
+
+    .product-section .product-features li {
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-section .product-features li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #000;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: -16px;
+      transform: translateY(-50%);
+      border-radius: 0 0 8px 8px;
+
+    }
+
+    .product-section .product-price {
+      font-size: 25px;
+    }
+
+    .product-section .price-current {
+      color: #e6005c;
+      margin-right: 10px;
+    }
+
+    .product-section .price-old {
+      text-decoration: line-through;
+      color: #ABABAB;
+    }
+
+    .product-section .pra-box {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .product-section .pra-variant {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      padding-left: 35px;
+      border-left: 1px solid #C4C4C4;
+    }
+
+    .product-section .variant-item {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-section .variant-item::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid #000;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .product-section .variant-item.active::after {
+      opacity: 1;
+    }
+
+    .product-section .product-actions {
+      display: flex;
+      gap: 33px;
+    }
+
+    .product-section .btn {
+      flex: 1;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 260px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #000;
+    }
+
+    .product-section .btn.outline {
+      background: transparent;
+    }
+
+    .product-section .btn.primary {
+      background: #000;
+      color: #fff;
+    }
+
+    .product-section .btn.outline::after {
+      background: #000;
+    }
+
+    .product-section .btn.outline .btn-txt::before {
+      color: #fff;
+    }
+
+    .product-section .btn.primary .btn-txt::before {
+      color: #000;
+    }
+
+    @media (max-width: 1500px) {
+      .product-section .product-image .icon-img-top {
+        width: 90px;
+        font-size: 22px;
+      }
+
+    }
+
+    @media (max-width: 991px) {
+      .product-section .product-card {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .product-section .section-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+
+      .product-section .product-image .icon-img-top {
+        width: 60px;
+        font-size: 16px;
+        top: 15px;
+        left: 15px;
+      }
+
+      .product-section .product-info {
+        width: 100%;
+      }
+
+      .product-section .product-title {
+        font-size: 22px;
+      }
+
+      .product-section .product-actions {
+        gap: 15px;
+        /* flex-direction: column; */
+      }
+
+      .product-section .btn {
+        width: 100%;
+        font-size: 14px;
+        height: 45px;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="product-section">
+    <div class="container">
+      <h2 class="section-title">Explore our products</h2>
+      <div class="product-card">
+        <div class="product-image">
+          <div class="icon-img-top" data-index="1">
+            <img src="//cdn.shopify.com/s/files/1/0656/9079/6273/files/Gradient_Overlay.svg?v=1765178056" width=""
+              height="" loading="lazy" alt="files/Gradient_Overlay.svg" class="icon-img-el">
+            <span>25% OFF</span>
+          </div>
+          <img src="./img/pp.jpg" alt="Ulike Air 10">
+        </div>
+
+        <div class="product-info">
+          <h3 class="product-title">Ulike Air 10</h3>
+          <div class="product-subtitle">
+            The next-generation in simple, lasting hair removal.
+          </div>
+          <div class="product-features">
+            <ul>
+              <li>96% hair reduction in just 2 weeks</li>
+              <li>Long-lasting smooth skin</li>
+              <li>Effectively removes stubborn hairs</li>
+              <li>FDA-cleared safety & nearly painless</li>
+              <li>Gentle on sensitive skin</li>
+              <li>10-minute full-body sessions</li>
+            </ul>
+          </div>
+          <div class="pra-box">
+            <div class="product-price">
+              <span class="price-current">$259.00</span>
+              <span class="price-old">$349.00</span>
+            </div>
+            <div class="pra-variant">
+              <div class="variant-item active"
+                style="background: linear-gradient(0deg, rgba(168, 164, 206, 1.00) -6.5%, #DDDBEE 106.5%);"></div>
+              <div class="variant-item"
+                style="background: linear-gradient(180deg, #FDF1ED -6.5%, #F6DBD6 51.13%, #EFC5BE 106.5%);"></div>
+            </div>
+          </div>
+
+          <div class="product-actions">
+            <a href="#" class="btn outline btn-diy">
+              <div class="btn-txt" text="Learn More">
+                <span>Learn More</span>
+              </div>
+            </a>
+            <button class="btn primary btn-diy">
+              <div class="btn-txt" text="Add to Cart">
+                <span>Add to Cart</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
